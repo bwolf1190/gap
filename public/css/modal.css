@@ -1,0 +1,22 @@
+#modalTitle{
+	border-bottom:1px solid #00234C;
+	color:#00234C;
+	width:100%;
+	text-align: center;
+}
+
+.remodal{
+	border:1px solid #bf0000;
+	background-color: #F8F8F8;
+}
+
+#modalDesc{
+	text-align: left;
+	color:#00234C;
+}
+
+#ok-btn{
+	background-color: #00234C;
+	color:white;
+	font-weight: bold;
+}

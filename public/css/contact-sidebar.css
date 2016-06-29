@@ -1,0 +1,28 @@
+#contact-sidebar{
+	background-color:lightgray;
+	height:300px;
+	position:absolute;
+	right:0;
+	top:270;
+}
+
+#contact-sidebar .section{
+	height:50px;
+	background-color:#00234C;
+}
+
+#contact-sidebar .section h2{
+	color:white;
+	text-align: center;
+	position:relative;
+	top:-8px;
+}
+
+#contact-sidebar i{
+	font-size: 2.5em;
+	color:#bf0000;
+}
+
+@media (max-width: 925px){
+	#contact-sidebar{ display:none; }
+}

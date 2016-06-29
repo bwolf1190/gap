@@ -1,0 +1,42 @@
+.panel.panel-default{
+	padding:10px;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	border-left:none;
+	border-right:none;
+	font-size: 1.1em;
+}
+
+.panel.panel-default a{
+	text-decoration: none;
+}
+
+.panel-body{
+	width:100%;
+	color:#00234C;
+}
+
+.panel-collapse{
+
+}
+
+.faq-title{
+	color:#bf0000;
+	margin-bottom: 50px;
+}
+
+.question{
+	color:#00234C;
+	font-weight: bold;
+}
+
+.answer{
+	color:#bf0000;
+	height:100%;
+	font-weight: bold;
+}
+
+/* Smooth bootstrap panel display */
+.panel-collapse.collapsing {
+    transition: height .1s;
+}

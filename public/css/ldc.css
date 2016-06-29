@@ -1,0 +1,76 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300); 
+body{
+}
+
+.price_table_container{
+	text-align:center;
+	color:white;
+	margin-top:35px;
+	font-family: 'Open Sans', sans-serif;
+	max-width: 200px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+
+.sign-up-container{
+	margin-top:10px;
+}
+
+.sign-up-container a{
+	background-color: #bf0000;
+	color:white;
+	padding:10px 35px 10px 35px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.sign-up-container a:hover{
+	background-color: white;
+	color:#bf0000;
+	border:1px solid #bf0000;
+}
+
+.price_table_heading{
+	font-size:36px;
+	padding:10px;
+	background-color:#002D62;
+	color:white;
+	white-space: nowrap;
+}
+
+
+/* condensed version for showing picked plan on enrollment forms */
+.price_table_heading_condensed{
+	font-size:18px;
+	padding:10px;
+	background-color:#002D62;
+	color:white;
+	white-space: nowrap;
+}
+
+
+.price_table_row{
+     padding:15px;
+	background: lightgray;
+	color:#002D62;
+	border-bottom: 2px solid white;
+}
+
+.cost{
+	padding:30px;
+	font-size:30px;
+}
+.cost span{
+	font-size:15px;
+}
+
+.price_table_row:nth-of-type(even) {
+    /*background: #F8F8F8;*/
+}
+.btn{
+	border-radius:0px;
+}

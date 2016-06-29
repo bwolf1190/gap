@@ -1,0 +1,312 @@
+
+#sign-up-form{
+	margin-top:50px;
+}
+
+#enroll{
+	height:150px;
+	background-color: #bf0000;
+	border-radius: 2px;
+}
+
+#enroll span{
+	color:white;
+	margin:25px 0 25px 60px;
+	font-size: 100px;
+}
+
+#learn{
+	height:150px;
+	background-color: white;
+	border-radius: 2px;
+}
+
+#learn span{
+	color:#002D62;
+	margin:25px 0 25px 60px;
+	font-size: 100px;
+}
+
+#contact{
+	height:150px;
+	background-color: #002D62;
+	border-radius: 2px;
+}
+
+#contact span{
+	color:white;
+	margin:25px 0 25px 60px;
+	font-size: 100px;
+}
+
+#enroll:hover span{
+	font-size: 105px;
+	margin:22px 0 22px 52px;
+}
+
+#learn:hover span{
+	font-size: 105px;
+	margin:22px 0 22px 52px;
+}
+
+#contact:hover span{
+	font-size: 105px;
+	margin:22px 0 22px 52px;
+}
+
+
+#tab_container{
+	background-color: white;
+	font-family: 'Droid Serif', serif;
+	margin-top:50px;
+}
+
+#tab_container li a{
+	color:#002D62;
+	font-size: 4em;
+	padding-top:10px;
+	/*display:relative;
+	left:35%;
+	top:10%;*/
+}
+
+#tab_container li.active > a{
+	/*color:#0080ff;*/
+	background-color:rgb(218,218,218);
+
+}
+
+/* Tab Navigation 
+.nav-tabs {
+    margin: 0;
+    padding: 0;
+    text-align: center;  
+    
+}
+
+.nav-tabs li{
+	float:none;
+	margin:0;
+	padding:0;
+	display:inline-block;
+	border-bottom:4px solid #DADADA;
+}
+
+.nav-tabs > li > a {
+    background-color:rgb(230,230,230);
+    border-radius: 0;
+    padding:0;
+}*/
+
+#enroll_container{
+	margin-top:20px;
+	color:#bf0000;
+}
+
+#enroll_container form{
+	margin-top:50px;
+	color:#00234C;
+}
+
+#zip input{
+	border:2px solid #00234C;
+}
+
+
+#next{
+	margin-top: 20px;
+	color:white;
+	background-color: #00234C;
+	border:2px solid white;
+}
+
+#next:hover{
+	color:#bf0000;
+	background-color: white;
+	border:2px solid #bf0000;
+}
+
+/* Tab Content */
+.tab-pane {
+    background: #F5F5F5;
+    border-radius: 0;
+    padding-top:100px;
+    padding-bottom:150px;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.tab-pane h2{
+	padding-bottom:60px;
+	color:#0080ff;
+}
+
+#square-ccontainer a{
+	text-decoration: none;
+}
+
+#contact_title{
+	margin-left: 20%;
+}
+
+#learn_more{
+	text-align:left;'
+	margin-left:;
+}
+
+#main_about_us_title{
+	color:#0080ff;
+	font-weight: bold;
+	text-align: center;
+}
+
+#main_about_us{
+	background-color: rgba(240,240,250,0.8);
+	border-radius:5px;
+	color:#00234C;
+}
+
+#main_about_us p{
+	text-align:center;
+	text-indent:30px;
+	font-size: 1.3em;
+}
+
+#social{
+	padding-top:50px;
+	position: relative;
+	top:-50px;
+}
+
+.social{
+	margin-top: 50px !important;
+}
+
+#faq{
+	text-align:left;
+	margin-left:30%;
+
+}
+
+#more_faq{
+	margin:40px 0 20px 0;
+	background-color: #00234C;
+}
+
+#more_faq a{
+	font-weight: bold;
+	color:white;
+	text-decoration: none;
+}
+
+#more_faq:hover a{
+	color:#00234C;
+}
+
+#more_faq:hover{
+	background-color:white;
+	border:2px solid #00234C;
+}
+
+.panel .question{
+	color:#00234C;
+	font-size: 1.1em;
+	font-weight: bolder;
+}
+
+.panel .answer{
+	color:#bf0000;
+	font-weight:bolder;
+	font-size: 1.1em;
+	margin-right:15px;
+}
+
+.panel-body{
+	font-size:0.9em;
+	font-weight: bold;
+	color:#00234C;
+	padding-bottom:30px;
+	text-align: left;
+}
+/*
+#contact{
+	text-align:left;
+	margin-left:30%;
+
+}*/
+
+
+#email_form{
+	/*padding-top:100px;*/
+}
+
+#email_form td{
+	padding:10px;
+}
+
+
+#email_form input, textarea{
+	border: 2px solid #00234C;
+	border-radius:5px;
+	text-indent:5px;
+}
+
+td > #send{
+	background-color: #0080ff;
+	color:white;
+	border:2px solid white;
+	text-align: center;
+}
+
+#other_contact{
+	padding-top: 40px;
+}
+
+#call_us{
+	white-space: nowrap;
+	padding-left:100px;
+	font-size: 1.5em;
+}
+
+#call_us > span{
+	color:#00234C;
+	font-weight: bold;
+}
+
+#fax_us{
+	white-space: nowrap;
+	padding-left:100px;
+	font-size: 1.5em;
+}
+
+#fax_us > span{
+	color:#00234C;
+	font-weight: bold;
+}
+
+#email_us{
+	white-space: nowrap;
+	padding-left:100px;
+	font-size: 1.5em;
+}
+
+#email_us > span{
+	color:#00234C;
+	font-weight: bold;
+}
+
+#email_form h2{
+	color:#0080ff;
+	display:inline;
+}
+
+@media screen and (max-width: 785px) {
+	#service-area-map{display:none; }
+	#service-area-title{display:none; }
+	#sign-up-form{margin-top: 0;}
+
+	
+	/*#enroll_container{display:none;}*/
+}
+
+
