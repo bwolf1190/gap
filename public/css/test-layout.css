@@ -1,0 +1,65 @@
+#s1{
+	height:25px;
+	background-color:#00234C;
+}
+/*
+#header-container{
+	height:125px;
+	background-color: white;
+	color:#00234C;
+
+}
+*/
+.navbar-brand img{
+
+}
+
+div.collapse.navbar-collapse.navbar-ex1-collapse{
+	border-top: 2px solid #00234C;
+	background-color: #00234C
+}
+
+#header-left{
+	height:50px;
+	background-color: lightgray;
+}
+
+#header-center{
+	height:50px;
+	background-color:blue;
+}
+
+#header-right{
+	height:50px;
+	background-color:red;
+}
+
+
+
+
+
+#s2{
+	height:600px;
+	background-color:white;
+	margin-top:100px;
+}
+
+#s2 .carousel-example{
+	border-radius: 5px;
+}
+
+
+#s3{
+	height:250px;
+	background-color:#bf0000;
+}
+
+#s4{
+	height:350px;
+	background-color:yellow;
+}
+
+#s5{
+	height:125px;
+	background-color:orange;
+}

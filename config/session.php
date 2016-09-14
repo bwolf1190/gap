@@ -29,8 +29,7 @@ return [
     |
     */
 
-    'lifetime' => 60,
-
+    'lifetime' => 15,
     'expire_on_close' => true,
 
     /*
@@ -95,6 +94,7 @@ return [
     | happen on a given request. By default, the odds are 2 out of 100.
     |
     */
+
 
     'lottery' => [2, 100],
 

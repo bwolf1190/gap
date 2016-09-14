@@ -7,6 +7,7 @@ use Session;
 use Flash;
 
 
+
 class EnrollmentController extends Controller
 {
 
@@ -21,51 +22,99 @@ class EnrollmentController extends Controller
 
 	public function startBroker($promo){
 		$promo = strtoupper($promo);
-
 		return view('enroll-broker')->with('promo', $promo);
 	}
 
-
-	public function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
-	{
-	    $str = '';
-	    $max = mb_strlen($keyspace, '8bit') - 1;
-	    for ($i = 0; $i < $length; ++$i) {
-	        $str .= $keyspace[random_int(0, $max)];
-	    }
-	    return $str;
-	}
-
-	public function addEnrollment($id){
+	public function addEnrollment($id, $agent = null, $agent_code = null, $sub_agent_code = null){
 		$customer = \App\Models\Customer::where('id',$id)->first();
 		$plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
-		
-		
-		// random string function
-		$length = 10;
-		$keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	    $str = '';
-	    $max = mb_strlen($keyspace, '8bit') - 1;
-	    for ($i = 0; $i < $length; ++$i) {
-	        $str .= $keyspace[random_int(0, $max)];
-	    }
 
+		//dd($agent . ' ' . $agent_code . ' ' . $sub_agent_code);
+
+		// random string concat with random number
+	    $str = random_str(10);
 		$confirmation_code = $str . mt_rand();
 		
-		$input = ['enroll_date' => date("Y-m-d H:i:s"),
-				  'confirm_date' => 'NULL',
-				  'p2c' => $plan->code, 
-				  'customer_id' => $customer->id, 
-				  'plan_id' => $plan->id, 
-				  'confirmation_code' => $confirmation_code];
+		$input = ['enroll_date'       => date('Y-m-d H:i:s'),
+				  'confirm_date'      => 'NULL',
+				  'p2c'               => $plan->code, 
+				  'agent_id'		  => $agent,
+				  'customer_id'       => $customer->id, 
+				  'plan_id'           => $plan->id, 
+				  'confirmation_code' => $confirmation_code,
+				  'status'			  => 'PENDING',
+				  'agent_code'		  => $agent_code,
+				  'sub_agent_code'	  => $sub_agent_code];
 
-		$enrollment = \App\Models\Enrollment::create($input);
+		/*if(is_null($agent)){
+			$enrollment = \App\Models\Enrollment::create($input);
+			$agent = '';
+		}
+		else{
+			$enrollment = \App\Models\InternalEnrollment::create($input);
+		}*/
+
+		if($agent === 'b'){
+			$enrollment = \App\Models\Enrollment::create($input);
+			$agent = '';
+		}
+		else{
+			$enrollment = \App\Models\InternalEnrollment::create($input);
+		}
+
+		/* Handle P2C Enrollments */
+		$Customer_Name = $customer->fname . ' ' . $customer->lname;
+		$plan_length = '+' . $plan->length . ' months';
+		$Contract_End_Date = date('Y-m-d', strtotime($plan_length));
+		$start_date = date('Y-m-d');
+
+		if($plan->type === 'Commercial'){
+			$Fed_Tax_Id_Num = $customer->Fed_Tax_Id_Num;
+			$plan->type = 'Small ' . $plan->type;
+		}
+		else{
+			$Fed_Tax_Id_Num = '';
+		}
+
+		$p2c_input = ['Revenue_Class_Desc'   => $plan->type,
+					  'First_Name'           => $customer->fname,
+					  'Last_Name'            => $customer->lname,
+					  'Customer_Name'        => $Customer_Name,
+					  'Home_Phone_Num'       => $customer->phone,
+					  'Work_Phone_Num'       => $customer->phone,
+					  'Fed_Tax_Id_Num'       => $Fed_Tax_Id_Num,
+					  'Email_Address'		 => $customer->email,
+					  'Contact_Name'		 => $Customer_Name,
+					  'SLine1_Addr'          => $customer->sa1,
+					  'SLine2_Addr'          => $customer->sa2,
+					  'SCity_Name'           => $customer->scity,
+					  'SPostal_Code'         => $customer->szip . '0000',
+					  'Marketer_Name'        => 'Great American Power, LLC',
+					  'Distributor_Name'     => $plan->ldc,
+					  'Service_Type_Desc'    => 'Electric',
+					  'Bill_Method'          => '2',
+					  'LDC_Account_Num'      => $customer->acc_num,
+					  'Enroll_Type_Desc'     => 'External',
+					  'Requested_Start_Date' => '="' . $start_date . '"',
+					  'Plan_Desc'            => $plan->code,
+					  'Contract_Start_Date'  => '="' . $start_date . '"',
+					  'Contract_End_Date'    => '="' . $Contract_End_Date . '"',
+					  'Agent_Code'			 => $agent,
+					  'MLine1_Addr'			 => $customer->ma1,
+					  'MLine2_Addr'			 => $customer->ma2,
+					  'MCity_Name'			 => $customer->mcity,
+					  'MPostal_Code'		 => $customer->mzip,
+					  'MState'				 => $customer->mstate,
+					  'Master_Code'			 => 'External'];
+
+		$p2c_enrollment = \App\Models\EnrollmentP2C::create($p2c_input);
+		/* End P2C Enrollment */
 
 		Session::forget('zip');
 		Session::forget('state');
 
 		//return view('enrollments.show')->with('enrollment', $enrollment);
-		return redirect()->route('welcome', $customer);
+		return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
 	}
 
 	/**
@@ -76,9 +125,16 @@ class EnrollmentController extends Controller
 	public function index()
 	{
 		$enrollments = \App\Models\Enrollment::paginate(10);
-
+		
 		return view('enrollments.index')
 			->with('enrollments', $enrollments);
+	}
+
+	public function sortEnrollments($column){
+		$enrollments = \App\Models\Enrollment::orderBy($column)->paginate(10);
+
+		return view('enrollments.index')
+			->with('enrollments', $enrollments);	
 	}
 
 	/**

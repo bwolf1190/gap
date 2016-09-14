@@ -1,17 +1,13 @@
-@extends('master')
-
-@section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
-@endsection
+@extends('admin.admin-master')
 
 @section('content')
 
-    <div class="container">
+    <div id="contacts-container" class="container animate">
 
         @include('flash::message')
 
         <div class="row">
-            <h1 class="pull-left">Contact Requests</h1>
+            <h1 class="pull-left">Messages</h1>
           <!--  <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('contacts.create') !!}">Add New</a> -->
         </div>
 

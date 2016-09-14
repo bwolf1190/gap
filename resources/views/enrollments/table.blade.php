@@ -1,9 +1,12 @@
+
 <table class="table">
     <thead>
-    <th>Enroll Date</th>
-			<th>Confirm Date</th>
-			<th>P2C</th>
-			<th>Status</th>
+            <th><a class="sort-link"onclick="sort(this);" href="/sort-enrollments/enroll_date">Enroll Date</a></th>
+			<th><a class="sort-link" href="/sort-enrollments/confirm_date">Confirm Date</a></th>
+            <th><a class="sort-link" href="/sort-enrollments/agent_id">Agent Id</a></th>
+            <th><a class="sort-link" href="/sort-enrollments/customer_id">Customer Id</a></th>
+            <th><a class="sort-link" href="/sort-enrollments/plan_id">Plan Id</a></th>
+			<th><a class="sort-link" href="/sort-enrollments/status">Status</a></th>
     <th width="50px">Action</th>
     </thead>
     <tbody>
@@ -11,7 +14,9 @@
         <tr>
             <td>{!! $enrollment->enroll_date !!}</td>
 			<td>{!! $enrollment->confirm_date !!}</td>
-			<td>{!! $enrollment->p2c !!}</td>
+            <td>{!! $enrollment->agent_id !!}</td>
+            <td>{!! Html::linkAction('CustomerController@show', $enrollment->customer_id, [$enrollment->customer_id]) !!}</td>
+            <td>{!! Html::linkAction('PlanController@show', $enrollment->plan_id, [$enrollment->plan_id]) !!}</td>
 			<td>{!! $enrollment->status !!}</td>
             <td>
                 <a href="{!! route('enrollments.edit', [$enrollment->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>

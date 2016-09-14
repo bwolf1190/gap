@@ -9,7 +9,9 @@ class Customer extends Model
     
 
 	public $fillable = [
-	   "acc_num",
+	    "acc_num",
+	    // Federal_Tax_Id_Num is here for P2C commercial enrollments ONLY
+	    "Fed_Tax_Id_Num",
 		"fname",
 		"lname",
 		"sa1",

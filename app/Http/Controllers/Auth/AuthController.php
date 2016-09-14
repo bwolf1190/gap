@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/plans';
+    //protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -38,6 +38,19 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    }
+
+    protected function authenticated($request, $user)
+    {
+        if($user->role === 'admin') {
+            return redirect('/dashboard');
+        }
+        else if($user->role === 'broker'){
+            return redirect('/broker/admin');
+        }
+        else{
+            return redirect()->intended('/');
+        }
     }
 
     /**

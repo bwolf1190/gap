@@ -1,8 +1,4 @@
-@extends('master')
-
-@section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
-@endsection
+@extends('admin.admin-master')
 
 @section('content')
 
@@ -12,7 +8,7 @@
 
         <div class="row">
             <h1 class="pull-left">Customers</h1>
-            <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('customers.create') !!}">Add New</a>
+            <a class="btn btn-primary pull-right add-new-btn admin-top-btn" style="margin-top: 25px" href="{!! route('customers.create') !!}">Add New</a>
         </div>
 
         <div class="row">

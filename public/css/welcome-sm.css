@@ -1,0 +1,10 @@
+#wwd-sm{
+	display:none;
+}
+
+/* tablet portrait */
+@media screen and (max-width: 900px) {
+	#contact-us-container{display:none;}
+	#wwd{display:none;}
+	#wwd-sm{display:block;}
+}

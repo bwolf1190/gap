@@ -1,24 +1,22 @@
 <table class="table">
     <thead>
-    <th>Acc Num</th>
-			<th>Fname</th>
-			<th>Lname</th>
-			<th>Sa1</th>
-			<th>Sa2</th>
-			<th>Scity</th>
-			<th>Sstate</th>
-			<th>Szip</th>
-			<th>Ma1</th>
-			<th>Ma2</th>
-			<th>Mcity</th>
-			<th>Mstate</th>
-			<th>Mzip</th>
-			<th>Same Address</th>
-			<th>Email</th>
-			<th>Confirm Email</th>
-			<th>Phone</th>
-			<th>Promo</th>
-    <th width="50px">Action</th>
+    		<th><a href="/sort-customers/acc_num">Account Number</a></th>
+			<th><a href="/sort-customers/fname">First</a></th>
+			<th><a href="/sort-customers/lname">Last</a></th>
+			<th><a href="/sort-customers/sa1">Service Address 1</a></th>
+			<th><a href="/sort-customers/sa2">Service Address 2</a></th>
+			<th><a href="/sort-customers/scity">Service City</a></th>
+			<th><a href="/sort-customers/sstate">Service State</a></th>
+			<th><a href="/sort-customers/szip">Service Zip</a></th>
+			<th><a href="/sort-customers/ma1">Mail Address 1</a></th>
+			<th><a href="/sort-customers/ma2">Mail Address 2</a></th>
+			<th><a href="/sort-customers/mcity">Mail City</a></th>
+			<th><a href="/sort-customers/mstate">Mail State</a></th>
+			<th><a href="/sort-customers/mzip">Mail Zip</a></th>
+			<th><a href="/sort-customers/email">Email</a></th>
+			<th><a href="/sort-customers/phone">Phone</a></th>
+			<th><a href="/sort-customers/promo">Promo</a></th>
+    		<th width="50px">Action</th>
     </thead>
     <tbody>
     @foreach($customers as $customer)
@@ -36,9 +34,7 @@
 			<td>{!! $customer->mcity !!}</td>
 			<td>{!! $customer->mstate !!}</td>
 			<td>{!! $customer->mzip !!}</td>
-			<td>{!! $customer->same_address !!}</td>
 			<td>{!! $customer->email !!}</td>
-			<td>{!! $customer->confirm_email !!}</td>
 			<td>{!! $customer->phone !!}</td>
 			<td>{!! $customer->promo !!}</td>
             <td>

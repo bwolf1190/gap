@@ -1,15 +1,18 @@
-@extends('master')
+@extends('admin.admin-master')
 
 @section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+    <a class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
 @endsection
 
 @section('content')
-    <div class="container">
+
+{!! Html::style('css/admin.css') !!}
+    <div id="plans-container" class="container">
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Plans</h1>
-            <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('plans.create') !!}">Add New</a>
+            <a class="btn btn-primary pull-right admin-top-btn" style="margin-top: 25px;" href="{!! route('update-plans') !!}">Update Plans</a>
+            
         </div>
         <div class="row">
             @if(empty($plans))
@@ -20,4 +23,5 @@
         </div>
         @include('common.paginate', ['records' => $plans])
     </div>
+    
 @endsection

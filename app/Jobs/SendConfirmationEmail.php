@@ -51,5 +51,6 @@ class SendConfirmationEmail extends Job implements ShouldQueue
                 $m->to('bwolverton@greatamericanpower.com');
                 $m->subject("Email Confirmation");
         });
+        
     }
 }

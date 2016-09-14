@@ -17,7 +17,7 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['create']]);
+        $this->middleware('auth', ['except' => ['create', 'store']]);
     }
 
 
@@ -53,11 +53,13 @@ class ContactController extends Controller
 	{
 		$input = $request->all();
 
-		\App\Models\Contact::Create($input);
+		$contact = \App\Models\Contact::Create($input);
+		$contact->status = 'OPEN';
+		$contact->save();
 
 		Flash::success('contact saved successfully.');
 
-		return redirect('contacts');
+		return redirect('/');
 	}
 
 	/**

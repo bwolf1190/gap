@@ -1,7 +1,10 @@
+#contact-container{
+	padding-top: 300px;
+}
+
 .contact-title{
 	color:#bf0000;
-	margin-top:50px;
-	text-align: center;
+	margin-bottom: 20px;
 }
 
 #contact-form{
@@ -30,7 +33,6 @@
 	color:#bf0000;
 	border:2px solid #bf0000;
 }
-
 
 
 

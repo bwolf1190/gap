@@ -1,0 +1,134 @@
+body{
+	font-family: 'Noto Serif', serif;
+}
+
+h2, h3{
+	color:#bf0000;
+}
+
+#pre_header{
+	background-color: #00234C;
+	max-width: 1200px;
+	margin:0 auto;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom:3px solid #bf0000;
+	border-left:3px solid #bf0000;
+	border-right:3px solid #bf0000;
+}
+
+#header.container{
+	border:none;
+}
+
+#hornav{
+	position: relative;
+	top:-15px;
+}
+
+#hornav > ul > li > a{
+	color:#00234C;
+	font-weight: 600;
+	border-left:1px solid #00234C;
+	border-radius:0px;
+	height:35px;
+}
+
+#hornav > ul > li{
+	color:orange;
+	border-radius: 4px;
+}
+
+#hornav > ul > li > a:hover{
+	background-color: white;
+	color: #bf0000;
+	border-left:2px solid #bf0000;
+}
+
+.slicknav_nav li{
+	background-color: #bf0000;
+}
+
+.slicknav_nav a:hover{
+	background-color: white;
+	color:red;
+}
+
+.slicknav_btn{
+	background:none;
+}
+
+/* top nav style for smaller screens */
+.slicknav_menu.hidden-lg{
+	background-color: #00234C;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom:2px solid #bf0000;
+	border-left:1px solid #bf0000;
+	border-right:1px solid #bf0000;
+}
+
+/* collapsed menu button style for small screens */
+.slicknav_btn.slicknav_collapsed{
+	background-color:white;
+	border:1px solid #bf0000;
+	margin:0;
+	top:-1px;
+}
+
+/* color for 3 lines inside collapsed menu button */
+.slicknav_menu .slicknav_icon-bar{
+	background-color:#bf0000;
+}
+
+.slicknav_menu{
+    display:block;
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index: 111100001;
+    height:40px;
+}
+
+#header-container{
+	background-color: white;
+    position: fixed;
+    z-index: 11110000;
+    width:100%;
+    /*border-bottom: 1px solid #00234C;*/
+}
+
+#content{
+	margin-top:125px;
+}
+
+ul.menu a.fa-angle-right{
+	background-color: #F5F5F5;
+	color:#00234C;
+}
+
+ul.menu a.fa-angle-right:hover{
+	background-color: white;
+	color:#bf0000;
+}
+
+ul.menu a.fa-angle-right::before{
+	color:#00234C;
+}
+
+ul.menu a.fa-angle-right:hover::before{
+	color:#bf0000;
+}
+
+@media screen and (max-width: 520px){
+	#nav-brand img{width:350px;}
+}
+
+@media screen and (max-width: 1320px){
+	#header{top:40px;}
+
+}
+
+@media screen and (min-width: 1321px){
+	#header{top:20px;}
+}

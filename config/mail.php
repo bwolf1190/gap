@@ -29,6 +29,7 @@ return [
     */
 
     'host' => 'smtp.office365.com',
+    //'host' => 'smtp.gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ return [
     |
     */
 
-    'port' => '587',
+    'port' => env('MAIL_PORT', '587'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ return [
     |
     */
 
-    //'from' => ['address' => 'brett.a.wolverton@gmail.com', 'name' => 'Great American Power'],
+    'from' => ['address' => 'Enrollment@greatamericanpower.com', 'name' => 'Great American Power'],
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +81,10 @@ return [
     |
     */
 
-    'username' => 'enroll@perigeeenergy.com',
+    //'username' => 'enroll@perigeeenergy.com',
+    'username' => env('MAIL_USERNAME', 'Enrollment@greatamericanpower.com'),
+    //'username' => 'enroll@greatamericanpower.com',
+    //'username' => 'greatampower@gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +97,9 @@ return [
     |
     */
 
-    'password' => 'Bono5978',
+    'password' => env('MAIL_PASSWORD', 'Grap2016'),
+    //'password' => 'Bono5978',
+    //'password' => 'Gap1234!',
 
     /*
     |--------------------------------------------------------------------------

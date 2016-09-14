@@ -25,11 +25,10 @@
 {!! Html::style('css/enroll.css') !!}
 {!! Html::style('css/master.css') !!}
 {!! Html::style('dist/remodal.css') !!}
-{!! Html::style('css/modal.css') !!}
 {!! Html::style('dist/remodal-default-theme.css') !!}
+{!! Html::style('css/modal.css') !!}
 {!! Html::script('dist/remodal.js') !!}
 {!! Html::script('js/email-confirmation.js') !!}
 
-    
 @endsection
 

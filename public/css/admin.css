@@ -1,4 +1,35 @@
+/***** Login CSS *****/
 #login-container{
+	margin-top:300px;
+	margin-bottom:200px;
+}
+
+.navbar.navbar-inverse{
+	height:100px;
+	background-color: #00234C;
+}
+
+.navbar-brand img{
+	height:105px;
+	position:relative;
+	top:-17px;
+	left:-16px;
+}
+
+.navbar-inverse .navbar-brand{
+	color:white !important;
+	font-size: 1.5em;
+}
+
+#logout{
+	color:white !important;
+}
+
+body{
+	font-family: 'Droid Serif', serif !important;
+}
+
+#admin-container{
 	margin-top:100px;
 }
 
@@ -11,19 +42,95 @@
 	color:white;
 }
 
-#email-input{
-
-}
-
 #login-btn{
 	background-color: #00234C;
 	color:white;
 }
+/***** END *****/
 
+/***** Plan CSS *****/
+#plans-container{
+	margin-top:100px;
+}
+/***** END *****/
 
+/***** Contact CSS *****/
+#contacts-container{
+	margin-top:100px;
+}
+/***** END *****/
 
+/***** Enrollment CSS *****/
+#resend-emails input{
+	border-radius: 0;
+}
 
+#resend-emails select{
+	height:34px;
+	background-color: white;
+	color:black;
+	border:2px solid black;
+}
+
+/***** END *****/
+
+/***** Common CSS *****/
+
+h1{
+	color:#bf0000;
+	margin-bottom:50px;
+	margin-top:50px;
+}
+
+table{
+	border: 2px solid lightgray;
+}
+
+thead{
+	background-color: lightgray;
+}
+
+thead > tr{
+}
+
+tbody{
+	color:#00234C;
+}
+
+tr > td:last-child .glyphicon.glyphicon-remove{
+	font-weight: bold;
+	color:#bf0000;
+}
+
+tr > td:last-child .glyphicon.glyphicon-edit{
+	font-weight: bold;
+	color:green;
+}
+
+#fields-container{
+	margin-top:100px;
+}
+
+/*#header-container{
+	display:none;
+}
+
+#social-left{
+	display:none;
+}
+
+.slicknav_menu{
+	display:none;
+}
 
 .footer-distributed{
 	display:none;
+}*/
+
+.admin-top-btn{
+	margin-top:25px;
+	margin-bottom:25px;
+	background-color: #00234C;
+	color:white;
 }
+/***** END *****/

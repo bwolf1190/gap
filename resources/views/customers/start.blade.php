@@ -1,11 +1,14 @@
 @extends('master')
 
+{!! Html::style('css/enroll.css') !!}
+{!! Html::style('css/broker.css') !!}
+
 @section('navbar-brand')
 
     @if($promo === null)
-        <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+        <a id="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
     @else
-        <a class="navbar-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
+        <a id="nav-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
     @endif
 
 @endsection
@@ -21,7 +24,7 @@
 
     @include('common.errors')
 
-    {!! Form::open(['route' => 'customers.store', 'id' => 'enrollment-form']) !!}
+    {!! Form::open(['route' => 'customers.store', 'id' => 'enrollment-form', 'files' => true]) !!}
     {!! csrf_field() !!}
 
         @include('customers.fields')
@@ -30,9 +33,7 @@
 
 </div>
 
-{!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/master.css') !!}
-{!! Html::style('css/broker.css') !!}
+
 {!! Html::script('js/validate.js') !!}
 {!! Html::script('js/enroll.js') !!}
 

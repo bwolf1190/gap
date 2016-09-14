@@ -6,7 +6,6 @@
 
 @section('content')
 <div class="container">
-	<?php  var_dump($input);  ?>
 	 @include('customers.show_fields')
 	 <a href="{!! route('addEnrollment', [$customer->id]) !!}"><i class="glyphicon glyphicon-ok"></i></a>
 </div>

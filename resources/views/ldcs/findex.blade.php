@@ -1,11 +1,14 @@
 @extends('master')
 
+{!! Html::style('css/enroll.css') !!}
+{!! Html::style('css/broker.css') !!}
+
 @section('navbar-brand')
 
     @if($promo === null)
-        <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+        <a id="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
     @else
-        <a class="navbar-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
+        <a id="nav-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
     @endif
 
 @endsection
@@ -38,18 +41,13 @@
 @endsection
 
     @section('powered-by-gap')
-        <div class="fade-in">
-            @if($promo !== null)
-                <div id="powered-by-gap" class="form-group">
-                        {!! Html::image('images/powered-by-gap-trans.png', 'footer-brand-img', array('class' => 'img-responsive')) !!}
-                </div>   
-            @endif
+    @if($promo !== null)
+        <div id="" class="" style="max-width:400px; margin:0 auto;">
+            {!! Html::image('images/powered-by-gap-trans.png', '', array('class' => 'form-group')) !!}
         </div>
+    @endif
 
-    {!! Html::style('css/master.css') !!}
-    {!! Html::style('css/welcome.css') !!}
-    {!! Html::style('css/enroll.css') !!}
-    {!! Html::style('css/broker.css') !!}
+ 
     {!! Html::script('js/enroll.js') !!}
 
     @endsection

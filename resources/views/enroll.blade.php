@@ -3,18 +3,10 @@
 @section('title', 'Enroll')
 
 @section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
 @endsection
 
 
-@section('carousel')
-
-<!--
-{!! Html::image('images/american-small.png', 'enroll-circle', array('class' => 'img-square img-responsive img-center')) !!}
--->
-
-
-@endsection
 
 
 
@@ -23,20 +15,21 @@
 
 <div id='enroll_container' class="container">
 
+
     {!! Form::open(['action' => 'LdcController@search']) !!}
 
 	{!! csrf_field() !!}
 
 	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
-	     {!! Form::label('zip', 'Zip Code:') !!}
+	    {!! Form::label('zip', 'Zip Code:') !!}
 		{!! Form::text('zip', null, ['class' => 'form-control']) !!}
 	</div>
 	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
-	     {!! Form::label('service', 'Residential') !!}
-		{!! Form::radio('service','Residential') !!}
+	    {!! Form::label('service', 'Residential') !!}
+		{!! Form::radio('service','Residential', 'true') !!}
 	</div>
 	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
-	     {!! Form::label('service', 'Commercial') !!}
+	    {!! Form::label('service', 'Commercial') !!}
 		{!! Form::radio('service','Commmercial') !!}
 	</div>
 	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
@@ -48,9 +41,7 @@
 </div>
 
 
-{!! Html::style('css/welcome.css') !!}
 {!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/master.css') !!}
 {!! Html::script('js/enroll.js') !!}
 
 @endsection

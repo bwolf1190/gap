@@ -17,9 +17,13 @@ class FaqController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['view']]);
     }
 
+    public function view(){
+		$faqs = \App\Models\Faq::paginate(30);
+		return view('faqs.index')->with('faqs', $faqs);
+    }
 
 	/**
 	 * Display a listing of the faq.
@@ -29,7 +33,7 @@ class FaqController extends Controller
 	public function index()
 	{
 		$faqs = \App\Models\Faq::paginate(30);
-		return view('faqs.index')->with('faqs', $faqs);
+		return view('faqs.admin')->with('faqs', $faqs);
 	}
 
 	/**

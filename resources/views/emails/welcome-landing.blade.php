@@ -11,9 +11,9 @@
 			    <div id="modalTitle"><h2>Email Confirmation</h2></div>
 			    <p id="modalDesc" style="text-align:left;">
 			    	<br>
-						<span id="name">{!! $customer->fname !!},</span>
+						<span id="name">{!! $customer->fname !!},</span><br>
 
-						<br><br>
+						<br>
 							We have received your online enrollment for the 
 							{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "/kWh." !!}
 

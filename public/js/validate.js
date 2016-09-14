@@ -17,7 +17,7 @@ $("input").focus(function(){
     reset_style($(this));
 });
 
-$('input[type="checkbox"]').click(function(){
+$('#check-same').click(function(){
     if($(this).is(":checked")){
         $("input[name=ma1]").val($("input[name=sa1]").val());
         $("input[name=ma2]").val($("input[name=sa2]").val());
@@ -36,7 +36,13 @@ $('input[type="checkbox"]').click(function(){
         $("input[name=mstate]").val("");
         $("input[name=mzip]").val(""); 	
     }
-})
+});
+
+$('#check_terms').click(function(){
+	if($(this).is(":checked")){
+		$("#terms-link").css("color", "#00234C");
+	}
+});
 
 
 
@@ -53,7 +59,11 @@ function empty_check(name, message){
 		return "invalid";
 	}
 	else{
-		input.val(toTitleCase(input.val()));
+		// state abbreviations should be uppercase not title case
+		if(name !== "sstate" && name !== "mstate"){
+			input.val(toTitleCase(input.val()));
+		}
+
 		return "valid";
 	}
 
@@ -78,7 +88,7 @@ function validate_form_2(){
 	var sa1 = empty_check("sa1", "Please enter your service address");
 	var scity = empty_check("scity", "Please enter your service city");
 	var sstate = empty_check("sstate", "Please enter service state");
-	var szip = empty_check("szip", "Please enter your service zip code");
+	var szip = validate_zip("szip");
 
 	var sa2 = $("input[name=sa2]").val(toTitleCase($("input[name=sa2]").val()));
 
@@ -95,7 +105,8 @@ function validate_form_3(){
 	var ma1 = empty_check("ma1", "Please enter your mailing address");
 	var mcity = empty_check("mcity", "Please enter your mailing city");
 	var mstate = empty_check("mstate", "Please enter your mailing state");
-	var mzip = empty_check("mzip", "Please enter your mailing zip");
+	//var mzip = empty_check("mzip", "Please enter your mailing zip");
+	var mzip = validate_zip("mzip");
 
 	if(ma1 === "valid" && mcity === "valid" && mstate === "valid" && mzip === "valid"){
 		return true;
@@ -111,12 +122,13 @@ function validate_form_4(){
 	var email = validate_email("Please enter a valid email address");
 	var confirm_email = validate_confirm_email("Please enter a valid email address");
 	var phone = validate_phone("Please enter a valid phone number");
-
-	if(email === "valid" && confirm_email === "valid" && phone === "valid"){
+	var check_terms = validate_terms();
+	
+	if(email === "valid" && confirm_email === "valid" && phone === "valid" && check_terms === "valid"){
 		return true;
 	}
 	else{
-		alert(email + " " + confirm_email + " " + phone);
+		//alert(email + " " + confirm_email + " " + phone);
 		return false;
 	}
 }
@@ -149,6 +161,25 @@ function validate_acc_num(){
 	return valid;
 }
 
+
+function validate_zip(field){
+	var valid;
+	var zip = $("input[name=" + field + "]");
+	var message = "Please enter a valid zip code";
+    // strip all non-integer characters
+    zip.val(zip.val().replace(/\D/g,''));
+
+    if(zip.val().length === 5 || zip.val().length === 9){
+    	valid = "valid"
+    }
+    else{
+    	set_error_style(zip);
+    	zip.val(message);
+    	valid = "invalid";
+    }
+
+    return valid;
+}
 
 /**				FORM 4 						 **/
 function validate_email(){
@@ -221,5 +252,19 @@ function validate_phone(){
     }
 
     return valid;
+}
+
+function validate_terms(){
+	var valid;
+	var check_terms = $("input[name=check_terms]");
+	if(check_terms.is(":checked")){
+		valid = "valid";
+	}
+	else{
+		valid = "invalid";
+		$("#terms-link").css("color", "#bf0000");
+	}
+
+	return valid;
 }
 

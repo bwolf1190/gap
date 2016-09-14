@@ -1,23 +1,17 @@
-@extends('master')
+<?php
 
-@section('title', 'Enroll')
+echo $request; 
+echo "<br><br>";
 
-@section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
-@endsection
+foreach($plans as $plan){
+	echo $plan['entno'] . '<br>';
+	echo $plan['price_code'] . '<br>';
+	echo $plan['supno'] . '<br>';
+	echo $plan['offer_term'] . '<br>';
+	echo $plan['rev_type'] . '<br>';
+	echo $plan['offer_price'] . '<br>';
+	echo $plan['early_term_type'] . '<br>';
+	echo $plan['early_term_amt'] . '<br><br>';
+}
 
-@section('content')
 
-
-<div class="container">
-	{{ $xml_string }}
-	<br><br>
-	{{ $response }}
-</div>
-
-{!! Html::style('css/welcome.css') !!}
-{!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/master.css') !!}
-{!! Html::script('js/enroll.js') !!}
-
-@endsection

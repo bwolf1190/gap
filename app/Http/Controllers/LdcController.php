@@ -6,23 +6,30 @@ use Response;
 use Session;
 use Flash;
 
-
 class LdcController extends Controller
 {
 
-
 	function __construct()
 	{
-		$this->middleware('auth', ['except' => ['search','brokerLdcs']]);
+		$this->middleware('auth', ['except' => ['search', 'internalSearch', 'brokerLdcs']]);
 	}
 
-
-	public function search(){
+	public function search($s = null){
 		$zip = Input::get('zip');
-		$service = Input::get('service');
 		$promo = Input::get('promo');
-
 		Session::put('zip', $zip);
+
+		// if zip code is entered on welcome page the residential or commercial button was used
+		if(Input::get('Residential')){
+			$service = "Residential";
+		}
+		else if(Input::get("Commercial")){
+			$service = "Commercial";
+		}
+		// else the zip is entered from enroll page and service is found with radio button
+		else{
+			$service = Input::get('service');
+		}
 
 		$zips = \App\Models\Zip::where('zip', $zip)->get();
 
@@ -32,7 +39,7 @@ class LdcController extends Controller
 		}
 
 		if(empty($ldcs)){
-			return view('no-service');
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
 		}
 
 		// if there is only 1 LDC for the zip code, then send them straight to the plans
@@ -44,14 +51,55 @@ class LdcController extends Controller
 		return view('ldcs.findex')->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 
+	public function internalSearch(){
+		$zip = Input::get('zip');
+		Session::put('zip', $zip);
+		$service = Input::get('service');
+
+		$zips = \App\Models\Zip::where('zip', $zip)->get();
+
+		foreach($zips as $z){
+			$ldc_id = $z->ldc_id;
+			$ldcs[] = \App\Models\Ldc::find((int)$ldc_id);
+		}
+
+		if(empty($ldcs)){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}
+
+		// if there is only 1 LDC for the zip code, then send them straight to the plans
+		$count = count($ldcs);
+		if($count === 1){
+			return redirect()->route('internalPlans', array('s' => $service, 'l' => $ldcs[0]->ldc));
+		}
+
+		return view('internal-enrollments.ldcs-findex')->with('service', $service)->with('ldcs', $ldcs);
+	}
+
 	public function brokerLdcs(){
 		$zip = Input::get('zip');
 		$service = Input::get('service');
 		$promo = Input::get('promo');
+		Session::put('zip', $zip);
 
 		$zips = \App\Models\Zip::where('zip', $zip)->get();
 		$broker = \App\Models\Broker::where('promo', $promo)->first();
-		$ldcs = $broker->ldcs;
+		$broker_ldcs = $broker->ldcs;
+
+		foreach($zips as $z){
+			$ldc_id = $z->ldc_id;
+			$ldc = \App\Models\Ldc::find((int)$ldc_id);
+
+			foreach($broker_ldcs as $bs){
+				if($ldc->id == $bs->id){
+					$ldcs[] = $ldc;
+				}
+			}
+		}
+
+		if(empty($ldcs)){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}
 
 		// if there is only 1 LDC for the zip code, then send them straight to the plans
 		$count = count($ldcs);

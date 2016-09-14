@@ -1,0 +1,107 @@
+.box{
+	height:110px;
+	border:2px solid white;
+	border-radius: 5px;
+}
+
+/*
+.box:hover{
+	background-color:#00234C;
+	color:white; 
+}
+
+.box:hover h2{
+	color:white;
+}*/
+
+.inner-box{
+	height:60px;
+	margin-top:0px;
+	margin-bottom:25px;
+}
+
+.inner-box h2{
+	color:#00234C;
+	text-align: center;
+	font-weight: 500;
+}
+
+/* glyphicons size */
+.inner-box span{
+	font-size: 3em;
+	text-align: center;
+	color:#00234C;
+}
+
+#dashboard-container{
+	position:relative;
+	top:100px;
+	margin-bottom:300px;
+}
+
+/*
+#logout-title{
+	color:#bf0000;
+}*/
+
+/* glyphicon colors 
+.glyphicon.glyphicon-briefcase{
+	color: rgb(102, 51, 0);
+}
+
+.glyphicon.glyphicon-user{
+	color: orange;
+}
+
+.glyphicon.glyphicon-usd{
+	color: green;
+}
+
+.glyphicon.glyphicon-hand-down{
+	color: purple;
+}
+
+.glyphicon.glyphicon-hand-right{
+	color: lightblue;
+}
+
+.glyphicon.glyphicon-question-sign{
+	color: #00234C;
+}
+
+.glyphicon.glyphicon-map-marker{
+	color: darkgrey;
+}
+
+.glyphicon.glyphicon-envelope{
+	color: rgb(255, 204, 153);
+}
+
+.glyphicon.glyphicon-flash{
+	color: yellow;
+}
+
+.glyphicon.glyphicon-share-alt{
+	color: #bf0000;
+}*/
+
+
+/***** Common CSS *****/
+#header-container{
+	display:none;
+}
+
+#social-left{
+	display:none;
+}
+
+.slicknav_menu{
+	display:none;
+}
+
+.footer-distributed{
+	display:none;
+}
+/***** END *****/
+
+

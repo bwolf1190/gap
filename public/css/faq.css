@@ -1,5 +1,14 @@
-.panel.panel-default{
+#faq-container{
+	padding-top:250px;
+}
+
+h4.panel-title{
+	background-color:white;
+}
+
+#accordian.panel.panel-default{
 	padding:10px;
+	background-color: white !important;
 	border-top: 1px solid lightgray;
 	border-bottom: 1px solid lightgray;
 	border-left:none;
@@ -7,17 +16,21 @@
 	font-size: 1.1em;
 }
 
-.panel.panel-default a{
+#accordian .panel.panel-default a{
 	text-decoration: none;
 }
 
-.panel-body{
+#accordian .panel-body{
 	width:100%;
 	color:#00234C;
 }
 
-.panel-collapse{
+.panel.panel-default{
+	background-color: rgb(240, 240, 240);
+}
 
+.panel.panel-defalut a{
+	text-decoration: none;
 }
 
 .faq-title{

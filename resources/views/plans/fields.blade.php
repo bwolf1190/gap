@@ -47,6 +47,12 @@
 	{!! Form::text('etf', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Etf Description Field -->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('etf_description', 'Etf Description:') !!}
+    {!! Form::text('etf_descrpition', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Meter Field -->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('meter', 'Meter:') !!}
@@ -65,6 +71,11 @@
 	{!! Form::text('code', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Price ID Field -->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('code', 'Code:') !!}
+    {!! Form::text('code', null, ['class' => 'form-control']) !!}
+</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

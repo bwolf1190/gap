@@ -1,12 +1,16 @@
 @extends('master')
 
 @section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+
+    {!! Html::style('css/faq.css') !!}
+    {!! Html::style('css/contact-sidebar.css') !!}
+
+    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
 @endsection
 
 @section('content')
 
-    <div class="container">
+    <div id="faq-container" class="container animate fadeInLeft">
 
         <div class="row">
             <h1 class="pull-left faq-title">Frequently Asked Questions</h1>
@@ -16,20 +20,21 @@
             @if($faqs->isEmpty())
                 <div class="well text-center">No Faqs found.</div>
             @else
+                <div class="col-md-9">
+                    <div class="panel-group" id="accordion">
 
-                <div class="panel-group" id="accordion">
+                        @include('faqs.table')
 
-                    @include('faqs.table')
-
+                    </div>
                 </div>
             @endif
+            <div class="col-md-3 animate fadeInLeft">
+                @include('right-contact-panel')   
+            </div>
         </div>
 
         @include('common.paginate', ['records' => $faqs])
     </div>
-
-    {!! Html::style('css/master.css') !!}
-    {!! Html::style('css/faq.css') !!}
 
 @endsection
 

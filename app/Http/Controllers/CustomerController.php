@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Input;
 use Response;
 use Session;
 use Flash;
+use Debugbar;
+use Validator;
+
 
 
 class CustomerController extends Controller
@@ -15,27 +18,45 @@ class CustomerController extends Controller
 
 	function __construct()
 	{
-		$this->middleware('auth', ['except' => ['start', 'store']]);
+		$this->middleware('auth', ['except' => ['start', 'internalStart', 'store']]);
 	}
 
 
 
 	public function start($id, $promo = null)
 	{
-		// changed from get() to first() when adding ldc variable to view for customer_identifier
-		//$plan = \App\Models\Plan::where('id',(int)$id)->get();
 		$plan = \App\Models\Plan::where('id',(int)$id)->first();
 		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
 		$zip = Session::get('zip');
-		$state;
+
+		$state = '';
 		if(substr($zip, 0, 1)){
-			$state = 'Pennsylvania';
+			$state = 'PA';
+		}
+		else if($zip == ''){
+			$state = '';
 		}
 		else{
-			$state = "Maryland";
+			$state = 'MD';
 		}
 
-		return view('customers.start')->with('ldc', $ldc)->with('plan', $id)->with('promo', $promo)->with('zip', $zip)->with('state', $state);
+		return view('customers.start')->with('ldc', $ldc)->with('plan', $plan)->with('promo', $promo)->with('zip', $zip)->with('state', $state);
+	}
+
+	public function internalStart($id){
+		$plan = \App\Models\Plan::where('id',(int)$id)->first();
+		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
+		$zip = Session::get('zip');	
+
+		$state = '';
+		if(substr($zip, 0, 1)){
+			$state = 'PA';
+		}
+		else{
+			$state = 'MD';
+		}
+
+		return view('internal-enrollments.start')->with('ldc', $ldc)->with('plan', $plan)->with('zip', $zip)->with('state', $state);
 	}
 
 	/**
@@ -46,6 +67,13 @@ class CustomerController extends Controller
 	public function index()
 	{
 		$customers = \App\Models\Customer::paginate(10);
+
+		return view('customers.index')
+			->with('customers', $customers);
+	}
+
+	public function sortCustomers($column){
+		$customers = \App\Models\Customer::orderBy($column)->paginate(10);
 
 		return view('customers.index')
 			->with('customers', $customers);
@@ -71,11 +99,45 @@ class CustomerController extends Controller
 	public function store(Request $request)
 	{
 		$input = $request->all();
-		$customer = \App\Models\Customer::create($input);
-		$plan = \App\Models\Plan::where('id', $input['plan_id'])->get();
 
-		//return view('customers.show')->with('customer', $customer)->with('input', $plan);
-		return redirect()->route('addEnrollment', $customer->id);
+		if(isset($input['file'])){
+			$file = $input['file'];
+
+			$validator = Validator::make($input, [
+	    		'file' => 'mimes:csv,xlsx,txt,pdf'
+			]);
+			
+			// js file must be handled individually as it evaluates to text/plain with the validator
+			if($validator->fails() || $file->guessClientExtension() === 'js'){
+				return redirect()->back()->withInput($input);
+			}
+
+			$file->move(__DIR__.'/storage/', $file->getClientOriginalName());
+		}
+
+		$existing_customer = \App\Models\Customer::where('acc_num', $input['acc_num'])->first();
+
+		// create the customer if they don't already exist 
+		if($existing_customer){
+			return view('already-customer');
+		}
+		else{
+			$customer = \App\Models\Customer::create($input);
+		}
+
+		$plan = \App\Models\Plan::where('id', $input['plan_id'])->first();
+		$agent = Input::get('agent_id');
+		$agent_code = Input::get('agent_code');
+		
+		if($agent === null && $agent_code !== null){
+			$agent = 'b';
+		}
+		$sub_agent_code = Input::get('sub_agent_code');
+
+		return redirect()->route('addEnrollment', array('id' => $customer->id, 
+														'agent' => $agent, 
+														'agent_code' => $agent_code, 
+														'sub_agent_code' => $sub_agent_code));
 	}
 
 	/**

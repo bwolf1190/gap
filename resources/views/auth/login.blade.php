@@ -1,11 +1,15 @@
 @extends('master')
 
 @section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+    <a class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
 @endsection
 
 @section('content')
-<div id="login-container" class="container">
+
+{!! Html::style('css/admin.css') !!}
+
+<div id="enroll-container" class="container">
+<div id="login-container" class="">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div id="login-title" class="panel panel-default">
@@ -58,7 +62,7 @@
                                     <i class=""></i> Login
                                 </button>
 
-                                <!--<a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>-->
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
                         </div>
                     </form>
@@ -67,8 +71,7 @@
         </div>
     </div>
 </div>
+</div>
 @endsection
 
 
-{!! Html::style('css/master.css') !!}
-{!! Html::style('css/admin.css') !!}

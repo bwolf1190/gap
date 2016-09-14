@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
-<div class="container">
+
+{!! Html::style('css/admin.css') !!}
+
+<div id="admin-container" class="container">
 
     @include('common.errors')
 

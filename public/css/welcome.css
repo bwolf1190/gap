@@ -1,6 +1,18 @@
+.carousel{
+	border-radius:0px;
+}
+
+.carousel-caption{
+	background-color: rgba(0,0,0,.3);
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
 
 #sign-up-form{
 	margin-top:50px;
+	margin-left:20px;
+	margin-right:20px;
+	margin-bottom:20px;
 }
 
 #enroll{
@@ -54,7 +66,6 @@
 	margin:22px 0 22px 52px;
 }
 
-
 #tab_container{
 	background-color: white;
 	font-family: 'Droid Serif', serif;
@@ -65,41 +76,14 @@
 	color:#002D62;
 	font-size: 4em;
 	padding-top:10px;
-	/*display:relative;
-	left:35%;
-	top:10%;*/
 }
 
 #tab_container li.active > a{
-	/*color:#0080ff;*/
 	background-color:rgb(218,218,218);
-
 }
-
-/* Tab Navigation 
-.nav-tabs {
-    margin: 0;
-    padding: 0;
-    text-align: center;  
-    
-}
-
-.nav-tabs li{
-	float:none;
-	margin:0;
-	padding:0;
-	display:inline-block;
-	border-bottom:4px solid #DADADA;
-}
-
-.nav-tabs > li > a {
-    background-color:rgb(230,230,230);
-    border-radius: 0;
-    padding:0;
-}*/
 
 #enroll_container{
-	margin-top:20px;
+	margin-top:0px;
 	color:#bf0000;
 }
 
@@ -109,12 +93,18 @@
 }
 
 #zip input{
-	border:2px solid #00234C;
+	border:1px solid #00234C;
+	max-width: 300px;
 }
 
+#get-rates-btns input{
+	width:100px;
+	text-align: center;
+}
 
 #next{
-	margin-top: 20px;
+	/*margin-top: 20px;*/
+	border-radius: 5px;
 	color:white;
 	background-color: #00234C;
 	border:2px solid white;
@@ -140,7 +130,88 @@
 	padding-bottom:60px;
 	color:#0080ff;
 }
+.tagline {
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+    font-weight: bolder;
+}
 
+#fcp{
+    color:#bf0000 !important;
+    font-weight: bolder;
+    font-size: .8em;
+    margin-left:25px;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.navbar-brand img{
+    height:80px;
+    position: absolute;
+    left:0;
+}
+
+#middle-section{
+    margin:auto;
+}
+
+#pages-sm-screen{
+	display:none;
+	max-width: 400px;
+}
+
+#middle-section a > i{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color:  #00234C;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    margin-right: 3px;
+    padding-top: 8px;
+}
+
+#middle-section a > i:hover{
+    background-color: white;
+    color:#bf0000;
+}
+
+#welcome-more{
+    background-color:#00234C;
+    color:white;
+    border:none;
+}
+
+#welcome-more:hover{
+    background-color: white;
+    color:#bf0000;
+    border:none;
+}
+
+#wwd{
+    color:#002D62;
+}
+
+#wwd h2{
+    color:#bf0000;
+}
+
+#social h2{
+    color:#bf0000;
+}
+
+#square-container{
+    margin-top: 50px;
+}
+
+#square-container h2{
+    color:#bf0000;
+}
 #square-ccontainer a{
 	text-decoration: none;
 }
@@ -208,42 +279,9 @@
 	border:2px solid #00234C;
 }
 
-.panel .question{
-	color:#00234C;
-	font-size: 1.1em;
-	font-weight: bolder;
-}
-
-.panel .answer{
-	color:#bf0000;
-	font-weight:bolder;
-	font-size: 1.1em;
-	margin-right:15px;
-}
-
-.panel-body{
-	font-size:0.9em;
-	font-weight: bold;
-	color:#00234C;
-	padding-bottom:30px;
-	text-align: left;
-}
-/*
-#contact{
-	text-align:left;
-	margin-left:30%;
-
-}*/
-
-
-#email_form{
-	/*padding-top:100px;*/
-}
-
 #email_form td{
 	padding:10px;
 }
-
 
 #email_form input, textarea{
 	border: 2px solid #00234C;
@@ -300,13 +338,29 @@ td > #send{
 	display:inline;
 }
 
+#bottom-gap{
+	margin-top:50px;
+}
+
+
 @media screen and (max-width: 785px) {
 	#service-area-map{display:none; }
 	#service-area-title{display:none; }
 	#sign-up-form{margin-top: 0;}
-
-	
-	/*#enroll_container{display:none;}*/
 }
 
+@media screen and (max-width: 845px){
+	#get-rates-btns{margin-left: 15px;}
+}
 
+@media screen and (min-width: 769px) and (max-width: 992px){
+	/*#pages-sm-screen{display:block; position:relative; top:-40px; left:80px;}*/
+	#pages-lg-screen{display:none;}
+	#pages-sm-header{margin-bottom: 40px !important;}
+	/*#sm-screen-container{margin-left:60px;}*/
+	#contact-us-container{display:none;}
+}
+
+@media screen and (max-width: 1067px){
+	#welcome-contact-sidebar{margin-left:0;}
+}

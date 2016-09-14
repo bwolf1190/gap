@@ -24,5 +24,5 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Submit', ['class' => 'btn btn-primary submit']) !!}
+    {!! Form::submit('Submit', ['class' => 'btn btn-primary submit', 'id' => 'submit']) !!}
 </div>

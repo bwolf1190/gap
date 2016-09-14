@@ -33,6 +33,23 @@ class BrokerController extends Controller
 	}
 
 	/**
+	 * Return homepage for broker administrator
+	 */
+	public function adminHome(){
+		$user = \Auth::user()->name;
+		$brokerPlans = \App\Models\Plan::where('promo', $user)->get();
+		$brokers = \App\Models\Broker::all();
+		$brokerEnrollments = [];
+
+		foreach($brokerPlans as $p){
+			$brokerEnrollments = \App\Models\Enrollment::where('plan_id', $p->id)->paginate(15);
+		}
+		
+
+		return view('brokers.admin.admin-home')->with('enrollments', $brokerEnrollments)->with('brokers', $brokers);
+	}
+
+	/**
 	 * Show the form for creating a new broker.
 	 *
 	 * @return Response

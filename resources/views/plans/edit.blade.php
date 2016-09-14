@@ -1,18 +1,18 @@
-@extends('master')
-
-@section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
-@endsection
+@extends('admin.admin-master')
 
 @section('content')
-<div class="container">
+
+{!! Html::style('css/admin.css') !!}
+
+<div id="plans-container" class="container">
 
     @include('common.errors')
 
     {!! Form::model($plan, ['route' => ['plans.update', $plan->id], 'method' => 'patch']) !!}
     {!! csrf_field() !!}
+    <div id="fields-container">
         @include('plans.fields')
-
+    </div>
     {!! Form::close() !!}
 </div>
 @endsection

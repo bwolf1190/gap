@@ -1,8 +1,4 @@
-@extends('master')
-
-@section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
-@endsection
+@extends('admin.admin-master')
 
 @section('content')
 <div class="container">
@@ -11,8 +7,9 @@
 
     {!! Form::model($customer, ['route' => ['customers.update', $customer->id], 'method' => 'patch']) !!}
     {!! csrf_field() !!}
-        @include('customers.fields')
-
+    <div id="fields-container">
+        @include('customers.edit-fields')
+    </div>
     {!! Form::close() !!}
 </div>
 @endsection

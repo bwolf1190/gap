@@ -6,8 +6,7 @@
 }
 
 .remodal{
-	border:1px solid #bf0000;
-	background-color: #F8F8F8;
+	background: #F8F8F8;
 }
 
 #modalDesc{
@@ -19,4 +18,16 @@
 	background-color: #00234C;
 	color:white;
 	font-weight: bold;
+}
+
+#header-container{
+	display:none;
+}
+
+#social-left{
+	display:none;
+}
+
+#footer-container{
+	display:none;
 }

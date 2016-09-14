@@ -2,17 +2,43 @@
 //var current = 1;
 var validation = true;
 
+	/*$('#upload-btn').change(function(){
+		var file = $('#upload-btn').val();
+		var n = file.lastIndexOf('/');
+		var result = file.substring(n + 1);
+		$('#filename').html(result);
+
+		$('#filename').html($('#upload-btn').val().substring($('#upload-btn').val().lastIndexOf('/') + 1));
+	});*/
+
 $(document).ready(function() {
 	$("#form-group-1").show();
 	scroll_to_div('#enroll_container');
 	$("#loading-div").hide();
 	$(document).ready(function(){
-    	$('[data-toggle="tooltip"]').tooltip(); 
+    	$('[data-toggle="popover"]').popover(); 
+	});
+
+	$('#enrollment-form').on('keyup keypress', function(e) {
+	  var keyCode = e.keyCode || e.which;
+	  if (keyCode === 13) { 
+	    e.preventDefault();
+	    return false;
+	  }
 	});
 
 	// prevent from scrolling to top of page when tooltip is clicked
 	$('a#acc-num-tooltip').on('click', function(e) {e.preventDefault(); return true;});
 
+	// close popover on click outside
+	$('body').on('click', function (e) {
+	    $('[data-toggle=popover]').each(function () {
+	        // hide any open popovers when the anywhere else in the body is clicked
+	        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+	            $(this).popover('hide');
+	        }
+	    });
+	});
 });
 
 $("#submit").click(function(){
@@ -20,13 +46,14 @@ $("#submit").click(function(){
 	//$(this).html("<span class='glyphicon glyphicon-refresh animate'></span>");
 	if(validate_form_4()){
 		$(this).hide();
+		$("#previous-container").hide();
 		$("#loading-div").show();
 	}
 	else{
 		$(this).val("Finish");
 		return false;
 	}
-})
+});
 
 $('.next').click(function(){
 	get_form('next');
@@ -57,6 +84,7 @@ function get_form(d){
 		}
 		else if(validate_form_1()){
 			$(next).show();
+			scroll_to_div(next, 200);
 		}
 		else{
 			$('#form-group-1').show();
@@ -76,6 +104,7 @@ function get_form(d){
 		}
 		else if(validate_form_2()){
 			$(next).show();
+			scroll_to_div(next, 200);
 		}
 		else{
 			$("#form-group-2").show();
@@ -94,6 +123,7 @@ function get_form(d){
 				$('#submit').show();		
 			}
 			$(next).show();
+			scroll_to_div(next, 200);
 		}
 
 		if(validate_form_3()){
@@ -102,9 +132,11 @@ function get_form(d){
 				$('#submit').show();		
 			}
 			$(next).show();
+			scroll_to_div(next, 200);
 		}
 		else{
 			$("#form-group-3").show();
+			scroll_to_div(next, 200);
 		}
 		return;
 	}
@@ -121,10 +153,12 @@ function get_form(d){
 		}
 		else if(!validate_form_4()){
 			$("#form-group-4").show();
+			scroll_to_div(next, 200);
 		}
 		else{
 			$("#form-group-3").show();
 			$('#next').show();
+			scroll_to_div(next, 200);
 			$('#submit').hide();
 		}
 		return;

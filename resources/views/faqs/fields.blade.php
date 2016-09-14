@@ -1,13 +1,15 @@
+
+
 <!-- Question Field -->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('question', 'Question:') !!}
-	{!! Form::text('question', null, ['class' => 'form-control']) !!}
+	{!! Form::textarea('question', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Answer Field -->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('answer', 'Answer:') !!}
-	{!! Form::text('answer', null, ['class' => 'form-control']) !!}
+	{!! Form::textarea('answer', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Key1 Field -->

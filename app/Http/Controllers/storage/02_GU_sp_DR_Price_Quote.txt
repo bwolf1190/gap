@@ -1,0 +1,36 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.opsolve.com/RS/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:ExecuteSP>
+         <!--Optional:-->
+         <web:user>gp_WebSales</web:user>
+         <!--Optional:-->
+         <web:password>G@Pa$$99!!</web:password>
+         <!--Optional:-->
+         <web:spName>RS_sp_EAI_Output</web:spName>
+         <!--Optional:-->
+         <web:paramList>
+            <!--Zero or more repetitions:-->
+            <web:string><![CDATA[@input_xml;<ReadiSystem>
+            <proc_type>GU_sp_DR_Price_Quote</proc_type>
+            <entno>4271</entno>
+            <supno>DUKE_OH</supno>
+            <rev_type>R</rev_type>
+            <campaign_code>WEB</campaign_code>
+            <request_date>2016-05-01</request_date></ReadiSystem>]]>
+          </web:string>
+         </web:paramList>
+         <!--Optional:-->
+         <web:outputParamList>
+            <!--Zero or more repetitions:-->
+            <web:string>@output_xml;8000</web:string>
+         </web:outputParamList>
+         <!--Optional:-->
+         <web:langCode>en-US</web:langCode>
+         <!--Optional:-->
+         <web:environment>GP_TRAIN</web:environment>
+         <!--Optional:-->
+         <web:entity>4271</web:entity>
+      </web:ExecuteSP>
+   </soapenv:Body>
+</soapenv:Envelope>

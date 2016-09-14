@@ -1,28 +1,64 @@
-#contact-sidebar{
-	background-color:lightgray;
-	height:300px;
-	position:absolute;
-	right:0;
-	top:270;
+#welcome-contact-sidebar{
+	margin-left:85px;
 }
 
-#contact-sidebar .section{
-	height:50px;
-	background-color:#00234C;
-}
-
-#contact-sidebar .section h2{
+#contact-sidebar > .panel-heading{
+	background-color: #00234C;
+	border-left:1px solid #bf0000;
+	border-right:1px solid #bf0000;
+	border-top:1px solid #bf0000;
 	color:white;
 	text-align: center;
-	position:relative;
-	top:-8px;
 }
 
-#contact-sidebar i{
-	font-size: 2.5em;
-	color:#bf0000;
+#contact-sidebar .panel-body{
+	background-color: white;
+	border-left:1px solid #00234C;
+	border-right:1px solid #00234C;
+	border-bottom:1px solid #00234C;
+	padding-left:40px;
 }
 
-@media (max-width: 925px){
-	#contact-sidebar{ display:none; }
+.list-unstyled.contact i{
+	text-align: center;
 }
+
+#email i{
+	margin-right:5px;
+}
+
+#clock i{
+	margin-right: 10px;
+}
+
+.social{
+	margin-top: 25px !important;
+}
+
+.social a{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	background-color:  #bf0000;
+	border-radius: 2px;
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	vertical-align: center;
+	margin-right: 3px;
+}
+
+.social i{
+	margin-top: 5px;
+}
+
+.social a:hover{
+	background-color: white;
+	color:#bf0000;	
+}
+
+@media screen and (max-width: 992px){
+	#welcome-contact-sidebar{margin-left:0px;}
+}
+
