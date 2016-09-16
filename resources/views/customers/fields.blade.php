@@ -86,7 +86,7 @@
 		</div>
 		<div class="form-group ">
 			<div class="checkbox">
-				<label><input id="check-same" name="same_address" type="checkbox" value="checked">Same Address</label>
+				<label><input id="same_address" name="same_address" type="checkbox" value="checked">Same Address</label>
 			</div>
 		</div>
 		<div class="form-group ">
@@ -143,9 +143,16 @@
 			</div>
 		@endif
 
+		@if($type === 'internal')
+			<div class="form-group ">
+				{!! Form::label('agent_code', 'Agent Code') !!}
+				{!! Form::text('agent_code', '', ['class' => 'form-control']) !!}
+			</div>
+		@endif
+
 		<div id="terms-container" class="form-group">
 			<div class="checkbox">
-				<label><input id="check_terms" name="check_terms" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf") !!}">Accept Terms & Conditions</a></label>
+				<label><input id="terms_conditions" name="terms_conditions" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf") !!}">Accept Terms & Conditions</a></label>
 			</div>
 		</div>
 
@@ -181,6 +188,7 @@
 
 		<div class='form-group'>
 			{!! Form::hidden('plan_id', $plan->id) !!}
+			{!! Form::hidden('type', $type) !!}
 		</div>
 		<div id='enroll_btns' class="form-group">
 			<div id="previous-container">

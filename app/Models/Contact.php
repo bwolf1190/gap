@@ -5,16 +5,16 @@ use Illuminate\Database\Eloquent\Model as Model;
 class Contact extends Model
 {
     
-	public $table = "contacts";
+	public $table = 'contacts';
     public $timestamps = false;
 
 	public $fillable = [
-	    "name",
-		"phone",
-		"email",
-		"question",
-		"notes",
-		"status"
+	    'name',
+		'phone',
+		'email',
+		'question',
+		'notes',
+		'status'
 	];
 
     /**
@@ -23,18 +23,18 @@ class Contact extends Model
      * @var array
      */
     protected $casts = [
-        "name"         => "string",
-		"phone"        => "string",
-		"email"        => "string",
-		"question"     => "string",
-		"notes"        => "string",
-		"status"       => "string"
+        'name'         => 'string',
+		'phone'        => 'string',
+		'email'        => 'string',
+		'question'     => 'string',
+		'notes'        => 'string',
+		'status'       => 'string'
     ];
 
 	public static $rules = [
-	    "name"         => "required",
-		"email"        => "required",
-		"question"     => "required"
+	    'name'         => 'required',
+		'email'        => 'required',
+		'question'     => 'required'
 	];
 
 }

@@ -32,6 +32,7 @@
 	    {!! Form::label('service', 'Commercial') !!}
 		{!! Form::radio('service','Commmercial') !!}
 	</div>
+	{!! Form::hidden('type', $type) !!}
 	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 		{!! Form::submit('NEXT', ['class' => 'btn btn-default', 'id' => 'next']) !!}
 	</div>

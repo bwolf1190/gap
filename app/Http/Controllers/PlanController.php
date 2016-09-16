@@ -22,10 +22,9 @@ class PlanController extends Controller
         $this->middleware('auth', ['except' => ['searchPlans', 'internalPlans', 'truncate', 'updatePlans']]);
     }
 
-	public function searchPlans($service, $ldc, $promo = null){
+	public function searchPlans($type, $service, $ldc, $promo = null){
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
-
 		if($promo === null){
 			$ps = \App\Models\Plan::orderBy('rate', 'desc')->where('ldc', $ldc)->where('type', $service)->get();
 		}
@@ -44,7 +43,7 @@ class PlanController extends Controller
 			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
 		}
 
-		return view('plans.findex')->with('plans', $plans)->with('promo', $promo);
+		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
 	}
 
 	public function internalPlans($service, $ldc){

@@ -17,8 +17,9 @@ $("input").focus(function(){
     reset_style($(this));
 });
 
-$('#check-same').click(function(){
+$('#same_address').click(function(){
     if($(this).is(":checked")){
+    	$(this).val('checked');
         $("input[name=ma1]").val($("input[name=sa1]").val());
         $("input[name=ma2]").val($("input[name=sa2]").val());
         $("input[name=mcity]").val($("input[name=scity]").val());
@@ -30,6 +31,7 @@ $('#check-same').click(function(){
         $("input[name=mzip]").removeClass("invalid");
     }
     else if($(this).is(":not(:checked)")){
+    	$(this).val('unchecked');
         $("input[name=ma1]").val("");
         $("input[name=ma2]").val("");
         $("input[name=mcity]").val("");
@@ -38,9 +40,13 @@ $('#check-same').click(function(){
     }
 });
 
-$('#check_terms').click(function(){
+$('#terms_conditions').click(function(){
 	if($(this).is(":checked")){
+		$(this).val('checked');
 		$("#terms-link").css("color", "#00234C");
+	}
+	if($(this).is(":not(:checked)")){
+		$(this).val("unchecked");
 	}
 });
 
@@ -161,7 +167,6 @@ function validate_acc_num(){
 	return valid;
 }
 
-
 function validate_zip(field){
 	var valid;
 	var zip = $("input[name=" + field + "]");
@@ -256,7 +261,7 @@ function validate_phone(){
 
 function validate_terms(){
 	var valid;
-	var check_terms = $("input[name=check_terms]");
+	var check_terms = $("input[name=terms_conditions]");
 	if(check_terms.is(":checked")){
 		valid = "valid";
 	}

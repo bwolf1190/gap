@@ -6,15 +6,15 @@ Route::get('/welcome-email', function(){
 
 Route::get('/', array('as' => 'home', 'uses' => 'WelcomeController@index'));
 
-Route::get('/enroll-sign-up-energy-electricity', 'EnrollmentController@start');
+Route::get('/enroll-sign-up-energy-electricity/{type}', 'EnrollmentController@start');
 
 Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
 
-Route::get('/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
+Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 
-Route::get('/customers/start/{id}/{promo?}', array('as' => 'start', 'uses'=>'CustomerController@start'));
+Route::get('/{type}/customers/start/{id}/{promo?}', array('as' => 'start', 'uses'=>'CustomerController@start'));
 
-Route::get('/enrollments/addEnrollment/{id}/{agent?}/{agent_code?}/{sub_agent_code?}', array('as' => 'addEnrollment', 'uses'=>'EnrollmentController@addEnrollment'));
+Route::get('/{type}/add/{id}/{agent?}/{agent_code?}/{sub_agent_code?}', array('as' => 'addEnrollment', 'uses'=>'EnrollmentController@addEnrollment'));
 
 Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'EmailController@sendWelcome'));
 
@@ -44,15 +44,11 @@ Route::get('/broker-enrollments/s/{sort?}', 'AdminController@showAll');
 
 Route::get('/broker-enrollments/{broker}/{sort?}', 'AdminController@showBrokerEnrollments');
 
+Route::get('/internalEnrollments', 'AdminController@internalEnrollments');
+
 Route::auth();
 
-Route::get('/internal', 'InternalEnrollmentController@start');
-
-Route::post('/internal/search', array('as' => 'search', 'uses'=>'LdcController@internalSearch'));
-
-Route::get('/internal/customers/{id}', array('as' => 'internal-start', 'uses'=>'CustomerController@internalStart'));
-
-Route::get('/internal/select-plan/{s}/{l}', array('as' => 'internalPlans', 'uses'=>'PlanController@internalPlans'));
+Route::get('/internal', array('as' => 'internal-start', 'EnrollmentController@start'));
 
 Route::get('/phpinfo', function(){
     return view('phpinfo');
@@ -78,7 +74,7 @@ Route::get('/broker/{promo}', 'EnrollmentController@startBroker');
 
 // special route for greatamericanpower/ironpigs
 Route::get('/ironpigs', function(){
-    return view('enroll-broker')->with('promo', 'IRONPIGS');
+    return view('enroll-broker')->with('promo', 'IRONPIGS')->with('type', 'broker');
 });
 
 Route::post('broker', array('as' => 'broker', 'uses'=>'LdcController@brokerLdcs'));
@@ -139,6 +135,8 @@ Route::get('faqs/{id}/delete', [
 /* <--------------------------------------------------------------------->  */
 
 /* <------------------- Internal Enrollment Routes ---------------------->  */
+
+/*
 Route::resource('internalEnrollments', 'InternalEnrollmentController');
 
 Route::get('/internal/sort-enrollments/{column}', 'InternalEnrollmentController@sortEnrollments');
@@ -147,6 +145,8 @@ Route::get('enrollments/{id}/delete', [
     'as' => 'enrollments.delete',
     'uses' => 'EnrollmentController@destroy',
 ]);
+*/
+
 /* <--------------------------------------------------------------------->  */
 
 /* <----------------------- Plan Routes ---------------------------------> */

@@ -20,6 +20,10 @@ class AdminController extends Controller
 
 	}
 
+	/**
+	 * Sends the users with role of admin to dashboard
+	 * Sends users without admin role to login page
+	 */
 	public function index(){
 		if(\Auth::user()->role === 'admin'){
 			return view('admin.dashboard');
@@ -77,8 +81,17 @@ class AdminController extends Controller
 				->with('enrollments', $brokerEnrollments)->with('brokers', $brokers);
 	}
 
+	/**
+	 * Returns all P2CEnrollments
+	 */
 	public function showP2CEnrollments(){
 		$p = DB::select('select * from enrollments_p2c');
+	}
+
+	public function internalEnrollments(){
+		$enrollments = \App\Models\Enrollment::where('type', 'internal')->paginate(15);
+
+		return view('enrollments.index')->with('enrollments', $enrollments);
 	}
 
 	/**

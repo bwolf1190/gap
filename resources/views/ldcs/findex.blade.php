@@ -13,16 +13,6 @@
 
 @endsection
 
-
-@section('carousel')
-
-<!--
-{!! Html::image('images/american-small.png', 'enroll-circle', array('class' => 'img-square img-responsive img-center')) !!}
--->
-
-@endsection
-
-
 @section('content')
 
     <div id="enroll_container" class="container">

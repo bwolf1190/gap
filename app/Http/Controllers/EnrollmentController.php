@@ -16,16 +16,25 @@ class EnrollmentController extends Controller
 		$this->middleware('auth', ['except' => ['start','startBroker', 'addEnrollment']]);
 	}
 
-	public function start($promo = null){
-		return view('enroll');
+	/**
+	 * Send customer to enroll page
+	 */
+	public function start( $type, $promo = null){
+		return view('enroll')->with('type', $type);
 	}
 
-	public function startBroker($promo){
+	/**
+	 * Send the broker to the enroll page
+	 */
+	public function startBroker($promo, $type='broker'){
 		$promo = strtoupper($promo);
-		return view('enroll-broker')->with('promo', $promo);
+		return view('enroll-broker')->with('promo', $promo)->with('type', $type);
 	}
 
-	public function addEnrollment($id, $agent = null, $agent_code = null, $sub_agent_code = null){
+	/**
+	 * Add enrollments for web/internal/broker/p2c
+	 */
+	public function addEnrollment($type, $id, $agent = null, $agent_code = null, $sub_agent_code = null){
 		$customer = \App\Models\Customer::where('id',$id)->first();
 		$plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
 
@@ -44,23 +53,10 @@ class EnrollmentController extends Controller
 				  'confirmation_code' => $confirmation_code,
 				  'status'			  => 'PENDING',
 				  'agent_code'		  => $agent_code,
-				  'sub_agent_code'	  => $sub_agent_code];
+				  'sub_agent_code'	  => $sub_agent_code,
+				  'type'			  => $type];
 
-		/*if(is_null($agent)){
-			$enrollment = \App\Models\Enrollment::create($input);
-			$agent = '';
-		}
-		else{
-			$enrollment = \App\Models\InternalEnrollment::create($input);
-		}*/
-
-		if($agent === 'b'){
-			$enrollment = \App\Models\Enrollment::create($input);
-			$agent = '';
-		}
-		else{
-			$enrollment = \App\Models\InternalEnrollment::create($input);
-		}
+		$enrollment = \App\Models\Enrollment::create($input);
 
 		/* Handle P2C Enrollments */
 		$Customer_Name = $customer->fname . ' ' . $customer->lname;
@@ -99,7 +95,7 @@ class EnrollmentController extends Controller
 					  'Plan_Desc'            => $plan->code,
 					  'Contract_Start_Date'  => '="' . $start_date . '"',
 					  'Contract_End_Date'    => '="' . $Contract_End_Date . '"',
-					  'Agent_Code'			 => $agent,
+					  'Agent_Code'			 => $agent_code,
 					  'MLine1_Addr'			 => $customer->ma1,
 					  'MLine2_Addr'			 => $customer->ma2,
 					  'MCity_Name'			 => $customer->mcity,

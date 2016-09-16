@@ -23,7 +23,7 @@ class CustomerController extends Controller
 
 
 
-	public function start($id, $promo = null)
+	public function start($type, $id, $promo = null)
 	{
 		$plan = \App\Models\Plan::where('id',(int)$id)->first();
 		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
@@ -40,7 +40,12 @@ class CustomerController extends Controller
 			$state = 'MD';
 		}
 
-		return view('customers.start')->with('ldc', $ldc)->with('plan', $plan)->with('promo', $promo)->with('zip', $zip)->with('state', $state);
+		return view('customers.start')->with('ldc', $ldc)
+									  ->with('plan', $plan)
+									  ->with('promo', $promo)
+									  ->with('zip', $zip)
+									  ->with('state', $state)
+									  ->with('type', $type);
 	}
 
 	public function internalStart($id){
@@ -99,7 +104,8 @@ class CustomerController extends Controller
 	public function store(Request $request)
 	{
 		$input = $request->all();
-
+		$type = Input::get('type');
+	
 		if(isset($input['file'])){
 			$file = $input['file'];
 
@@ -134,7 +140,8 @@ class CustomerController extends Controller
 		}
 		$sub_agent_code = Input::get('sub_agent_code');
 
-		return redirect()->route('addEnrollment', array('id' => $customer->id, 
+		return redirect()->route('addEnrollment', array('type' => $type,
+														'id' => $customer->id, 
 														'agent' => $agent, 
 														'agent_code' => $agent_code, 
 														'sub_agent_code' => $sub_agent_code));

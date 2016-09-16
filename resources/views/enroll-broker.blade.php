@@ -25,13 +25,14 @@
 		{!! Form::text('promo', $promo, ['class' => 'form-control', 'readonly' => true]) !!}
 	</div>
 	<div class="form-group">
-	     {!! Form::label('service', 'Residential') !!}
+	    {!! Form::label('service', 'Residential') !!}
 		{!! Form::radio('service','Residential', true) !!}
 	</div>
 	<div class="form-group">
 	    {!! Form::label('service', 'Commercial') !!}
 		{!! Form::radio('service','Commmercial') !!}
 	</div>
+	{!! Form::hidden('type', $type) !!}
 	<div class="form-group">
 		{!! Form::submit('NEXT', ['class' => 'btn btn-default', 'id' => 'next']) !!}
 	</div>

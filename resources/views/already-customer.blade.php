@@ -1,6 +1,4 @@
 @extends('master')
-
-
 @section('content')
 
     <div id="enroll_container" class="filtered-table-container container">

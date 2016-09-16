@@ -5,23 +5,23 @@ use Illuminate\Database\Eloquent\Model as Model;
 class Plan extends Model
 {
     
-	public $table = "plans";
+	public $table = 'plans';
     
 
 	public $fillable = [
-		"priority",
-	    "name",
-		"ldc",
-		"type",
-		"length",
-		"rate",
-		"rate2",
-		"etf",
-		"etf_description",
-		"meter",
-		"promo",
-		"code",
-		"price_code"
+		'priority',
+	    'name',
+		'ldc',
+		'type',
+		'length',
+		'rate',
+		'rate2',
+		'etf',
+		'etf_description',
+		'meter',
+		'promo',
+		'code',
+		'price_code'
 	];
 
     /**
@@ -30,31 +30,31 @@ class Plan extends Model
      * @var array
      */
     protected $casts = [
-    	"priority"        => "string",
-        "name"            => "string",
-		"ldc"             => "string",
-		"type"            => "string",
-		"length"          => "string",
-		"rate"            => "string",
-		"rate2"           => "string",
-		"etf"             => "string",
-		"etf_description" => "string",
-		"meter"           => "string",
-		"promo"           => "string",
-		"code"            => "string",
-		"price_code"      => "integer"
+    	'priority'        => 'string',
+        'name'            => 'string',
+		'ldc'             => 'string',
+		'type'            => 'string',
+		'length'          => 'string',
+		'rate'            => 'string',
+		'rate2'           => 'string',
+		'etf'             => 'string',
+		'etf_description' => 'string',
+		'meter'           => 'string',
+		'promo'           => 'string',
+		'code'            => 'string',
+		'price_code'      => 'integer'
     ];
 
 	public static $rules = [
-		"priority"   => "required",
-	    "name"       => "required",
-		"ldc"        => "required",
-		"type"       => "required",
-		"length"     => "required",
-		"rate"       => "required",
-		"etf"        => "required",
-		"code"       => "required",
-		"price_code" => "required"
+		'priority'   => 'required',
+	    'name'       => 'required',
+		'ldc'        => 'required',
+		'type'       => 'required',
+		'length'     => 'required',
+		'rate'       => 'required',
+		'etf'        => 'required',
+		'code'       => 'required',
+		'price_code' => 'required'
 	];
 
 	public function enrollment(){

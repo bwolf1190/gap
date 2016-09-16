@@ -5,13 +5,13 @@ use Illuminate\Database\Eloquent\Model as Model;
 class User extends Model
 {
     
-	public $table = "users";
+	public $table = 'users';
     
 
 	public $fillable = [
-	    "username",
-		"password",
-		"type"
+	    'username',
+		'password',
+		'type'
 	];
 
     /**
@@ -20,14 +20,14 @@ class User extends Model
      * @var array
      */
     protected $casts = [
-        "username"     => "string",
-		"password"     => "string",
-		"type"		   => "string"
+        'username'     => 'string',
+		'password'     => 'string',
+		'type'		   => 'string'
     ];
 
 	public static $rules = [
-	    "username" => "required",
-		"password"   => "required"
+	    'username' => 'required',
+		'password'   => 'required'
 	];
 
 

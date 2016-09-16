@@ -5,12 +5,12 @@ use Illuminate\Database\Eloquent\Model as Model;
 class Zip extends Model
 {
     
-	public $table = "zips";
+	public $table = 'zips';
     
 
 	public $fillable = [
-	    "zip",
-		"ldc_id"
+	    'zip',
+		'ldc_id'
 	];
 
     /**
@@ -19,13 +19,13 @@ class Zip extends Model
      * @var array
      */
     protected $casts = [
-        "zip" => "string",
-		"ldc_id" => "string"
+        'zip' => 'string',
+		'ldc_id' => 'string'
     ];
 
 	public static $rules = [
-	    "zip" => "required",
-		"ldc_id" => "required"
+	    'zip' => 'required',
+		'ldc_id' => 'required'
 	];
 
 

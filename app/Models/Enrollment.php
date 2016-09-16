@@ -17,7 +17,8 @@ class Enrollment extends Model
 		'confirmation_code',
 		'status',
 		'agent_code',
-		'sub_agent_code'
+		'sub_agent_code',
+		'type'
 	];
 
     /**
@@ -34,7 +35,8 @@ class Enrollment extends Model
 		'confirmation_code'       => 'string',
 		'status'				  => 'string',
 		'agent_code'			  => 'string',
-		'sub_agent_code'		  => 'string'
+		'sub_agent_code'		  => 'string',
+		'type'		  			  => 'string',
     ];
 
 	public static $rules = [

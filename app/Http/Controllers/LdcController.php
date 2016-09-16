@@ -14,7 +14,15 @@ class LdcController extends Controller
 		$this->middleware('auth', ['except' => ['search', 'internalSearch', 'brokerLdcs']]);
 	}
 
+	
 	public function search($s = null){
+		if(Input::get('type') === null){
+			$type = 'web';
+		}
+		else{
+			$type = Input::get('type');
+		}
+
 		$zip = Input::get('zip');
 		$promo = Input::get('promo');
 		Session::put('zip', $zip);
@@ -45,13 +53,13 @@ class LdcController extends Controller
 		// if there is only 1 LDC for the zip code, then send them straight to the plans
 		$count = count($ldcs);
 		if($count === 1){
-			return redirect()->route('searchPlans', array('s' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
+			return redirect()->route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
 		}
 
-		return view('ldcs.findex')->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
+		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 
-	public function internalSearch(){
+	/*public function internalSearch(){
 		$zip = Input::get('zip');
 		Session::put('zip', $zip);
 		$service = Input::get('service');
@@ -74,12 +82,13 @@ class LdcController extends Controller
 		}
 
 		return view('internal-enrollments.ldcs-findex')->with('service', $service)->with('ldcs', $ldcs);
-	}
+	}*/
 
 	public function brokerLdcs(){
 		$zip = Input::get('zip');
 		$service = Input::get('service');
 		$promo = Input::get('promo');
+		$type = Input::get('type');
 		Session::put('zip', $zip);
 
 		$zips = \App\Models\Zip::where('zip', $zip)->get();
@@ -104,10 +113,10 @@ class LdcController extends Controller
 		// if there is only 1 LDC for the zip code, then send them straight to the plans
 		$count = count($ldcs);
 		if($count === 1){
-			return redirect()->route('searchPlans', array('s' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
+			return redirect()->route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
 		}
 
-		return view('ldcs.findex')->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
+		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 
 

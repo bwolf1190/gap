@@ -13,14 +13,15 @@ class EnrollmentTest extends TestCase
      * @return void
      */
     public function testEnrollment()
-    {
+    {     
         $names = array('Jill', 'Joe', 'John', 'Jerry', 'Tim', 'Terry', 'Stan', 'Kyle', 'Kenny', 'Butters');
-        $plans = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
-        $acc_num_start = '096';
+        //$plans = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+        $plans = array('1', '2', '3');
+        $acc_num_start = '020';
         $routes = [];
         
         for($i = 0; $i < count($plans); $i++){
-            $route = 'customers/start/' . $plans[$i];
+            $route = 'web/customers/start/' . $plans[$i];
             $routes = $route;
             $acc_num_int = (int) $acc_num_start;
             $acc_num_int += $i;

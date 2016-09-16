@@ -22,7 +22,7 @@
                       </div>                              
                   </div>
                   <div class="sign-up-container">
-                    <a href="{!! route('start', [ 'id' => $plan->id,'promo' => $promo]) !!}">Sign Up</a>
+                    <a href="{!! route('start', ['id' => $plan->id,'promo' => $promo, 'type' => $type]) !!}">Sign Up</a>
                   </div>
               </div>
           </div>
