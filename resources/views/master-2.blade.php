@@ -160,7 +160,7 @@
 <!-- Mobile Menu - Slicknav -->
 {!! Html::script('js/jquery.slicknav.js') !!}
 <!-- Animate on Scroll-->
-{!! Ht<!-- === END FOOTER === -->ml::script('js/jquery.visible.js') !!}
+{!! Html::script('js/jquery.visible.js') !!}
 <!-- Slimbox2-->
 {!! Html::script('js/slimbox2.js') !!}
 <!-- Modernizr -->
@@ -168,3 +168,4 @@
 <!-- End JS -->
 </body>
 </html>
+
