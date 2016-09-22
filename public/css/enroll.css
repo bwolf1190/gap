@@ -9,11 +9,30 @@
 	margin-bottom:100px;
 	padding-top:200px;
 }
+/*
+#zip-form-container{
+	margin-top:;
+}*/
+
+#enroll-title{
+	color:#bf0000;
+	margin-bottom:50px;
+}
+
+/*
+#enroll-contact-container{
+	margin-top:80px;
+	max-width: 300px;
+}*/
 
 #zip_container{
 	margin-top:30%;
 	text-indent: 10px;
 }
+
+
+
+
 
 .filtered-table-container{
 	margin-top:80px;
@@ -22,7 +41,6 @@
 .filtered-table{
 	color:#002D62;
 	text-align: center;
-
 }
 
 .filtered-table th{

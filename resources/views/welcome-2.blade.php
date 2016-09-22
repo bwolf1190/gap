@@ -113,7 +113,6 @@
                 <!-- Portfolio Item -->
                 <div class="portfolio-item col-sm-4 animate fadeInUp">
                     <div class="image-hover">
-                        <a href="#">
                             <figure>
                                 {!! Html::image('images/enroll-square.png', 'enroll-now', array('class' => 'img-square img-responsive img-center enroll')) !!}
                                 <div class="overlay">
@@ -125,14 +124,12 @@
                             <div class="btn btn-default">
                                 <a class="info" href="/enroll-sign-up-energy-electricity">Enroll</a>
                             </div>
-                        </a>
                     </div>
                 </div>
                 <!-- //Portfolio Item// -->
                 <!-- Portfolio Item -->
                 <div class="portfolio-item col-sm-4 animate fadeInUp">
                     <div class="image-hover">
-                        <a href="#">
                             <figure>
                                 {!! Html::image('images/faq-square.png', 'learn-more', array('class' => 'img-square img-responsive img-center learn')) !!}
                                 <div class="overlay">
@@ -144,14 +141,12 @@
                             <div class="btn btn-default">
                                 <a class="info" href="/faq-frequently-asked-questions-energy-electricity">FAQ</a>
                             </div>
-                        </a>
                     </div>
                 </div>
                 <!-- //Portfolio Item// -->
                 <!-- Portfolio Item -->
                 <div class="portfolio-item col-sm-4 animate fadeInUp">
                     <div class="image-hover">
-                        <a href="#">
                             <figure>
                                 {!! Html::image('images/contact-square.png', 'contact-us', array('class' => 'img-square img-responsive img-center contact')) !!}
                                 <div class="overlay">
@@ -163,7 +158,6 @@
                             <div class="btn btn-default">
                                 <a class="info" href="/contact-us-customer-service">Contact</a>
                             </div>
-                        </a>
                     </div>
                 </div>
                 <!-- //Portfolio Item// -->

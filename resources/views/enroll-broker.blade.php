@@ -8,6 +8,7 @@
 @endsection
 @section('content')
 <div id='enroll_container' class="container">
+	<div id="enroll-title"><h1>Enroll Now</h1></div>
 	<div id="sign-up">
 		{!! Form::open(['action' => 'LdcController@brokerLdcs']) !!}
 		<div class="form-group">
