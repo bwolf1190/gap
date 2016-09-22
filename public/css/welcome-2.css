@@ -345,7 +345,8 @@ td > #send{
 #bottom-gap{
 	margin-top:50px;
 	color:#bf0000;
-	font-weight: 600;
+	font-weight: 300;
+	font-size: 32px;
 }
 
 
