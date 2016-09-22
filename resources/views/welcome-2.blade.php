@@ -171,7 +171,7 @@
             </div>
             <div class="row">
                 <div class="margin-top-30"></div>
-                <h2 id="bottom-gap" class="text-center margin-top-30">Great American Power</h2>
+                <h1 id="bottom-gap" class="text-center margin-top-30">Great American Power</h1>
                 <p class="text-center margin-bottom-10">Switch today and take control the Great American Power way</p>
             </div>
         </div>

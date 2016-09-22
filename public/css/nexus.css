@@ -1358,7 +1358,6 @@ i.fa.center {
   opacity: 0;
 }
 .image-hover figure a.expand {
-  background: url("../img/link.png") no-repeat scroll center center rgba(0, 0, 0, 0);
   display: inline-block;
   height: 100%;
   padding: 0;
