@@ -21,4 +21,9 @@ $(document).ready(function() {
 		unhover(e);
 	};
 
+	// clear value of zip input field on click
+	$("input[name=zip]").click(function(e){
+       $(this).val("");
+    });
+
 });

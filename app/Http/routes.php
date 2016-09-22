@@ -6,7 +6,7 @@ Route::get('/welcome-email', function(){
 
 Route::get('/', array('as' => 'home', 'uses' => 'WelcomeController@index'));
 
-Route::get('/enroll-sign-up-energy-electricity/{type}', 'EnrollmentController@start');
+Route::get('/enroll-sign-up-energy-electricity/{type?}', 'EnrollmentController@start');
 
 Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
 

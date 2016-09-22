@@ -19,7 +19,10 @@ class EnrollmentController extends Controller
 	/**
 	 * Send customer to enroll page
 	 */
-	public function start( $type, $promo = null){
+	public function start( $type = null, $promo = null){
+		if(is_null($type)){
+			$type = 'web';
+		}
 		return view('enroll')->with('type', $type);
 	}
 
