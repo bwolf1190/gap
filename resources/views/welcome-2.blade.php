@@ -62,7 +62,7 @@
             <div class="row margin-vert-30 animate fadeInUp">
                 <!-- Main Text -->
                 
-                <div id="sign-up-container-sm" class="col-md-4 col-sm-5 col-xs-5 animate fadeInUp">
+                <div id="sign-up-container-sm" class="col-md-4 col-sm-5 animate fadeInUp">
                         <h2 id="sign-up-header" style="">Find Your Rate</h2>
                         {!! Form::open(['action' => 'LdcController@search']) !!}
                         {!! csrf_field() !!}
@@ -79,7 +79,7 @@
                         </div>
                         {!! Form::close() !!}
                 </div>
-                <div class="col-md-8 col-sm-7 col-xs-7">
+                <div class="col-md-8 col-sm-7">
                     <h2 style="margin-bottom:20px;">What We Do</h2>
                     <p style="text-indent:5px;">Great American Power is an Electric Supply company focusing on the US states with deregulation. We believe in hiring the right people for the job which in turn means our clients get the best possible services and products. We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</p>
                     <p style="text-indent:5px;">Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</p>
