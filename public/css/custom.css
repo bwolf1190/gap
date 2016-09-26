@@ -46,7 +46,7 @@ h2, h3{
 }
 
 .slicknav_nav li{
-	background-color: #bf0000;
+	background-color: rgba(245,245,245,.9);
 }
 
 .slicknav_nav a:hover{

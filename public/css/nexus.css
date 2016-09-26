@@ -916,9 +916,8 @@ h1.logo-text a {
 }
 .slicknav_nav a {
   padding: 14px;
-  margin: 2px 0px;
   text-decoration: none;
-  color: #fff;
+  color: #bf0000;
 }
 .slicknav_nav ul {
   padding: 0;
@@ -926,7 +925,7 @@ h1.logo-text a {
 }
 .slicknav_nav li {
   background: #2a2a2a;
-  color: #ffffff;
+  color: #bf0000;
 }
 .slicknav_nav li li {
   background: #3a3a3a;
