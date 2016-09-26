@@ -376,8 +376,16 @@ nav{
 	color:lightgray;
 }
 
-@media (max-width: 880px) {
+@media screen and (max-width: 350px){
+	#nav-brand{top:10px;}
+}
 
+@media screen and (max-width: 450px){
+	#nav-brand{left:-10px;}
+	#content{margin-top:90px;}
+}
+
+@media (max-width: 880px) {
 	.footer-distributed{
 		font: bold 14px;
 	}
@@ -394,16 +402,6 @@ nav{
 	.footer-distributed .footer-center i{
 		margin-left: 0;
 	}
-
-}
-
-@media screen and (max-width: 350px){
-	#nav-brand{top:10px;}
-}
-
-@media screen and (max-width: 450px){
-	#nav-brand{left:-10px;}
-	#content{margin-top:90px;}
 }
 
 @media screen and (max-width: 1200px){

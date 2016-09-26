@@ -351,37 +351,22 @@ td > #send{
 
 @media screen and (max-width: 776px) {
 	#sign-up-container{display:none;}
-	#sign-up-container-sm{display:block;}
-
+	#sign-up-container-sm{display:block; top:-50px;}
+	#sign-up-container-sm #sign-up-header{margin-bottom:25px;}
 }
 
 @media screen and (max-width: 785px) {
-	#service-area-map{display:none; }
-	#service-area-title{display:none; }
-	#sign-up-form{margin-top: 0;}
-	#sign-up-container form{margin-top:25px;}
-	.item.active h1{display:none; background:none;}
-	.item.active h3{display:none; background:none;}
+	/*#sign-up-form{margin-top: 0;}
+	#sign-up-container form{margin-top:25px;}*/
+	.item.active .carousel-caption{display:none; background:none;}
 }
 
 @media screen and (max-width: 845px){
 	#get-rates-btns{margin-left: 15px;}
 }
 
-@media screen and (min-width: 769px) and (max-width: 992px){
-	/*#pages-sm-screen{display:block; position:relative; top:-40px; left:80px;}*/
-	#pages-lg-screen{display:none;}
-	#pages-sm-header{margin-bottom: 40px !important;}
-	/*#sm-screen-container{margin-left:60px;}*/
-	#contact-us-container{display:none;}
-}
-
-@media screen and (min-width: 992px){
-	#sign-up-container form{margin-top:80px;}
-}
-
-@media screen and (max-width: 1067px){
-	#welcome-contact-sidebar{margin-left:0;}
+@media screen and (max-width:992px){
+	#sign-up-container{top:-50px;}
 }
 
 

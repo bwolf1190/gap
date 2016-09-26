@@ -62,22 +62,22 @@
             <div class="row margin-vert-30 animate fadeInUp">
                 <!-- Main Text -->
                 
-                <div id="sign-up-container-sm" class="col-md-4 col-sm-4 animate fadeInUp">
-                    <h2 id="sign-up-header" style="">Find Your Rate</h2>
-                    {!! Form::open(['action' => 'LdcController@search']) !!}
-                    {!! csrf_field() !!}
-                    <div id="sign-up-form" class="">
-                        <div id="zip" class="form-group">
-                            {!! Form::text('zip', 'Zip Code', ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="row">
-                            <div class="form-group" style="margin-left:20px;">
-                                <input id="next" type="submit" name="Residential" value="Residential">
-                                <input id="next" type="submit" name="Commercial" value="Commercial">
+                <div id="sign-up-container-sm" class="col-md-4 col-sm-5 animate fadeInUp">
+                        <h2 id="sign-up-header" style="">Find Your Rate</h2>
+                        {!! Form::open(['action' => 'LdcController@search']) !!}
+                        {!! csrf_field() !!}
+                        <div id="sign-up-form" class="">
+                            <div id="zip" class="form-group">
+                                {!! Form::text('zip', 'Zip Code', ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="row">
+                                <div class="form-group" style="margin-left:20px;">
+                                    <input id="next" type="submit" name="Residential" value="Residential">
+                                    <input id="next" type="submit" name="Commercial" value="Commercial">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
                 </div>
                 <div class="col-md-8 col-sm-7">
                     <h2 style="margin-bottom:20px;">What We Do</h2>
@@ -85,7 +85,7 @@
                     <p style="text-indent:5px;">Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</p>
                 </div>
                 <!-- End Main Text -->
-                <div id="sign-up-container" class="col-md-4 col-sm-4 animate fadeInUp">
+                <div id="sign-up-container" class="col-md-4 col-sm-5 animate fadeInUp">
                     <h2 id="sign-up-header" style="">Find Your Rate</h2>
                     {!! Form::open(['action' => 'LdcController@search']) !!}
                     {!! csrf_field() !!}
