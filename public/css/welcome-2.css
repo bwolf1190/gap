@@ -349,17 +349,19 @@ td > #send{
 	font-size: 32px;
 }
 
+@media screen and (max-width: 776px) {
+	#sign-up-container{display:none;}
+	#sign-up-container-sm{display:block;}
+
+}
 
 @media screen and (max-width: 785px) {
 	#service-area-map{display:none; }
 	#service-area-title{display:none; }
 	#sign-up-form{margin-top: 0;}
-}
-
-@media screen and (max-width: 776px) {
-	#sign-up-container{display:none;}
-	#sign-up-container-sm{display:block;}
-
+	#sign-up-container form{margin-top:25px;}
+	.item.active h1{display:none; background:none;}
+	.item.active h3{display:none; background:none;}
 }
 
 @media screen and (max-width: 845px){
@@ -374,6 +376,12 @@ td > #send{
 	#contact-us-container{display:none;}
 }
 
+@media screen and (min-width: 992px){
+	#sign-up-container form{margin-top:80px;}
+}
+
 @media screen and (max-width: 1067px){
 	#welcome-contact-sidebar{margin-left:0;}
 }
+
+

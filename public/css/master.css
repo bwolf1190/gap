@@ -379,7 +379,7 @@ nav{
 @media (max-width: 880px) {
 
 	.footer-distributed{
-		font: bold 14px sans-serif;
+		font: bold 14px;
 	}
 
 	.footer-distributed .footer-left,
@@ -397,6 +397,15 @@ nav{
 
 }
 
+@media screen and (max-width: 350px){
+	#nav-brand{top:10px;}
+}
+
+@media screen and (max-width: 450px){
+	#nav-brand{left:-10px;}
+	#content{margin-top:90px;}
+}
+
 @media screen and (max-width: 1200px){
 	#nav-brand img{width:400px; top:0;}
 }
@@ -405,12 +414,3 @@ nav{
 	#nav-brand img{top:-5px;}
 }
 
-@media screen and (min-width: 992px){
-	#sign-up-container form{margin-top:80px;}
-}
-
-@media screen and (max-width: 786px){
-	#sign-up-container form{margin-top:25px;}
-	.item.active h1{display:none; background:none;}
-	.item.active h3{display:none; background:none;}
-}

@@ -19,7 +19,7 @@
     {!! Html::style('css/font-awesome.css') !!}
     {!! Html::style('css/nexus.css') !!}
     {!! Html::style('css/custom.css') !!}
-    {!! Html::style('css/welcome.css') !!}
+    {!! Html::style('css/welcome-2.css') !!}
     {!! Html::style('css/master.css') !!}
     {!! Html::script('js/jquery.min.js') !!}
     {!! Html::script('js/bootstrap.min.js') !!}
