@@ -71,15 +71,6 @@ nav{
 	padding-bottom: 115px;
 }
 
-#body{
-	font-family: 'Droid Serif', serif;
-	max-width: 1500px;
-	min-height: 1500px;
-	margin:auto;
-	padding-top: 95px; /* required to offset fixed inverse nav */
-	background-color: white;
-}
-
 #title span{
 	font-family: 'Droid Serif', serif;
      font-size: 1.5em;

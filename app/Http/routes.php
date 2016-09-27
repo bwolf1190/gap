@@ -1,5 +1,7 @@
 <?php
 
+use Spatie\Analytics\Period;
+
 Route::get('/welcome-email', function(){
     return view('emails.welcome');
 });
@@ -22,6 +24,11 @@ Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 
 
 
 /* <----------------------- Admin Routes -------------------------------->  */
+Route::get('/la', function(){
+    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    dd($analyticsData);
+});
+
 Route::get('/analytics', function(){
     return view('admin.analytics');
 });

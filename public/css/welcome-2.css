@@ -349,6 +349,10 @@ td > #send{
 	font-size: 32px;
 }
 
+@media screen and (max-width:600px){
+	#wwd{display:none;}
+}
+
 @media screen and (max-width: 776px) {
 	#sign-up-container{display:none;}
 	#sign-up-container-sm{display:block; top:-50px;}
