@@ -15,11 +15,7 @@
             <div id="resend-emails" >
             {!! Form::open(['route' => 'resendEmails']) !!}
                 {!! csrf_field() !!}
-                <div class="pull-right admin-top-btn">
-                {!! Form::select('days', [5 => '5', 8 => '8', 13 => '13', 21 => '21']) !!}
-            </div>
                 {!! Form::submit('Resend Emails', ['class' => 'btn btn-primary pull-right col-xs-2 col-xs-offset-1 admin-top-btn'])!!}
-            {!! Form::close() !!}
         </div>
 
         </div>
@@ -31,6 +27,8 @@
                 @include('enrollments.table')
             @endif
         </div>
+
+        {!! Form::close() !!}
 
         @include('common.paginate', ['records' => $enrollments])
 

@@ -99,6 +99,32 @@ class AdminController extends Controller
 	 */
 	public function resendEmails(Request $request){
 		$request = $request->all();
+		// remove csrf token from array
+		$request = array_except($request, ['_token']);
+
+		foreach($request as $r){
+			$enrollment = \App\Models\Enrollment::find($r);
+			$customer = $enrollment->customer;
+			$plan = $enrollment->plan;
+
+			Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
+	                $m->from('Enrollment@greatamericanpower.com', 'GAP');
+	                $m->to($customer->email);
+	                $m->subject("Email Confirmation");
+	        });
+
+			$enrollment->status = 'RESENT';
+			$enrollment->save();
+		}
+
+		$enrollments = \App\Models\Enrollment::orderBy('enroll_date')->paginate(10);
+
+		return redirect()->route('enrollments.index');
+
+	}
+/*
+	public function resendEmails(Request $request){
+		$request = $request->all();
 		$days = $request['days'];
 		$curr_date = Carbon::now();
 		$send_after_date = $curr_date->subDays($days);
@@ -131,5 +157,6 @@ class AdminController extends Controller
 		return redirect()->route('enrollments.index');
 
 	}
+	*/
 
 }
