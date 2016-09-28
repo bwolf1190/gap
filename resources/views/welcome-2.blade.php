@@ -9,6 +9,7 @@
 @endsection
 @section('content')
     <div class="row">
+        <div class="clearfix"></div>
         <!-- === BEGIN CONTENT === -->
         <div id="content" class="container">
             <div class="row margin-top-30">

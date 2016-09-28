@@ -1,5 +1,4 @@
 <?php
-
 use Spatie\Analytics\Period;
 
 Route::get('/welcome-email', function(){
@@ -24,9 +23,8 @@ Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 
 
 
 /* <----------------------- Admin Routes -------------------------------->  */
-Route::get('/la', function(){
-    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
-    dd($analyticsData);
+Route::get('/c', function(){
+    return view('chartjs');
 });
 
 Route::get('/analytics', function(){
