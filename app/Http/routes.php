@@ -1,5 +1,4 @@
 <?php
-use Spatie\Analytics\Period;
 
 Route::get('/welcome-email', function(){
     return view('emails.welcome');

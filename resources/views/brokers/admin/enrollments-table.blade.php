@@ -5,7 +5,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Promo</th>
-            <th>Plan Id</th>
+            <th>Plan</th>
             <th>Agent Code</th>
             <th>Subagent Code</th>
 			<th>Status</th>
