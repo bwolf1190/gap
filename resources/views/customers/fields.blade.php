@@ -156,6 +156,13 @@
 			</div>
 		</div>
 
+		<div id="optin-container">
+			<div class="form-group">
+				{!! Form::label('optin', 'Receive offers from Great American Power') !!}
+				{!! Form::checkbox('optin', '',['class' => 'form-control']) !!}
+			</div>
+		</div>
+
 		
 		<style>
 			.fileUpload {

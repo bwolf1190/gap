@@ -1,5 +1,7 @@
 <?php
 
+use Spatie\Analytics\Period;
+
 Route::get('/welcome-email', function(){
     return view('emails.welcome');
 });
@@ -24,6 +26,11 @@ Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 
 /* <----------------------- Admin Routes -------------------------------->  */
 Route::get('/c', function(){
     return view('chartjs');
+});
+
+Route::get('/a', function(){
+    $pages = Analytics::fetchMostVisitedPages(Period::days(7), $limit);
+    return view('a')->with('pages', $pages);
 });
 
 Route::get('/analytics', function(){

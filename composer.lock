@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e79ce3771169be2fd63fde5484362095",
-    "content-hash": "c3aad6965187508733985b0cd7d6e8ab",
+    "hash": "8c695746db3c2d2dad43bf21e31b183f",
+    "content-hash": "d11a16c835cbb83b7d72b6eecd591bdd",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -359,6 +359,95 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "khill/lavacharts",
+            "version": "3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevinkhill/lavacharts.git",
+                "reference": "c95cf815948db511c9c44270d50f7bc37861d81d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevinkhill/lavacharts/zipball/c95cf815948db511c9c44270d50f7bc37861d81d",
+                "reference": "c95cf815948db511c9c44270d50f7bc37861d81d",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "~1.14",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "mybuilder/phpunit-accelerator": "~1.1",
+                "phpunit/phpunit": "~4.5",
+                "satooshi/php-coveralls": "~1.0",
+                "squizlabs/php_codesniffer": "~2.5"
+            },
+            "suggest": {
+                "khill/datatableplus": "Adds extra features to DataTables such as csv and laravel collection parsing."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Khill\\Lavacharts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Hill",
+                    "email": "kevinkhill@gmail.com",
+                    "role": "Creator"
+                },
+                {
+                    "name": "deringer",
+                    "homepage": "https://github.com/deringer",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "stevebauman",
+                    "homepage": "https://github.com/stevebauman",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "rajivseelam",
+                    "homepage": "https://github.com/rajivseelam",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "tobias-kuendig",
+                    "homepage": "https://github.com/tobias-kuendig",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Stonos",
+                    "homepage": "https://github.com/Stonos",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "MicahKV",
+                    "email": "micah138@yahoo.com",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "SendDerek",
+                    "homepage": "https://github.com/SendDerek",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "PHP wrapper library for the Google Chart API",
+            "homepage": "http://lavacharts.com",
+            "keywords": [
+                "charts",
+                "google",
+                "graphs"
+            ],
+            "time": "2016-04-28 14:43:39"
         },
         {
             "name": "laracasts/flash",
@@ -1344,12 +1433,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "e65df3003b962e5337308105fcde0383b58017ea"
+                "reference": "3ea451d6d829915d78a97de187934f43916f718b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/e65df3003b962e5337308105fcde0383b58017ea",
-                "reference": "e65df3003b962e5337308105fcde0383b58017ea",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/3ea451d6d829915d78a97de187934f43916f718b",
+                "reference": "3ea451d6d829915d78a97de187934f43916f718b",
                 "shasum": ""
             },
             "require": {
@@ -1391,7 +1480,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2016-09-23 20:51:33"
+            "time": "2016-09-29 14:41:55"
         },
         {
             "name": "swiftmailer/swiftmailer",
