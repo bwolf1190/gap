@@ -152,7 +152,7 @@ return [
         Collective\Bus\BusServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,6 +213,7 @@ return [
         'Input'       => Illuminate\Support\Facades\Input::class,
         'Debugbar'    => Barryvdh\Debugbar\Facade::class,
         'Excel'       => Maatwebsite\Excel\Facades\Excel::class,
+        'Charts'      => ConsoleTVs\Charts\Charts::class,
     ],
 
 ];

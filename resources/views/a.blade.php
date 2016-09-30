@@ -1,1 +1,6 @@
-{{ $pages }}
+
+
+        {!! Charts::assets() !!}
+
+
+            {!! $chart->render() !!}

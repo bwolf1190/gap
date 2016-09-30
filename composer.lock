@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8c695746db3c2d2dad43bf21e31b183f",
-    "content-hash": "d11a16c835cbb83b7d72b6eecd591bdd",
+    "hash": "1961f0efc54d0a7247fc91c93e18a662",
+    "content-hash": "10b9a762ffe385b91f57f42a8348951c",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -114,6 +114,42 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "consoletvs/charts",
+            "version": "1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Charts.git",
+                "reference": "280311fa6fe075524dc6eea27c05261547cc554f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/280311fa6fe075524dc6eea27c05261547cc554f",
+                "reference": "280311fa6fe075524dc6eea27c05261547cc554f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ConsoleTVs\\Charts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erik Campobadal",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "Create charts for laravel using diferent charts libraries",
+            "time": "2016-09-29 17:23:08"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

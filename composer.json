@@ -13,8 +13,7 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "laravelcollective/bus": "^5.2",
         "maatwebsite/excel": "~2.1.0",
-        "stripe/stripe-php": "dev-master",
-        "khill/lavacharts" : "3.0.*"
+        "stripe/stripe-php": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
