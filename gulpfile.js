@@ -32,7 +32,8 @@ elixir(function(mix) {
     	'../../../public/js/jquery.slicknav.js',
     	'../../../public/js/jquery.visible.js',
     	'../../../public/js/slimbox2.js',
-    	'../../../public/js/modernizr.custom.js'
+    	'../../../public/js/modernizr.custom.js',
+        '../../../public/js/master.js'
 
     ]);
 
