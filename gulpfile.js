@@ -19,10 +19,9 @@ elixir(function(mix) {
     	'../../../public/css/animate.css',
     	'../../../public/css/font-awesome.css',
     	'../../../public/css/nexus.css',
-    	'../../../public/css/responsive.css',
     	'../../../public/css/custom.css',
     	'../../../public/css/master.css',
-    	'../../../public/css/welcome.css'
+    	'../../../public/css/welcome-2.css'
     ]);
 
     mix.scripts([
