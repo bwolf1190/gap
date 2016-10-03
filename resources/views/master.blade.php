@@ -7,7 +7,7 @@
     <title>Great American Power - Welcome</title>
     <!-- Meta -->
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Great American Power is an energy company serving Pennsylvania and Maryland. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories">
+    <meta name="description" content="Great American Power is an energy company serving Pennsylvania and Maryland. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.">
     <meta name="author" content="Brett Wolverton">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <!-- Favicon -->
