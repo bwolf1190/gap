@@ -34,9 +34,5 @@ elixir(function(mix) {
     	'../../../public/js/slimbox2.js',
     	'../../../public/js/modernizr.custom.js',
         '../../../public/js/master.js'
-
     ]);
-
-
-
 });

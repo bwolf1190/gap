@@ -101,6 +101,18 @@
 	max-width: 300px;
 }
 
+/* Removes arrows from zip number input */
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* End */
+
 #get-rates-btns input{
 	width:100px;
 	text-align: center;
