@@ -1,6 +1,5 @@
 <table class="table">
     <thead>
-    		<th>Priority</th>
     		<th>Name</th>
 			<th>Ldc</th>
 			<th>Type</th>
@@ -15,7 +14,6 @@
     <tbody>
     @foreach($plans as $plan)
         <tr>
-            <td>{!! $plan->priority !!}</td>
             <td>{!! $plan->name !!}</td>
 			<td>{!! $plan->ldc !!}</td>
 			<td>{!! $plan->type !!}</td>
