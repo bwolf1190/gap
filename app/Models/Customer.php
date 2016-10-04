@@ -3,11 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Customer extends Model
-{
-    
+{ 
 	public $table = 'customers';
     
-
 	public $fillable = [
 	    'acc_num',
 	    // Federal_Tax_Id_Num is here for P2C commercial enrollments ONLY
@@ -90,6 +88,4 @@ class Customer extends Model
 	public function plan(){
 		return $this->hasOne('App\Models\Plan');
 	}
-	
-
 }

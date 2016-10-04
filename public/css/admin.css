@@ -34,11 +34,12 @@ body{
 }
 
 #login-container .panel{
-	border: 1px solid #00234C;
+	/*border: 1px solid #00234C;*/
 }
 
 #login-container .panel-heading{
 	background-color: #00234C;
+	border:2px solid #bf0000;
 	color:white;
 }
 
@@ -74,8 +75,39 @@ body{
 
 /***** END *****/
 
-/***** Common CSS *****/
+/***** Broker Admin CSS *****/
+#broker-admin-nav{
+	position:relative;
+	top:-20px;
+	margin-bottom:25px;
+	color:#bf0000;
+	font-weight: bold;
+}
 
+#broker-actions{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#broker-actions li{
+	float: left;
+}
+
+#broker-actions li a{
+	display: block;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+#broker-actions a:hover{
+	color:#bf0000;
+}
+/***** END *****/
+
+
+/***** Common CSS *****/
 h1{
 	font-family: 'Droid Serif', serif !important;
 	color:#bf0000;
@@ -83,15 +115,18 @@ h1{
 	margin-top:50px;
 }
 
+th{
+	text-align: center;
+}
+
 table{
 	border: 2px solid lightgray;
+	text-align: center;
 }
 
 thead{
-	background-color: lightgray;
-}
-
-thead > tr{
+	background-color: #00234C;
+	color:white;
 }
 
 tbody{

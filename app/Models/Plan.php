@@ -4,10 +4,8 @@ use Illuminate\Database\Eloquent\Model as Model;
 
 class Plan extends Model
 {
-    
 	public $table = 'plans';
     
-
 	public $fillable = [
 		'priority',
 	    'name',
@@ -64,5 +62,4 @@ class Plan extends Model
 	public function customer(){
 		return $this->hasMany('App\Models\Customer');
 	}
-
 }

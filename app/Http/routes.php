@@ -72,6 +72,9 @@ Route::resource('brokers', 'BrokerController');
 
 Route::get('broker/admin', 'BrokerController@adminHome');
 
+Route::get('broker/plans/{broker}', 'BrokerController@plans');
+
+
 // standard broker route
 Route::get('/broker/{promo}', 'EnrollmentController@startBroker');
 

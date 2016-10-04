@@ -3,11 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Faq extends Model
-{
-    
+{  
 	public $table = 'faqs';
     
-
 	public $fillable = [
 	     'question',
 		'answer',
@@ -22,7 +20,7 @@ class Faq extends Model
      * @var array
      */
     protected $casts = [
-          'question' => 'string',
+        'question' => 'string',
 		'answer'   => 'string',
 		'key1'     => 'string',
 		'key2'     => 'string',
@@ -30,9 +28,8 @@ class Faq extends Model
     ];
 
 	public static $rules = [
-	     'question' => 'required',
+	    'question' => 'required',
 		'answer'   => 'required',
 		'key1'     => 'required'
 	];
-
 }

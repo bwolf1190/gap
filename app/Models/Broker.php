@@ -3,11 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Broker extends Model
-{
-    
+{  
 	public $table = 'brokers';
     
-
 	public $fillable = [
 	    'name',
 		'promo',
@@ -28,7 +26,7 @@ class Broker extends Model
     ];
 
 	public static $rules = [
-	    'name' => 'required',
+	    'name'    => 'required',
 		'promo'   => 'required'
 	];
 
@@ -36,4 +34,7 @@ class Broker extends Model
 		return $this->belongsToMany('App\Models\Ldc');
 	}
 
+	public function subAgent(){
+		return $this->hasMany('App\Models\SubAgent');
+	}
 }

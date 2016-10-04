@@ -3,11 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class User extends Model
-{
-    
+{  
 	public $table = 'users';
     
-
 	public $fillable = [
 	    'username',
 		'password',
@@ -29,6 +27,4 @@ class User extends Model
 	    'username' => 'required',
 		'password'   => 'required'
 	];
-
-
 }

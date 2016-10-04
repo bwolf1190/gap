@@ -66,10 +66,7 @@
                         </ul>
                     </div>
                 </div>
-                <div id="header-bottom">
-                    
-                </div>
-                <div class="clear"></div>
+
                 <!-- End Top Menu -->
             </div>
         </div>

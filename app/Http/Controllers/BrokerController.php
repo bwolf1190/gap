@@ -33,7 +33,7 @@ class BrokerController extends Controller
 	}
 
 	/**
-	 * Return homepage for broker administrator
+	 * Return enrollments for authenticated broker.
 	 */
 	public function adminHome(){
 		$user = \Auth::user()->name;
@@ -45,8 +45,17 @@ class BrokerController extends Controller
 			$brokerEnrollments = \App\Models\Enrollment::where('plan_id', $p->id)->paginate(15);
 		}
 		
-
 		return view('brokers.admin.admin-home')->with('enrollments', $brokerEnrollments)->with('brokers', $brokers);
+	}
+
+	/**
+	 * Return plans for authenticated broker.
+	 */
+	public function plans($broker){
+		$plans = \App\Models\Plan::where('promo', $broker)->paginate(15);
+		
+		return view('brokers.admin.broker-plans.index')
+				->with('plans', $plans);
 	}
 
 	/**

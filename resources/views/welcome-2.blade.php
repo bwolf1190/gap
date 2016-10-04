@@ -61,7 +61,6 @@
             </div>
             <div class="row margin-vert-30 animate fadeInUp">
                 <!-- Main Text -->
-                
                 <div id="sign-up-container-sm" class="col-md-4 col-sm-5 animate fadeInUp">
                         <h2 id="sign-up-header" style="">Find Your Rate</h2>
                         {!! Form::open(['action' => 'LdcController@search']) !!}
@@ -80,9 +79,9 @@
                         {!! Form::close() !!}
                 </div>
                 <div id="wwd" class="col-md-8 col-sm-7">
-                    <h2 style="margin-bottom:20px;">What We Do</h2>
-                    <p style="text-indent:5px;">Great American Power is an Electric Supply company focusing on the US states with deregulation. We believe in hiring the right people for the job which in turn means our clients get the best possible services and products. We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</p>
-                    <p style="text-indent:5px;">Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</p>
+                    <h2>What We Do</h2>
+                    <p><article>Great American Power is an Electric Supply company focusing on the US states with deregulation. We believe in hiring the right people for the job which in turn means our clients get the best possible services and products. We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</article></p>
+                    <p><article>Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</article></p>
                 </div>
                 <!-- End Main Text -->
                 <div id="sign-up-container" class="col-md-4 col-sm-5 animate fadeInUp">
@@ -94,9 +93,9 @@
                             {!! Form::number('zip', 'Zip Code', ['class' => 'form-control']) !!}
                         </div>
                         <script type="text/javascript">
-                        $("input[name=zip]").click(function(e){
-                        $(this).val("");
-                        });
+                            $("input[name=zip]").click(function(e){
+                                $(this).val("");
+                            });
                         </script>
                         <div class="row">
                             <div class="form-group" style="margin-left:20px;">
@@ -114,7 +113,7 @@
                 <div class="portfolio-item col-sm-4 animate fadeInUp">
                     <div class="image-hover">
                             <figure>
-                                {!! Html::image('images/enroll-square.png', 'enroll-now', array('class' => 'img-square img-responsive img-center enroll')) !!}
+                                {!! Html::image('images/enroll-square.png', 'enroll-now', array('class' => 'img-square img-responsive img-center img-thumbnail enroll')) !!}
                                 <div class="overlay">
                                     <a class="expand" href="/enroll-sign-up-energy-electricity">Image Link</a>
                                 </div>
@@ -131,7 +130,7 @@
                 <div class="portfolio-item col-sm-4 animate fadeInUp">
                     <div class="image-hover">
                             <figure>
-                                {!! Html::image('images/faq-square.png', 'learn-more', array('class' => 'img-square img-responsive img-center learn')) !!}
+                                {!! Html::image('images/faq-square.png', 'learn-more', array('class' => 'img-square img-responsive img-center img-thumbnail learn')) !!}
                                 <div class="overlay">
                                     <a class="expand" href="/faq-frequently-asked-questions-energy-electricity">Image Link</a>
                                 </div>
@@ -148,7 +147,7 @@
                 <div class="portfolio-item col-sm-4 animate fadeInUp">
                     <div class="image-hover">
                             <figure>
-                                {!! Html::image('images/contact-square.png', 'contact-us', array('class' => 'img-square img-responsive img-center contact')) !!}
+                                {!! Html::image('images/contact-square.png', 'contact-us', array('class' => 'img-square img-responsive img-center img-thumbnail contact')) !!}
                                 <div class="overlay">
                                     <a class="expand" href="/contact-us-customer-service">Image Link</a>
                                 </div>

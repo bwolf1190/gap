@@ -3,11 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Enrollment extends Model
-{
-    
+{ 
 	public $table = 'enrollments';
     
-
 	public $fillable = [
 	    'enroll_date',
 		'confirm_date',
@@ -51,5 +49,4 @@ class Enrollment extends Model
 	public function customer(){
 		return $this->belongsTo('App\Models\Customer');
 	}
-
 }

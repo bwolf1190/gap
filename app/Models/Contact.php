@@ -3,9 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Contact extends Model
-{
-    
+{  
 	public $table = 'contacts';
+	
     public $timestamps = false;
 
 	public $fillable = [
@@ -36,5 +36,4 @@ class Contact extends Model
 		'email'        => 'required',
 		'question'     => 'required'
 	];
-
 }

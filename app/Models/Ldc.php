@@ -3,11 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Ldc extends Model
-{
-    
+{ 
 	public $table = 'ldcs';
     
-
 	public $fillable = [
 	    'ldc',
         'customer_identifier',
@@ -22,10 +20,10 @@ class Ldc extends Model
      * @var array
      */
     protected $casts = [
-        'ldc' => 'string',
+        'ldc'                 => 'string',
         'customer_identifier' => 'string',
-        'format_criteria_1' => 'string',
-        'format_criteria_2' => 'string',
+        'format_criteria_1'   => 'string',
+        'format_criteria_2'   => 'string',
         'hint'
     ];
 
@@ -40,5 +38,4 @@ class Ldc extends Model
     public function brokers(){
         return $this->belongsToMany('App\Models\Broker');
     }
-
 }

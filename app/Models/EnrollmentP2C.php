@@ -3,9 +3,9 @@
 use Illuminate\Database\Eloquent\Model as Model;
 
 class EnrollmentP2C extends Model
-{
-    
+{  
 	public $table = 'enrollments_p2c';
+    
     public $timestamps = false;
 
 	public $fillable = [
@@ -87,14 +87,4 @@ class EnrollmentP2C extends Model
 		'Requested_Start_Date'    => 'string',
 		'Plan_Desc'				  => 'string'
 	];
-
-/*
-	public function plan(){
-		return $this->belongsTo('App\Models\Plan');
-	}
-
-	public function customer(){
-		return $this->belongsTo('App\Models\Customer');
-	}
-*/
 }
