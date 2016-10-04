@@ -70,9 +70,11 @@ Route::get('/about-us', function(){
 /* <----------------------- Broker Routes ------------------------------->  */
 Route::resource('brokers', 'BrokerController');
 
-Route::get('broker/admin', 'BrokerController@adminHome');
+Route::get('broker/admin', 'BrokerController@enrollments');
 
 Route::get('broker/plans/{broker}', 'BrokerController@plans');
+
+Route::get('broker/subagents/{broker}', 'BrokerController@subAgents');
 
 
 // standard broker route

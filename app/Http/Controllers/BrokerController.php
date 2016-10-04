@@ -35,7 +35,7 @@ class BrokerController extends Controller
 	/**
 	 * Return enrollments for authenticated broker.
 	 */
-	public function adminHome(){
+	public function enrollments(){
 		$user = \Auth::user()->name;
 		$brokerPlans = \App\Models\Plan::where('promo', $user)->get();
 		$brokers = \App\Models\Broker::all();
@@ -56,6 +56,16 @@ class BrokerController extends Controller
 		
 		return view('brokers.admin.broker-plans.index')
 				->with('plans', $plans);
+	}
+
+	/**
+	 * Return subagents for authenticated broker.
+	 */
+	public function subAgents($broker){
+		$broker = \App\Models\Broker::where('name', $broker)->first();
+		$subAgents = \App\Models\SubAgent::where('broker_id', $broker->id)->paginate(15);
+		return view('brokers.admin.broker-subagents.index')
+				->with('subagents', $subAgents);
 	}
 
 	/**

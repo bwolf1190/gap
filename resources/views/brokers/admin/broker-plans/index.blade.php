@@ -2,10 +2,9 @@
 
 @section('content')
 
-
 @include('brokers.admin.broker-actions')
 
-    <div id="plans-container" class="container">
+    <div class="container">
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Plans</h1>
