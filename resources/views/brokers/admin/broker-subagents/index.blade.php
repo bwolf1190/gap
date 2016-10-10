@@ -8,7 +8,6 @@
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Subagents</h1>
-            
         </div>
         <div class="row">
             @if(empty($subagents))

@@ -12,6 +12,10 @@
             <td>{!! $s->name !!}</td>
 			<td>{!! $s->email !!}</td>
 			<td>{!! $s->broker->name !!}</td>
+            <td>
+                <a href="{!! route('subagents.edit', [$s->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="{!! route('subagents.delete', [$s->id]) !!}" onclick="return confirm('Are you sure wants to delete this subagent?')"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
         </tr>
     @endforeach
     </tbody>

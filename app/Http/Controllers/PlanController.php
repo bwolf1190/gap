@@ -22,6 +22,10 @@ class PlanController extends Controller
         $this->middleware('auth', ['except' => ['searchPlans', 'internalPlans', 'truncate', 'updatePlans']]);
     }
 
+	/**
+	 * Return plans for type, service, ldc, and the optional promo.
+	 * If no plans exist, then redirect to modal with message.
+	 */
 	public function searchPlans($type, $service, $ldc, $promo = null){
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
@@ -46,6 +50,7 @@ class PlanController extends Controller
 		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
 	}
 
+	
 	public function internalPlans($service, $ldc){
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together

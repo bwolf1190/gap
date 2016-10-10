@@ -135,7 +135,7 @@
 		@if($promo !== null)
 			<div class="form-group ">
 				{!! Form::label('agent_code', 'Agent Code') !!}
-				{!! Form::text('agent_code', '', ['class' => 'form-control']) !!}
+				{!! Form::text('agent_code', $promo, ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group ">
 				{!! Form::label('sub_agent_code', 'Sub Agent Code') !!}

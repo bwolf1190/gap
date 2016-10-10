@@ -10,7 +10,8 @@ class Broker extends Model
 	    'name',
 		'promo',
 		'agent_code',
-		'sub_agent_code'
+		'sub_agent_code',
+		'commission_type'
 	];
 
     /**
@@ -19,10 +20,11 @@ class Broker extends Model
      * @var array
      */
     protected $casts = [
-        'name'     		 => 'string',
-		'promo'    		 => 'string',
-		'agent_code'     => 'string',
-		'sub_agent_code' => 'string'
+        'name'     		  => 'string',
+		'promo'    		  => 'string',
+		'agent_code'      => 'string',
+		'sub_agent_code'  => 'string',
+		'commission_type' => 'string'
     ];
 
 	public static $rules = [

@@ -14,7 +14,11 @@ class LdcController extends Controller
 		$this->middleware('auth', ['except' => ['search', 'internalSearch', 'brokerLdcs']]);
 	}
 
-	
+	/**
+	 * Search for LDC based on zip code.
+	 * If only 1 LDC is available for the zip code, return plans for that LDC.
+	 * Else return multiple LDCs for the user to choose from.
+	 */
 	public function search($s = null){
 		if(Input::get('type') === null){
 			$type = 'web';
@@ -59,31 +63,11 @@ class LdcController extends Controller
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 
-	/*public function internalSearch(){
-		$zip = Input::get('zip');
-		Session::put('zip', $zip);
-		$service = Input::get('service');
-
-		$zips = \App\Models\Zip::where('zip', $zip)->get();
-
-		foreach($zips as $z){
-			$ldc_id = $z->ldc_id;
-			$ldcs[] = \App\Models\Ldc::find((int)$ldc_id);
-		}
-
-		if(empty($ldcs)){
-			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
-		}
-
-		// if there is only 1 LDC for the zip code, then send them straight to the plans
-		$count = count($ldcs);
-		if($count === 1){
-			return redirect()->route('internalPlans', array('s' => $service, 'l' => $ldcs[0]->ldc));
-		}
-
-		return view('internal-enrollments.ldcs-findex')->with('service', $service)->with('ldcs', $ldcs);
-	}*/
-
+	/**
+	 * Search for LDC for broker based on zip code.
+	 * If only 1 LDC is available for the zip code, return plans for that LDC.
+	 * Else return multiple LDCs for the user to choose from.
+	 */
 	public function brokerLdcs(){
 		$zip = Input::get('zip');
 		$service = Input::get('service');

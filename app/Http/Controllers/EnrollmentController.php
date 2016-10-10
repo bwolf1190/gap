@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Input;
 use Response;
 use Session;
 use Flash;
+use DB;
 
 
 
@@ -23,6 +24,11 @@ class EnrollmentController extends Controller
 		if(is_null($type)){
 			$type = 'web';
 		}
+
+		/*DB::table('tracer')->insert([
+			['function_call' => 'start()', 'page' => 'enroll.blade.php', 'type' => 'Starting on enroll.blade.php', 'datetime' => date("Y-m-d H:i:s")]
+		]);*/
+
 		return view('enroll')->with('type', $type);
 	}
 
@@ -37,7 +43,7 @@ class EnrollmentController extends Controller
 	/**
 	 * Add enrollments for web/internal/broker/p2c
 	 */
-	public function addEnrollment($type, $id, $agent = null, $agent_code = null, $sub_agent_code = null){
+	public function addEnrollment($type, $id, $agent = '', $agent_code = '', $sub_agent_code = ''){
 		$customer = \App\Models\Customer::where('id',$id)->first();
 		$plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
 
@@ -62,10 +68,19 @@ class EnrollmentController extends Controller
 		$enrollment = \App\Models\Enrollment::create($input);
 
 		/* Handle P2C Enrollments */
+		$broker = \App\Models\Broker::where('promo', $agent_code)->first();
+		
+		if($agent_code !== ''){
+			$Commission_Plan = $broker->commission_type;
+		}
+		else{
+			$Commission_Plan = '';
+		}
+
 		$Customer_Name = $customer->fname . ' ' . $customer->lname;
 		$plan_length = '+' . $plan->length . ' months';
-		$Contract_End_Date = date('Y-m-d', strtotime($plan_length));
-		$start_date = date('Y-m-d');
+		$Contract_End_Date = date('Y/m/d', strtotime($plan_length));
+		$start_date = date('Y/m/d');
 
 		if($plan->type === 'Commercial'){
 			$Fed_Tax_Id_Num = $customer->Fed_Tax_Id_Num;
@@ -87,8 +102,8 @@ class EnrollmentController extends Controller
 					  'SLine1_Addr'          => $customer->sa1,
 					  'SLine2_Addr'          => $customer->sa2,
 					  'SCity_Name'           => $customer->scity,
-					  'SPostal_Code'         => $customer->szip . '0000',
-					  'Marketer_Name'        => 'Great American Power, LLC',
+					  'SPostal_Code'         => "$customer->szip" . "0000",
+					  'Marketer_Name'        => "Great American Power, LLC",
 					  'Distributor_Name'     => $plan->ldc,
 					  'Service_Type_Desc'    => 'Electric',
 					  'Bill_Method'          => '2',
@@ -99,6 +114,7 @@ class EnrollmentController extends Controller
 					  'Contract_Start_Date'  => '="' . $start_date . '"',
 					  'Contract_End_Date'    => '="' . $Contract_End_Date . '"',
 					  'Agent_Code'			 => $agent_code,
+					  'Commission_Plan'		 => $Commission_Plan,
 					  'MLine1_Addr'			 => $customer->ma1,
 					  'MLine2_Addr'			 => $customer->ma2,
 					  'MCity_Name'			 => $customer->mcity,
