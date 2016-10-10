@@ -183,3 +183,9 @@ Route::get('plans/{id}/delete', [
 
 /* <--------------------------------------------------------------------->  */
 
+Route::resource('subagents', 'SubAgentController');
+
+Route::get('subagents/{id}/delete', [
+    'as' => 'subagents.delete',
+    'uses' => 'SubAgentController@destroy',
+]);

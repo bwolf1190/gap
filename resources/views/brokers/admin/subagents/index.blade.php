@@ -13,7 +13,7 @@
             @if(empty($subagents))
                 <div class="well text-center">No Subagents found.</div>
             @else
-                @include('brokers.admin.broker-subagents.table')
+                @include('brokers.admin.subagents.table')
             @endif
         </div>
         @include('common.paginate', ['records' => $subagents])

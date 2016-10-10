@@ -64,7 +64,7 @@ class BrokerController extends Controller
 	public function subAgents($broker){
 		$broker = \App\Models\Broker::where('name', $broker)->first();
 		$subAgents = \App\Models\SubAgent::where('broker_id', $broker->id)->paginate(15);
-		return view('brokers.admin.broker-subagents.index')
+		return view('brokers.admin.subagents.index')
 				->with('subagents', $subAgents);
 	}
 

@@ -4,6 +4,7 @@
             <th>Name</th>
 			<th>Email</th>
 			<th>Broker</th>
+            <th>Action</th>
     </thead>
     <tbody>
     @foreach($subagents as $s)

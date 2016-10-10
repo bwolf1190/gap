@@ -23,7 +23,7 @@ class SubAgentController extends Controller
 	{
 		$subagents = \App\Models\SubAgent::paginate(10);
 
-		return view('subagents.index')
+		return view('brokers.admin.subagents.index')
 			->with('subagents', $subagents);
 	}
 
@@ -42,7 +42,7 @@ class SubAgentController extends Controller
 
 		Flash::success('Subagent saved successfully.');
 
-		return redirect('subagents');
+		return redirect('brokers.admin.subagents');
 	}
 
 	/**
@@ -63,7 +63,7 @@ class SubAgentController extends Controller
 			return redirect('subagents');
 		}
 
-		return view('subagents.show')->with('subagent', $subagent);
+		return view('brokers.admin.subagents.show')->with('subagent', $subagent);
 	}
 
 	/**
@@ -84,7 +84,7 @@ class SubAgentController extends Controller
 			return redirect('subagents');
 		}
 
-		return view('subagents.edit')->with('subagent', $subagent);
+		return view('brokers.admin.subagents.edit')->with('subagent', $subagent);
 	}
 
 	/**
@@ -98,6 +98,7 @@ class SubAgentController extends Controller
 	public function update($id, Request $request)
 	{
 		$subagent = \App\Models\SubAgent::find($id);
+		$broker = \App\Models\Broker::find($subagent->broker_id);
 
 		if(empty($subagent))
 		{
@@ -109,7 +110,7 @@ class SubAgentController extends Controller
 
 		Flash::success('Subagent updated successfully.');
 
-		return redirect('subagents');
+		return redirect('broker/subagents/' . $broker->promo);
 	}
 
 	/**
@@ -122,7 +123,8 @@ class SubAgentController extends Controller
 	public function destroy($id)
 	{
 		$subagent = \App\Models\SubAgent::find($id);
-
+		$broker = \App\Models\Broker::find($subagent->broker_id);
+		
 		if(empty($subagent))
 		{
 			Flash::error('Subagent not found');
@@ -134,6 +136,6 @@ class SubAgentController extends Controller
 
 		Flash::success('Subagent deleted successfully.');
 
-		return redirect('subagents');
+		return redirect('broker/subagents/' . $broker->promo);
 	}
 }
