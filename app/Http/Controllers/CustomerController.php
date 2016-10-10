@@ -18,7 +18,7 @@ class CustomerController extends Controller
 
 	function __construct()
 	{
-		$this->middleware('auth', ['except' => ['start', 'internalStart', 'store']]);
+		$this->middleware('admin', ['except' => ['start', 'internalStart', 'store']]);
 	}
 
 

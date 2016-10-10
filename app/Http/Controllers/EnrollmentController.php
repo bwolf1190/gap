@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Input;
 use Response;
 use Session;
 use Flash;
-use DB;
 
 
 
@@ -14,7 +13,7 @@ class EnrollmentController extends Controller
 
 	function __construct()
 	{
-		$this->middleware('auth', ['except' => ['start','startBroker', 'addEnrollment']]);
+		$this->middleware('admin', ['except' => ['start','startBroker', 'addEnrollment']]);
 	}
 
 	/**
@@ -24,10 +23,6 @@ class EnrollmentController extends Controller
 		if(is_null($type)){
 			$type = 'web';
 		}
-
-		/*DB::table('tracer')->insert([
-			['function_call' => 'start()', 'page' => 'enroll.blade.php', 'type' => 'Starting on enroll.blade.php', 'datetime' => date("Y-m-d H:i:s")]
-		]);*/
 
 		return view('enroll')->with('type', $type);
 	}

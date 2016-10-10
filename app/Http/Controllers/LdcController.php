@@ -11,7 +11,7 @@ class LdcController extends Controller
 
 	function __construct()
 	{
-		$this->middleware('auth', ['except' => ['search', 'internalSearch', 'brokerLdcs']]);
+		$this->middleware('admin', ['except' => ['search', 'internalSearch', 'brokerLdcs']]);
 	}
 
 	/**

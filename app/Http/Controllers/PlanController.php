@@ -19,7 +19,7 @@ class PlanController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['searchPlans', 'internalPlans', 'truncate', 'updatePlans']]);
+        $this->middleware('admin', ['except' => ['searchPlans', 'internalPlans', 'truncate', 'updatePlans']]);
     }
 
 	/**

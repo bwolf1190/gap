@@ -17,7 +17,7 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['create', 'store']]);
+        $this->middleware('admin', ['except' => ['create', 'store']]);
     }
 
 

@@ -17,7 +17,7 @@ class FaqController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['view']]);
+        $this->middleware('admin', ['except' => ['view']]);
     }
 
     public function view(){
