@@ -9,6 +9,8 @@ class EnrollmentP2C extends Model
     public $timestamps = false;
 
 	public $fillable = [
+	    'status',
+	    'customer_id',
 	    'Revenue_Class_Desc',
 		'First_Name',
 		'Last_Name',
@@ -51,6 +53,8 @@ class EnrollmentP2C extends Model
      * @var array
      */
     protected $casts = [
+    	'status'				  => 'string',
+    	'customer_id'			  => 'integer',
 	    'Revenue_Class_Desc'      => 'string',
 		'First_Name'              => 'string',
 		'Last_Name'               => 'string',

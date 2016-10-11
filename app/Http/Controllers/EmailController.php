@@ -46,6 +46,7 @@ class EmailController extends Controller
      */
     public function confirmEmail($customer, $confirmation_code){
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer)->first();
+        $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
         $customer = \App\Models\Customer::where('id', $customer)->first();
 
         // if the enrollment is null, then it must be an InternalEnrollment
@@ -59,6 +60,7 @@ class EmailController extends Controller
         }
         else if($confirmation_code === $enrollment->confirmation_code){
               $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
+              $enrollment_p2c->update(['status' => 'CONFIRMED']);
             
               return view('emails.confirmation')
                 ->with('customer', $customer)->with('confirmation_code', $confirmation_code);

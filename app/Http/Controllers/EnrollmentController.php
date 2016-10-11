@@ -85,7 +85,9 @@ class EnrollmentController extends Controller
 			$Fed_Tax_Id_Num = '';
 		}
 
-		$p2c_input = ['Revenue_Class_Desc'   => $plan->type,
+		$p2c_input = ['status'				 => 'PENDING',
+					  'customer_id'			 => $customer->id,
+					  'Revenue_Class_Desc'   => $plan->type,
 					  'First_Name'           => $customer->fname,
 					  'Last_Name'            => $customer->lname,
 					  'Customer_Name'        => $Customer_Name,
@@ -104,10 +106,13 @@ class EnrollmentController extends Controller
 					  'Bill_Method'          => '2',
 					  'LDC_Account_Num'      => $customer->acc_num,
 					  'Enroll_Type_Desc'     => 'External',
-					  'Requested_Start_Date' => '="' . $start_date . '"',
+					  'Requested_Start_Date' => $start_date,
+					  //'Requested_Start_Date' => '="' . $start_date . '"',
 					  'Plan_Desc'            => $plan->code,
-					  'Contract_Start_Date'  => '="' . $start_date . '"',
-					  'Contract_End_Date'    => '="' . $Contract_End_Date . '"',
+					  'Contract_Start_Date'  => $start_date,
+					  //'Contract_Start_Date'  => '="' . $start_date . '"',
+					  'Contract_End_Date'    => $Contract_End_Date,
+					  //'Contract_End_Date'    => '="' . $Contract_End_Date . '"',
 					  'Agent_Code'			 => $agent_code,
 					  'Commission_Plan'		 => $Commission_Plan,
 					  'MLine1_Addr'			 => $customer->ma1,

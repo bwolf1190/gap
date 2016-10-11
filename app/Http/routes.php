@@ -1,5 +1,14 @@
 <?php
 
+
+
+
+
+Route::get('/tab', 'WelcomeController@write_tabbed_file');
+Route::get('/time', 'WelcomeController@time');
+
+
+
 Route::get('/welcome-email', function(){
     return view('emails.welcome');
 });
