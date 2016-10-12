@@ -91,23 +91,23 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('ma1', 'Mailing Address Line 1') !!}
-			{!! Form::text('ma1', '', ['class' => 'form-control']) !!}
+			{!! Form::text('ma1', '14009 Juniper Street', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('ma2', 'Mailing Address Line 2') !!}
-			{!! Form::text('ma2', '', ['class' => 'form-control']) !!}
+			{!! Form::text('ma2', 'Apartment 1', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mcity', 'Mailing City') !!}
-			{!! Form::text('mcity', '', ['class' => 'form-control']) !!}
+			{!! Form::text('mcity', 'Kansas City', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mstate', 'Mailing State') !!}
-			{!! Form::text('mstate', '', ['class' => 'form-control']) !!}
+			{!! Form::text('mstate', $state, ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mzip', 'Mailing Zip') !!}
-			{!! Form::text('mzip', '', ['class' => 'form-control']) !!}
+			{!! Form::text('mzip', $zip, ['class' => 'form-control']) !!}
 		</div>
 		<div id='enroll_btns' class="form-group">
 			<button id='previous3' name="previous3" type="button" class="previous btn btn-default glyphicon glyphicon-arrow-left col-xs-3 col-xs-offset-2 fade-in-slow"></button>

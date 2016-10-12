@@ -175,7 +175,18 @@ input[type=number]::-webkit-outer-spin-button {
 
 #pages-sm-screen{
 	display:none;
-	max-width: 400px;
+	max-width: 200px;
+}
+
+#contact-sidebar{
+	display:none;
+	width:300px;
+	background-color: white;
+	border:none;
+}
+
+#contact-sidebar .panel-body{
+	padding-left:70px;
 }
 
 #middle-section a > i{
@@ -364,6 +375,15 @@ td > #send{
 
 @media screen and (max-width:600px){
 	#wwd{display:none;}
+}
+
+@media screen and (max-width:768px){
+	/*#pages-sm-screen{display:block;}*/
+	#contact-sidebar{display:block;}
+}
+
+@media screen and (max-width: 617px){
+	#contact-sidebar{display:none;}
 }
 
 @media screen and (max-width: 776px) {

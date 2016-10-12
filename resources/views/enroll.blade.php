@@ -3,7 +3,7 @@
 @section('title', 'Enroll')
 
 @section('navbar-brand')
-    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
 @endsection
 
 

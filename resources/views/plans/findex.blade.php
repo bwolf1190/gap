@@ -8,7 +8,7 @@
     {!! Html::script('js/enroll.js') !!}   
    
     @if($promo === null)
-        <a id="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+        <a id="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
     @else
         <a id="nav-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
     @endif

@@ -59,7 +59,7 @@ class CommandController extends Controller
             fputs($file, $e->MPostal_Code         . "\t");
             fputs($file, $e->MState               . "\t");
             fputs($file, $e->Master_Code          . "\t");
-            fputs($file, "\r\n");
+            //fputs($file, "\r\n");
         }
 
         fclose($file);

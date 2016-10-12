@@ -5,7 +5,7 @@
 {!! Html::style('css/contact-sidebar.css') !!}
 @endsection
 @section('navbar-brand')
-<a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+<a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
 @endsection
 @section('content')
 <div id="contact-container" class="container animate fadeInLeft">

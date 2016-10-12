@@ -5,7 +5,7 @@
     {!! Html::style('css/social-sidebar.css') !!}
 @endsection
 @section('navbar-brand')
-    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png', 'great-american-power-freedom-choice-power') !!}</a>
+    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg', 'great-american-power-freedom-choice-power') !!}</a>
 @endsection
 @section('content')
     <div class="row">
@@ -61,11 +61,12 @@
             </div>
             <div class="row margin-vert-30 animate fadeInUp">
                 <!-- Main Text -->
-                <div id="sign-up-container-sm" class="col-md-4 col-sm-5 animate fadeInUp">
+                
+                <div id="sign-up-container-sm" class="col-sm-5 col-xs-6 animate fadeInUp">
                         <h2 id="sign-up-header" style="">Find Your Rate</h2>
                         {!! Form::open(['action' => 'LdcController@search']) !!}
                         {!! csrf_field() !!}
-                        <div id="sign-up-form" class="">
+                        <div id="" class="">
                             <div id="zip" class="form-group">
                                 {!! Form::text('zip', 'Zip Code', ['class' => 'form-control']) !!}
                             </div>
@@ -78,7 +79,52 @@
                         </div>
                         {!! Form::close() !!}
                 </div>
-                <div id="wwd" class="col-md-8 col-sm-7">
+
+                <!-- Side Column -->
+                <!--<div id="pages-sm-screen" class="col-sm-5 col-xs-5 pull-right animate fadeInUp">
+                    <h2 id="pages-sm-header">Pages</h2>
+                    <ul class="menu">
+                        <li>
+                            <a class="fa-angle-right" href="/enroll-sign-up-energy-electricity" >Enroll</a>
+                        </li>
+                        <li>
+                            <a class="fa-angle-right" href="/about-us" >About</a>
+                        </li>
+                        <li>
+                            <a class="fa-angle-right" href="/faq-frequently-asked-questions-energy-electricity" >FAQ</a>
+                        </li>
+                        <li>
+                            <a class="fa-angle-right" href="/contact-us-customer-service" >Contact</a>
+                        </li>
+                    </ul>
+                </div>-->
+                <div id="contact-sidebar" class="panel panel-default animate pull-right fadeInRight">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Contact Info</h2>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled contact">
+                            <li><i class="fa-phone color-primary"></i>1-877-215-4140</li>
+                            <li id="email" ><i class="fa fa-envelope"></i>
+                                <a href="mailto:service@greatamericanpower.com">Email Us</a></li>
+                            <li id="clock"><i class="fa fa-clock-o" aria-hidden="true"></i><strong class="color-primary">M-F:</strong> 8am to 5pm</li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li class="social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </li>          
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+
+                <div id="wwd" class="col-md-8 col-sm-7 col-xs-12">
                     <h2>What We Do</h2>
                     <p><article>Great American Power is an Electric Supply company focusing on the US states with deregulation. We believe in hiring the right people for the job which in turn means our clients get the best possible services and products. We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</article></p>
                     <p><article>Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</article></p>

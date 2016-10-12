@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Input;
 use Response;
 use Session;
 use Flash;
+use DB;
 
 
 
@@ -85,6 +86,12 @@ class EnrollmentController extends Controller
 			$Fed_Tax_Id_Num = '';
 		}
 
+		// FOR P2C WEBSITE LAUNCH ONLY
+			$ldc_id = \App\Models\Ldc::where('ldc', $plan->ldc)->first()->id;
+			$dist_array = DB::select('select name from p2c_ldcs where ldc_id=' . $ldc_id);
+			$dist_name = $dist_array[0]->name;
+		// END
+
 		$p2c_input = ['status'				 => 'PENDING',
 					  'customer_id'			 => $customer->id,
 					  'Revenue_Class_Desc'   => $plan->type,
@@ -100,8 +107,9 @@ class EnrollmentController extends Controller
 					  'SLine2_Addr'          => $customer->sa2,
 					  'SCity_Name'           => $customer->scity,
 					  'SPostal_Code'         => "$customer->szip" . "0000",
-					  'Marketer_Name'        => "Great American Power, LLC",
-					  'Distributor_Name'     => $plan->ldc,
+					  'Marketer_Name'        => '"Great American Power, LLC"',
+					  'Distributor_Name'     => $dist_name,
+					  //'Distributor_Name'     => $plan->ldc,
 					  'Service_Type_Desc'    => 'Electric',
 					  'Bill_Method'          => '2',
 					  'LDC_Account_Num'      => $customer->acc_num,
