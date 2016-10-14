@@ -49,6 +49,22 @@ class BrokerController extends Controller
 	}
 
 	/**
+	 * Export enrollments to xls file for given broker
+	 * Redirect to plans table
+	 */
+	public function exportEnrollments($broker){
+		$enrollments = \App\Models\Enrollment::where('agent_code', $broker)->get()->toArray();
+		\Excel::create('enrollments', function($excel) use($enrollments){
+			$excel->sheet('Sheet 1', function($sheet) use($enrollments){
+				$sheet->fromArray($enrollments);
+			});
+		})->export('xls');
+
+		$this->enrollments();
+	}
+
+
+	/**
 	 * Return plans for authenticated broker.
 	 */
 	public function plans($broker){
@@ -59,6 +75,22 @@ class BrokerController extends Controller
 	}
 
 	/**
+	 * Export plans to xls file for given broker
+	 * Redirect to plans table
+	 */
+	public function exportPlans($broker){
+		$plans = \App\Models\Plan::where('promo', $broker)->get()->toArray();
+		\Excel::create('plans', function($excel) use($plans){
+			$excel->sheet('Sheet 1', function($sheet) use($plans){
+				$sheet->fromArray($plans);
+			});
+		})->export('xls');
+
+		$this->plans($broker);
+	}
+
+
+	/**
 	 * Return subagents for authenticated broker.
 	 */
 	public function subAgents($broker){
@@ -67,6 +99,24 @@ class BrokerController extends Controller
 		return view('brokers.admin.subagents.index')
 				->with('subagents', $subAgents);
 	}
+
+	/**
+	 * Export subagents to xls file for given broker
+	 * Redirect to subagents table
+	 */
+	public function exportSubAgents($broker){
+		$broker = \App\Models\Broker::where('name', $broker)->first();
+		$subagents = \App\Models\SubAgent::where('broker_id', $broker->id)->get()->toArray();
+		\Excel::create('subagents', function($excel) use($subagents){
+			$excel->sheet('Sheet 1', function($sheet) use($subagents){
+				$sheet->fromArray($subagents);
+			});
+		})->export('xls');
+
+		$this->subAgents($broker->name);
+	}
+
+
 
 	/**
 	 * Show the form for creating a new broker.

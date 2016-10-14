@@ -8,7 +8,7 @@
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Plans</h1>
-            
+            <li class="export"><span class="glyphicon glyphicon-download-alt pull-right">{!! Html::linkAction('BrokerController@exportPlans', 'Export', array('broker' => Auth::user()->name)) !!}</span></li>
         </div>
         <div class="row">
             @if(empty($plans))

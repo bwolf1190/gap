@@ -76,6 +76,14 @@ Route::get('broker/plans/{broker}', 'BrokerController@plans');
 
 Route::get('broker/subagents/{broker}', 'BrokerController@subAgents');
 
+Route::get('broker/admin/enrollments/export/{broker}', 'BrokerController@exportEnrollments');
+
+Route::get('broker/admin/plans/export/{broker}', 'BrokerController@exportPlans');
+
+Route::get('broker/admin/subagents/export/{broker}', 'BrokerController@exportSubagents');
+
+
+
 
 // standard broker route
 Route::get('/broker/{promo}', 'EnrollmentController@startBroker');
