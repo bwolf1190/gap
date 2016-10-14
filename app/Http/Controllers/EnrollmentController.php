@@ -75,8 +75,8 @@ class EnrollmentController extends Controller
 
 		$Customer_Name = $customer->fname . ' ' . $customer->lname;
 		$plan_length = '+' . $plan->length . ' months';
-		$Contract_End_Date = date('Y/m/d', strtotime($plan_length));
-		$start_date = date('Y/m/d');
+		$Contract_End_Date = date('Y-m-d', strtotime($plan_length));
+		$start_date = date('Y-m-d');
 
 		if($plan->type === 'Commercial'){
 			$Fed_Tax_Id_Num = $customer->Fed_Tax_Id_Num;

@@ -1,5 +1,6 @@
 body{
 	font-family: 'Noto Serif', serif;
+	/*font-family: 'Open Sans', sans-serif !important;*/
 }
 
 h2, h3{
@@ -23,7 +24,7 @@ h2, h3{
 
 #hornav{
 	position: relative;
-	top:-15px;
+	/*top:-15px;*/
 }
 
 #hornav > ul > li > a{
@@ -123,12 +124,20 @@ ul.menu a.fa-angle-right:hover::before{
 @media screen and (max-width: 520px){
 	#nav-brand img{width:350px;}
 }
-
+/*
 @media screen and (max-width: 1320px){
-	#header{top:40px;}
+	#header{top:20px;}
 
 }
 
 @media screen and (min-width: 1321px){
 	#header{top:20px;}
+}
+*/
+@media screen and (max-width: 1200px){
+	#header{top:40px;}
+}
+
+@media screen and (max-width: 535px){
+	#sign-up-header{font-size:25px;}
 }

@@ -11,7 +11,8 @@ class Broker extends Model
 		'promo',
 		'agent_code',
 		'sub_agent_code',
-		'commission_type'
+		'commission_type',
+		'email'
 	];
 
     /**
@@ -24,7 +25,8 @@ class Broker extends Model
 		'promo'    		  => 'string',
 		'agent_code'      => 'string',
 		'sub_agent_code'  => 'string',
-		'commission_type' => 'string'
+		'commission_type' => 'string',
+		'email'			  => 'string'
     ];
 
 	public static $rules = [

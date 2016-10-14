@@ -21,8 +21,8 @@ nav{
 
 #nav-brand img{
 	position: relative;
-	top:-25px;
-	max-height: 90px;
+	max-height: 85px;
+
 }
 
 #nav-links{
@@ -394,11 +394,25 @@ nav{
 	}
 }
 
-@media screen and (max-width: 1200px){
-	#nav-brand img{width:400px; top:0;}
-}
+
 
 @media screen and (min-width: 1320px){
 	#nav-brand img{top:-5px;}
 }
+/*
+@media screen and (max-width: 450px){
+	#nav-brand{top:-5px;}
+}
+*/
 
+@media screen and (min-width: 1201px){
+	#nav-brand img{top:0px;}
+}
+
+@media screen and (max-width: 1200px){
+	#nav-brand img{top:0px;}
+}
+
+@media screen and (max-width: 450px){
+	#nav-brand img{top:-5px;}
+}

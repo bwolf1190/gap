@@ -71,7 +71,7 @@
                                 {!! Form::text('zip', 'Zip Code', ['class' => 'form-control']) !!}
                             </div>
                             <div class="row">
-                                <div class="form-group" style="margin-left:20px;">
+                                <div id="sign-up-btns" class="form-group" style="margin-left:20px;">
                                     <input id="next" type="submit" name="Residential" value="Residential">
                                     <input id="next" type="submit" name="Commercial" value="Commercial">
                                 </div>

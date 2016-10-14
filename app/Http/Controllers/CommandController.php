@@ -21,7 +21,7 @@ class CommandController extends Controller
         $enrollments = \App\Models\EnrollmentP2C::all();
         $filepath = storage_path('p2c/' . $now->toDateString() . '_' . $now->hour . '-' . $now->minute . '.txt');
         $file = fopen($filepath, "a");
-
+      
         foreach($headers as $h){
             fputs($file, $h . "\t");
         }

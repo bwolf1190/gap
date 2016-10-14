@@ -96,9 +96,15 @@
 	color:#00234C;
 }
 
+#sign-up-header{
+	white-space: nowrap;
+	overflow: hidden;
+	width:300px;
+}
+
 #zip input{
 	border:1px solid #00234C;
-	max-width: 300px;
+	width:275px;
 }
 
 /* Removes arrows from zip number input */
@@ -112,6 +118,10 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 /* End */
+
+#sign-up-btns{
+	display:inline-block;
+}
 
 #get-rates-btns input{
 	width:100px;
@@ -180,13 +190,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 #contact-sidebar{
 	display:none;
-	width:300px;
+	width:200px;
 	background-color: white;
 	border:none;
+	margin-right:10px;
 }
 
 #contact-sidebar .panel-body{
-	padding-left:70px;
+	padding-left:30px;
 }
 
 #middle-section a > i{
@@ -276,10 +287,11 @@ input[type=number]::-webkit-outer-spin-button {
 	position: relative;
 	top:-50px;
 }
-
+/*
 .social{
 	margin-top: 50px !important;
 }
+*/
 
 #faq{
 	text-align:left;
@@ -373,6 +385,13 @@ td > #send{
 	font-size: 32px;
 }
 
+@media screen and (max-width: 590px){
+	#sign-up-container-sm #next{
+		width:150px;
+	}
+
+}
+
 @media screen and (max-width:600px){
 	#wwd{display:none;}
 }
@@ -405,5 +424,6 @@ td > #send{
 @media screen and (max-width:992px){
 	#sign-up-container{top:-50px;}
 }
+
 
 

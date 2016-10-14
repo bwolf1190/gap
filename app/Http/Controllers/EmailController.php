@@ -11,8 +11,7 @@ use DB;
 
 
 class EmailController extends Controller
-{
-    
+{  
     /**
      * Send the welcome email with the confirmation link
      * Execute SOAP call to send enrollment to OPSOLVE
@@ -21,6 +20,12 @@ class EmailController extends Controller
         $customer = \App\Models\Customer::where('id',$customer)->first();
         $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();
+
+        // for sending confirmation email to brokers
+        $broker = $enrollment->agent_code;
+        if($broker !== ''){
+            $this->sendBrokerConfirmation($customer, $plan, $enrollment);
+        }
 
         // if the enrollment is null, then it must be an InternalEnrollment
         if(is_null($enrollment)){
@@ -69,6 +74,18 @@ class EmailController extends Controller
           return view('welcome');
         }
 
+    }
+
+    /**
+     * Sends a confirmation email to the address stored for the given Broker
+     */
+    public function sendBrokerConfirmation($customer, $plan, $enrollment){
+        $broker = \App\Models\Broker::where('name', $enrollment->agent_code)->first();
+        Mail::queue('emails.broker-confirmation', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
+                $m->from('Enrollment@greatamericanpower.com', 'GAP');
+                $m->to($broker->email);
+                $m->subject("Broker Enrollment Received");
+        });
     }
 
     /**
