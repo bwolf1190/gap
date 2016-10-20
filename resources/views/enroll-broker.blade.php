@@ -1,4 +1,9 @@
 @extends('master')
+
+@section('page-style')
+	{!! Html::style('css/enroll.css') !!}
+@endsection
+
 @section('navbar-brand')
 @if($promo === null)
 <a id="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
