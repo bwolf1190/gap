@@ -60,10 +60,10 @@
                     <div id="hornav" class="pull-right visible-lg">
                         <ul class="nav navbar-nav">
                             <li><a href="/">HOME</a></li>
-                            <li><a href="enroll-sign-up-energy-electricity">ENROLL</a></li>
+                            <li><a href="/enroll-sign-up-energy-electricity">ENROLL</a></li>
                             <!--<li><a href="/about-us">ABOUT</a></li>-->
-                            <li><a href="faq-frequently-asked-questions-energy-electricity">FAQ</a></li>
-                            <li><a href="contact-us-customer-service">CONTACT</a></li>
+                            <li><a href="/faq-frequently-asked-questions-energy-electricity">FAQ</a></li>
+                            <li><a href="/contact-us-customer-service">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>

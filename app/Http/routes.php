@@ -8,6 +8,8 @@ Route::get('/', array('as' => 'home', 'uses' => 'WelcomeController@index'));
 
 Route::get('/enroll-sign-up-energy-electricity/{type?}', 'EnrollmentController@start');
 
+Route::get('/i/{type}', array('as' => 'internal-start', 'uses' => 'EnrollmentController@start'));
+
 Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
 
 Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
@@ -50,8 +52,6 @@ Route::get('/broker-enrollments/{broker}/{sort?}', 'AdminController@showBrokerEn
 Route::get('/internalEnrollments', 'AdminController@internalEnrollments');
 
 Route::auth();
-
-Route::get('/i/{type}', array('as' => 'internal-start', 'uses' => 'EnrollmentController@start'));
 
 Route::get('/phpinfo', function(){
     return view('phpinfo');

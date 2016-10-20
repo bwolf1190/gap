@@ -7,6 +7,12 @@
 	margin-bottom: 20px;
 }
 
+/* Fixes width and display set for contact panel on home page for small screens */
+#contact-sidebar{
+	display:block;
+	width:auto;
+}
+
 #contact-form{
 	margin-top: 0px; 
 	margin-bottom: 100px; 

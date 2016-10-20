@@ -2,6 +2,12 @@
 	padding-top:250px;
 }
 
+/* Fixes width and display set for contact panel on home page for small screens */
+#contact-sidebar{
+	display:block;
+	width:auto;
+}
+
 h4.panel-title{
 	background-color:white;
 }
