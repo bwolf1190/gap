@@ -2,19 +2,17 @@
 
 @section('title', 'Enroll')
 
+@section('page-style')
+	{!! Html::style('css/enroll.css') !!}
+@endsection
+
 @section('navbar-brand')
     <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
 @endsection
 
-
-
-
-
 @section('content')
 
-
 <div id='enroll_container' class="container">
-
 
     {!! Form::open(['action' => 'LdcController@search']) !!}
 
@@ -32,6 +30,9 @@
 	    {!! Form::label('service', 'Commercial') !!}
 		{!! Form::radio('service','Commmercial') !!}
 	</div>
+
+	{!! Form::hidden('type', $type) !!}
+
 	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 		{!! Form::submit('NEXT', ['class' => 'btn btn-default', 'id' => 'next']) !!}
 	</div>
@@ -40,8 +41,8 @@
     
 </div>
 
+@endsection
 
-{!! Html::style('css/enroll.css') !!}
-{!! Html::script('js/enroll.js') !!}
-
+@section('bottom-scripts')
+	{!! Html::script('js/enroll.js') !!}
 @endsection

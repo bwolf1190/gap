@@ -66,7 +66,7 @@ class EnrollmentController extends Controller
 		/* Handle P2C Enrollments */
 		$broker = \App\Models\Broker::where('promo', $agent_code)->first();
 		
-		if($agent_code !== ''){
+		if($agent_code !== '' && $type !== 'internal'){
 			$Commission_Plan = $broker->commission_type;
 		}
 		else{

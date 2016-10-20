@@ -163,7 +163,6 @@
 			</div>
 		</div>
 
-		
 		<style>
 			.fileUpload {
 			    position: relative;
@@ -181,6 +180,7 @@
 			    filter: alpha(opacity=0);
 			}
 		</style>
+
 		@if($promo !== null)
 			<div id="upload-container" class="form-group">
 				<div class="fileUpload btn btn-primary">

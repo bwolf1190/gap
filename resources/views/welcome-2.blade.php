@@ -48,20 +48,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Carousel Controls -->
-                    <!-- <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>-->
-                    <!-- End Carousel Controls -->
                 </div>
                 <!-- End Carousel Slideshow -->
             </div>
             <div class="row margin-vert-30 animate fadeInUp">
-                <!-- Main Text -->
-                
+                <!-- Main Text -->  
                 <div id="sign-up-container-sm" class="col-sm-5 col-xs-6 animate fadeInUp">
                         <h2 id="sign-up-header" style="">Find Your Rate</h2>
                         {!! Form::open(['action' => 'LdcController@search']) !!}
@@ -79,25 +70,6 @@
                         </div>
                         {!! Form::close() !!}
                 </div>
-
-                <!-- Side Column -->
-                <!--<div id="pages-sm-screen" class="col-sm-5 col-xs-5 pull-right animate fadeInUp">
-                    <h2 id="pages-sm-header">Pages</h2>
-                    <ul class="menu">
-                        <li>
-                            <a class="fa-angle-right" href="/enroll-sign-up-energy-electricity" >Enroll</a>
-                        </li>
-                        <li>
-                            <a class="fa-angle-right" href="/about-us" >About</a>
-                        </li>
-                        <li>
-                            <a class="fa-angle-right" href="/faq-frequently-asked-questions-energy-electricity" >FAQ</a>
-                        </li>
-                        <li>
-                            <a class="fa-angle-right" href="/contact-us-customer-service" >Contact</a>
-                        </li>
-                    </ul>
-                </div>-->
                 <div id="contact-sidebar" class="panel panel-default animate pull-right fadeInRight">
                     <div class="panel-heading">
                         <h2 class="panel-title">Contact Info</h2>
@@ -119,11 +91,6 @@
                         </ul>
                     </div>
                 </div>
-
-
-
-
-
                 <div id="wwd" class="col-md-8 col-sm-7 col-xs-12">
                     <h2>What We Do</h2>
                     <p><article>Great American Power is an Electric Supply company focusing on the US states with deregulation. We believe in hiring the right people for the job which in turn means our clients get the best possible services and products. We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</article></p>

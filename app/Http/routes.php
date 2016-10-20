@@ -51,7 +51,7 @@ Route::get('/internalEnrollments', 'AdminController@internalEnrollments');
 
 Route::auth();
 
-Route::get('/internal', array('as' => 'internal-start', 'EnrollmentController@start'));
+Route::get('/i/{type}', array('as' => 'internal-start', 'uses' => 'EnrollmentController@start'));
 
 Route::get('/phpinfo', function(){
     return view('phpinfo');

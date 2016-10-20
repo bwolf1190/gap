@@ -48,7 +48,7 @@ class CustomerController extends Controller
 									  ->with('type', $type);
 	}
 
-	public function internalStart($id){
+	public function internalStart($type, $id){
 		$plan = \App\Models\Plan::where('id',(int)$id)->first();
 		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
 		$zip = Session::get('zip');	
@@ -61,7 +61,7 @@ class CustomerController extends Controller
 			$state = 'MD';
 		}
 
-		return view('internal-enrollments.start')->with('ldc', $ldc)->with('plan', $plan)->with('zip', $zip)->with('state', $state);
+		return view('internal-enrollments.start')->with('type', $type)->with('ldc', $ldc)->with('plan', $plan)->with('zip', $zip)->with('state', $state);
 	}
 
 	/**
