@@ -12,7 +12,7 @@ class Contact extends Model
 	    'name',
 		'phone',
 		'email',
-		'question',
+		'inquiry',
 		'notes',
 		'status'
 	];
@@ -26,7 +26,7 @@ class Contact extends Model
         'name'         => 'string',
 		'phone'        => 'string',
 		'email'        => 'string',
-		'question'     => 'string',
+		'inquiry'      => 'string',
 		'notes'        => 'string',
 		'status'       => 'string'
     ];
@@ -34,6 +34,6 @@ class Contact extends Model
 	public static $rules = [
 	    'name'         => 'required',
 		'email'        => 'required',
-		'question'     => 'required'
+		'inquiry'      => 'required'
 	];
 }

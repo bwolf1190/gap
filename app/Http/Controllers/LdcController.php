@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Response;
 use Session;
 use Flash;
+
 
 class LdcController extends Controller
 {
@@ -104,11 +105,8 @@ class LdcController extends Controller
 	}
 
 
-
 	/**
 	 * Display a listing of the Ldc.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -118,22 +116,18 @@ class LdcController extends Controller
 			->with('ldcs', $ldcs);
 	}
 
+	
 	/**
 	 * Show the form for creating a new Ldc.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
 		return view('ldcs.create');
 	}
 
+	
 	/**
 	 * Store a newly created Ldc in storage.
-	 *
-	 * @param CreateLdcRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -146,12 +140,9 @@ class LdcController extends Controller
 		return redirect('ldcs');
 	}
 
+	
 	/**
 	 * Display the specified Ldc.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -167,12 +158,9 @@ class LdcController extends Controller
 		return view('ldcs.show')->with('ldc', $ldc);
 	}
 
+	
 	/**
 	 * Show the form for editing the specified Ldc.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -188,13 +176,9 @@ class LdcController extends Controller
 		return view('ldcs.edit')->with('ldc', $ldc);
 	}
 
+	
 	/**
 	 * Update the specified Ldc in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdateLdcRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -213,12 +197,9 @@ class LdcController extends Controller
 		return redirect('ldcs');
 	}
 
+	
 	/**
 	 * Remove the specified Ldc from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{

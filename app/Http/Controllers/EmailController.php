@@ -1,7 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Mail\EnrollmentConfirmation;
+use Illuminate\Http\Request;
 use SoapClient;
 use Response;
 use Session;
@@ -12,6 +13,7 @@ use DB;
 
 class EmailController extends Controller
 {  
+    
     /**
      * Send the welcome email with the confirmation link
      * Execute SOAP call to send enrollment to OPSOLVE
@@ -35,11 +37,13 @@ class EmailController extends Controller
         // commented out until plans match opsolve database
         //$this->executeSoap($customer, $plan, $enrollment);
 
-        Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
+        /*Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
                 $m->from('Enrollment@greatamericanpower.com', 'GAP');
                 $m->to($customer->email);
                 $m->subject("Email Confirmation");
-        });
+        });*/
+
+        Mail::to($customer->email)->queue(new EnrollmentConfirmation($customer, $plan, $enrollment));
 
         return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
     }
@@ -64,14 +68,14 @@ class EmailController extends Controller
           return view('emails.already-confirmed')->with('cd', $enrollment->confirm_date);
         }
         else if($confirmation_code === $enrollment->confirmation_code){
-              $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
-              $enrollment_p2c->update(['status' => 'CONFIRMED']);
+                $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
+                $enrollment_p2c->update(['status' => 'CONFIRMED']);
             
-              return view('emails.confirmation')
-                ->with('customer', $customer)->with('confirmation_code', $confirmation_code);
+                return view('emails.confirmation')
+                        ->with('customer', $customer)->with('confirmation_code', $confirmation_code);
         }
         else{
-          return view('welcome');
+            return view('welcome');
         }
 
     }

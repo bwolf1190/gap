@@ -37,7 +37,8 @@
                 <div id="nav-links-container" class="pull-right">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/dashboard">Home</a></li>
-                        <li id="logout"><a href="/logout">Logout (<span style="color:white; font-weight:bold;"> {!! Auth::user()->name !!} </span>)</a></li>
+                        <li id="logout"><a href="{{ url('/logout') }}">Logout (<span style="color:white; font-weight:bold;"> {!! Auth::user()->name !!} </span>)</a></li>
+
                         <!--<li><a href="">Search</a></li>
                         <li><a href="">Enrollments</a></li>-->
                     </ul>

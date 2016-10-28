@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Response;
 use Session;
 use Flash;
@@ -10,11 +10,6 @@ use Flash;
 class BrokerController extends Controller
 {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,8 +18,6 @@ class BrokerController extends Controller
 
 	/**
 	 * Display a listing of the broker.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -32,6 +25,7 @@ class BrokerController extends Controller
 		return view('brokers.index')->with('brokers', $brokers);
 	}
 
+	
 	/**
 	 * Return enrollments for authenticated broker.
 	 */
@@ -48,6 +42,7 @@ class BrokerController extends Controller
 		return view('brokers.admin.admin-home')->with('enrollments', $brokerEnrollments)->with('brokers', $brokers);
 	}
 
+	
 	/**
 	 * Export enrollments to xls file for given broker
 	 * Redirect to plans table
@@ -74,6 +69,7 @@ class BrokerController extends Controller
 				->with('plans', $plans);
 	}
 
+	
 	/**
 	 * Export plans to xls file for given broker
 	 * Redirect to plans table
@@ -100,6 +96,7 @@ class BrokerController extends Controller
 				->with('subagents', $subAgents);
 	}
 
+	
 	/**
 	 * Export subagents to xls file for given broker
 	 * Redirect to subagents table
@@ -117,23 +114,17 @@ class BrokerController extends Controller
 	}
 
 
-
 	/**
 	 * Show the form for creating a new broker.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
 		return view('brokers.create');
 	}
 
+	
 	/**
 	 * Store a newly created broker in storage.
-	 *
-	 * @param CreatebrokerRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -146,12 +137,9 @@ class BrokerController extends Controller
 		return redirect('brokers');
 	}
 
+	
 	/**
 	 * Display the specified broker.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -167,12 +155,9 @@ class BrokerController extends Controller
 		return view('brokers.show')->with('broker', $broker);
 	}
 
+	
 	/**
 	 * Show the form for editing the specified broker.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -188,13 +173,9 @@ class BrokerController extends Controller
 		return view('brokers.edit')->with('broker', $broker);
 	}
 
+	
 	/**
 	 * Update the specified broker in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdatebrokerRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -214,12 +195,9 @@ class BrokerController extends Controller
 		return redirect('brokers');
 	}
 
+	
 	/**
 	 * Remove the specified broker from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{

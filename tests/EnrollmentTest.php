@@ -7,49 +7,72 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class EnrollmentTest extends TestCase
 {
     protected $customers = [];
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testEnrollment()
-    {     
-        $names = array('Jill', 'Joe', 'John', 'Jerry', 'Tim', 'Terry', 'Stan', 'Kyle', 'Kenny', 'Butters');
-        //$plans = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
-        $plans = array('1', '2', '3');
-        $acc_num_start = '020';
-        $routes = [];
-        
-        for($i = 0; $i < count($plans); $i++){
-            $route = 'web/customers/start/' . $plans[$i];
-            $routes = $route;
-            $acc_num_int = (int) $acc_num_start;
-            $acc_num_int += $i;
-            $acc_num = (string) $acc_num_int;
 
-            $this->visit($route)
-                 ->type($acc_num, 'acc_num')
-                 ->type($names[$i], 'fname')
-                 ->type('Wolverton', 'lname')
-                 ->press('next1');
+    
+    /** @test */
+    public function create_customer_and_insert_web_enrollment()
+    {   
+        $plan = \App\Models\Plan::find(129);
+        $last_customer = \App\Models\Customer::get()->last();
+        $acc_num =  ++$last_customer->acc_num;
 
-            $this->customers[$i] = $names[$i];
-        }
+        // random string concat with random number
+        $str = random_str(10);
+        $confirmation_code = $str . mt_rand();
 
-        if(count($this->customers) === count($names)){
-            $result = true;
+        $customer_input = [
+            'status'           => 'PENDING',
+            'acc_num'          => $acc_num,
+            'Fed_Tax_Id_Num'   => '',
+            'fname'            => 'Brett',
+            'lname'            => 'Wolverton',
+            'sa1'              => 'Service Address 1',
+            'sa2'              => 'Apartment 2',
+            'scity'            => 'Philadelphia',
+            'sstate'           => 'PA',
+            'mzip'             => '17001',
+            'ma1'              => 'Mailing Address 1',
+            'ma2'              => 'Apartment 2',
+            'mcity'            => 'Philadelphia',
+            'mstate'           => 'PA',
+            'mzip'             => '17001',   
+            'same_address'     => '',
+            'email'            => 'bwolverton@greatamericanpower.com',
+            'confirm_email'    => 'bwolverton@greatamericanpower.com',
+            'phone'            => '8162104584',
+            'terms_conditions' => 'checked',
+            'promo'            => '',
+            'plan_id'          => $plan->id,
+            'cc'               => $confirmation_code,
+            'created_at'       => date('Y-m-d H:i:s'),
+            'updated_at'       => date('Y-m-d H:i:s')
+        ];
+
+        $existing_customer = \App\Models\Customer::where('acc_num', $customer_input['acc_num'])->first();
+
+        // create the customer if they don't already exist 
+        if($existing_customer){
+            return view('already-customer');
         }
         else{
-            $result = false;
+            $customer = \App\Models\Customer::create($customer_input);
         }
 
-        $string = '';
-        for($i = 0; $i < count($this->customers); $i++){
-            $string .= $this->customers[$i] . ' ';
-        }
+        $enrollment_input = [
+                  'enroll_date'       => date('Y-m-d H:i:s'),
+                  'confirm_date'      => 'NULL',
+                  'p2c'               => $plan->code, 
+                  'agent_id'          => '',
+                  'customer_id'       => $customer->id, 
+                  'plan_id'           => $plan->id, 
+                  'confirmation_code' => $confirmation_code,
+                  'status'            => 'PENDING',
+                  'agent_code'        => '',
+                  'sub_agent_code'    => '',
+                  'type'              => 'web'];
 
-        $this->assertNotEmpty($this->customers);
+        $enrollment = \App\Models\Enrollment::create($enrollment_input);
 
+        $this->assertEquals($enrollment->customer_id, $customer->id);
     }
-
 }

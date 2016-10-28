@@ -1,5 +1,19 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
+|
+*/
+
+Auth::routes();
+
 Route::get('/welcome-email', function(){
     return view('emails.welcome');
 });
@@ -35,13 +49,14 @@ Route::get('/delete-jobs', function(){
     DB::delete('delete from jobs');
 });
 
+
 Route::get('/dashboard', 'AdminController@index');
+
+
 
 Route::get('/admin', 'HomeController@index');
 
-Route::get('/truncate', 'PlanController@truncate');
-
-Route::get('/update-plans', array('as' => 'update-plans', 'uses' => 'PlanController@truncate'));
+Route::get('/update-plans', array('as' => 'update-plans', 'uses' => 'PlanController@updatePlans'));
 
 Route::post('/resendEmails', array('as' => 'resendEmails', 'uses' => 'AdminController@resendEmails'));
 
@@ -50,8 +65,6 @@ Route::get('/broker-enrollments/s/{sort?}', 'AdminController@showAll');
 Route::get('/broker-enrollments/{broker}/{sort?}', 'AdminController@showBrokerEnrollments');
 
 Route::get('/internalEnrollments', 'AdminController@internalEnrollments');
-
-Route::auth();
 
 Route::get('/phpinfo', function(){
     return view('phpinfo');

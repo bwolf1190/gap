@@ -1,6 +1,6 @@
 <!-- Name Field -->
 <div class="form-group">
-    {!! Form::label('Name', 'Name:') !!}
+    {!! Form::label('name', 'Name:') !!}
 	{!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -18,8 +18,8 @@
 
 <!-- Question Field -->
 <div class="form-group">
-    {!! Form::label('Question', 'Message:') !!}
-	{!! Form::textarea('question', null, ['class' => 'form-control']) !!}
+    {!! Form::label('inquiry', 'Inquiry:') !!}
+	{!! Form::textarea('inquiry', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

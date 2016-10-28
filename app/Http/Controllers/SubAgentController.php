@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Response;
 use Session;
 use Flash;
+
 
 class SubAgentController extends Controller
 {
@@ -16,8 +17,6 @@ class SubAgentController extends Controller
 
 	/**
 	 * Display a listing of the SubAgent.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -27,12 +26,9 @@ class SubAgentController extends Controller
 			->with('subagents', $subagents);
 	}
 
+	
 	/**
 	 * Store a newly created SubAgent in storage.
-	 *
-	 * @param CreateSubAgentRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -45,12 +41,9 @@ class SubAgentController extends Controller
 		return redirect('brokers.admin.subagents');
 	}
 
+
 	/**
 	 * Display the specified SubAgent.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -66,12 +59,9 @@ class SubAgentController extends Controller
 		return view('brokers.admin.subagents.show')->with('subagent', $subagent);
 	}
 
+	
 	/**
 	 * Show the form for editing the specified SubAgent.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -87,13 +77,9 @@ class SubAgentController extends Controller
 		return view('brokers.admin.subagents.edit')->with('subagent', $subagent);
 	}
 
+	
 	/**
 	 * Update the specified SubAgent in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdateSubAgentRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -113,12 +99,9 @@ class SubAgentController extends Controller
 		return redirect('broker/subagents/' . $broker->promo);
 	}
 
+
 	/**
 	 * Remove the specified SubAgent from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{

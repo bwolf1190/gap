@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Debugbar;
+use Illuminate\Http\Request;
 use SoapClient;
 use Response;
 use Session;
@@ -12,15 +11,11 @@ use Flash;
 class PlanController extends Controller
 {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin', ['except' => ['searchPlans', 'internalPlans', 'truncate', 'updatePlans']]);
     }
+
 
 	/**
 	 * Return plans for type, service, ldc, and the optional promo.
@@ -51,6 +46,11 @@ class PlanController extends Controller
 	}
 
 	
+	/**
+	 * For internal enrollments completed by agents
+	 * Return plans for type, service, ldc, and the optional promo.
+	 * If no plans exist, then redirect to modal with message.
+	 */
 	public function internalPlans($service, $ldc){
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
@@ -71,24 +71,23 @@ class PlanController extends Controller
 		return view('internal-enrollments.plans-findex')->with('plans', $plans);
 	}
 
+
 	/**
 	 * Display a listing of the Plan.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
-
-		//$user = DB::table('users')->first();
-		//$token = $user->token;
-		//$session = Session::get('token');
 		$plans = \App\Models\Plan::paginate(15);
 
 		return view('plans.index')
 				->with('plans', $plans);
-
 	}
 
+	
+	/**
+	 * For admin portal
+	 * Sort plans by chosen column
+	 */
 	public function sortPlans($column){
 
 		$plans = \App\Models\Plan::orderBy($column)->paginate(15);
@@ -97,22 +96,18 @@ class PlanController extends Controller
 				->with('plans', $plans);
 	}
 
+
 	/**
 	 * Show the form for creating a new Plan.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
 		return view('plans.create');
 	}
 
+	
 	/**
 	 * Store a newly created Plan in storage.
-	 *
-	 * @param CreatePlanRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -125,12 +120,9 @@ class PlanController extends Controller
 		return redirect('plans');
 	}
 
+	
 	/**
 	 * Display the specified Plan.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -146,12 +138,9 @@ class PlanController extends Controller
 		return view('plans.show')->with('plan', $plan);
 	}
 
+	
 	/**
 	 * Show the form for editing the specified Plan.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -167,13 +156,9 @@ class PlanController extends Controller
 		return view('plans.edit')->with('plan', $plan);
 	}
 
+	
 	/**
 	 * Update the specified Plan in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdatePlanRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -193,12 +178,9 @@ class PlanController extends Controller
 		return redirect('plans');
 	}
 
+	
 	/**
 	 * Remove the specified Plan from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{
@@ -218,13 +200,13 @@ class PlanController extends Controller
 		return redirect('plans');
 	}
 
-	public function truncate(){
-		
-	}
-
-	public function updateLdcPlans($ldc){
-		\App\Models\Plan::truncate();
-		
+	
+	/**
+	 * Make SOAP call to retrieve current plans for LDC
+	 * Parse SOAP response and format for web
+	 * Insert plans into database
+	 */
+	public function updateLdcPlans($ldc){		
 		$url = env('SOAP_URL');
 	    $user = env('SOAP_USER');
 	    $pw = env('SOAP_PW');
@@ -239,7 +221,6 @@ class PlanController extends Controller
 
 	    $client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
 	    
-
 	    $response = $client->__getLastResponse(); 
 	    $request = $client->__getLastRequest();
 
@@ -300,23 +281,22 @@ class PlanController extends Controller
 	}
 
 
-
+	/**
+	 * Delete all plans from database
+	 * Update plans for each utility
+	 * Redirect to home page
+	 */
 	public function updatePlans(){
-		Debugbar::startMeasure('render','Time for rendering');
-		Debugbar::stopMeasure('render');
-		Debugbar::addMeasure('now', LARAVEL_START, microtime(true));
-		Debugbar::measure('My long operation', function() {
-			$this->truncate();
-			$this->updateLdcPlans('BGE');
-			//$this->updateLdcPlans('Delmarva');
-			//$this->updateLdcPlans('Duquesne');
-			$this->updateLdcPlans('METED');
-			$this->updateLdcPlans('PECO');
-			$this->updateLdcPlans('PEPCO');
-			$this->updateLdcPlans('PPL');
-		});
+		\App\Models\Plan::truncate();
+		$this->updateLdcPlans('BGE');
+		//$this->updateLdcPlans('Delmarva');
+		//$this->updateLdcPlans('Duquesne');
+		$this->updateLdcPlans('METED');
+		$this->updateLdcPlans('PECO');
+		$this->updateLdcPlans('PEPCO');
+		$this->updateLdcPlans('PPL');
 	    
-	    return $this->index();
+	    return redirect('/');
 	    //return view('soap-test')->with('plans', $plans)->with('request', $request);
 		}
 }

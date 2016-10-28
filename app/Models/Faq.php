@@ -7,7 +7,7 @@ class Faq extends Model
 	public $table = 'faqs';
     
 	public $fillable = [
-	     'question',
+	    'question',
 		'answer',
 		'key1',
 		'key2',

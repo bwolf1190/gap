@@ -23,6 +23,6 @@ class MustBeAdmin
         else{
             abort(404, 'Forbidden');
         }
-        
+
     }
 }

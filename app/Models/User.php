@@ -25,6 +25,6 @@ class User extends Model
 
 	public static $rules = [
 	    'username' => 'required',
-		'password'   => 'required'
+		'password' => 'required'
 	];
 }

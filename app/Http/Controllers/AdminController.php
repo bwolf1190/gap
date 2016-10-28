@@ -15,11 +15,13 @@ use DB;
 
 class AdminController extends Controller
 {
+	
 	public function __construct(){
         $this->middleware('admin', ['except' => ['showAll', 'showBrokerEnrollments', 'resendEmails']]);
 
 	}
 
+	
 	/**
 	 * Sends the users with role of admin to dashboard
 	 * Sends users without admin role to login page
@@ -33,6 +35,7 @@ class AdminController extends Controller
 		}
 	}
 
+	
 	/**
 	 * Returns all broker enrollments
 	 */
@@ -60,6 +63,7 @@ class AdminController extends Controller
 				->with('enrollments', $paginatedSearchResults)->with('brokers', $brokers);
 	}
 
+	
 	/**
 	 * Returns plans for a given broker
 	 */
@@ -81,6 +85,7 @@ class AdminController extends Controller
 				->with('enrollments', $brokerEnrollments)->with('brokers', $brokers);
 	}
 
+	
 	/**
 	 * Returns all P2CEnrollments
 	 */
@@ -94,6 +99,7 @@ class AdminController extends Controller
 		return view('enrollments.index')->with('enrollments', $enrollments);
 	}
 
+	
 	/**
 	 * Resend confirmation emails to pending before a chosen date
 	 */
@@ -122,41 +128,4 @@ class AdminController extends Controller
 		return redirect()->route('enrollments.index');
 
 	}
-/*
-	public function resendEmails(Request $request){
-		$request = $request->all();
-		$days = $request['days'];
-		$curr_date = Carbon::now();
-		$send_after_date = $curr_date->subDays($days);
-		$send_before_date = $curr_date->subDays(1);
-		$resend_to = \App\Models\Enrollment::where('enroll_date', '<', $send_after_date)
-										   ->where('enroll_date', '<', $send_before_date)
-										   ->where('status', 'PENDING')->get();
-
-		
-		foreach($resend_to as $enrollment){
-			$customer = $enrollment->customer;
-			$plan = $enrollment->plan;
-			Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
-	                $m->from('Enrollment@greatamericanpower.com', 'GAP');
-	                $m->to($customer->email);
-	                $m->subject("Email Confirmation");
-	        });
-
-
-			$enrollment->status = 'RESENT';
-			$enrollment->save();
-			// testing 
-	        //print_r($customer->fname . ' ' . $customer->email . ' ' . $plan->rate . '<br><br>');	
-		}
-
-
-
-		$enrollments = \App\Models\Enrollment::orderBy('enroll_date')->paginate(10);
-
-		return redirect()->route('enrollments.index');
-
-	}
-*/
-
 }

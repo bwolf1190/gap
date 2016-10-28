@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Response;
 use Session;
 use Flash;
 use DB;
-
 
 
 class EnrollmentController extends Controller
@@ -16,6 +15,7 @@ class EnrollmentController extends Controller
 	{
 		$this->middleware('admin', ['except' => ['start','startBroker', 'addEnrollment']]);
 	}
+
 
 	/**
 	 * Send customer to enroll page
@@ -28,6 +28,7 @@ class EnrollmentController extends Controller
 		return view('enroll')->with('type', $type);
 	}
 
+
 	/**
 	 * Send the broker to the enroll page
 	 */
@@ -35,6 +36,7 @@ class EnrollmentController extends Controller
 		$promo = strtoupper($promo);
 		return view('enroll-broker')->with('promo', $promo)->with('type', $type);
 	}
+
 
 	/**
 	 * Add enrollments for web/internal/broker/p2c
@@ -107,7 +109,7 @@ class EnrollmentController extends Controller
 					  'SLine2_Addr'          => $customer->sa2,
 					  'SCity_Name'           => $customer->scity,
 					  'SPostal_Code'         => "$customer->szip" . "0000",
-					  'Marketer_Name'        => '"Great American Power, LLC"',
+					  'Marketer_Name'        => "Great American Power, LLC",
 					  'Distributor_Name'     => $dist_name,
 					  //'Distributor_Name'     => $plan->ldc,
 					  'Service_Type_Desc'    => 'Electric',
@@ -141,10 +143,9 @@ class EnrollmentController extends Controller
 		return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
 	}
 
+
 	/**
 	 * Display a listing of the Enrollment.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -161,22 +162,18 @@ class EnrollmentController extends Controller
 			->with('enrollments', $enrollments);	
 	}
 
+	
 	/**
 	 * Show the form for creating a new Enrollment.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
 		return view('enrollments.create');
 	}
 
+	
 	/**
 	 * Store a newly created Enrollment in storage.
-	 *
-	 * @param CreateEnrollmentRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -188,12 +185,9 @@ class EnrollmentController extends Controller
 		//return redirect()->route('addEnrollment');
 	}
 
+	
 	/**
 	 * Display the specified Enrollment.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -207,12 +201,9 @@ class EnrollmentController extends Controller
 		return view('enrollments.show')->with('enrollment', $enrollment);
 	}
 
+	
 	/**
 	 * Show the form for editing the specified Enrollment.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -227,13 +218,9 @@ class EnrollmentController extends Controller
 		return view('enrollments.edit')->with('enrollment', $enrollment);
 	}
 
+	
 	/**
 	 * Update the specified Enrollment in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdateEnrollmentRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -250,12 +237,9 @@ class EnrollmentController extends Controller
 		return redirect('enrollments');
 	}
 
+	
 	/**
 	 * Remove the specified Enrollment from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{

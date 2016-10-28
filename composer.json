@@ -6,12 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*",
+        "laravel/framework": "5.3.4",
+        "laravelcollective/html": "5.3.*",
         "laracasts/flash": "^2.0",
         "php-console/php-console": "~3.0",
         "barryvdh/laravel-debugbar": "^2.2",
-        "laravelcollective/bus": "^5.2",
         "maatwebsite/excel": "~2.1.0",
         "stripe/stripe-php": "dev-master"
     },

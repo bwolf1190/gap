@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Response;
 use Session;
 use Flash;
@@ -12,19 +12,15 @@ class ZipController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-
+	
 	/**
 	 * Display a listing of the zip.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -32,22 +28,18 @@ class ZipController extends Controller
 		return view('zips.index')->with('zips', $zips);
 	}
 
+
 	/**
 	 * Show the form for creating a new zip.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
 		return view('zips.create');
 	}
 
+
 	/**
 	 * Store a newly created zip in storage.
-	 *
-	 * @param CreatezipRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -60,12 +52,9 @@ class ZipController extends Controller
 		return redirect('zips');
 	}
 
+	
 	/**
 	 * Display the specified zip.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -81,12 +70,9 @@ class ZipController extends Controller
 		return view('zips.show')->with('zip', $zip);
 	}
 
+	
 	/**
 	 * Show the form for editing the specified zip.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -102,13 +88,9 @@ class ZipController extends Controller
 		return view('zips.edit')->with('zip', $zip);
 	}
 
+	
 	/**
 	 * Update the specified zip in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdatezipRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -128,12 +110,9 @@ class ZipController extends Controller
 		return redirect('zips');
 	}
 
+	
 	/**
 	 * Remove the specified zip from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{

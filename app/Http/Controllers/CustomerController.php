@@ -1,28 +1,25 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use Validator;
 use Response;
 use Session;
 use Flash;
-use Debugbar;
-use Validator;
-
 
 
 class CustomerController extends Controller
 {
-
-	/** @var  CustomerRepository */
-	private $customerRepository;
-
+	
 	function __construct()
 	{
 		$this->middleware('admin', ['except' => ['start', 'internalStart', 'store']]);
 	}
 
-
-
+	
+	/**
+	 * Send customer to first part of enrollment form
+	 */
 	public function start($type, $id, $promo = null)
 	{
 		$plan = \App\Models\Plan::where('id',(int)$id)->first();
@@ -48,6 +45,10 @@ class CustomerController extends Controller
 									  ->with('type', $type);
 	}
 
+	
+	/**
+	 * Send agent to first part of internal enrollment form
+	 */
 	public function internalStart($type, $id){
 		$plan = \App\Models\Plan::where('id',(int)$id)->first();
 		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
@@ -66,8 +67,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Display a listing of the Customer.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -86,8 +85,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Show the form for creating a new Customer.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
@@ -96,10 +93,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Store a newly created Customer in storage.
-	 *
-	 * @param CreateCustomerRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
@@ -138,6 +131,7 @@ class CustomerController extends Controller
 		if($agent === null && $agent_code !== null){
 			$agent = 'b';
 		}
+		
 		$sub_agent_code = Input::get('sub_agent_code');
 
 		return redirect()->route('addEnrollment', array('type' => $type,
@@ -149,10 +143,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Display the specified Customer.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -168,10 +158,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Show the form for editing the specified Customer.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -188,11 +174,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Update the specified Customer in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdateCustomerRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -212,10 +193,6 @@ class CustomerController extends Controller
 
 	/**
 	 * Remove the specified Customer from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{

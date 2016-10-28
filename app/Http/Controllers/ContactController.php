@@ -1,20 +1,17 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Mail\ContactCustomerService;
+use Illuminate\Http\Request;
 use Response;
 use Session;
 use Flash;
+use Mail;
 
 
 class ContactController extends Controller
 {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin', ['except' => ['create', 'store']]);
@@ -23,8 +20,6 @@ class ContactController extends Controller
 
 	/**
 	 * Display a listing of the contact.
-	 *
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -34,8 +29,6 @@ class ContactController extends Controller
 
 	/**
 	 * Show the form for creating a new contact.
-	 *
-	 * @return Response
 	 */
 	public function create()
 	{
@@ -44,14 +37,16 @@ class ContactController extends Controller
 
 	/**
 	 * Store a newly created contact in storage.
-	 *
-	 * @param CreatecontactRequest $request
-	 *
-	 * @return Response
 	 */
 	public function store(Request $request)
 	{
 		$input = $request->all();
+
+	    $this->validate($request, [
+	        'name'   => 'required',
+	        'email'  => 'required|email',
+	        'inquiry'=> 'required'
+	    ]);
 
 		$contact = \App\Models\Contact::Create($input);
 		$contact->status = 'OPEN';
@@ -59,15 +54,13 @@ class ContactController extends Controller
 
 		Flash::success('contact saved successfully.');
 
+		Mail::to('bwolverton@greatamericanpower.com')->send(new ContactCustomerService($input['name'], $input['phone'], $input['email'], $input['inquiry']));
+
 		return redirect('/');
 	}
 
 	/**
 	 * Display the specified contact.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function show($id)
 	{
@@ -85,10 +78,6 @@ class ContactController extends Controller
 
 	/**
 	 * Show the form for editing the specified contact.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function edit($id)
 	{
@@ -106,11 +95,6 @@ class ContactController extends Controller
 
 	/**
 	 * Update the specified contact in storage.
-	 *
-	 * @param  int              $id
-	 * @param UpdatecontactRequest $request
-	 *
-	 * @return Response
 	 */
 	public function update($id, Request $request)
 	{
@@ -132,10 +116,6 @@ class ContactController extends Controller
 
 	/**
 	 * Remove the specified contact from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return Response
 	 */
 	public function destroy($id)
 	{
