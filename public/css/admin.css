@@ -6,23 +6,24 @@
 
 .navbar.navbar-inverse{
 	height:100px;
-	background-color: #00234C;
+	background-color: rgb(230,230,230);
+	border: 1px solid grey;
 }
 
 .navbar-brand img{
-	height:105px;
+	height:101px;
 	position:relative;
 	top:-17px;
 	left:-16px;
 }
 
-.navbar-inverse .navbar-brand{
-	color:white !important;
-	font-size: 1.5em;
+#nav-links-container ul li a{
+	color: #00234C;
 }
 
-#logout{
-	color:white !important;
+#logout span{
+	color:#bf0000;
+	font-weight: bold;
 }
 
 body{

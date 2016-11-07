@@ -6,6 +6,7 @@ use SoapClient;
 use Response;
 use Session;
 use Flash;
+use DB;
 
 
 class PlanController extends Controller
@@ -282,12 +283,13 @@ class PlanController extends Controller
 
 
 	/**
-	 * Delete all plans from database
+	 * Delete all Opsolve plans from database
 	 * Update plans for each utility
 	 * Redirect to home page
 	 */
 	public function updatePlans(){
-		\App\Models\Plan::truncate();
+		\App\Models\Plan::whereNull('code')->delete();
+
 		$this->updateLdcPlans('BGE');
 		//$this->updateLdcPlans('Delmarva');
 		//$this->updateLdcPlans('Duquesne');

@@ -33,14 +33,16 @@
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/dashboard">{!! Html::image('images/star-swoosh.jpg') !!}GAP ADMIN</a>
+                <a class="navbar-brand" href="/dashboard">{!! Html::image('images/gap-admin.png') !!}</a>
                 <div id="nav-links-container" class="pull-right">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/dashboard">Home</a></li>
-                        <li id="logout"><a href="{{ url('/logout') }}">Logout (<span style="color:white; font-weight:bold;"> {!! Auth::user()->name !!} </span>)</a></li>
+                        <li id="logout"><a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout (<span> {!! Auth::user()->name !!} </span>)</a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
 
-                        <!--<li><a href="">Search</a></li>
-                        <li><a href="">Enrollments</a></li>-->
+                        </li>
                     </ul>
                 </div>
             </div>

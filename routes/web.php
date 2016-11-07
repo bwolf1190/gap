@@ -70,6 +70,8 @@ Route::get('/phpinfo', function(){
     return view('phpinfo');
 });
 
+//Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 /* <--------------------------------------------------------------------->  */
 
