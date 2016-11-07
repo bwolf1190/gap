@@ -2,6 +2,10 @@
 	padding-top:250px;
 }
 
+#social-left{
+	display:none;
+}
+
 /* Fixes width and display set for contact panel on home page for small screens */
 #contact-sidebar{
 	display:block;

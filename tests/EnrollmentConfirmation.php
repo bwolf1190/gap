@@ -16,7 +16,7 @@ class EnrollmentConfirmation extends TestCase
 	 */
     public function send_confirmation_email_to_new_customer()
     {
-		$customer = [
+		/*$customer = [
 					'fname' => 'Brett', 
 					'email' => 'bwolverton@greatamericanpower.com'
 		];
@@ -35,6 +35,6 @@ class EnrollmentConfirmation extends TestCase
 		$enrollment = ['confirmation_code' => $confirmation_code];
 
 		Mail::to($customer->email)->queue(new EnrollmentConfirmation);
-
+	*/
     }
 }

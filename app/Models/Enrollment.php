@@ -38,8 +38,7 @@ class Enrollment extends Model
     ];
 
 	public static $rules = [
-	    'enroll_date' => 'required',
-		'p2c'         => 'required'
+	    'enroll_date' => 'required'
 	];
 	
 	public function plan(){

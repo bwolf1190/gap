@@ -12,7 +12,7 @@ class EnrollmentTest extends TestCase
     /** @test */
     public function create_customer_and_insert_web_enrollment()
     {   
-        $plan = \App\Models\Plan::find(129);
+        $plan = \App\Models\Plan::find(180);
         $last_customer = \App\Models\Customer::get()->last();
         $acc_num =  ++$last_customer->acc_num;
 

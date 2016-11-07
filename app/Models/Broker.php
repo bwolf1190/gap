@@ -9,6 +9,7 @@ class Broker extends Model
 	public $fillable = [
 	    'name',
 		'promo',
+		'master_code',
 		'agent_code',
 		'sub_agent_code',
 		'commission_type',
@@ -21,12 +22,13 @@ class Broker extends Model
      * @var array
      */
     protected $casts = [
-        'name'     		  => 'string',
-		'promo'    		  => 'string',
+		'name'            => 'string',
+		'promo'           => 'string',
+		'master_code'     => 'string',
 		'agent_code'      => 'string',
 		'sub_agent_code'  => 'string',
 		'commission_type' => 'string',
-		'email'			  => 'string'
+		'email'           => 'string'
     ];
 
 	public static $rules = [

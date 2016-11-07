@@ -51,7 +51,6 @@ class Plan extends Model
 		'length'     => 'required',
 		'rate'       => 'required',
 		'etf'        => 'required',
-		'code'       => 'required',
 		'price_code' => 'required'
 	];
 
