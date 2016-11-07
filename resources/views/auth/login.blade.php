@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('navbar-brand')
-    <a class="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
+    <a class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
 @endsection
 
 @section('content')

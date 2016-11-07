@@ -1,4 +1,4 @@
-@extends('brokers.admin.admin-master')
+@extends('admin.admin-master')
 
 @section('content')
 

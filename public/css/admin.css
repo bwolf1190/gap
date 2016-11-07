@@ -156,6 +156,10 @@ tr > td:last-child .glyphicon.glyphicon-edit{
 	color:green;
 }
 
+#social-left{
+	display:none;
+}
+
 #fields-container{
 	margin-top:100px;
 }

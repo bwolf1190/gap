@@ -18,22 +18,22 @@
 
 	{!! csrf_field() !!}
 
-	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
+	<div class="form-group col-sm-5 col-xs-9  col-xs-offset-2 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 	    {!! Form::label('zip', 'Zip Code:') !!}
 		{!! Form::text('zip', null, ['class' => 'form-control']) !!}
 	</div>
-	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
+	<div class="form-group col-sm-5 col-xs-9  col-xs-offset-2 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 	    {!! Form::label('service', 'Residential') !!}
 		{!! Form::radio('service','Residential', 'true') !!}
 	</div>
-	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
+	<div class="form-group col-sm-5 col-xs-9  col-xs-offset-2 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 	    {!! Form::label('service', 'Commercial') !!}
 		{!! Form::radio('service','Commmercial') !!}
 	</div>
 
 	{!! Form::hidden('type', $type) !!}
 
-	<div class="form-group col-sm-5 col-xs-4 col-xs-offset-3 col-sm-offset-3 col-lg-5 col-lg-offset-3">
+	<div class="form-group col-sm-5 col-xs-9  col-xs-offset-2 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 		{!! Form::submit('NEXT', ['class' => 'btn btn-default', 'id' => 'next']) !!}
 	</div>
 

@@ -384,13 +384,13 @@ td > #send{
 	font-weight: 300;
 	font-size: 32px;
 }
-
+/*
 @media screen and (max-width: 590px){
 	#sign-up-container-sm #next{
 		width:150px;
 	}
 
-}
+}*/
 
 @media screen and (max-width:600px){
 	#wwd{display:none;}
@@ -399,10 +399,6 @@ td > #send{
 @media screen and (max-width:768px){
 	/*#pages-sm-screen{display:block;}*/
 	#contact-sidebar{display:block;}
-}
-
-@media screen and (max-width: 617px){
-	#contact-sidebar{display:none;}
 }
 
 @media screen and (max-width: 776px) {
@@ -425,5 +421,8 @@ td > #send{
 	#sign-up-container{top:-50px;}
 }
 
-
+@media screen and (max-width: 617px){
+	#contact-sidebar{display:none;}
+	#sign-up-container-sm{display:none;}
+}
 

@@ -399,11 +399,6 @@ nav{
 @media screen and (min-width: 1320px){
 	#nav-brand img{top:-5px;}
 }
-/*
-@media screen and (max-width: 450px){
-	#nav-brand{top:-5px;}
-}
-*/
 
 @media screen and (min-width: 1201px){
 	#nav-brand img{top:0px;}
@@ -413,6 +408,8 @@ nav{
 	#nav-brand img{top:0px;}
 }
 
-@media screen and (max-width: 450px){
-	#nav-brand img{top:-5px;}
+@media screen and (max-width: 460px){
+	#header{height:132px;}
 }
+
+
