@@ -151,7 +151,7 @@
 		@endif
 
 		<div id="optin-container">
-			<div class="form-group" style='font-size:.9em;'>
+			<div class="form-group" style='font-size:.85em;'>
 				{!! Form::checkbox('optin', 'checked',['class' => 'form-control']) !!}
 				{!! Form::label('optin', 'Receive offers from Great American Power') !!}
 			</div>
@@ -159,7 +159,7 @@
 
 		<div id="terms-container" class="form-group">
 			<div class="checkbox">
-				<label style='font-size:.9em;'><input id="terms_conditions" name="terms_conditions" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf") !!}">Accept Terms & Conditions</a></label>
+				<label style='font-size:.85em;'><input id="terms_conditions" name="terms_conditions" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf") !!}">Accept Terms & Conditions</a></label>
 			</div>
 		</div>
 
