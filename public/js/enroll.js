@@ -12,6 +12,14 @@ var validation = true;
 	});*/
 
 $(document).ready(function() {
+	// shill fix for ie not supporting startsWith
+	if (!String.prototype.startsWith) {
+	  String.prototype.startsWith = function(searchString, position) {
+	    position = position || 0;
+	    return this.indexOf(searchString, position) === position;
+	  };
+	}
+	
 	$("#form-group-1").show();
 	scroll_to_div('#enroll_container');
 	$("#loading-div").hide();
