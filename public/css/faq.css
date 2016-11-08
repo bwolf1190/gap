@@ -1,5 +1,5 @@
 #faq-container{
-	padding-top:250px;
+	padding-top:200px;
 }
 
 #social-left{
@@ -62,4 +62,13 @@ h4.panel-title{
 /* Smooth bootstrap panel display */
 .panel-collapse.collapsing {
     transition: height .1s;
+}
+
+@media screen and (max-width: 1007px){
+	#contact-sidebar{display:none;}
+	#faq-container{margin-left:0;}
+}
+
+@media screen and (max-width:992px){
+	#faq-container{margin-left:0;}
 }
