@@ -114,10 +114,10 @@
                 Great American Power is approved and licensed by the Pennsylvania Public Utilities Commission and the Maryland Public Service Commission. We currently provide electric service in PPL, PECO, Duquesne, BGE, Delmarva and PEPCO utility territories.
             </p>
             <div class="footer-icons">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="https://www.facebook.com/GreatAmericanPower/" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/GreatAmeriPower" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/1855714" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
             </div>
         </div>
         <div id="disclaimer" class="row">PA license number A-2205475 | MD license number IR-2440 <br>

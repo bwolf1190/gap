@@ -16,17 +16,29 @@ h4.panel-title{
 	background-color:white;
 }
 
+.fade-in.question{
+	margin-right:10px;
+}
+
+#question{
+}
+
+div.panel.panel-default{
+	margin-top:10px;
+	border:none;
+}
+
 #accordian.panel.panel-default{
 	padding:10px;
 	background-color: white !important;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
+	/*border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;*/
 	border-left:none;
 	border-right:none;
 	font-size: 1.1em;
 }
 
-#accordian .panel.panel-default a{
+#accordian.panel.panel-default a{
 	text-decoration: none;
 }
 
@@ -39,8 +51,8 @@ h4.panel-title{
 	background-color: rgb(240, 240, 240);
 }
 
-.panel.panel-defalut a{
-	text-decoration: none;
+.panel.panel-default a{
+	text-decoration: none !important;
 }
 
 .faq-title{
