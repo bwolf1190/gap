@@ -6,19 +6,19 @@
 
 .navbar.navbar-inverse{
 	height:100px;
-	background-color: rgb(230,230,230);
-	border: 1px solid grey;
+	background-color: #00234C;
+	border: none;
 }
 
 .navbar-brand img{
-	height:101px;
+	height:102px;
 	position:relative;
 	top:-17px;
 	left:-16px;
 }
 
 #nav-links-container ul li a{
-	color: #00234C;
+	color: white;
 }
 
 #logout span{
