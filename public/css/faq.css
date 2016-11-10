@@ -62,12 +62,14 @@ div.panel.panel-default{
 
 .question{
 	color:#00234C;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 
 .answer{
 	color:#bf0000;
 	height:100%;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 
