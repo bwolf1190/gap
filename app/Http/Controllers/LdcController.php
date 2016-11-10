@@ -44,7 +44,7 @@ class LdcController extends Controller
 			$service = Input::get('service');
 		}
 
-		$zips = \App\Models\Zip::where('zip', $zip)->get();
+		$zips = \App\Models\Zip::where('zip', $zip)->groupBy('ldc_id')->get();
 
 		foreach($zips as $z){
 			$ldc_id = $z->ldc_id;

@@ -128,13 +128,13 @@
                             <figure>
                                 {!! Html::image('images/enroll-square.png', 'enroll-now', array('class' => 'img-square img-responsive img-center img-thumbnail enroll')) !!}
                                 <div class="overlay">
-                                    <a class="expand" href="/enroll-sign-up-energy-electricity">Image Link</a>
+                                    <a class="expand" href="{{ env('ENROLL_URL') }}">Image Link</a>
                                 </div>
                             </figure>
                             <h3 class="margin-top-20">Enroll Now</h3>
                             <p class="margin-top-10 margin-bottom-20">We are tremendously excited to have the opportunity to become your supplier of choice. In more and more states people have the freedom to choose their own supplier. We have just begun to grow and, with this growth, we will have new and exciting products developed for our client base. We hope to start a relationship with you that begins with electricity service and develops into much more. Go to our Enroll page to get started!</p>
                             <div class="btn btn-default">
-                                <a class="info" href="/enroll-sign-up-energy-electricity">Enroll</a>
+                                <a class="info" href="{{ env('ENROLL_URL') }}">Enroll</a>
                             </div>
                     </div>
                 </div>
@@ -145,13 +145,13 @@
                             <figure>
                                 {!! Html::image('images/faq-square.png', 'learn-more', array('class' => 'img-square img-responsive img-center img-thumbnail learn')) !!}
                                 <div class="overlay">
-                                    <a class="expand" href="/faq-frequently-asked-questions-energy-electricity">Image Link</a>
+                                    <a class="expand" href="{{ env('FAQ_URL') }}">Image Link</a>
                                 </div>
                             </figure>
                             <h3 class="margin-top-20">Learn More</h3>
                             <p class="margin-top-10 margin-bottom-20">Great American Power is approved and licensed by the Pennsylvania Public Utilities Commission and the Maryland Public Service Commission. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.  Want to know more? Check out our Frequently Asked Questions page!</p>
                             <div class="btn btn-default">
-                                <a class="info" href="/faq-frequently-asked-questions-energy-electricity">FAQ</a>
+                                <a class="info" href="{{ env('FAQ_URL') }}">FAQ</a>
                             </div>
                     </div>
                 </div>
@@ -162,13 +162,13 @@
                             <figure>
                                 {!! Html::image('images/contact-square.png', 'contact-us', array('class' => 'img-square img-responsive img-center img-thumbnail contact')) !!}
                                 <div class="overlay">
-                                    <a class="expand" href="/contact-us-customer-service">Image Link</a>
+                                    <a class="expand" href="{{ env('CONTACT_URL') }}">Image Link</a>
                                 </div>
                             </figure>
                             <h3 class="margin-top-20">Contact Us</h3>
                             <p class="margin-top-10 margin-bottom-20">If you have a question about your account, service, or our plans, please do not hesitate to contact us.  Follow this link to our Contact page to find out how to get in touch!</p>
                             <div class="btn btn-default">
-                                <a class="info" href="/contact-us-customer-service">Contact</a>
+                                <a class="info" href="{{ env('CONTACT_URL') }}">Contact</a>
                             </div>
                     </div>
                 </div>

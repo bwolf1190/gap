@@ -46,7 +46,8 @@
 		<!-- //////////////////////////////////////////////////////////////////// --> 
 		
 		<div id='enroll_btns' class="form-group">
-			<button id='next1' name="next1" type="button" class="next btn btn-default glyphicon glyphicon-arrow-right col-xs-3 col-xs-offset-5 fade-in-slow"></button>
+			<button id='previous1' name="previous1" type="button" class="previous btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow" onclick="history.go(-1);">Back</button>
+			<button id='next1' name="next1" type="button" class="next btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Next</button>
 		</div>
 	</div>
 	<div id='form-group-2' class='fade-in col-md-8'>
@@ -75,8 +76,8 @@
 			{!! Form::text('szip', $zip, ['class' => 'form-control']) !!}
 		</div>
 		<div id='enroll_btns' class="form-group">
-			<button id='previous2' name="previous2" type="button" class="previous btn btn-default glyphicon glyphicon-arrow-left col-xs-3 col-xs-offset-2 fade-in-slow"></button>
-			<button id='next2' name="next2" type="button" class="next btn btn-default glyphicon glyphicon-arrow-right col-xs-3 col-xs-offset-2 fade-in-slow"></button>
+			<button id='previous2' name="previous2" type="button" class="previous btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Back</button>
+			<button id='next2' name="next2" type="button" class="next btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Next</button>
 		</div>
 	</div>
 	<div id='form-group-3' class='fade-in col-md-8'>
@@ -110,8 +111,8 @@
 			{!! Form::text('mzip', $zip, ['class' => 'form-control']) !!}
 		</div>
 		<div id='enroll_btns' class="form-group">
-			<button id='previous3' name="previous3" type="button" class="previous btn btn-default glyphicon glyphicon-arrow-left col-xs-3 col-xs-offset-2 fade-in-slow"></button>
-			<button id='next3' name="next3" type="button" class="next btn btn-default glyphicon glyphicon glyphicon-arrow-right col-xs-3 col-xs-offset-2 fade-in-slow"></button>
+			<button id='previous3' name="previous3" type="button" class="previous btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Back</button>
+			<button id='next3' name="next3" type="button" class="next btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Next</button>
 		</div>
 	</div>
 	<div id='form-group-4' class='fade-in col-md-8'>
@@ -199,10 +200,10 @@
 		</div>
 		<div id='enroll_btns' class="form-group">
 			<div id="previous-container">
-				<button id='previous4' name="previous4" type="button" class="previous btn btn-default glyphicon glyphicon-arrow-left col-xs-3 col-xs-offset-2 fade-in-slow"></button>
+				<button id='previous4' name="previous4" type="button" class="previous btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Back</button>
 			</div>
-			<div class='col-xs-3 col-xs-offset-2 fade-in-slow'>
-				{!! Form::submit('Finish', ['class' => 'btn btn-default', 'id' => 'submit', 'name' => 'submit']) !!}
+			<div class=''>
+				{!! Form::submit('Finish', ['class' => 'btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow', 'id' => 'submit', 'name' => 'submit']) !!}
 				<span id='loading-div' class=''>{!! Html::image('images/default.gif', 'loading-wheel',array('class' => 'img-responsive')) !!}</span>
 			</div>
 		</div>

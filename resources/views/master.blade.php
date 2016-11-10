@@ -59,11 +59,11 @@
                 <div class="col-md-12 margin-top-10">
                     <div id="hornav" class="pull-right visible-lg">
                         <ul class="nav navbar-nav">
-                            <li><a href="/">HOME</a></li>
-                            <li><a href="/enroll-sign-up-energy-electricity">ENROLL</a></li>
+                            <li><a href="{{ env('HOME_URL') }}">HOME</a></li>
+                            <li><a href="{{ env('ENROLL_URL') }}">ENROLL</a></li>
                             <!--<li><a href="/about-us">ABOUT</a></li>-->
-                            <li><a href="/faq-frequently-asked-questions-energy-electricity">FAQ</a></li>
-                            <li><a href="/contact-us-customer-service">CONTACT</a></li>
+                            <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
+                            <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,15 +82,15 @@
             <!--<h3>Company<span>logo</span></h3>-->
             {!! Html::image('images/great-american-power-fcp.jpg', 'footer-brand-img', array('class' => 'footer-brand-img')) !!}
             <p class="footer-links">
-                <a href="/">Home</a>
+                <a href="{{ env('HOME_URL') }}">Home</a>
                 ·
-                <a href="enroll-sign-up-energy-electricity">Enroll</a>
+                <a href="{{ env('ENROLL_URL') }}">Enroll</a>
                 <!--·
                 <a href="/about-us">About</a>-->
                 ·
-                <a href="frequently-asked-questions-energy-electricity">Faq</a>
+                <a href="{{ env('FAQ_URL') }}">Faq</a>
                 ·
-                <a href="contact-us-customer-service">Contact</a>
+                <a href="{{ env('CONTACT_URL') }}">Contact</a>
             </p>
             <p class="footer-company-name">Great American Power &copy; 2016</p>
         </div>

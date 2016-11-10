@@ -146,7 +146,7 @@
 	color:#bf0000;
 }
 
- .modal input{
+.modal input{
  	border:2px solid #002D62;
  }
 
@@ -178,16 +178,14 @@
 .previous{
 	background-color:white !important;
 	color:#bf0000 !important;
-	font-size: 1.5em !important;
-	border:none !important;
+	border:1px solid #bf0000 !important;
 	min-width:75px !important;
 }
 
 .next{
 	background-color:white !important;
 	color:green !important;
-	font-size: 1.5em !important;
-	border:none !important;
+	border:1px solid green !important;
 	min-width:75px !important;
 }
 
@@ -196,7 +194,7 @@
 	background-color:white;
 	color:green;
 	font-size: 1em;
-	border:2px solid green;
+	border:1px solid green;
 	min-width:75px;
 	text-align: center;
 }
@@ -223,7 +221,7 @@
 #loading-div{
 	color:#00234C;
 	position:relative;
-	left:65px;
+	left:0px;
 }
 
 #loading-div img{
@@ -253,7 +251,7 @@ span.glyphicon.glyphicon-arrow-left{
 	text-align:center;
 	color:white;
 	margin-top:35px;
-	height:400px;
+	height:500px;
 }
 
 .sign-up-container{
@@ -297,6 +295,9 @@ span.glyphicon.glyphicon-arrow-left{
 	white-space: nowrap;
 }
 
+.price_table_body{
+}
+
 .price_table_row {
     padding:15px;
 	background: lightgray;
@@ -304,6 +305,10 @@ span.glyphicon.glyphicon-arrow-left{
 	border-bottom: 1px solid white;
 	border-left: 1px solid gray;
 	border-right: 1px solid gray;
+}
+
+.price_table_row.name{
+	height:80px;
 }
 
 .price_table_row:hover{

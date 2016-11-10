@@ -19,7 +19,7 @@
 
 						<br><br>
 						
-						    <b>We will begin processing your enrollment once you click on the confirmation link that was just emailed to you.</b>  Thank you for choosing Great American Power!
+						    <b>We will begin processing your enrollment once you click on the confirmation link that was just emailed to you.  Please check your spam/junk folder if you did not receive the confirmation email.</b>  Thank you for choosing Great American Power!
 						
 			    </p>
 			  </div>
