@@ -1,7 +1,7 @@
 
   @foreach($ldcs as $ldc)
       <div class="col-md-6 col-sm-6 col-xs-12 float-shadow">        
-          <div class="price_table_container">
+          <div class="price_table_container ldc">
               <div class="price_table_heading">{!! $ldc->ldc !!}</div>
               <div class="price_table_body">
                   <div class="price_table_row cost"><strong>{!! $service !!}</strong></div>
