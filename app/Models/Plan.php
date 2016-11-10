@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Model as Model;
 
 class Plan extends Model
 {
-	public $timestamps = false;
-
 	public $table = 'plans';
     
 	public $fillable = [
