@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Enroll')
+@section('page-title', 'Enroll - Great American Power')
 
 @section('page-style')
 	{!! Html::style('css/enroll.css') !!}

@@ -1,5 +1,6 @@
 @extends('master')
 
+@section('page-title', 'Confirmed - Great American Power')
 
 @section('content')
 
@@ -16,19 +17,21 @@
 			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='{!! url("/") !!}';">OK</button>
 			</div>
 		</div>
-
-{!! Html::style('css/welcome.css') !!}
-{!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/master.css') !!}
-{!! Html::style('dist/remodal.css') !!}
-{!! Html::style('dist/remodal-default-theme.css') !!}
-{!! Html::style('css/modal.css') !!}
-{!! Html::script('dist/remodal.js') !!}
-{!! Html::script('js/email-confirmation.js') !!}
     
 @endsection
 
+@section('bottom-scripts')
 
+	{!! Html::style('css/welcome.css') !!}
+	{!! Html::style('css/enroll.css') !!}
+	{!! Html::style('css/master.css') !!}
+	{!! Html::style('dist/remodal.css') !!}
+	{!! Html::style('dist/remodal-default-theme.css') !!}
+	{!! Html::style('css/modal.css') !!}
+	{!! Html::script('dist/remodal.js') !!}
+	{!! Html::script('js/email-confirmation.js') !!}
+
+@endsection
 
 
 

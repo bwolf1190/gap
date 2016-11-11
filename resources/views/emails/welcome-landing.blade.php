@@ -1,8 +1,8 @@
 @extends('master')
 
+@section('page-title', 'Confirm - Great American Power')
 
 @section('content')
-
 
 		<div class="remodal-bg">
 		  <a href="#modal"></a><br>
@@ -28,20 +28,16 @@
 			</div>
 		</div>
 
-    	
-
-
-{!! Html::style('css/welcome.css') !!}
-{!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/master.css') !!}
-{!! Html::style('dist/remodal.css') !!}
-{!! Html::style('dist/remodal-default-theme.css') !!}
-{!! Html::style('css/modal.css') !!}
-{!! Html::script('dist/remodal.js') !!}
-{!! Html::script('js/email-confirmation.js') !!}
-
-
-    
 @endsection
 
+@section('bottom-scripts')
+	{!! Html::style('css/welcome.css') !!}
+	{!! Html::style('css/enroll.css') !!}
+	{!! Html::style('css/master.css') !!}
+	{!! Html::style('dist/remodal.css') !!}
+	{!! Html::style('dist/remodal-default-theme.css') !!}
+	{!! Html::style('css/modal.css') !!}
+	{!! Html::script('dist/remodal.js') !!}
+	{!! Html::script('js/email-confirmation.js') !!}
+@endsection
 

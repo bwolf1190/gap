@@ -1,7 +1,11 @@
 @extends('master')
 
-{!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/broker.css') !!}
+@section('page-title', 'Sign Up - Great American Power')
+
+@section('page-style')
+    {!! Html::style('css/enroll.css') !!}
+    {!! Html::style('css/broker.css') !!}
+@endsection
 
 @section('navbar-brand')
 
@@ -10,11 +14,6 @@
     @else
         <a id="nav-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
     @endif
-
-@endsection
-
-
-@section('carousel')
 
 @endsection
 
@@ -34,9 +33,10 @@
 </div>
 
 
+@section('bottom-scripts')
+
 {!! Html::script('js/validate.js') !!}
 {!! Html::script('js/enroll.js') !!}
-
 
 @endsection
 

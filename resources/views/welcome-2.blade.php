@@ -1,4 +1,7 @@
 @extends('master')
+
+@section('page-title', 'Great American Power - Home')
+
 @section('page-style')
     {!! Html::style('css/contact-sidebar.css') !!}
     {!! Html::style('css/welcome-2.css') !!}

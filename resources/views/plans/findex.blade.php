@@ -1,6 +1,6 @@
 @extends('master')
 
-
+@section('page-title', 'Plans - Great American Power')
 
 @section('navbar-brand')
     {!! Html::style('css/broker.css') !!}

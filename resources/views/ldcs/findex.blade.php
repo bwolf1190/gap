@@ -1,7 +1,11 @@
 @extends('master')
 
-{!! Html::style('css/enroll.css') !!}
-{!! Html::style('css/broker.css') !!}
+@section('page-title', 'Enroll - Great American Power')
+
+@section('page-style')
+    {!! Html::style('css/enroll.css') !!}
+    {!! Html::style('css/broker.css') !!}
+@endsection
 
 @section('navbar-brand')
 
@@ -30,15 +34,16 @@
 
 @endsection
 
-    @section('powered-by-gap')
+@section('powered-by-gap')
+
     @if($promo !== null)
         <div id="" class="" style="max-width:400px; margin:0 auto;">
             {!! Html::image('images/powered-by-gap-trans.png', '', array('class' => 'form-group')) !!}
         </div>
     @endif
 
- 
+@endsection
+
+@section('bottom-scripts')
     {!! Html::script('js/enroll.js') !!}
-
-    @endsection
-
+@endsection

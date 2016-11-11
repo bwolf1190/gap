@@ -1,6 +1,3 @@
-
-
-
 <div class="container">
 	<div>
 		{!! $customer->fname !!},
