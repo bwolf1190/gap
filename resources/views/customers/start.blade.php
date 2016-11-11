@@ -32,6 +32,7 @@
 
 </div>
 
+@endsection
 
 @section('bottom-scripts')
 
