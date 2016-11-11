@@ -28,7 +28,7 @@ class Enrollment extends Model
         'enroll_date'             => 'string',
 		'confirm_date'            => 'string',
 		'p2c'                     => 'string',
-		'customer_id'             => 'integer',
+		'customer_id'             => 'string',
 		'plan_id'                 => 'integer',
 		'confirmation_code'       => 'string',
 		'status'				  => 'string',

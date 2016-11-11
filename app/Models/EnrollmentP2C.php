@@ -54,7 +54,7 @@ class EnrollmentP2C extends Model
      */
     protected $casts = [
     	'status'				  => 'string',
-    	'customer_id'			  => 'integer',
+    	'customer_id'			  => 'string',
 	    'Revenue_Class_Desc'      => 'string',
 		'First_Name'              => 'string',
 		'Last_Name'               => 'string',

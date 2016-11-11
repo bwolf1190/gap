@@ -75,9 +75,8 @@ class EmailController extends Controller
                         ->with('customer', $customer)->with('confirmation_code', $confirmation_code);
         }
         else{
-            return view('welcome');
+            return view('welcome-2');
         }
-
     }
 
     /**

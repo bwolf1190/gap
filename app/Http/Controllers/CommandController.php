@@ -6,10 +6,25 @@ use \Carbon\Carbon;
 
 
 class CommandController extends Controller
-{
-      
+{    
       public static function sendP2CEnrollments(){
             $enrollments = \App\Models\EnrollmentP2C::get()->toArray();
+
+            /*$e = last($enrollments);
+            $acc_num = $e['LDC_Account_Num'];
+            $customer = \App\Models\Customer::where('acc_num', $acc_num)->first();
+            dd($customer->enrollment->status);*/
+
+            foreach($enrollments as $e){
+                  $acc_num = $e['LDC_Account_Num'];
+                  $customer = \App\Models\Customer::where('acc_num', $acc_num)->first();
+                  
+                  if($customer->enrollment->status === 'CONFIRMED'){
+                        $confirmed_enrollments[] = $e;
+                  }    
+            }
+            dd($confirmed_enrollments);
+
             $filename = Carbon::now()->toDateString() . '_' . Carbon::now()->hour . '-' . Carbon::now()->minute;
 
             \Excel::create($filename, function($excel) use($enrollments){
