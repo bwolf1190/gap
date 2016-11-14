@@ -12,7 +12,7 @@
                           <br> {!! $plan->rate2 !!}  
                         @endif
 
-                      /kWh</p></strong></div>
+                      </p></strong></div>
 
                       <div class="price_table_row"><strong>{!! $plan->length . " Months" !!}</strong></div>
                       <div class="price_table_row name"><strong>{!! $plan->name !!}</strong></div>

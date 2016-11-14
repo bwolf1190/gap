@@ -1,5 +1,7 @@
 @extends('master')
 
+@section('page-title', 'FAQ - Great American Power')
+
 @section('navbar-brand')
 
     {!! Html::style('css/faq.css') !!}
