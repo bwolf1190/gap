@@ -26,7 +26,7 @@ class EmailController extends Controller
         // for sending confirmation email to brokers
         $broker = $enrollment->agent_code;
         if($broker !== ''){
-            $broker = \App\Models\Broker::where('name', $enrollment->agent_code)->first();
+            $broker = \App\Models\Broker::where('name', $plan->promo)->first();
             //$this->sendBrokerConfirmation($customer, $plan, $enrollment);
             //Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
             Mail::to('bwolverton@greatamericanpower.com')->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
