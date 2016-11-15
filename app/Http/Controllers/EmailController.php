@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Mail\BrokerEnrollmentConfirmation;
 use Illuminate\Support\Facades\Input;
 use App\Mail\EnrollmentConfirmation;
 use Illuminate\Http\Request;
