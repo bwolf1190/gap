@@ -67,7 +67,7 @@ class EnrollmentController extends Controller
 
 		/* Handle P2C Enrollments */
 		
-		
+		// must be broker enrollment
 		if($agent_code !== '' && $type !== 'internal'){
 			$broker = \App\Models\Broker::where('promo', $agent_code)->first();
 			$Master_Code = $broker->master_code;
@@ -79,7 +79,7 @@ class EnrollmentController extends Controller
 		else{
 			$Master_Code = '';
 			$Agent_Code = '';
-			$Sub_Agent_Code = 'External';
+			$Sub_Agent_Code = '';
 			$Commission_Plan = '';
 			$Commission_Start_Date = '';
 		}

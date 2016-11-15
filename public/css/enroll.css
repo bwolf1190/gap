@@ -55,7 +55,7 @@
 .invalid{
 	border: 1px solid #bf0000 !important;
 	color: #bf0000 !important;
-	font-size: .7em !important;
+	font-size: .8em !important;
 }
 /*********** END ***********/ 
 
@@ -243,6 +243,7 @@
 	position: relative;
 	top:75px;
 	margin: 0 auto;
+	height:100px;
 }
 
 span.glyphicon.glyphicon-arrow-left{

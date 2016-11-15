@@ -50,8 +50,6 @@ $('#terms_conditions').click(function(){
 	}
 });
 
-
-
 function empty_check(name, message){
 	var valid;
 	var input = $("input[name=" + name + "]");
@@ -123,7 +121,6 @@ function validate_form_3(){
 
 }
 
-
 function validate_form_4(){
 	var email = validate_email("Please enter a valid email address");
 	var confirm_email = validate_confirm_email("Please enter a valid email address");
@@ -147,10 +144,10 @@ function validate_acc_num(){
 	var prefix = $("input[name=format_criteria_2]");
 	var acc_num = $("input[name=acc_num]");
 	if(prefix === ""){
-		var message = "Your account number or id must start with " + prefix.val() + " and be " + length.val() + " characters long";
+		var message = "Your account number or id must start with " + prefix.val() + " and be " + length.val() + " characters";
 	}
 	else{
-		var message = "Your account number or id must be " + length.val() + " characters long";
+		var message = "Your account number or id must be " + length.val() + " characters.";
 	}
 	acc_num.val(toTitleCase(acc_num.val()));
 

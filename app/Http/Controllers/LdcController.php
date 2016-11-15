@@ -50,7 +50,7 @@ class LdcController extends Controller
 			$ldc_id = $z->ldc_id;
 			$ldcs[] = \App\Models\Ldc::find((int)$ldc_id);
 		}
-
+		
 		if(empty($ldcs)){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
 		}
