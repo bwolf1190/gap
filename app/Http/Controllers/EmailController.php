@@ -24,15 +24,6 @@ class EmailController extends Controller
         $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();
 
-        // for sending confirmation email to brokers
-        $broker = $enrollment->agent_code;
-        if($broker !== ''){
-            $broker = \App\Models\Broker::where('name', $plan->promo)->first();
-            //$this->sendBrokerConfirmation($customer, $plan, $enrollment);
-            //Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
-            Mail::to('bwolverton@greatamericanpower.com')->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
-        }
-
         // if the enrollment is null, then it must be an InternalEnrollment
         if(is_null($enrollment)){
             $enrollment = \App\Models\InternalEnrollment::where('customer_id', $customer->id)->first();
@@ -49,6 +40,12 @@ class EmailController extends Controller
 
         Mail::to($customer->email)->queue(new EnrollmentConfirmation($customer, $plan, $enrollment));
 
+        // for sending confirmation email to brokers
+        $broker = $enrollment->agent_code;
+        if($broker !== ''){
+            $this->sendBrokerConfirmation($customer, $plan, $enrollment);
+        }
+
         return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
     }
 
@@ -57,13 +54,9 @@ class EmailController extends Controller
      * Sends a confirmation email to the address stored for the given Broker
      */
     public function sendBrokerConfirmation($customer, $plan, $enrollment){
-        $broker = \App\Models\Broker::where('name', $enrollment->agent_code)->first();
-        Mail::queue('emails.broker-confirmation', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
-                $m->from('Enrollment@greatamericanpower.com', 'GAP');
-                //$m->to($broker->email);
-                $m->to('bwolverton@greatamericanpower.com');
-                $m->subject("Broker Enrollment Received");
-        });
+            $broker = \App\Models\Broker::where('name', $plan->promo)->first();
+            //Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
+            Mail::to('bwolverton@greatamericanpower.com')->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
     }
 
 
