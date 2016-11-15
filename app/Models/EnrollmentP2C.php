@@ -44,7 +44,8 @@ class EnrollmentP2C extends Model
 		'MCity_Name',
 		'MPostal_Code',
 		'MState',
-		'Master_Code'
+		'Master_Code',
+		'Sub_Agent_Code'
 	];
 
     /**

@@ -23,7 +23,6 @@ class CommandController extends Controller
                         $confirmed_enrollments[] = $e;
                   }    
             }
-            dd($confirmed_enrollments);
 
             $filename = Carbon::now()->toDateString() . '_' . Carbon::now()->hour . '-' . Carbon::now()->minute;
 
@@ -31,7 +30,7 @@ class CommandController extends Controller
                   $excel->sheet('Sheet 1', function($sheet) use($enrollments){
                         $sheet->fromArray($enrollments);
                   });
-            })->store('csv');
+            })->store('csv', storage_path('/p2c'));
       }
 
     /**

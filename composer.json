@@ -11,8 +11,7 @@
         "laracasts/flash": "^2.0",
         "php-console/php-console": "~3.0",
         "barryvdh/laravel-debugbar": "^2.2",
-        "maatwebsite/excel": "~2.1.0",
-        "stripe/stripe-php": "dev-master"
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

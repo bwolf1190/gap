@@ -66,13 +66,22 @@ class EnrollmentController extends Controller
 		$enrollment = \App\Models\Enrollment::create($input);
 
 		/* Handle P2C Enrollments */
-		$broker = \App\Models\Broker::where('promo', $agent_code)->first();
+		
 		
 		if($agent_code !== '' && $type !== 'internal'){
+			$broker = \App\Models\Broker::where('promo', $agent_code)->first();
+			$Master_Code = $broker->master_code;
+			$Agent_Code = $broker->agent_code;
+			$Sub_Agent_Code = $broker->sub_agent_code;
 			$Commission_Plan = $broker->commission_type;
+			$Commission_Start_Date = date('Y-m-d');
 		}
 		else{
+			$Master_Code = '';
+			$Agent_Code = '';
+			$Sub_Agent_Code = 'External';
 			$Commission_Plan = '';
+			$Commission_Start_Date = '';
 		}
 
 		$Customer_Name = $customer->fname . ' ' . $customer->lname;
@@ -94,7 +103,7 @@ class EnrollmentController extends Controller
 			$dist_name = $dist_array[0]->name;
 		// END
 
-		$p2c_input = ['status'				 => 'PENDING',
+		$p2c_input = ['status'				 => '',
 					  'customer_id'			 => $customer->id,
 					  'Revenue_Class_Desc'   => $plan->type,
 					  'First_Name'           => $customer->fname,
@@ -111,34 +120,31 @@ class EnrollmentController extends Controller
 					  'SPostal_Code'         => "$customer->szip" . "0000",
 					  'Marketer_Name'        => "Great American Power, LLC",
 					  'Distributor_Name'     => $dist_name,
-					  //'Distributor_Name'     => $plan->ldc,
 					  'Service_Type_Desc'    => 'Electric',
 					  'Bill_Method'          => '2',
 					  'LDC_Account_Num'      => $customer->acc_num,
-					  'Enroll_Type_Desc'     => 'External',
+					  'Enroll_Type_Desc'     => 'Request',
 					  'Requested_Start_Date' => $start_date,
-					  //'Requested_Start_Date' => '="' . $start_date . '"',
-					  'Plan_Desc'            => 'PECOSC24F0718',
-					  //'Plan_Desc'            => $plan->code,
+					  'Plan_Desc'            => $plan->code,
 					  'Contract_Start_Date'  => $start_date,
-					  //'Contract_Start_Date'  => '="' . $start_date . '"',
 					  'Contract_End_Date'    => $Contract_End_Date,
-					  //'Contract_End_Date'    => '="' . $Contract_End_Date . '"',
-					  'Agent_Code'			 => $agent_code,
+					  'Agent_Code'			 => $Agent_Code,
 					  'Commission_Plan'		 => $Commission_Plan,
+					  'Commission_Start_Date'=> $Commission_Start_Date,
 					  'MLine1_Addr'			 => $customer->ma1,
 					  'MLine2_Addr'			 => $customer->ma2,
 					  'MCity_Name'			 => $customer->mcity,
 					  'MPostal_Code'		 => $customer->mzip,
 					  'MState'				 => $customer->mstate,
-					  'Master_Code'			 => 'External'];
+					  'Master_Code'			 => $Master_Code,
+					  'Sub_Agent_Code'		 => $Sub_Agent_Code];
 
 		$p2c_enrollment = \App\Models\EnrollmentP2C::create($p2c_input);
 		/* End P2C Enrollment */
-
 		Session::forget('zip');
 		Session::forget('state');
 
+		
 		//return view('enrollments.show')->with('enrollment', $enrollment);
 		return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
 	}
