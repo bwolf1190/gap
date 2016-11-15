@@ -10,13 +10,13 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EnrollmentConfirmation extends Mailable
+class BrokerEnrollmentConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $customer;
     public $plan;
-    public $enrollment;
+    public $enrollment;    
 
     /**
      * Create a new message instance.
@@ -37,7 +37,7 @@ class EnrollmentConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome')
-                    ->subject('Enrollment Confirmation');
+        return $this->view('emails.broker-confirmation')
+                    ->subject('Broker Enrollment Received');
     }
 }
