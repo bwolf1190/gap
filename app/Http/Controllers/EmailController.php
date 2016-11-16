@@ -6,6 +6,7 @@ use App\Mail\EnrollmentConfirmation;
 use Illuminate\Http\Request;
 use SoapClient;
 use Response;
+use Request;
 use Session;
 use Flash;
 use Mail;
@@ -19,7 +20,9 @@ class EmailController extends Controller
      * Send the welcome email with the confirmation link
      * Execute SOAP call to send enrollment to OPSOLVE
      */
-    public function sendWelcome($customer){
+    public function sendWelcome(Request $request){
+        dd($request->all());
+
         $customer = \App\Models\Customer::where('id',$customer)->first();
         $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();

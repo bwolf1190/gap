@@ -36,7 +36,6 @@ Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'Email
 
 Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 'confirmation', 'uses'=>'EmailController@confirmEmail'));
 
-
 /* <----------------------- Admin Routes -------------------------------->  */
 
 Route::get('/a', 'WelcomeController@charts');

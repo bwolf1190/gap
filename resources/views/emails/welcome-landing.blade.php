@@ -14,8 +14,12 @@
 						<span id="name">{!! $customer->fname !!},</span><br>
 
 						<br>
-							We have received your online enrollment for the 
-							{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "/kWh." !!}
+							We have received your online enrollment for the
+							@if($plan->rate2 !== '') 
+								{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate .  " " . $plan->rate2 . "." !!}
+							@else
+								{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . " and " . $plan->rate2 . "."!!}
+							@endif
 
 						<br><br>
 						
