@@ -26,9 +26,9 @@ class CommandController extends Controller
 
             $filename = Carbon::now()->toDateString() . '_' . Carbon::now()->hour . '-' . Carbon::now()->minute;
 
-            \Excel::create($filename, function($excel) use($enrollments){
-                  $excel->sheet('Sheet 1', function($sheet) use($enrollments){
-                        $sheet->fromArray($enrollments);
+            \Excel::create($filename, function($excel) use($confirmed_enrollments){
+                  $excel->sheet('Sheet 1', function($sheet) use($confirmed_enrollments){
+                        $sheet->fromArray($confirmed_enrollments);
                   });
             })->store('csv', storage_path('/p2c'));
       }
