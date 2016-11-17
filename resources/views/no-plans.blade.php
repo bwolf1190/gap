@@ -11,7 +11,7 @@
 			  <div>
 			    <div id="modalTitle"><h2>No Plans</h2></div>
 			    <p id="modalDesc">
-			    	<br><br>Sorry, we do not currently offer any {{ $service }} plans for {{ $ldc }}.  Please call us at 1-877-215-4140 if you have any questions or concerns.
+			    	<br><br>Sorry, we do not currently offer any {{ $service }} plans for {{ $ldc }}.  Please call Customer Care at 1-877-215-4140 if you have any questions or concerns.
 			    </p>
 			  </div>
 			  <br>

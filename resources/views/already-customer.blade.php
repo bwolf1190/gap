@@ -9,7 +9,7 @@
 			  <div>
 			    <div id="modalTitle"><h2>Already Enrolled</h2></div>
 			    <p id="modalDesc">
-			    	<br><br>Sorry, it seems that you have already enrolled with this account number.  Please contact our customer care at 1-877-215-4140 if you have questions or concerns.
+			    	<br><br>Sorry, it seems that you have already enrolled with this account number.  Please contact Customer Care at 1-877-215-4140 if you have questions or concerns.
 			    </p>
 			  </div>
 			  <br>

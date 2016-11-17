@@ -11,7 +11,7 @@
 			  <div>
 			    <div id="modalTitle"><h2>Outside Service Area</h2></div>
 			    <p id="modalDesc">
-			    	<br><br>Sorry, we do not currently provide service in your area.  Please call us at 1-877-215-4140 if you have any questions or concerns.
+			    	<br><br>Sorry, we do not currently provide service in your area.  Please call Customer Care at 1-877-215-4140 if you have any questions or concerns.
 			    </p>
 			  </div>
 			  <br>
