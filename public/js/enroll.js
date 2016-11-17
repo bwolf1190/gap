@@ -19,7 +19,7 @@ $(document).ready(function() {
 	    return this.indexOf(searchString, position) === position;
 	  };
 	}
-	
+
 	$("#form-group-1").show();
 	scroll_to_div('#enroll_container');
 	$("#loading-div").hide();

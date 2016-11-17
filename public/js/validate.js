@@ -50,6 +50,8 @@ $('#terms_conditions').click(function(){
 	}
 });
 
+
+
 function empty_check(name, message){
 	var valid;
 	var input = $("input[name=" + name + "]");
@@ -120,6 +122,7 @@ function validate_form_3(){
 	}
 
 }
+
 
 function validate_form_4(){
 	var email = validate_email("Please enter a valid email address");
