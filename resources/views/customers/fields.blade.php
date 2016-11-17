@@ -16,31 +16,31 @@
 		
 		<div class="form-group">
 			{!! Form::label('acc_num', $ldc->customer_identifier) !!} <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $ldc->format_criteria_1 }} digit number {{ $ldc->hint }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
-			{!! Form::text('acc_num', 'default', ['class' => 'form-control']) !!}
+			{!! Form::text('acc_num', '', ['class' => 'form-control']) !!}
 		</div>
 
 		<!-- P2C enrollments must have Federal_Tax_Num for Commercial Enrollments --> 
 		@if($plan->type == "Commercial")
 			<div class="form-group ">
 				{!! Form::label('Federal_Tax_Id_Num', 'Federal Tax Id #') !!}
-				{!! Form::text('Federal_Tax_Id_Num', '564456465', ['class' => 'form-control']) !!}
+				{!! Form::text('Federal_Tax_Id_Num', '', ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group ">
 				{!! Form::label('fname', 'Company Name') !!}
-				{!! Form::text('fname', 'Brett Inc.', ['class' => 'form-control']) !!}
+				{!! Form::text('fname', '', ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group" style="visibility:hidden">
 				{!! Form::label('lname', 'Last Name') !!}
-				{!! Form::text('lname', 'P2C', ['class' => 'form-control']) !!}
+				{!! Form::text('lname', 'Company', ['class' => 'form-control']) !!}
 			</div>
 		@else
 			<div class="form-group ">
 				{!! Form::label('fname', 'First Name') !!}
-				{!! Form::text('fname', 'Brett', ['class' => 'form-control']) !!}
+				{!! Form::text('fname', '', ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group ">
 				{!! Form::label('lname', 'Last Name') !!}
-				{!! Form::text('lname', 'Wolverton', ['class' => 'form-control']) !!}
+				{!! Form::text('lname', '', ['class' => 'form-control']) !!}
 			</div>
 		@endif
 		<!-- //////////////////////////////////////////////////////////////////// --> 
@@ -57,15 +57,15 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('sa1', 'Service Address Line 1') !!}
-			{!! Form::text('sa1', '14009 Juniper Street', ['class' => 'form-control']) !!}
+			{!! Form::text('sa1', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('sa2', 'Service Address Line 2') !!}
-			{!! Form::text('sa2', 'Apartment 1', ['class' => 'form-control']) !!}
+			{!! Form::text('sa2', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('scity', 'Service City') !!}
-			{!! Form::text('scity', 'Kansas City', ['class' => 'form-control']) !!}
+			{!! Form::text('scity', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group">
 			{!! Form::label('sstate', 'Service State') !!}
@@ -92,23 +92,23 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('ma1', 'Mailing Address Line 1') !!}
-			{!! Form::text('ma1', '14009 Juniper Street', ['class' => 'form-control']) !!}
+			{!! Form::text('ma1', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('ma2', 'Mailing Address Line 2') !!}
-			{!! Form::text('ma2', 'Apartment 1', ['class' => 'form-control']) !!}
+			{!! Form::text('ma2', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mcity', 'Mailing City') !!}
-			{!! Form::text('mcity', 'Kansas City', ['class' => 'form-control']) !!}
+			{!! Form::text('mcity', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mstate', 'Mailing State') !!}
-			{!! Form::text('mstate', $state, ['class' => 'form-control']) !!}
+			{!! Form::text('mstate', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mzip', 'Mailing Zip') !!}
-			{!! Form::text('mzip', $zip, ['class' => 'form-control']) !!}
+			{!! Form::text('mzip', '', ['class' => 'form-control']) !!}
 		</div>
 		<div id='enroll_btns' class="form-group">
 			<button id='previous3' name="previous3" type="button" class="previous btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Back</button>
@@ -122,21 +122,21 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('email', 'Email') !!}
-			{!! Form::email('email', 'bwolverton@greatamericanpower.com', ['class' => 'form-control']) !!}
+			{!! Form::email('email', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('confirm_email', 'Confirm Email') !!}
-			{!! Form::email('confirm_email', 'bwolverton@greatamericanpower.com', ['class' => 'form-control']) !!}
+			{!! Form::email('confirm_email', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('phone', 'Phone') !!}
-			{!! Form::text('phone', '8162104584', ['class' => 'form-control']) !!}
+			{!! Form::text('phone', '', ['class' => 'form-control']) !!}
 		</div>
 
 		@if($promo !== null)
 			<div class="form-group ">
 				{!! Form::label('agent_code', 'Agent Code') !!}
-				{!! Form::text('agent_code', $promo, ['class' => 'form-control']) !!}
+				{!! Form::text('agent_code', $promo, ['class' => 'form-control','readonly' => true]) !!}
 			</div>
 			<div class="form-group ">
 				{!! Form::label('sub_agent_code', 'Sub Agent Code') !!}

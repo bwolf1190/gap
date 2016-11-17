@@ -26,10 +26,10 @@ class PlanController extends Controller
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
 		if($promo === null){
-			$ps = \App\Models\Plan::orderBy('rate', 'desc')->where('ldc', $ldc)->where('type', $service)->whereNull('promo')->get();
+			$ps = \App\Models\Plan::orderBy('length', 'desc')->where('ldc', $ldc)->where('type', $service)->whereNull('promo')->get();
 		}
 		else{
-			$ps = \App\Models\Plan::orderBy('rate', 'desc')->where('ldc', $ldc)->where('type', $service)->where('promo', $promo)->get();
+			$ps = \App\Models\Plan::orderBy('length', 'desc')->where('ldc', $ldc)->where('type', $service)->where('promo', $promo)->get();
 		}
 		
 		$zip = Input::get('zip');
@@ -56,7 +56,7 @@ class PlanController extends Controller
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
 
-		$ps = \App\Models\Plan::orderBy('rate', 'desc')->where('ldc', $ldc)->where('type', $service)->get();
+		$ps = \App\Models\Plan::orderBy('length', 'desc')->where('ldc', $ldc)->where('type', $service)->get();
 		
 		$zip = Input::get('zip');
 

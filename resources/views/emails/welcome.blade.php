@@ -5,8 +5,8 @@
 		<p>
 			We have received your online enrollment for the 
 
-			@if($plan->rate2 != '') 
-				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . " " . $plan->rate2 . "." !!}
+			@if(is_null($plan->rate2)) 
+				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
 			@else
 				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . " and " . $plan->rate2 . "." !!}
 			@endif
