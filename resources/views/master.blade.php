@@ -97,7 +97,7 @@
         <div class="footer-center">
             <div>
                 <i class="fa fa-map-marker"></i>
-                <p><span>2959 Cherokee St NW</span> Kennesaw, GA</p>
+                <p><span>PO Box 1627</span> Kennesaw, GA 30156</p>
             </div>
             <div>
                 <i class="fa fa-phone"></i>

@@ -30,16 +30,14 @@
                             {!! Html::image('images/house-lights_1060-510.jpg', 'slide1', ['class' => 'fade-in-md']) !!}
                             <div class="carousel-caption fade-in-slow">
                                 <h1>Great American Power</h1>
-                                <h3 style="color:lightgray;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</h3>
+                                <h3 style="color:lightgray;">We supply the same energy you currently receive, often at lower prices, with no interruption in service. </h3>
                             </div>
                         </div>
                         <div class="item">
                             {!! Html::image('images/bakery-short-short.jpg', 'slide2', ['class' => 'fade-in-md']) !!}
                             <div class="carousel-caption fade-in-slow">
                                 <h1>Great American Power</h1>
-                                <h3 style="color:lightgray;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</h3>
+                                <h3 style="color:lightgray;">We are here for your home, or your business. It’s your choice to make, and the time is now to start managing and securing your energy needs.</h3>
                             </div>
                         </div>
                         <div class="item">
@@ -62,7 +60,7 @@
                         {!! csrf_field() !!}
                         <div id="" class="">
                             <div id="zip" class="form-group">
-                                {!! Form::text('zip', 'Zip Code', ['class' => 'form-control']) !!}
+                                {!! Form::text('zip', 'Enter zip code', ['class' => 'form-control']) !!}
                             </div>
                             <div class="row">
                                 <div id="sign-up-btns" class="form-group" style="margin-left:20px;">
@@ -96,7 +94,7 @@
                 </div>
                 <div id="wwd" class="col-md-8 col-sm-7 col-xs-12">
                     <h2>What We Do</h2>
-                    <p><article>Great American Power is an Electric Supply company focusing on the US states with deregulation. We believe in hiring the right people for the job which in turn means our clients get the best possible services and products. We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</article></p>
+                    <p><article>Great American Power is an Electric Supply company focusing on the US states with energy deregulation. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.  We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</article></p>
                     <p><article>Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</article></p>
                 </div>
                 <!-- End Main Text -->
@@ -106,7 +104,7 @@
                     {!! csrf_field() !!}
                     <div id="sign-up-form" class="">
                         <div id="zip" class="form-group">
-                            {!! Form::number('zip', 'Zip Code', ['class' => 'form-control']) !!}
+                            {!! Form::text('zip', 'Enter zip code', ['class' => 'form-control']) !!}
                         </div>
                         <script type="text/javascript">
                             $("input[name=zip]").click(function(e){
