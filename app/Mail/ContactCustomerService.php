@@ -38,6 +38,7 @@ class ContactCustomerService extends Mailable
     public function build()
     {
         return $this->view('emails.contact-customer-service')
+                    ->from('service@greatamericanpower.com', 'Customer Inquiry')
                     ->subject('GAP Website Message');
     }
 }
