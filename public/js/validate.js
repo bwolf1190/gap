@@ -43,6 +43,7 @@ $('#same_address').click(function(){
 $('#terms_conditions').click(function(){
 	if($(this).is(":checked")){
 		$(this).val('checked');
+		$('#terms-link')[0].click();
 		$("#terms-link").css("color", "#00234C");
 	}
 	if($(this).is(":not(:checked)")){

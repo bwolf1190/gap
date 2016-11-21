@@ -117,7 +117,7 @@
                 <a href="https://www.facebook.com/GreatAmericanPower/" target="_blank"><i class="fa fa-facebook"></i></a>
                 <a href="https://twitter.com/GreatAmeriPower" target="_blank"><i class="fa fa-twitter"></i></a>
                 <a href="https://www.linkedin.com/company/1855714" target="_blank"><i class="fa fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
+                <a href="https://www.pinterest.com/grtamerpwr/ " target="_blank"><i class="fa fa-pinterest"></i></a>
             </div>
         </div>
         <div id="disclaimer" class="row">PA license number A-2205475 | MD license number IR-2440 <br>

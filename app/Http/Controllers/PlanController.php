@@ -259,15 +259,15 @@ class PlanController extends Controller
 	    foreach($plans as $plan){
 	    	if($plan['etf_description'] === 'FIXED'){
 	        	$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
-	        	$plan['etf'] = 'Early Termination Fee';
+	        	$plan['etf'] = 'Early Cancellation Fee';
 	        }
 	        else if($plan['etf_description'] === 'TERM' && $plan['etf'] !== ''){
 	        	$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
-	        	$plan['etf'] = 'Early Termination Fee';
+	        	$plan['etf'] = 'Early Cancellation Fee';
 	        }
 	        else{
 	        	$plan['etf_description'] = 'No fee for terminating the contract early.';	
-	        	$plan['etf'] = 'No Early Termination Fee';        	
+	        	$plan['etf'] = 'No Early Cancellation Fee';        	
 	        }
 
 	    	if($plan['type'] === 'R'){
