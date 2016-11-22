@@ -277,6 +277,8 @@ class PlanController extends Controller
 	    		$plan['type'] = 'Commercial';
 	    	}
 
+	    	dd($plans);
+
 	    	$p = \App\Models\Plan::create($plan);
 	    }
 	}
@@ -290,13 +292,17 @@ class PlanController extends Controller
 	public function updatePlans(){
 		\App\Models\Plan::whereNull('code')->delete();
 
-		$this->updateLdcPlans('BGE');
+		//$this->updateLdcPlans('BGE');
+
 		//$this->updateLdcPlans('Delmarva');
 		//$this->updateLdcPlans('Duquesne');
-		$this->updateLdcPlans('METED');
+
+		/*$this->updateLdcPlans('METED');
 		$this->updateLdcPlans('PECO');
 		$this->updateLdcPlans('PEPCO');
-		$this->updateLdcPlans('PPL');
+		$this->updateLdcPlans('PPL');*/
+
+		$this->updateLdcPlans();
 	    
 	    return redirect('/');
 	    //return view('soap-test')->with('plans', $plans)->with('request', $request);

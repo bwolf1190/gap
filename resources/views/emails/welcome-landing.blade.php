@@ -29,7 +29,12 @@
 			    </p>
 			  </div>
 			  <br>
-			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='{!! url("/") !!}';">OK</button>
+
+			    {!! Form::open(['route' => 'fireWelcomeEmail', 'id' => 'form', 'method' => 'post']) !!}
+			    	{!! csrf_field() !!}
+			    	{!! Form::hidden('customer_id', $customer->id) !!}
+				    <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm">OK</button>
+				{!! Form::close() !!}
 			</div>
 		</div>
 

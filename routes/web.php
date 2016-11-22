@@ -14,6 +14,10 @@
 
 Auth::routes();
 
+Route::get('/opsolve/ldcs', array('as' => 'opsolve', 'uses' => 'LdcController@getLdc'));
+
+Route::get('/searchByState/{zip}', array('as' => 'searchByState', 'uses' => 'LdcController@searchByState'));
+
 Route::get('/welcome-email', function(){
     return view('emails.welcome');
 });
@@ -33,6 +37,9 @@ Route::get('/{type}/customers/start/{id}/{promo?}', array('as' => 'start', 'uses
 Route::get('/{type}/add/{id}/{agent?}/{agent_code?}/{sub_agent_code?}', array('as' => 'addEnrollment', 'uses'=>'EnrollmentController@addEnrollment'));
 
 Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'EmailController@sendWelcome'));
+
+Route::post('/emails/welcome/sent', array('as' => 'fireWelcomeEmail', 'uses' => 'EmailController@fireWelcomeEmail'));
+//Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'EmailController@sendWelcome'));
 
 Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 'confirmation', 'uses'=>'EmailController@confirmEmail'));
 

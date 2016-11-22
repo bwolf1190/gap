@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Input;
 use App\Mail\EnrollmentConfirmation;
 use Illuminate\Http\Request;
 use SoapClient;
-use Response;
 use Session;
 use Flash;
 use Mail;
@@ -19,6 +18,7 @@ class EmailController extends Controller
      * Send the welcome email with the confirmation link
      * Execute SOAP call to send enrollment to OPSOLVE
      */
+    //public function sendWelcome($customer){
     public function sendWelcome($customer){
         $customer = \App\Models\Customer::where('id',$customer)->first();
         $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
@@ -28,16 +28,15 @@ class EmailController extends Controller
         if(is_null($enrollment)){
             $enrollment = \App\Models\InternalEnrollment::where('customer_id', $customer->id)->first();
         }
-        
-        // commented out until plans match opsolve database
-        //$this->executeSoap($customer, $plan, $enrollment);
 
-        /*Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
-                $m->from('Enrollment@greatamericanpower.com', 'GAP');
-                $m->to($customer->email);
-                $m->subject("Email Confirmation");
-        });*/
+        return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
+    }
 
+    public function fireWelcomeEmail(Request $request){
+        $customer_id = $request['customer_id'];
+        $customer = \App\Models\Customer::where('id',$customer_id)->first();
+        $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
+        $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();
         Mail::to($customer->email)->queue(new EnrollmentConfirmation($customer, $plan, $enrollment));
 
         // for sending confirmation email to brokers
@@ -46,9 +45,8 @@ class EmailController extends Controller
             $this->sendBrokerConfirmation($customer, $plan, $enrollment);
         }
 
-        return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
+        return redirect('/');
     }
-
 
     /**
      * Sends a confirmation email to the address stored for the given Broker

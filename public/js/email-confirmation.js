@@ -10,4 +10,9 @@ $(document).ready(function(){
             closeOnOutsideClick: false
         }
     modal.open();
+
+	$('#ok-btn').on('click', function () {
+		$("#form").submit();
+	});
+
 });

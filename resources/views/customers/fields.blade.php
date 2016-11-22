@@ -69,7 +69,7 @@
 		</div>
 		<div class="form-group">
 			{!! Form::label('sstate', 'Service State') !!}
-			{!! Form::text('sstate', $state, ['class' => 'form-control']) !!}
+			{!! Form::text('sstate', $state, ['class' => 'form-control', 'readonly' => true]) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('szip', 'Service Zip') !!}
