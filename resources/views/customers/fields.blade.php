@@ -73,7 +73,7 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('szip', 'Service Zip') !!}
-			{!! Form::text('szip', $zip, ['class' => 'form-control']) !!}
+			{!! Form::text('szip', $zip, ['class' => 'form-control', 'readonly' => true]) !!}
 		</div>
 		<div id='enroll_btns' class="form-group">
 			<button id='previous2' name="previous2" type="button" class="previous btn btn-default col-xs-3 col-xs-offset-2 fade-in-slow">Back</button>

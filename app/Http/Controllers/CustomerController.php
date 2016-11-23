@@ -22,20 +22,11 @@ class CustomerController extends Controller
 	 */
 	public function start($type, $id, $promo = null)
 	{
-		$plan = \App\Models\Plan::where('id',(int)$id)->first();
-		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
-		$zip = Session::get('zip');
-
-		$state = '';
-		if(substr($zip, 0, 1)){
-			$state = 'PA';
-		}
-		else if($zip == ''){
-			$state = '';
-		}
-		else{
-			$state = 'MD';
-		}
+		$plan    = \App\Models\Plan::where('id',(int)$id)->first();
+		$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
+		$zip     = Session::get('zip');
+		$sub_zip = substr($zip, 0,3);
+		$state   = \App\Models\State::where('zip_prefix', $sub_zip)->first()->state_code;
 
 		return view('customers.start')->with('ldc', $ldc)
 									  ->with('plan', $plan)
@@ -50,9 +41,11 @@ class CustomerController extends Controller
 	 * Send agent to first part of internal enrollment form
 	 */
 	public function internalStart($type, $id){
-		$plan = \App\Models\Plan::where('id',(int)$id)->first();
-		$ldc = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
-		$zip = Session::get('zip');	
+		$plan    = \App\Models\Plan::where('id',(int)$id)->first();
+		$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
+		$zip     = Session::get('zip');
+		$sub_zip = substr($zip, 0,3);
+		$state   = \App\Models\State::where('zip_prefix', $sub_zip)->first()->state_code;
 
 		$state = '';
 		if(substr($zip, 0, 1)){

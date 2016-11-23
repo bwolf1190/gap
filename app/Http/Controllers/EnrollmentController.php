@@ -141,11 +141,7 @@ class EnrollmentController extends Controller
 
 		$p2c_enrollment = \App\Models\EnrollmentP2C::create($p2c_input);
 		/* End P2C Enrollment */
-		Session::forget('zip');
-		Session::forget('state');
 
-		
-		//return view('enrollments.show')->with('enrollment', $enrollment);
 		return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
 	}
 
