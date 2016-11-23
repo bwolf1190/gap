@@ -93,18 +93,19 @@ class CustomerController extends Controller
 		$type = Input::get('type');
 	
 		if(isset($input['file'])){
-			$file = $input['file'];
+			$file = $request->file();
 
 			$validator = Validator::make($input, [
 	    		'file' => 'mimes:csv,xlsx,txt,pdf'
 			]);
 			
 			// js file must be handled individually as it evaluates to text/plain with the validator
-			if($validator->fails() || $file->guessClientExtension() === 'js'){
+			/*if($validator->fails() || $file->guessClientExtension() === 'js'){
 				return redirect()->back()->withInput($input);
-			}
+			}*/
 
-			$file->move(__DIR__.'/storage/', $file->getClientOriginalName());
+			//$file->move(__DIR__.'/storage/', $file->getClientOriginalName());
+			$request->file()->store();
 		}
 
 		$existing_customer = \App\Models\Customer::where('acc_num', $input['acc_num'])->first();
