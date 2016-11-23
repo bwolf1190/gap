@@ -2,7 +2,14 @@
 <div class="container">
   <div class="row">
     @foreach($plans as $plan)
-          <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">        
+
+    @if(count($plans) === 3)
+          <div class="col-md-3 col-md-offset-1 col-sm-6 col-xs-12 float-shadow"> 
+    @elseif(count($plans) === 2)
+          <div class="col-md-3 col-md-offset-2 col-sm-6 col-xs-12 float-shadow"> 
+    @else       
+          <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">  
+    @endif      
               <div class="price_table_container">
                   <div class="price_table_heading">{!! $plan->ldc !!}</div>
                   <div class="price_table_body">

@@ -20,7 +20,7 @@ class LdcController extends Controller
 	/**
 	 * Use zip code to search for utility companies by state
 	 */
-	function search($s = null){
+	public function search($s = null){
 		if(Input::get('type') === null){
 			$type = 'web';
 		}
@@ -46,6 +46,11 @@ class LdcController extends Controller
 
 		$sub_zip      = substr($zip, 0,3);
 		$state        = \App\Models\State::where('zip_prefix', $sub_zip)->first();
+
+		if(is_null($state)){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}
+
 		$zip_prefix   = $state->zip_prefix;
 		$state_code   = $state->state_code;
 		$maryland     = ['BGE', 'Delmarva', 'MetEd', 'PEPCO'];
@@ -86,7 +91,7 @@ class LdcController extends Controller
 	/**
 	 * Get the utility companies by zip code with SOAP call
 	 */
-	function getLdc($s = null){
+	public function getLdc($s = null){
 		$url           = env('SOAP_URL');
 		$user          = env('SOAP_USER');
 		$pw            = env('SOAP_PW');
@@ -206,16 +211,42 @@ class LdcController extends Controller
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 */
+
+	public function brokerLdcs(){
+		$zip     = Input::get('zip');
+		$service = Input::get('service');
+		$promo   = Input::get('promo');
+		$type    = Input::get('type');
+		$broker  = \App\Models\Broker::where('promo', $promo)->first();
+		$ldcs    = $broker->ldcs;
+		Session::put('zip', $zip);
+
+		$sub_zip      = substr($zip, 0,3);
+		$state        = \App\Models\State::where('zip_prefix', $sub_zip)->first();
+
+		if(empty($ldcs) || is_null($state)){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}
+
+		// if there is only 1 LDC for the zip code, then send them straight to the plans
+		$count = count($ldcs);
+		if($count === 1){
+			return redirect()->route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
+		}
+
+		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
+	}
+
 	/**
 	 * Search for LDC for broker based on zip code.
 	 * If only 1 LDC is available for the zip code, return plans for that LDC.
 	 * Else return multiple LDCs for the user to choose from.
 	 */
-	public function brokerLdcs(){
-		$zip = Input::get('zip');
+	/*public function brokerLdcs(){
+		$zip     = Input::get('zip');
 		$service = Input::get('service');
-		$promo = Input::get('promo');
-		$type = Input::get('type');
+		$promo   = Input::get('promo');
+		$type    = Input::get('type');
 		Session::put('zip', $zip);
 
 		$zips = \App\Models\Zip::where('zip', $zip)->get();
@@ -244,7 +275,7 @@ class LdcController extends Controller
 		}
 
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
-	}
+	}*/
 
 
 	/**

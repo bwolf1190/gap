@@ -1,10 +1,8 @@
 @extends('master')
 
-
 @section('content')
 
     <div id="enroll_container" class="filtered-table-container container">
-
 		<div class="remodal-bg">
 		  <a href="#modal"></a><br>
 			<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
@@ -15,12 +13,9 @@
 			    </p>
 			  </div>
 			  <br>
-			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='{!! url("/") !!}';">OK</button>
+			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="history.go(-1);">OK</button>
 			</div>
 		</div>
-
-    	
-
     </div>
 
 {!! Html::style('css/welcome.css') !!}
@@ -31,6 +26,5 @@
 {!! Html::style('dist/remodal-default-theme.css') !!}
 {!! Html::script('dist/remodal.js') !!}
 {!! Html::script('js/email-confirmation.js') !!}
-
     
 @endsection

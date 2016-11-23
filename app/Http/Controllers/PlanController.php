@@ -208,15 +208,15 @@ class PlanController extends Controller
 	 * Insert plans into database
 	 */
 	public function updateLdcPlans($ldc){		
-		$url = env('SOAP_URL');
-	    $user = env('SOAP_USER');
-	    $pw = env('SOAP_PW');
-	    $output_params = array("output_xml;8000");
-	    $lang = env('SOAP_LANG');
-	    $entno = env('SOAP_ENTNO');
-	    $client = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
+		$url           = env('SOAP_URL');
+		$user          = env('SOAP_USER');
+		$pw            = env('SOAP_PW');
+		$output_params = array("output_xml;8000");
+		$lang          = env('SOAP_LANG');
+		$entno         = env('SOAP_ENTNO');
+		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
 
-	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>R</rev_type><campaign_code>WEB</campaign_code><request_date>2016-05-01</request_date></ReadiSystem>]]></string>";
+	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>R</rev_type><campaign_code>WEB</campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
 
 	    $xml_obj = simplexml_load_string($xml_string);
 
@@ -228,7 +228,7 @@ class PlanController extends Controller
 	    // explode string into array of plans
 	    $xml = explode('&lt;GU_sp_DR_Price_Quote&gt;', $response);
 	    // delete first element that is not a plan
-	    unset($xml[0]);
+	    //unset($xml[0]);
 
 	    // get values from xml tags and add to array
 	    for($i = 1; $i < count($xml); $i++){
@@ -249,7 +249,7 @@ class PlanController extends Controller
 	                        'ldc'                         => $supno, 
 	                        'type'                        => $rev_type, 
 	                        'length'                      => $offer_term,
-	                        'rate'                        => '$' . $offer_price,
+	                        'rate'                        => '$' . substr($offer_price, 0, 6) . '/kWh',
 	                        'etf'						  => $early_term_amt,
 	                        'etf_description'             => $early_term_type,
 	                        'price_code'                  => $price_code
@@ -257,27 +257,27 @@ class PlanController extends Controller
 	    }
 
 	    foreach($plans as $plan){
+	    	if($plan['ldc'] === 'DUKE_OH'){
+	    		$plan['ldc'] = 'Duke';
+	    	}
 	    	if($plan['etf_description'] === 'FIXED'){
 	        	$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
 	        	$plan['etf'] = 'Early Cancellation Fee';
 	        }
-	        else if($plan['etf_description'] === 'TERM' && $plan['etf'] !== ''){
+	        else if($plan['etf_description'] === 'TERM' || $plan['etf_description'] === 'REDUC' && $plan['etf'] !== ''){
 	        	$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
-	        	$plan['etf'] = 'Early Cancellation Fee';
+	        	$plan['etf'] = 'Cancellation Fee Applies';
 	        }
 	        else{
 	        	$plan['etf_description'] = 'No fee for terminating the contract early.';	
 	        	$plan['etf'] = 'No Early Cancellation Fee';        	
 	        }
-
 	    	if($plan['type'] === 'R'){
 	    		$plan['type'] = 'Residential';
 	    	}
 	    	else{
 	    		$plan['type'] = 'Commercial';
 	    	}
-
-	    	dd($plans);
 
 	    	$p = \App\Models\Plan::create($plan);
 	    }
@@ -302,7 +302,7 @@ class PlanController extends Controller
 		$this->updateLdcPlans('PEPCO');
 		$this->updateLdcPlans('PPL');*/
 
-		$this->updateLdcPlans();
+		$this->updateLdcPlans('DUKE_OH');
 	    
 	    return redirect('/');
 	    //return view('soap-test')->with('plans', $plans)->with('request', $request);
