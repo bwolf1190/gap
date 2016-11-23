@@ -41,7 +41,8 @@ class EmailController extends Controller
 
         // for sending confirmation email to brokers
         $broker = $enrollment->agent_code;
-        if(!empty($broker)){
+
+        if(!empty($broker) && $enrollment->type != 'internal'){
             $this->sendBrokerConfirmation($customer, $plan, $enrollment);
         }
 

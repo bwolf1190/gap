@@ -3,8 +3,10 @@ function set_error_style(element){
 }
 
 function reset_style(element){
-	element.removeClass('invalid');
-	element.val("");
+	if(element.hasClass('invalid')){
+		element.removeClass('invalid');
+		element.val("");
+	}
 }
 
 function toTitleCase(str)
