@@ -54,7 +54,7 @@ class ContactController extends Controller
 
 		Flash::success('contact saved successfully.');
 
-		Mail::to('bwolverton@greatamericanpower.com')->send(new ContactCustomerService($input['name'], $input['phone'], $input['email'], $input['inquiry']));
+		Mail::to('bwolverton@greatamericanpower.com')->queue(new ContactCustomerService($input['name'], $input['phone'], $input['email'], $input['inquiry']));
 
 		return redirect('/');
 	}

@@ -1,8 +1,5 @@
-
 <div class="container">
 	<div>
-		Great American Power,
-		<br>
 		<p>
 			{!! $inquiry !!}
 		</p>

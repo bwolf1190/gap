@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'Enrollment@greatamericanpower.com', 'name' => 'Great American Power'],
+    'from' => ['address' => 'GAPOnline@greatamericanpower.com', 'name' => 'Great American Power'],
 
     /*
     |--------------------------------------------------------------------------
