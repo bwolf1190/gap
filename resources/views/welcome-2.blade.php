@@ -44,8 +44,7 @@
                             {!! Html::image('images/house-home-green_1060-510.jpg', 'slide1', ['class' => 'fade-in-md']) !!}
                             <div class="carousel-caption fade-in-slow">
                                 <h1>Great American Power</h1>
-                                <h3 style="color:lightgray;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</h3>
+                                <h3 style="color:lightgray;">We believe in the power of healthy competitive markets that benefit consumers by providing great choices.</h3>
                             </div>
                         </div>
                     </div>
