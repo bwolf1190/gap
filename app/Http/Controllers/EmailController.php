@@ -33,7 +33,7 @@ class EmailController extends Controller
     }
 
     public function fireWelcomeEmail(Request $request){
-        Session::forget('zip'));
+        Session::forget('zip');
         Session::forget('state');
         $customer_id = $request['customer_id'];
         $customer = \App\Models\Customer::where('id',$customer_id)->first();

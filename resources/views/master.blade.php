@@ -120,7 +120,7 @@
                 <a href="https://www.pinterest.com/grtamerpwr/ " target="_blank"><i class="fa fa-pinterest"></i></a>
             </div>
         </div>
-        <div id="disclaimer" class="row">PA license number A-2205475 | MD license number IR-2440 <br>
+        <div id="disclaimer" class="row">MD license number IR-2440 | OH license number 16-1073E (1) | PA license number A-2205475<br>
         The rates posted on this Great American Power site are based on present rates.</div>
     </footer>
     <!-- End Footer Menu -->

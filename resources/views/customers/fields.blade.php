@@ -165,6 +165,9 @@
 		</div>
 
 		<style>
+		#upload-container{
+			display:none;
+		}
 			.fileUpload {
 			    position: relative;
 			    overflow: hidden;

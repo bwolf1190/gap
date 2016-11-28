@@ -47,14 +47,6 @@ class CustomerController extends Controller
 		$sub_zip = substr($zip, 0,3);
 		$state   = \App\Models\State::where('zip_prefix', $sub_zip)->first()->state_code;
 
-		$state = '';
-		if(substr($zip, 0, 1)){
-			$state = 'PA';
-		}
-		else{
-			$state = 'MD';
-		}
-
 		return view('internal-enrollments.start')->with('type', $type)->with('ldc', $ldc)->with('plan', $plan)->with('zip', $zip)->with('state', $state);
 	}
 
@@ -100,13 +92,13 @@ class CustomerController extends Controller
 			]);
 			
 			// js file must be handled individually as it evaluates to text/plain with the validator
-			/*if($validator->fails() || $file->guessClientExtension() === 'js'){
+			if($validator->fails() || $file->guessClientExtension() === 'js'){
 				return redirect()->back()->withInput($input);
-			}*/
+			}
 
-			//$file->move(__DIR__.'/storage/', $file->getClientOriginalName());
-			$request->file()->store();
+			$file->move(__DIR__.'/storage/', $file->getClientOriginalName());
 		}
+
 
 		$existing_customer = \App\Models\Customer::where('acc_num', $input['acc_num'])->first();
 

@@ -150,7 +150,7 @@
                                 </div>
                             </figure>
                             <h3 class="margin-top-20">Learn More</h3>
-                            <p class="margin-top-10 margin-bottom-20">Great American Power is approved and licensed by the Pennsylvania Public Utilities Commission and the Maryland Public Service Commission. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.  Want to know more? Check out our Frequently Asked Questions page!</p>
+                            <p class="margin-top-10 margin-bottom-20">Great American Power is approved and licensed by the Pennsylvania Public Utilities Commission, Maryland Public Service Commission, and the Public Utilities Commission of Ohio. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.  Want to know more? Check out our Frequently Asked Questions page!</p>
                             <div class="btn btn-default">
                                 <a class="info" href="{{ env('FAQ_URL') }}">FAQ</a>
                             </div>
