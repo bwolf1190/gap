@@ -44,6 +44,11 @@ body{
 	color:white;
 }
 
+#login-container .panel-body{
+	background-color: white;
+	border:1px solid lightgrey;
+}
+
 #login-btn{
 	background-color: #00234C;
 	color:white;
@@ -140,6 +145,15 @@ thead{
 
 thead a{
 	color:white;
+}
+
+thead th:hover{
+	color:lightgray;
+}
+
+thead a:hover{
+	color:lightgray;
+	text-decoration: none;
 }
 
 tbody{

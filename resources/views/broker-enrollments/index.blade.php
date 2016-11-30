@@ -19,7 +19,7 @@
 
         <div class="row">
             @if($enrollments->isEmpty())
-                <div class="well text-center">No Enrollments found.</div>
+                <div class="well text-center" style="padding:50px;">No Enrollments found.</div>
             @else
                 @include('broker-enrollments.table')
             @endif

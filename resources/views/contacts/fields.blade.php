@@ -16,7 +16,7 @@
 	{!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Question Field -->
+<!-- Inquiry Field -->
 <div class="form-group">
     {!! Form::label('inquiry', 'Inquiry:') !!}
 	{!! Form::textarea('inquiry', null, ['class' => 'form-control']) !!}

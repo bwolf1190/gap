@@ -18,8 +18,8 @@
 
 <!-- Key2 Field -->
 <div class="form-group">
-    {!! Form::label('question', 'Question:') !!}
-    <p>{!! $contact->question !!}</p>
+    {!! Form::label('inquiry', 'Inquiry:') !!}
+    <p>{!! $contact->inquiry !!}</p>
 </div>
 
 

@@ -7,12 +7,9 @@
 @section('content')
 {!! Html::style('css/admin.css') !!}
     <div class="container">
-
         <div class="row">
             <h1 class="pull-left">Ldcs</h1>
-            <a class="btn btn-primary pull-right admin-top-btn" style="margin-top: 25px" href="{!! route('ldcs.create') !!}">Add New</a>
         </div>
-
         <div class="row">
             @if(empty($ldcs))
                 <div class="well text-center">No Ldcs found.</div>
@@ -20,8 +17,5 @@
                 @include('ldcs.table')
             @endif
         </div>
-
-
-
     </div>
 @endsection

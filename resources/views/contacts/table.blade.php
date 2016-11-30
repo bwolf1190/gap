@@ -14,7 +14,7 @@
             <td>{!! $contact->name !!}</td>
 			<td>{!! $contact->phone !!}</td>
 			<td>{!! $contact->email !!}</td>
-			<td>{!! $contact->question !!}</td>
+			<td>{!! $contact->inquiry !!}</td>
             <td>{!! $contact->notes !!}</td>
             <td>{!! $contact->status !!}</td>
             <td>

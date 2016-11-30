@@ -19,6 +19,10 @@
 	{!! Form::text('format_criteria_2', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('hint', 'Hint:') !!}
+	{!! Form::text('hint', null, ['class' => 'form-control']) !!}
+</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

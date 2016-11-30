@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'GAPOnline@greatamericanpower.com', 'name' => 'Great American Power'],
+    'from' => ['address' => 'GAPOnline@GreatAmericanPower.com', 'name' => 'Great American Power'],
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD', 'Grap2016'),
+    'password' => env('MAIL_PASSWORD', 'Gap2016!'),
     //'password' => 'Bono5978',
     //'password' => 'Gap1234!',
 

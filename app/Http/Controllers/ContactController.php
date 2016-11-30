@@ -23,7 +23,7 @@ class ContactController extends Controller
 	 */
 	public function index()
 	{
-		$contacts = \App\Models\Contact::paginate(15);
+		$contacts = \App\Models\Contact::orderBy('id', 'desc')->paginate(15);
 		return view('contacts.index')->with('contacts', $contacts);
 	}
 
@@ -47,6 +47,8 @@ class ContactController extends Controller
 	        'email'  => 'required|email',
 	        'inquiry'=> 'required'
 	    ]);
+
+	    $input['name'] = title_case($input['name']);
 
 		$contact = \App\Models\Contact::Create($input);
 		$contact->status = 'OPEN';

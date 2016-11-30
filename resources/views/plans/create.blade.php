@@ -1,4 +1,4 @@
-@extends('master')
+@extends('admin.admin-master')
 
 @section('navbar-brand')
     <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
