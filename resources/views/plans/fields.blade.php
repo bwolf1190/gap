@@ -42,14 +42,14 @@
 
 <!-- Etf Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
-    {!! Form::label('etf', 'Etf:') !!}
+    {!! Form::label('etf', 'ETF:') !!}
 	{!! Form::select('etf', ['No ETF' => 'No ETF', 'ETF' => 'ETF']) !!}
 </div>
 
 <!-- Etf Description Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
-    {!! Form::label('etf_description', 'Etf Description:') !!}
-    {!! Form::text('etf_descrpition', null, ['class' => 'form-control']) !!}
+    {!! Form::label('etf_description', 'ETF Description:') !!}
+    {!! Form::text('etf_description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Meter Field -->
@@ -87,6 +87,7 @@
 select{
     height:30px;
     width:100%;
+    border-radius: 5px;
 }
 
 </style>

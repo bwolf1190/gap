@@ -22,7 +22,7 @@
                       </p></strong></div>
 
                       <div class="price_table_row"><strong>{!! $plan->length . " Months" !!}</strong></div>
-                      <div class="price_table_row name"><strong>{!! $plan->name !!}</strong></div>
+                      <div class="price_table_row name"><strong>{!! $plan->name . " " . $plan->meter !!}</strong></div>
                       <div class="price_table_row"><strong>{!! $plan->type !!}</strong></div>
                       <div class="price_table_row"><a target="_blank" href="{!! URL::asset("pdf/historical-rates/Great-American-Power-Historical-Rates-" . $plan->ldc . "-" . $plan->type . ".pdf") !!}">Historical Rates</a></div>
                       <div class="price_table_row etf last_row">

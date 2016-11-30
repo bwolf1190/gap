@@ -68,6 +68,7 @@ class EmailController extends Controller
      */
     public function confirmEmail($customer, $confirmation_code){
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer)->first();
+        $plan = $enrollment->plan;
         $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
         $customer = \App\Models\Customer::where('id', $customer)->first();
 
@@ -83,6 +84,10 @@ class EmailController extends Controller
         else if($confirmation_code === $enrollment->confirmation_code){
                 $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
                 $enrollment_p2c->update(['status' => 'CONFIRMED']);
+
+                if(!(is_null($plan->price_code))){
+                    $this->executeSoap($customer, $plan, $enrollment);
+                }
             
                 return view('emails.confirmation')
                         ->with('customer', $customer)->with('confirmation_code', $confirmation_code);
@@ -130,7 +135,7 @@ class EmailController extends Controller
                             <supno>" . $p->ldc . "</supno>
                             <eu_acct_no>" . $c->acc_num . "</eu_acct_no>
                             <gu_acct_no></gu_acct_no>
-                            <price_code>" . "10260" ."</price_code>
+                            <price_code>" . $p->price_code ."</price_code>
                             <rev_type>" . $type . "</rev_type>
                             <last_name>" . $c->lname . "</last_name>
                             <first_name>" . $c->fname . "</first_name>

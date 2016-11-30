@@ -83,10 +83,10 @@
                         </ul>
                         <ul class="list-unstyled">
                             <li class="social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="https://www.facebook.com/GreatAmericanPower/"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/GreatAmeriPower"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/company/1855714"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.pinterest.com/grtamerpwr/"><i class="fa fa-pinterest"></i></a>
                             </li>          
                         </ul>
                     </div>
