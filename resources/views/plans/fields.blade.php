@@ -49,7 +49,7 @@
 <!-- Etf Description Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('etf_description', 'ETF Description:') !!}
-    {!! Form::text('etf_description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('etf_description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Meter Field -->
@@ -88,6 +88,10 @@ select{
     height:30px;
     width:100%;
     border-radius: 5px;
+}
+
+textarea{
+    height:60px !important;
 }
 
 </style>

@@ -11,7 +11,7 @@
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Plans</h1>
-            <a class="btn btn-primary pull-right admin-top-btn" style="margin-top: 25px;" href="{!! route('plans.create') !!}">Add</a>
+            <a class="btn btn-primary pull-right admin-top-btn" style="margin-top: 25px;" href="{!! route('plans.create') !!}">Add Plan</a>
             
         </div>
         <div class="row">

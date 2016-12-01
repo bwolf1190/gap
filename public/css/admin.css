@@ -178,6 +178,11 @@ tr > td:last-child .glyphicon.glyphicon-edit{
 	margin-top:100px;
 }
 
+.btn.btn-primary{
+	background-color: #00234C;
+	color:white;
+}
+
 /*#header-container{
 	display:none;
 }
