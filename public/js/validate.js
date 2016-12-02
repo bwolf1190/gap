@@ -83,8 +83,9 @@ function validate_form_1(){
 	var acc_num = validate_acc_num();
 	var fname = empty_check("fname", "Please enter your first name");
 	var lname = empty_check("lname", "Please enter your last name");
+	var ftid = validate_federal_tax_id_num();
 
-	if(acc_num === "valid" && fname === "valid" && lname === "valid"){
+	if(acc_num === "valid" && fname === "valid" && lname === "valid" && ftid === "valid"){
 		return true;
 	}
 	else{
@@ -165,6 +166,27 @@ function validate_acc_num(){
 		set_error_style(acc_num);
 		acc_num.val(message);
 		valid = "invalid";
+	}
+
+	return valid;
+}
+
+function validate_federal_tax_id_num(){
+	var valid;
+	var ftid = $("#federal_tax_id_num");
+	if(ftid.length){
+		if(ftid.val() === ""){
+			var message = "Please enter you Federal Tax Id number";
+			ftid.val(message);
+			set_error_style(ftid);
+			valid = "invalid";
+		}
+		else{
+			valid  = "valid";
+		}
+	}
+	else{
+		valid = "valid";
 	}
 
 	return valid;

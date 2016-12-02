@@ -105,7 +105,7 @@
             </div>
             <div>
                 <i class="fa fa-envelope"></i>
-                <p><a href="mailto:service@greatamericanpower.com">Email Us</a></p>
+                <p><a href="mailto:GAPOnline@GreatAmericanPower.com">Email Us</a></p>
             </div>
         </div>
         <div class="footer-right">

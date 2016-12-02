@@ -22,16 +22,16 @@
 		<!-- P2C enrollments must have Federal_Tax_Num for Commercial Enrollments --> 
 		@if($plan->type == "Commercial")
 			<div class="form-group ">
-				{!! Form::label('Federal_Tax_Id_Num', 'Federal Tax Id #') !!}
-				{!! Form::text('Federal_Tax_Id_Num', '', ['class' => 'form-control']) !!}
-			</div>
-			<div class="form-group ">
-				{!! Form::label('fname', 'Company Name') !!}
+				{!! Form::label('fname', 'First Name') !!}
 				{!! Form::text('fname', '', ['class' => 'form-control']) !!}
 			</div>
-			<div class="form-group" style="visibility:hidden">
+			<div class="form-group ">
 				{!! Form::label('lname', 'Last Name') !!}
-				{!! Form::text('lname', 'Company', ['class' => 'form-control']) !!}
+				{!! Form::text('lname', '', ['class' => 'form-control']) !!}
+			</div>
+			<div class="form-group">
+				{!! Form::label('Federal_Tax_Id_Num', 'Federal Tax Id #') !!}
+				{!! Form::text('Federal_Tax_Id_Num', '', ['class' => 'form-control', 'id' => 'federal_tax_id_num']) !!}
 			</div>
 		@else
 			<div class="form-group ">

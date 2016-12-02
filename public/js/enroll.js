@@ -68,7 +68,9 @@ $('.next').click(function(){
 });
 
 $('.previous').click(function(){
-	get_form('previous');
+	if($('#form-group-1').css('display') != 'block'){
+		get_form('previous');
+	}
 });
 
 function get_form(d){

@@ -15,7 +15,7 @@
             	<i class="fa fa-envelope"></i>
             </div>
             <div class="col-xs-9 col-xs-offset-1">
-            	<p><a href="mailto:service@greatamericanpower.com">Email Us</a></p>
+            	<p><a href="mailto:GAPOnline@GreatAmericanPower.com">Email Us</a></p>
             </div>
     	</div>
     	<div class="row">
