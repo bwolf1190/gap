@@ -85,7 +85,7 @@ function validate_form_1(){
 	var lname = empty_check("lname", "Please enter your last name");
 	var ftid = validate_federal_tax_id_num();
 
-	if(acc_num === "valid" && fname === "valid" && lname === "valid" && ftid === "valid"){
+	if(acc_num === "valid" && fname === "valid" && lname === "valid"){
 		return true;
 	}
 	else{

@@ -34,7 +34,7 @@
 		</div>
 		<div class="form-group">
 			{!! Form::label('service', 'Commercial') !!}
-			{!! Form::radio('service','Commmercial') !!}
+			{!! Form::radio('service','Commercial') !!}
 		</div>
 		{!! Form::hidden('type', $type) !!}
 		<div class="form-group">

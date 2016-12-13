@@ -114,7 +114,7 @@ class AdminController extends Controller
 			$plan = $enrollment->plan;
 
 			Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
-	                $m->from('Enrollment@greatamericanpower.com', 'GAP');
+	                $m->from('gaponline@greatamericanpower.com', 'Great American Power');
 	                $m->to($customer->email);
 	                $m->subject("Email Confirmation");
 	        });

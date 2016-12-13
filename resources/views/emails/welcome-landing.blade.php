@@ -48,6 +48,6 @@
 	{!! Html::style('dist/remodal-default-theme.css') !!}
 	{!! Html::style('css/modal.css') !!}
 	{!! Html::script('dist/remodal.js') !!}
-	{!! Html::script('js/email-confirmation.js') !!}
+	{!! Html::script('js/email-confirmation.js?v=1') !!}
 @endsection
 

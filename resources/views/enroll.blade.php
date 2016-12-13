@@ -28,7 +28,7 @@
 	</div>
 	<div class="form-group col-sm-5 col-xs-9  col-xs-offset-2 col-sm-offset-3 col-lg-5 col-lg-offset-3">
 	    {!! Form::label('service', 'Commercial') !!}
-		{!! Form::radio('service','Commmercial') !!}
+		{!! Form::radio('service','Commercial') !!}
 	</div>
 
 	{!! Form::hidden('type', $type) !!}

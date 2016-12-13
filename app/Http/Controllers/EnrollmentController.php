@@ -102,6 +102,37 @@ class EnrollmentController extends Controller
 			$dist_array = DB::select('select name from p2c_ldcs where ldc_id=' . $ldc_id);
 			$dist_name = $dist_array[0]->name;
 		// END
+		
+		if($plan->ldc === 'Duquesne'){
+			$Bill_Method = '1';
+		}
+		else{
+			$Bill_Method = '2';
+		}
+		
+		// if zip code isn't 9 digits, add 4 0's
+		if(strlen($customer->szip) === 5){
+			$szip = "$customer->szip" . "0000";
+		}
+		else{
+			$szip = $customer->szip;
+		}
+		if(strlen($customer->mzip) === 5){
+			$mzip = "$customer->mzip" . "0000";
+		}	
+		else{
+			$mzip = $customer->mzip;
+		}
+		
+		if(title_case($customer->mstate) == 'Pennsylvania'){
+			$mstate = 'PA';
+		}
+		else if(title_case($customer->mstate) == 'Maryland'){
+			$mstate = 'MD';
+		}
+		else{
+			$mstate = $customer->mstate;
+		}	
 
 		$p2c_input = ['status'				 => '',
 					  'customer_id'			 => $customer->id,
@@ -117,11 +148,11 @@ class EnrollmentController extends Controller
 					  'SLine1_Addr'          => $customer->sa1,
 					  'SLine2_Addr'          => $customer->sa2,
 					  'SCity_Name'           => $customer->scity,
-					  'SPostal_Code'         => "$customer->szip" . "0000",
+					  'SPostal_Code'         => $szip,
 					  'Marketer_Name'        => "Great American Power, LLC",
 					  'Distributor_Name'     => $dist_name,
 					  'Service_Type_Desc'    => 'Electric',
-					  'Bill_Method'          => '2',
+					  'Bill_Method'          => $Bill_Method,
 					  'LDC_Account_Num'      => $customer->acc_num,
 					  'Enroll_Type_Desc'     => 'Request',
 					  'Requested_Start_Date' => $start_date,
@@ -134,8 +165,8 @@ class EnrollmentController extends Controller
 					  'MLine1_Addr'			 => $customer->ma1,
 					  'MLine2_Addr'			 => $customer->ma2,
 					  'MCity_Name'			 => $customer->mcity,
-					  'MPostal_Code'		 => $customer->mzip,
-					  'MState'				 => $customer->mstate,
+					  'MPostal_Code'		 => $mzip,
+					  'MState'				 => $mstate,
 					  'Master_Code'			 => $Master_Code,
 					  'Sub_Agent_Code'		 => $Sub_Agent_Code];
 

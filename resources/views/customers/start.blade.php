@@ -36,8 +36,8 @@
 
 @section('bottom-scripts')
 
-{!! Html::script('js/validate.js') !!}
-{!! Html::script('js/enroll.js') !!}
+{!! Html::script('js/validate.js?v=8') !!}
+{!! Html::script('js/enroll.js?v=1') !!}
 
 @endsection
 

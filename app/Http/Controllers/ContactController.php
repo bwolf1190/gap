@@ -42,13 +42,16 @@ class ContactController extends Controller
 	{
 		$input = $request->all();
 
-	    $this->validate($request, [
-	        'name'   => 'required',
-	        'email'  => 'required|email',
-	        'inquiry'=> 'required'
-	    ]);
+	    	$this->validate($request, [
+	        	'name'   => 'required',
+	        	'email'  => 'required|email',
+	        	'inquiry'=> 'required'
+	    	]);
 
-	    $input['name'] = title_case($input['name']);
+	    	$input['name'] = title_case(strip_tags($input['name']));
+	    	$input['phone'] = strip_tags($input['phone']);
+	    	$input['email'] = strip_tags($input['email']);
+	    	$input['inquiry'] = strip_tags($input['inquiry']);
 
 		$contact = \App\Models\Contact::Create($input);
 		$contact->status = 'OPEN';
@@ -56,7 +59,7 @@ class ContactController extends Controller
 
 		Flash::success('contact saved successfully.');
 
-		Mail::to('bwolverton@greatamericanpower.com')->queue(new ContactCustomerService($input['name'], $input['phone'], $input['email'], $input['inquiry']));
+		Mail::to('gaponline@greatamericanpower.com')->queue(new ContactCustomerService($input['name'], $input['phone'], $input['email'], $input['inquiry']));
 
 		return redirect('/');
 	}

@@ -26,7 +26,21 @@ class CustomerController extends Controller
 		$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
 		$zip     = Session::get('zip');
 		$sub_zip = substr($zip, 0,3);
-		$state   = \App\Models\State::where('zip_prefix', $sub_zip)->first()->state_code;
+		
+		if($sub_zip !== ''){
+			$state   = \App\Models\State::where('zip_prefix', $sub_zip)->first()->state_code;
+		}
+		else{
+			if($ldc->ldc === 'BGE' || $ldc->ldc === 'Delmarva' || $ldc->ldc === 'PEPCO'){
+				$state = 'MD';
+			}
+			else if($ldc->ldc === 'Duke'){
+				$state = 'OH';
+			}
+			else{
+				$state = 'PA';
+			}
+		}
 
 		return view('customers.start')->with('ldc', $ldc)
 									  ->with('plan', $plan)

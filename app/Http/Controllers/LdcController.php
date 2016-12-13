@@ -53,9 +53,9 @@ class LdcController extends Controller
 
 		$zip_prefix   = $state->zip_prefix;
 		$state_code   = $state->state_code;
-		$maryland     = ['BGE', 'Delmarva', 'MetEd', 'PEPCO'];
+		$maryland     = ['BGE', 'Delmarva', 'PEPCO'];
 		$ohio         = ['Duke'];
-		$pennsylvania = ['Duquesne', 'PECO', 'PPL'];
+		$pennsylvania = ['Duquesne', 'MetEd', 'PECO', 'PPL'];
 
 		if($state_code === 'MD'){
 			foreach($maryland as $ldc){
