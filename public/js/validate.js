@@ -25,7 +25,8 @@ $('#same_address').click(function(){
         $("input[name=ma1]").val($("input[name=sa1]").val());
         $("input[name=ma2]").val($("input[name=sa2]").val());
         $("input[name=mcity]").val($("input[name=scity]").val());
-        $("input[name=mstate]").val($("input[name=sstate]").val());
+        //$("input[name=mstate]").val($("input[name=sstate]").val());
+        $("#mstate").val($("#sstate").val());
         $("input[name=mzip]").val($("input[name=szip]").val());
         $("input[name=ma1]").removeClass("invalid");
         $("input[name=mcity]").removeClass("invalid");
@@ -37,7 +38,7 @@ $('#same_address').click(function(){
         $("input[name=ma1]").val("");
         $("input[name=ma2]").val("");
         $("input[name=mcity]").val("");
-        $("input[name=mstate]").val("");
+        $("#mstate").val("");
         $("input[name=mzip]").val(""); 	
     }
 });

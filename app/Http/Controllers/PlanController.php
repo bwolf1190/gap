@@ -113,6 +113,28 @@ class PlanController extends Controller
 	public function store(Request $request)
 	{
 		$input = $request->all();
+		
+		$this->validate($request, [
+			'priority'        => 'required',
+			'name'            => 'required',
+			'ldc'             => 'required',
+			'type'            => 'required',
+			'length'          => 'required',
+			'rate'            => 'required',
+			'etf'             => 'required',
+			'etf_description' => 'required'
+		]);
+		
+		// null values are needed to tell if plan is promo,p2c, or opsolve
+		if($input['promo'] === ''){
+			$input['promo'] = null;
+		}
+		if($input['code'] === ''){
+			$input['code'] = null;
+		}
+		if($input['price_code'] === ''){
+			$input['price_code'] = null;
+		}
 
 		\App\Models\Plan::Create($input);
 

@@ -44,14 +44,16 @@ class Plan extends Model
     ];
 
 	public static $rules = [
-		'priority'   => 'required',
-	    'name'       => 'required',
-		'ldc'        => 'required',
-		'type'       => 'required',
-		'length'     => 'required',
-		'rate'       => 'required',
-		'etf'        => 'required',
-		'price_code' => 'required'
+		'priority'        => 'required',
+		'name'            => 'required',
+		'ldc'             => 'required',
+		'type'            => 'required',
+		'length'          => 'required',
+		'rate'            => 'required',
+		'etf'             => 'required',
+		'etf_description' => 'required',
+		'code'            => 'required',
+		'price_code'      => 'required'
 	];
 
 	public function enrollment(){

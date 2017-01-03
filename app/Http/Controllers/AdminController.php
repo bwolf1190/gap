@@ -45,9 +45,12 @@ class AdminController extends Controller
 		$brokerEnrollments = [];
 
 		foreach($enrollments as $e){
+			
+			if(!is_null($e->plan)){
 			$plan = $e->plan;
-			if($plan->promo != ''){
+			if(!is_null($plan->promo)){
 				array_push($brokerEnrollments, $e);
+			}
 			}
 		}
 

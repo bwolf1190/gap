@@ -33,10 +33,10 @@
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/dashboard">{!! Html::image('images/gap-admin.png') !!}</a>
+                <a class="navbar-brand" href="/admin">{!! Html::image('images/gap-admin.png') !!}</a>
                 <div id="nav-links-container" class="pull-right">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/dashboard">Home</a></li>
+                        <li><a href="/admin">Home</a></li>
                         <li id="logout"><a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout (<span> {!! Auth::user()->name !!} </span>)</a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

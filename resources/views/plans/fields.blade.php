@@ -43,7 +43,7 @@
 <!-- Etf Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('etf', 'ETF:') !!}
-	{!! Form::select('etf', ['No ETF' => 'No ETF', 'ETF' => 'ETF']) !!}
+	{!! Form::select('etf', ['No Early Cancellation Fee' => 'No Early Cancellation Fee', 'Cancellation Fee Applies' => 'Cancellation Fee Applies']) !!}
 </div>
 
 <!-- Etf Description Field -->
@@ -61,7 +61,7 @@
 <!-- Promo Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('promo', 'Promo:') !!}
-	{!! Form::select('promo', ['ENERGYBOB' => 'ENERGYBOB', 'FRONTLINE' => 'FRONTLINE', 'IRONPIGS' => 'IRONPIGS', 'NPE' => 'NPE']) !!}
+	{!! Form::select('promo', ['' => null, 'ENERGYBOB' => 'ENERGYBOB', 'FRONTLINE' => 'FRONTLINE', 'IRONPIGS' => 'IRONPIGS', 'NPE' => 'NPE', 'WMS' => 'WMS']) !!}
 </div>
 
 <!-- Code Field -->

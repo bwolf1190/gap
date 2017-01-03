@@ -218,7 +218,9 @@ class LdcController extends Controller
 		$promo   = Input::get('promo');
 		$type    = Input::get('type');
 		$broker  = \App\Models\Broker::where('promo', $promo)->first();
-		$ldcs    = $broker->ldcs;
+		//$ldcs    = $broker->ldcs;
+		
+		$ldcs=\App\Models\Ldc::join('broker_ldc', 'broker_ldc.ldc_id','=','ldcs.id')->where('broker_ldc.broker_id', $broker->id)->orderBy('ldcs.ldc')->get();
 		Session::put('zip', $zip);
 
 		$sub_zip      = substr($zip, 0,3);
