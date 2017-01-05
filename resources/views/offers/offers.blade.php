@@ -11,11 +11,11 @@
 			    <div id="modalTitle"><h2>More Offers</h2></div>
 			    <p id="modalDesc" style="text-align:left;">
 			    	<br>
-					Would you like to 
+					
 			    </p>
 			  </div>
 			  <br>
-			 		<button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='https://www.espn.com';">Yes</button>
+			 		<button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='https://www.safestreets/GAP1/';">Yes</button>
 			 		<button data-remodal-action="cancel" class="remodal-cancel" onclick="window.location.href='{!! url("/") !!}';">No</button>
 			</div>
 		</div>
