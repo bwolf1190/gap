@@ -11,7 +11,7 @@
 			    <div id="modalTitle"><h2>More Offers</h2></div>
 			    <p id="modalDesc" style="text-align:left;">
 			    	<br>
-						text text text
+					Would you like to 
 			    </p>
 			  </div>
 			  <br>
