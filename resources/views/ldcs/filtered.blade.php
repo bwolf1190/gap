@@ -1,6 +1,12 @@
 
+ @if(count($ldcs) === 3) 
+ <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-2"> 
+@else
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+@endif
+
   @foreach($ldcs as $ldc)
-      <div class="col-md-6 col-sm-6 col-xs-12 float-shadow">        
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 float-shadow">        
           <div class="price_table_container ldc">
               <div class="price_table_heading">{!! $ldc->ldc !!}</div>
               <div class="price_table_body">
@@ -14,6 +20,8 @@
           </div>
       </div>
   @endforeach
+
+</div>
 
   {!! Html::style('css/enroll.css') !!}
 
