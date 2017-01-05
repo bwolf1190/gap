@@ -1,5 +1,9 @@
 <?php
 
+Route::get('/offers', function(){
+    return view('offers.offers');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
