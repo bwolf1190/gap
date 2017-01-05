@@ -6,7 +6,7 @@
 
 .navbar.navbar-inverse{
 	height:100px;
-	background-color: #00234C;
+	background-color: rgb(220,220,220);
 	border:none;
 }
 
@@ -18,7 +18,7 @@
 }
 
 #nav-links-container ul li a{
-	color: white;
+	color: #00234C;
 }
 
 #logout span{

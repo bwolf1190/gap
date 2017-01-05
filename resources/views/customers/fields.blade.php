@@ -69,7 +69,7 @@
 		</div>
 		<div class="form-group">
 			{!! Form::label('sstate', 'Service State') !!}
-			{!! Form::text('sstate', $state, ['class' => 'form-control']) !!}
+			{!! Form::select('sstate', ['Select State' =>'Select State', 'MD' => 'Maryland', 'PA' => 'Pennsylvania'], 0,['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('szip', 'Service Zip') !!}
@@ -104,7 +104,7 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mstate', 'Mailing State') !!}
-			{!! Form::text('mstate', '', ['class' => 'form-control']) !!}
+			{!! Form::select('mstate', ['Select State' =>'Select State', 'MD' => 'Maryland', 'PA' => 'Pennsylvania'], 0, ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mzip', 'Mailing Zip') !!}

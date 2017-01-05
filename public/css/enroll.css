@@ -99,6 +99,10 @@
 	color:white;
 }
 
+.form-group select{
+	width:200px;
+}
+
 #form-group-1{
 	text-align: left;
 }

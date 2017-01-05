@@ -105,7 +105,6 @@ Route::get('broker/admin/subagents/export/{broker}', 'BrokerController@exportSub
 
 
 
-
 // standard broker route
 Route::get('/broker/{promo}', 'EnrollmentController@startBroker');
 

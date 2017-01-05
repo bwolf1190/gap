@@ -45,12 +45,11 @@ class AdminController extends Controller
 		$brokerEnrollments = [];
 
 		foreach($enrollments as $e){
-			
 			if(!is_null($e->plan)){
-			$plan = $e->plan;
-			if(!is_null($plan->promo)){
-				array_push($brokerEnrollments, $e);
-			}
+				$plan = $e->plan;
+				if(!is_null($plan->promo)){
+					array_push($brokerEnrollments, $e);
+				}
 			}
 		}
 
@@ -71,17 +70,13 @@ class AdminController extends Controller
 	 * Returns plans for a given broker
 	 */
 	public function showBrokerEnrollments($broker, $sort = null){
-		$brokerPlans = \App\Models\Plan::where('promo', $broker)->get();
 		$brokers = \App\Models\Broker::all();
-		$brokerEnrollments = [];
 
-		foreach($brokerPlans as $p){
-			if(!is_null($sort)){
-				$brokerEnrollments = \App\Models\Enrollment::orderBy($sort, 'desc')->where('plan_id', $p->id)->paginate(15);
-			}
-			else{
-				$brokerEnrollments = \App\Models\Enrollment::where('plan_id', $p->id)->paginate(15);
-			}
+		if(!is_null($sort)){
+			$brokerEnrollments = \App\Models\Enrollment::orderBy($sort, 'desc')->where('agent_code', $broker)->paginate(15);
+		}
+		else{
+			$brokerEnrollments = \App\Models\Enrollment::where('agent_code', $broker)->paginate(15);
 		}
 
 		return view('broker-enrollments.index')
