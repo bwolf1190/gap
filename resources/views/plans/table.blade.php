@@ -7,10 +7,11 @@
 			<th><a href="/sort-plans/length">Length</a></th>
             <th><a href="/sort-plans/rate">Rate</a></th>
 			<th><a href="/sort-plans/rate2">Rate 2</a></th>
-			<th><a href="/sort-plans/etf">Etf</a></th>
-            <th><a href="/sort-plans/etf_description">Etf Description</a></th>
+			<th><a href="/sort-plans/etf">ETF</a></th>
+            <th><a href="/sort-plans/etf_description">ETF Description</a></th>
 			<th><a href="/sort-plans/meter">Meter</a></th>
 			<th><a href="/sort-plans/promo">Promo</a></th>
+            <th><a href="/sort-plans/code">Utilibill Code</a></th>
 			<th><a href="/sort-plans/price_code">Price Code</a></th>
     <th width="50px">Action</th>
     </thead>
@@ -28,6 +29,7 @@
             <td>{!! $plan->etf_description !!}</td>
 			<td>{!! $plan->meter !!}</td>
 			<td>{!! $plan->promo !!}</td>
+            <td>{!! $plan->code !!}</td>
 			<td>{!! $plan->price_code !!}</td>
             <td>
                 <a href="{!! route('plans.edit', [$plan->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>

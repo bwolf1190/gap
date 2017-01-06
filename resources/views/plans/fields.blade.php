@@ -7,7 +7,7 @@
 <!-- Name Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('name', 'Name:') !!}
-	{!! Form::select('name', ['Fixed' => 'Fixed', 'Fixed - Last Month Free' => 'Fixed - Last Month Free', 'Fixed - Step Down' => 'Fixed - Step Down', 'Fixed - Step Up' => 'Fixed - Step Up', 'Fixed - Last Two Months Half Price' => 'Fixed - Last Two Months Half Price', 'Fixed - Last Month Half Price' => 'Fixed - Last Month Half Price', 'Variable' => 'Variable']) !!}
+	{!! Form::select('name', ['Fixed' => 'Fixed', 'Fixed - Last Month Free' => 'Fixed - Last Month Free', 'Fixed - Step Down' => 'Fixed - Step Down', 'Fixed - Step' => 'Fixed - Step', 'Fixed - Last Month Half Price' => 'Fixed - Last Month Half Price', 'Fixed GS' => 'Fixed GS', 'Fixed GM' => 'Fixed GM', 'Fixed GSCM' => 'Fixed GSCM', 'Fixed GS1' => 'Fixed GS1', 'Fixed GS3' => 'Fixed GS3', 'Variable GS3' => 'Variable GS3']) !!}
 </div>
 
 <!-- Ldc Field -->

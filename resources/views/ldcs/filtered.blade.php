@@ -1,6 +1,6 @@
 
- @if(count($ldcs) === 3) 
- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-2"> 
+@if(count($ldcs) === 3) 
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-2"> 
 @else
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 @endif

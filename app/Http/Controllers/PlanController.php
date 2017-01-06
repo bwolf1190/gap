@@ -125,7 +125,10 @@ class PlanController extends Controller
 			'etf_description' => 'required'
 		]);
 		
-		// null values are needed to tell if plan is promo,p2c, or opsolve
+		// null values are needed to tell if plan is step,promo,p2c, or opsolve
+		if($input['rate2'] === ''){
+			$input['rate2'] = null;
+		}
 		if($input['promo'] === ''){
 			$input['promo'] = null;
 		}
