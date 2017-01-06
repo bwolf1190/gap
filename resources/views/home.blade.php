@@ -21,9 +21,9 @@
                 <h2>Enrollments</h2>
             </div>
         </div></a>
-        <a href="/internalEnrollments"><div id="internal-enrollments-btn" class="col-xs-12 col-md-3 col-md-offset-1 box grey">
+        <a href="/ldcs"><div id="internal-enrollments-btn" class="col-xs-12 col-md-3 col-md-offset-1 box grey">
             <div class=" inner-box">
-                <h2>Internal Enrollments</h2>
+                <h2>LDCs</h2>
             </div>
         </div></a>
     </div>
@@ -36,13 +36,6 @@
         <a href="/faqs"><div id="faqs-btn" class="col-xs-12 col-md-3 col-md-offset-1 box grey">
             <div class=" inner-box">
                 <h2>FAQs</h2>
-            </div>
-        </div></a>
-    </div>
-    <div class="row">
-        <a href="/ldcs"><div id="ldcs-btn" class="col-xs-12 col-md-3 col-md-offset-3 box grey">
-            <div class=" inner-box">
-                <h2>LDCs</h2>
             </div>
         </div></a>
     </div>

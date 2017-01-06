@@ -7,7 +7,7 @@
 <!-- Name Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('name', 'Name:') !!}
-	{!! Form::select('name', ['Fixed' => 'Fixed', 'Fixed - Last Month Free' => 'Fixed - Last Month Free', 'Fixed - Step Down' => 'Fixed - Step Down', 'Fixed - Step' => 'Fixed - Step', 'Fixed - Last Month Half Price' => 'Fixed - Last Month Half Price', 'Fixed GS' => 'Fixed GS', 'Fixed GM' => 'Fixed GM', 'Fixed GSCM' => 'Fixed GSCM', 'Fixed GS1' => 'Fixed GS1', 'Fixed GS3' => 'Fixed GS3', 'Variable GS3' => 'Variable GS3']) !!}
+	{!! Form::select('name', ['Fixed' => 'Fixed', 'Fixed - Step' => 'Fixed - Step', 'Fixed - Step Down' => 'Fixed - Step Down',  'Fixed - Last Month Free' => 'Fixed - Last Month Free', 'Fixed - Last Month Half Price' => 'Fixed - Last Month Half Price', 'Fixed GS' => 'Fixed GS', 'Fixed GS1' => 'Fixed GS1', 'Fixed GS3' => 'Fixed GS3', 'Fixed GM' => 'Fixed GM', 'Fixed GSCM' => 'Fixed GSCM', 'Variable GS3' => 'Variable GS3']) !!}
 </div>
 
 <!-- Ldc Field -->
@@ -50,12 +50,6 @@
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('etf_description', 'ETF Description:') !!}
     {!! Form::textarea('etf_description', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Meter Field -->
-<div class="form-group col-xs-6 col-xs-offset-3">
-    {!! Form::label('meter', 'Meter:') !!}
-	{!! Form::text('meter', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Promo Field -->
