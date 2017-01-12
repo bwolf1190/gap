@@ -12,17 +12,21 @@
               <div class="price_table_container">
                   <div class="price_table_heading">{!! $plan->ldc !!}</div>
                   <div class="price_table_body">
-                      <div class="price_table_row cost"><strong><p>{!! $plan->rate !!} 
-
-                        @if($plan->rate2 !== "")
-                          <br> {!! $plan->rate2 !!}  
-                        @endif
+                      
+                      @if($plan->rate2 == "")
+                        <div class="price_table_row cost"><strong><p style="padding-top:25px;">{!! $plan->rate !!} 
+                      @else
+                        <div class="price_table_row cost"><strong><p>{!! $plan->rate !!} 
+                      @endif
+                      
+                      @if($plan->rate2 !== "")
+                        <br> {!! $plan->rate2 !!}  
+                      @endif
 
                       </p></strong></div>
 
                       <div class="price_table_row"><strong>{!! $plan->length . " Months" !!}</strong></div>
                       <div class="price_table_row name"><strong>{!! $plan->name . " " . $plan->meter !!}</strong></div>
-                      <div class="price_table_row"><strong>{!! $plan->type !!}</strong></div>
                       <div class="price_table_row"><a target="_blank" href="{!! URL::asset("pdf/historical-rates/Great-American-Power-Historical-Rates-" . $plan->ldc . "-" . $plan->type . ".pdf") !!}">Historical Rates</a></div>
                       <div class="price_table_row etf last_row">
                           <strong>{!! $plan->etf !!}</strong>
