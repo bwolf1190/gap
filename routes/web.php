@@ -35,6 +35,11 @@ Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@searc
 
 Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 
+
+
+Route::get('/{type}/select-plan/{s}/{l}/meter/{meter?}', array('as' => 'searchMeteredPlans', 'uses'=>'PlanController@searchMeteredPlans'));
+
+
 Route::get('/{type}/customers/start/{id}/{promo?}', array('as' => 'start', 'uses'=>'CustomerController@start'));
 
 Route::get('/{type}/add/{id}/{agent?}/{agent_code?}/{sub_agent_code?}', array('as' => 'addEnrollment', 'uses'=>'EnrollmentController@addEnrollment'));

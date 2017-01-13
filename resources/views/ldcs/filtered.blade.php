@@ -23,6 +23,6 @@
 
 </div>
 
-  {!! Html::style('css/enroll.css') !!}
+{!! Html::style('css/enroll.css') !!}
 
 

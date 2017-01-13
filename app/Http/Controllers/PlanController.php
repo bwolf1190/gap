@@ -14,9 +14,30 @@ class PlanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['searchPlans', 'internalPlans', 'truncate', 'updatePlans']]);
+        $this->middleware('admin', ['except' => ['searchPlans', 'searchMeteredPlans', 'internalPlans', 'truncate', 'updatePlans']]);
     }
 
+    
+    public function searchMeteredPlans($type, $service, $ldc, $meter = null){
+    	$type = 'web';
+    	$promo=null;
+
+    	if($meter != null){
+    		$ps = \App\Models\Plan::orderBy('rate', 'desc')->where('ldc', $ldc)->where('type', $service)->where('meter', $meter)->whereNull('promo')->get();
+    	}
+
+		foreach($ps as $p){
+			$id = $p->id;
+			$plans[] = \App\Models\Plan::find($id);
+		}
+
+		if(empty($plans)){
+			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
+		}
+
+		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
+
+    }
 
 	/**
 	 * Return plans for type, service, ldc, and the optional promo.
