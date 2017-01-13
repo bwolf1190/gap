@@ -55,7 +55,7 @@
                 <!-- Main Text -->  
                 <div id="sign-up-container-sm" class="col-sm-5 col-xs-6 animate fadeInUp">
                         <h2 id="sign-up-header" style="">Find Your Rate</h2>
-                        {!! Form::open(['action' => 'LdcController@search']) !!}
+                        {!! Form::open(['action' => 'LdcController@search', 'id' => 'zip-form-sm']) !!}
                         {!! csrf_field() !!}
                         <div id="" class="">
                             <div id="zip" class="form-group">
@@ -99,7 +99,7 @@
                 <!-- End Main Text -->
                 <div id="sign-up-container" class="col-md-4 col-sm-5 animate fadeInUp">
                     <h2 id="sign-up-header" style="">Find Your Rate</h2>
-                    {!! Form::open(['action' => 'LdcController@search']) !!}
+                    {!! Form::open(['action' => 'LdcController@search', 'id' => 'zip-form']) !!}
                     {!! csrf_field() !!}
                     <div id="sign-up-form" class="">
                         <div id="zip" class="form-group">
@@ -182,4 +182,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('bottom-scripts')
+{!! Html::script('js/commercial.js') !!}
 @endsection

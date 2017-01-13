@@ -32,6 +32,9 @@ class LdcController extends Controller
 		$promo = Input::get('promo');
 		Session::put('zip', $zip);
 
+		$sub_zip      = substr($zip, 0,3);
+		$state        = \App\Models\State::where('zip_prefix', $sub_zip)->first();
+
 		// if zip code is entered on welcome page the residential or commercial button was used
 		if(Input::get('Residential')){
 			$service = "Residential";
@@ -44,13 +47,18 @@ class LdcController extends Controller
 			$service = Input::get('service');
 		} 
 
-		$sub_zip      = substr($zip, 0,3);
-		$state        = \App\Models\State::where('zip_prefix', $sub_zip)->first();
-
 		if(is_null($state)){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
 		}
 
+		return $this->getLdcs($type, $service, $state, $promo);
+
+	}	
+
+	/**
+	 * 
+	 */
+	public function getLdcs($type, $service, $state, $promo, $meter=null){
 		$zip_prefix   = $state->zip_prefix;
 		$state_code   = $state->state_code;
 		$maryland     = ['BGE', 'Delmarva', 'PEPCO'];
@@ -84,9 +92,7 @@ class LdcController extends Controller
 		}
 
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
-
-
-	}	
+	}
 
 	/**
 	 * Get the utility companies by zip code with SOAP call
