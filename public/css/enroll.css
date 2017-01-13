@@ -257,7 +257,7 @@ span.glyphicon.glyphicon-arrow-left{
 	text-align:center;
 	color:white;
 	margin-top:35px;
-	height:525px;
+	max-height:525px;
 }
 
 .price_table_container.ldc{

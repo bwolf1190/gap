@@ -366,6 +366,10 @@ nav{
 	color:lightgray;
 }
 
+#disclaimer a{
+	color:white;
+}
+
 @media screen and (max-width: 350px){
 	#nav-brand{top:10px;}
 }

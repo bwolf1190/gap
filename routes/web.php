@@ -179,6 +179,18 @@ Route::get('faqs/{id}/delete', [
 ]);
 /* <--------------------------------------------------------------------->  */
 
+
+/* <---------------------- Historical Rates Route ----------------------->  */
+
+Route::get('/historical-rates', function(){
+
+    $ldcs = \App\Models\Ldc::all();
+    return view('historical-rates')->with('ldcs', $ldcs);
+
+});
+
+/* <--------------------------------------------------------------------->  */
+
 /* <------------------- Internal Enrollment Routes ---------------------->  */
 
 /*

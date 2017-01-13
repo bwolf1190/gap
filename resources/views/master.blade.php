@@ -121,7 +121,9 @@
             </div>
         </div>
         <div id="disclaimer" class="row">MD license number IR-2440 | OH license number 16-1073E (1) | PA license number A-2205475<br>
-        The rates posted on this Great American Power site are based on present rates.</div>
+        The rates posted on this Great American Power site are based on present rates.<br>
+        <a href="{{ env('HISTORICAL_RATES_URL') }}">Historical Rates</a>
+        </div>
     </footer>
     <!-- End Footer Menu -->
 </body>
