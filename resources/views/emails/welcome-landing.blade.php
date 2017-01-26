@@ -35,6 +35,9 @@
 			    	{!! Form::hidden('customer_id', $customer->id) !!}
 				    <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm">OK</button>
 				{!! Form::close() !!}
+
+				<div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
+
 			</div>
 		</div>
 

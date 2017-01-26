@@ -31,11 +31,11 @@
                       @endif
                       <div class="price_table_row">
                         <a href="{{ $plan->reward_link }}" title="Click for more information" target="_blank">{!! $plan->reward !!}</a>
-                        <a href="#" id="acc-num-tooltip" data-trigger="hover" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                        <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
                       </div>
                       <div class="price_table_row etf last_row">
                           <strong>{!! $plan->etf !!}</strong>
-                          <a href="#" id="acc-num-tooltip" data-trigger="hover" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                          <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
                       </div>                              
                   </div>
                   <div class="sign-up-container">

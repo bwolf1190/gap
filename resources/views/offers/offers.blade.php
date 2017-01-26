@@ -11,12 +11,15 @@
 			    <div id="modalTitle"><h2>More Offers</h2></div>
 			    <p id="modalDesc" style="text-align:left;">
 			    	<br>
-					
+					Congratulations, you now qualify for our special rebate offers!  Please click yes below to learn more!
 			    </p>
 			  </div>
 			  <br>
-			 		<button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='https://www.safestreets/GAP1/';">Yes</button>
-			 		<button data-remodal-action="cancel" class="remodal-cancel" onclick="window.location.href='{!! url("/") !!}';">No</button>
+			 		<button id="yes-btn" data-remodal-action="confirm" class="remodal-confirm" style="background-color:green;" onclick="window.location.href='http://www.safestreets.com/GAP1/';">Yes, please</button>
+			 		<button id="no-btn" data-remodal-action="cancel" class="remodal-cancel" style="background-color:#bf0000;" onclick="window.location.href='{!! url("/") !!}';">No, thank you</button>
+			<div class="row">
+				{!! Html::image('images/gap-swoosh.jpg') !!}
+			</div>		
 			</div>
 		</div>
 
@@ -28,7 +31,7 @@
 	{!! Html::style('css/master.css') !!}
 	{!! Html::style('dist/remodal.css') !!}
 	{!! Html::style('dist/remodal-default-theme.css') !!}
-	{!! Html::style('css/modal.css') !!}
+	{!! Html::style('css/offers.css') !!}
 	{!! Html::script('dist/remodal.js') !!}
 	{!! Html::script('js/email-confirmation.js?v=1') !!}
 @endsection

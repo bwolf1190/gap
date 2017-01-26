@@ -17,6 +17,7 @@
 			  </div>
 			  <br>
 			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='{!! url("/") !!}';">OK</button>
+			  <div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
 			</div>
 		</div>
 
@@ -31,7 +32,7 @@
 	{!! Html::style('css/master.css') !!}
 	{!! Html::style('dist/remodal.css') !!}
 	{!! Html::style('dist/remodal-default-theme.css') !!}
-	{!! Html::style('css/modal.css') !!}
+	{!! Html::style('css/modal.css?v=1') !!}
 	{!! Html::script('dist/remodal.js') !!}
 	{!! Html::script('js/email-confirmation.js') !!}
 

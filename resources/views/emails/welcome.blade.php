@@ -15,6 +15,7 @@
 	    <p><b>We will start to process your enrollment after you follow this link to confirm your email address: </b></p>
 
 	    <a href="http://greatamericanpower.com/emails/confirmation/{{ $customer->id }}/{{ $enrollment->confirmation_code }}">Click to confirm</a>
+
 	</div>
 </div>
 
