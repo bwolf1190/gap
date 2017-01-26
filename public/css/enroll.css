@@ -242,13 +242,6 @@
 
 /* Price Table CSS */
 
-#chosen-plan{
-	position: relative;
-	top:75px;
-	margin: 0 auto;
-	height:100px;
-}
-
 span.glyphicon.glyphicon-arrow-left{
 	margin-right: 5px;
 }

@@ -242,7 +242,7 @@
                       </div>                              
                   </div>
                   <div class="sign-up-container">
-                    <a href="{!! route('start', ['id' => $plan->id,'promo' => $promo, 'type' => $type]) !!}">Sign Up</a>
+                    <a href="{!! URL::previous() !!}">Change</a>
                   </div>
               </div>
           </div>
