@@ -15,7 +15,7 @@ class EnrollmentTest extends TestCase
         $plan = \App\Models\Plan::find(95);
         $last_customer = \App\Models\Customer::get()->last();
         $acc_num =  ++$last_customer->acc_num;
-        
+
         // random string concat with random number
         $str = random_str(10);
         $confirmation_code = $str . mt_rand();
