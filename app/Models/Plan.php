@@ -14,6 +14,9 @@ class Plan extends Model
 		'length',
 		'rate',
 		'rate2',
+		'reward',
+		'reward_link',
+		'reward_description',
 		'etf',
 		'etf_description',
 		'meter',
@@ -28,19 +31,22 @@ class Plan extends Model
      * @var array
      */
     protected $casts = [
-    	'priority'        => 'string',
-        'name'            => 'string',
-		'ldc'             => 'string',
-		'type'            => 'string',
-		'length'          => 'string',
-		'rate'            => 'string',
-		'rate2'           => 'string',
-		'etf'             => 'string',
-		'etf_description' => 'string',
-		'meter'           => 'string',
-		'promo'           => 'string',
-		'code'            => 'string',
-		'price_code'      => 'integer'
+		'priority'           => 'string',
+		'name'               => 'string',
+		'ldc'                => 'string',
+		'type'               => 'string',
+		'length'             => 'string',
+		'rate'               => 'string',
+		'rate2'              => 'string',
+		'reward_link'        => 'string',
+		'reward'             => 'string',
+		'reward_description' => 'string',
+		'etf'                => 'string',
+		'etf_description'    => 'string',
+		'meter'              => 'string',
+		'promo'              => 'string',
+		'code'               => 'string',
+		'price_code'         => 'integer'
     ];
 
 	public static $rules = [

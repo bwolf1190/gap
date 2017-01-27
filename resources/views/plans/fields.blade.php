@@ -40,6 +40,24 @@
     {!! Form::text('rate2', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Reward Field -->
+<div class="form-group col-xs-6 col-xs-offset-3">
+    {!! Form::label('reward', 'Reward:') !!}
+    {!! Form::text('reward', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Reward Link Field -->
+<div class="form-group col-xs-6 col-xs-offset-3">
+    {!! Form::label('reward_link', 'Reward Link:') !!}
+    {!! Form::text('reward_link', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Reward Description -->
+<div class="form-group col-xs-6 col-xs-offset-3">
+    {!! Form::label('reward_description', 'Reward Description:') !!}
+    {!! Form::text('reward_description', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Etf Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('etf', 'ETF:') !!}

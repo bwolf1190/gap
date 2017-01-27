@@ -84,6 +84,7 @@ class EmailController extends Controller
         else if($confirmation_code === $enrollment->confirmation_code){
                 $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
                 $enrollment_p2c->update(['status' => 'CONFIRMED']);
+                $customer->update(['status' => 'CONFIRMED']);
 
                 if(!(is_null($plan->price_code))){
                     $this->executeSoap($customer, $plan, $enrollment);

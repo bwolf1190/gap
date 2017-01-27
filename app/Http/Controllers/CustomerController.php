@@ -122,6 +122,7 @@ class CustomerController extends Controller
 		}
 		else{
 			$customer = \App\Models\Customer::create($input);
+			$customer->update(['status' => 'PENDING']);
 		}
 
 		$plan = \App\Models\Plan::where('id', $input['plan_id'])->first();

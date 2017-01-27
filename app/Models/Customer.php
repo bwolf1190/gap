@@ -7,6 +7,7 @@ class Customer extends Model
 	public $table = 'customers';
     
 	public $fillable = [
+		'status',
 	    'acc_num',
 	    // Federal_Tax_Id_Num is here for P2C commercial enrollments ONLY
 	    'Fed_Tax_Id_Num',
@@ -40,7 +41,8 @@ class Customer extends Model
      * @var array
      */
     protected $casts = [
-        'acc_num'          => 'string',
+		'status'           => 'string',
+		'acc_num'          => 'string',
 		'fname'            => 'string',
 		'lname'            => 'string',
 		'sa1'              => 'string',

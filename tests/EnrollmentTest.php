@@ -12,10 +12,10 @@ class EnrollmentTest extends TestCase
     /** @test */
     public function create_customer_and_insert_web_enrollment()
     {   
-        $plan = \App\Models\Plan::find(180);
+        $plan = \App\Models\Plan::find(95);
         $last_customer = \App\Models\Customer::get()->last();
         $acc_num =  ++$last_customer->acc_num;
-
+        
         // random string concat with random number
         $str = random_str(10);
         $confirmation_code = $str . mt_rand();
