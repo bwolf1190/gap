@@ -64,8 +64,7 @@ class CommandController extends Controller
                   // this plan has been deleted from the database
                   if($plan === null){
                         $plan = new \App\Models\Plan;
-                        $plan['name'] = 'Empty';
-                        
+                        $plan['name'] = 'Empty';  
                   }
 
                   Mail::to($customer->email)->bcc('greatampower@gmail.com', 'GAP')->send(new EnrollmentReminder($customer, $plan, $enrollment));
