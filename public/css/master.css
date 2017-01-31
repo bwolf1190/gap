@@ -368,6 +368,7 @@ nav{
 
 #disclaimer a{
 	color:white;
+	text-decoration: underline;
 }
 
 @media screen and (max-width: 350px){
