@@ -47,14 +47,3 @@ $(window).load(function() {
 
 
 @endsection
-
-@section('bottom-scripts')
-
-<script type="text/javascript">
-$('#historical-container').css('opacity', 0);
-$(window).load(function() {
-  $('#historical-container').css('opacity', 1);
-});
-</script>
-
-@endsection
