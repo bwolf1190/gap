@@ -52,6 +52,8 @@ class LdcController extends Controller
 		}
 
 		return $this->getLdcs($type, $service, $state, $promo);
+		// For OpSolve integration
+		//return $this->getLdc($type, $service, $zip, $promo);
 
 	}	
 
@@ -97,7 +99,9 @@ class LdcController extends Controller
 	/**
 	 * Get the utility companies by zip code with SOAP call
 	 */
-	public function getLdc($s = null){
+	public function getLdc($type, $service, $zip, $promo){
+		// hard coded for Duke until zip codes for all Ldcs work
+		$zip = '45004';
 		$url           = env('SOAP_URL');
 		$user          = env('SOAP_USER');
 		$pw            = env('SOAP_PW');
@@ -105,29 +109,6 @@ class LdcController extends Controller
 		$lang          = env('SOAP_LANG');
 		$entno         = env('SOAP_ENTNO');
 		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
-
-		if(Input::get('type') === null){
-			$type = 'web';
-		}
-		else{
-			$type = Input::get('type');
-		}
-
-		$zip   = Input::get('zip');
-		$promo = Input::get('promo');
-		Session::put('zip', $zip);
-
-		// if zip code is entered on welcome page the residential or commercial button was used
-		if(Input::get('Residential')){
-			$service = "Residential";
-		}
-		else if(Input::get("Commercial")){
-			$service = "Commercial";
-		}
-		// else the zip is entered from enroll page and service is found with radio button
-		else{
-			$service = Input::get('service');
-		} 
 
 	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>RS_sp_DR_Offers_by_Zip</proc_type><entno>4270</entno><zip>" . $zip . "</zip><rev_type>R</rev_type><utility_type>E</utility_type></ReadiSystem>]]></string>";
 
@@ -151,8 +132,7 @@ class LdcController extends Controller
 				$ldcs[] = \App\Models\Ldc::where('ldc', $ldc)->first();
 			}
 
-		}
-		
+		}	
 
 		if(empty($ldcs)){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);

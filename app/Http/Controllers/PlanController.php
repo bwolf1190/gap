@@ -306,12 +306,16 @@ class PlanController extends Controller
 	    	if($plan['ldc'] === 'DUKE_OH'){
 	    		$plan['ldc'] = 'Duke';
 	    	}
-	    	if($plan['etf_description'] === 'FIXED'){
+	    	if($plan['etf'] == '0.00'){
+	    		$plan['etf'] = 'No Early Cancellation Fee';
+	    		$plan['etf_description'] = 'No Early Cancellation Fee';
+	    	}
+	    	else if($plan['etf_description'] === 'FIXED' && $plan['etf'] != '0.00'){
 	        	$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
-	        	$plan['etf'] = 'Early Cancellation Fee';
+	        	$plan['etf'] = 'Cancellation Fee Applies';
 	        }
-	        else if($plan['etf_description'] === 'TERM' || $plan['etf_description'] === 'REDUC' && $plan['etf'] !== ''){
-	        	$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
+	        else if($plan['etf_description'] === 'REDUC' && $plan['etf'] != 0){
+	        	$plan['etf_description'] = '$10 per month remaining on the contract, not to exceed $' . $plan['etf'] . '.';
 	        	$plan['etf'] = 'Cancellation Fee Applies';
 	        }
 	        else{
@@ -325,7 +329,17 @@ class PlanController extends Controller
 	    		$plan['type'] = 'Commercial';
 	    	}
 
-	    	$p = \App\Models\Plan::create($plan);
+	    	echo $plan['priority'] . "<br>";
+	    	echo $plan['name'] . "<br>";
+	    	echo $plan['ldc'] . "<br>";
+	    	echo $plan['type'] . "<br>";
+	    	echo $plan['length'] . "<br>";
+	    	echo $plan['rate'] . "<br>";
+	    	echo $plan['etf'] . "<br>";
+	    	echo $plan['etf_description'] . "<br>";
+	    	echo $plan['price_code'];
+	    	echo "<br><br><br>";
+	    	//$p = \App\Models\Plan::create($plan);
 	    }
 	}
 
@@ -336,7 +350,8 @@ class PlanController extends Controller
 	 * Redirect to home page
 	 */
 	public function updatePlans(){
-		\App\Models\Plan::whereNull('code')->delete();
+		// only deletes the Opsolve plans
+		//\App\Models\Plan::whereNull('code')->delete();
 
 		//$this->updateLdcPlans('BGE');
 
@@ -350,7 +365,7 @@ class PlanController extends Controller
 
 		$this->updateLdcPlans('DUKE_OH');
 	    
-	    return redirect('/');
+	    //return redirect('/');
 	    //return view('soap-test')->with('plans', $plans)->with('request', $request);
 		}
 }

@@ -6,6 +6,12 @@
 
     {!! Html::style('css/historical-rates.css') !!}
     <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
+<script type="text/javascript">
+$('#historical-container').css('opacity', 0);
+$(window).load(function() {
+  $('#historical-container').css('opacity', 1);
+});
+</script>
 
 @endsection
 
@@ -23,14 +29,14 @@
 	        		<div class="row">
 	        			<div class="col-xs-10 col-xs-offset-1">
 		        			<h2>{!! $ldc->ldc . " Residential"  !!}</h2>
-		        			<object width="900" height="900" data="{!! URL::asset("pdf/historical-rates/Great-American-Power-Historical-Rates-" . $ldc->ldc . "-Residential.pdf") !!}"></object>
+		        			<embed style="background-color:grey;" width="900" height="900" src="{!! URL::asset("pdf/historical-rates/Great-American-Power-Historical-Rates-" . $ldc->ldc . "-Residential.pdf") !!}"></embed>
 	        			</div>
 	        		</div>
 	        		<br><br>
 	        		<div class="row">
 	        			<div class="col-xs-10 col-xs-offset-1">
 	        				<h2>{!! $ldc->ldc . " Commercial"  !!}</h2>
-	        				<object width="900" height="900" data="{!! URL::asset("pdf/historical-rates/Great-American-Power-Historical-Rates-" . $ldc->ldc . "-Commercial.pdf") !!}"></object>
+	        				<embed width="900" height="900" src="{!! URL::asset("pdf/historical-rates/Great-American-Power-Historical-Rates-" . $ldc->ldc . "-Commercial.pdf") !!}"></embed>
 	        			</div>
 	        		</div>
 	        		<br><br>
@@ -39,5 +45,16 @@
         </div>
     </div>
 
+
 @endsection
 
+@section('bottom-scripts')
+
+<script type="text/javascript">
+$('#historical-container').css('opacity', 0);
+$(window).load(function() {
+  $('#historical-container').css('opacity', 1);
+});
+</script>
+
+@endsection
