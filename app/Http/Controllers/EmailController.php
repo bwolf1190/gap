@@ -39,7 +39,7 @@ class EmailController extends Controller
         $customer = \App\Models\Customer::where('id',$customer_id)->first();
         $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();
-        Mail::to($customer->email)->send(new EnrollmentConfirmation($customer, $plan, $enrollment));
+        Mail::to($customer->email)->queue(new EnrollmentConfirmation($customer, $plan, $enrollment));
 
         // for sending confirmation email to brokers
         $broker = $enrollment->agent_code;

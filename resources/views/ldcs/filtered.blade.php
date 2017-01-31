@@ -10,7 +10,7 @@
           <div class="price_table_container ldc">
               <div class="price_table_heading">{!! $ldc->ldc !!}</div>
               <div class="price_table_body">
-                  <div class="price_table_row cost"><strong>{!! $service !!}</strong></div>
+                  <div class="price_table_row cost" style="padding-top:40px;"><strong>{!! $service !!}</strong></div>
                   <div class="price_table_row">Secure Rates Available</div>
                   <div class="price_table_row last_row"><a target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $ldc->ldc . ".pdf") !!}">Disclosure Statement</a></div>                
               </div>
