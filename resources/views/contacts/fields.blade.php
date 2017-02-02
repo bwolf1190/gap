@@ -22,6 +22,11 @@
 	{!! Form::textarea('inquiry', null, ['class' => 'form-control']) !!}
 </div>
 
+<div id="pot" class="form-group">
+	{!! Form::label('honey', 'Honey:') !!}
+	{!! Form::text('honey', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Submit', ['class' => 'btn btn-primary submit', 'id' => 'submit']) !!}
