@@ -322,6 +322,11 @@ span.glyphicon.glyphicon-arrow-left{
 	border-bottom: 3px solid gray;
 }
 
+.price_table_row.reward a{
+	color:#bf0000;
+	font-weight: bold;
+}
+
 .cost{
 	font-size:1.3em;
 	color:#bf0000;
