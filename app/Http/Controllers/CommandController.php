@@ -61,7 +61,7 @@ class CommandController extends Controller
                   $enrollment = $customer->enrollment;
                   $plan = $enrollment->plan;
 
-                  // this plan has been deleted from the database
+                  // if this plan has been deleted from the database
                   if($plan === null){
                         $plan = new \App\Models\Plan;
                         $plan['name'] = 'Empty';  
