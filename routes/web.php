@@ -8,6 +8,16 @@ Route::get('l2p', function(){
     return view('linked2pay');
 });
 
+Route::get('l2p-modal', function(){
+    return view('emails.enrollment-fee');
+});
+
+Route::get('stripe', function(){
+    return view('stripe');
+});
+
+Route::post('/payments', 'PaymentController@store');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
