@@ -4,6 +4,10 @@ Route::get('/offers', function(){
     return view('offers.offers');
 });
 
+Route::get('l2p', function(){
+    return view('linked2pay');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
