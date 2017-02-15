@@ -16,7 +16,6 @@ class EnrollmentTest extends TestCase
         $last_customer = \App\Models\Customer::get()->last();
         $acc_num =  ++$last_customer->acc_num;
 
-        // random string concat with random number
         $str = random_str(10);
         $confirmation_code = $str . mt_rand();
 
@@ -50,7 +49,6 @@ class EnrollmentTest extends TestCase
 
         $existing_customer = \App\Models\Customer::where('acc_num', $customer_input['acc_num'])->first();
 
-        // create the customer if they don't already exist 
         if($existing_customer){
             return view('already-customer');
         }
