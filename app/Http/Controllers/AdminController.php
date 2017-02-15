@@ -21,7 +21,7 @@ class AdminController extends Controller
 
 	}
 
-	
+
 	/**
 	 * Sends the users with role of admin to dashboard
 	 * Sends users without admin role to login page
