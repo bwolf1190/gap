@@ -198,13 +198,15 @@ class CustomerController extends Controller
 	public function destroy($id)
 	{
 		$customer = \App\Models\Customer::find($id);
+		$enrollment = \App\Models\Enrollment::where('customer_id', $id)->first();
 
 		if(empty($customer))
 		{
 			return redirect(route('customers.index'));
 		}
 
-		$this->customerRepository->delete($id);
+		$customer->delete();
+		$enrollment->delete();
 
 		return redirect('customers');
 	}

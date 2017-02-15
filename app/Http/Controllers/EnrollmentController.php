@@ -277,6 +277,7 @@ class EnrollmentController extends Controller
 	public function destroy($id)
 	{
 		$enrollment = \App\Models\Enrollment::find($id);
+		$customer = \App\Models\Customer::find($enrollment->customer_id);
 
 		if(empty($enrollment))
 		{
@@ -284,8 +285,8 @@ class EnrollmentController extends Controller
 			return redirect(route('enrollments.index'));
 		}
 
-		$enrollment->delete($id);
-
+		$enrollment->delete();
+		$customer->delete();
 
 		return redirect('enrollments');
 	}
