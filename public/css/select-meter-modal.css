@@ -1,0 +1,47 @@
+.remodal-overlay{
+    background: rgba(210, 210, 210, 0.1);
+}
+.remodal{
+    border:1px solid grey;
+}
+
+#modalTitle{
+	color:#bf0000;
+}
+
+#modalDesc{
+	text-align: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#select-container select{
+	width:150px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#select-container option{
+	color:#00234C;
+	font-weight: bold;
+}
+
+#select-container optgroup{
+	color:grey;
+	font-weight: bolder;
+}
+
+#ok-btn{
+	margin-top: 35px;
+	background-color: #00234C;
+	border:1px solid white;
+	color:white;
+	font-weight: bold;
+}
+
+#ok-btn:hover{
+	background-color: white;
+	border:1px solid #00234C;
+	color:#00234C;
+}
+
