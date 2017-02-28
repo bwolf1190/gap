@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        {!! Html::script('js/jquery.min.js') !!}
+    	{!! Html::script('js/bootstrap.min.js') !!}
         <title>Stripe</title>
 
         <!-- Fonts -->
@@ -13,14 +14,13 @@
 
     </head>
     <body>
-		<form id="checkout-form" action="/payments" method="POST">
+
+		{{ Form::open(['url' => '/payments', 'method' => 'POST', 'id' => 'checkout-form']) }}
 			{{ csrf_field() }}
-
-			<input type="hidden" name="stripeToken" id="stripeToken">
-			<input type="hidden" name="stripeEmail" id="stripeEmail">
-
-			<button id="submit" type="submit">Pay Now</button>
-		</form>
+			{{ Form::hidden('stripeToken', '', ['id' => 'stripeToken']) }}
+			{{ Form::hidden('stripeEmail', '', ['id' => 'stripeEmail']) }}
+			{{ Form::submit('Pay now', ['id' => 'pay']) }}
+		{{ Form::close() }}
 
 		<script src="https://checkout.stripe.com/checkout.js"></script>
 		
@@ -36,7 +36,7 @@
 				}
 			});
 
-			document.querySelector('button').addEventListener('click', function(e){
+			$('#pay').on('click', function(e){
 				stripe.open({
 					name: 'Sign Up Fee',
 					description: 'Pay Your Sign Up Fee',

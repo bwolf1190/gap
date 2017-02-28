@@ -9,7 +9,7 @@ use Stripe\{Stripe, Charge, Customer};
 class PaymentController extends Controller
 {
     //
-    public function store(){
+    public function store(Request $request){
     	Stripe::setApiKey('sk_test_8iWdn9aDuIqP7qKjHf2FcbA4');
     	
     	$customer = Customer::create([

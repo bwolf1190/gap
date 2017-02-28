@@ -4,7 +4,7 @@ Route::get('/offers', function(){
     return view('offers.offers');
 });
 
-Route::get('stripe', function(){
+Route::get('/stripe', function(){
     return view('stripe');
 });
 
