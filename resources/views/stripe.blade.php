@@ -10,8 +10,6 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-
     </head>
     <body>
 
@@ -28,7 +26,7 @@
 			let stripe = StripeCheckout.configure({
 				key: 'pk_test_fCutZH8uPJ8nPueoOQ2mhtsz',
 				image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-				local: 'auto',
+				locale: 'auto',
 				token: function(token){
 					document.querySelector('#stripeEmail').value = token.email;
 					document.querySelector('#stripeToken').value = token.id;
@@ -38,9 +36,9 @@
 
 			$('#pay').on('click', function(e){
 				stripe.open({
-					name: 'Sign Up Fee',
+					name: 'Great American Power',
 					description: 'Pay Your Sign Up Fee',
-					zipcode: true,
+					zipCode: true,
 					amount: 2500
 				});
 
