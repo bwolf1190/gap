@@ -70,6 +70,18 @@
     {!! Form::textarea('etf_description', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Entry Fee Field -->
+<div class="form-group col-xs-6 col-xs-offset-3">
+    {!! Form::label('entry_fee', 'Entry Fee:') !!}
+    {!! Form::text('entry_fee', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Entry Fee Description Field -->
+<div class="form-group col-xs-6 col-xs-offset-3">
+    {!! Form::label('entry_fee_description', 'Entry Fee Description:') !!}
+    {!! Form::textarea('entry_fee_description', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Promo Field -->
 <div class="form-group col-xs-6 col-xs-offset-3">
     {!! Form::label('promo', 'Promo:') !!}
