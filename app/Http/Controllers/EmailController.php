@@ -86,6 +86,7 @@ class EmailController extends Controller
                 $enrollment_p2c->update(['status' => 'CONFIRMED']);
                 $customer->update(['status' => 'CONFIRMED']);
 
+                // it is an enrollment for an Opsolve plan
                 if(!(is_null($plan->price_code))){
                     $this->executeSoap($customer, $plan, $enrollment);
                 }
