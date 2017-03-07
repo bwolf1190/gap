@@ -11,8 +11,15 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
-    <body>
-
+    <body>	
+		    <style>
+    			.Section .Section--modalBody{
+    				background-color: green;
+    			}
+    			.Button-animationWrapper-child--primary.Button{
+    				background-color: green;
+    			}
+			</style>
 		{{ Form::open(['url' => '/payments', 'method' => 'POST', 'id' => 'checkout-form']) }}
 			{{ csrf_field() }}
 			{{ Form::hidden('stripeToken', '', ['id' => 'stripeToken']) }}
@@ -21,11 +28,11 @@
 		{{ Form::close() }}
 
 		<script src="https://checkout.stripe.com/checkout.js"></script>
-		
+
 		<script>
 			let stripe = StripeCheckout.configure({
 				key: 'pk_test_fCutZH8uPJ8nPueoOQ2mhtsz',
-				image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+				image: '',
 				locale: 'auto',
 				token: function(token){
 					document.querySelector('#stripeEmail').value = token.email;
@@ -44,6 +51,21 @@
 
 				e.preventDefault();
 			});
+			// Custom styling can be passed to options when creating an Element.
+var style = {
+  base: {
+    // Add your base input styles here. For example:
+    fontSize: '16px',
+    lineHeight: '24px',
+    color:'red'
+  }
+};
+
+// Create an instance of the card Element
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>
+card.mount('#card-element');
 		</script>
 
     </body>
