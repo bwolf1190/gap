@@ -46,7 +46,7 @@ class Plan extends Model
 		'etf'                   => 'string',
 		'etf_description'       => 'string',
 		'entry_fee'             => 'string',
-		'entry_fee_description' => 'string'
+		'entry_fee_description' => 'string',
 		'meter'                 => 'string',
 		'promo'                 => 'string',
 		'code'                  => 'string',
