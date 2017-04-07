@@ -3,7 +3,7 @@
 @section('page-title', 'Contact - Great American Power')
 
 @section('page-style')
-{!! Html::style('css/contact.css') !!}
+{!! Html::style('css/contact.css?v=1') !!}
 {!! Html::style('css/contact-sidebar.css') !!}
 @endsection
 

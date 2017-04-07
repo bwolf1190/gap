@@ -46,5 +46,4 @@ class WelcomeController extends Controller
         }*/
         
     }
-
 }

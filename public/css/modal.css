@@ -1,26 +1,41 @@
 #modalTitle{
 	border-bottom:1px solid #00234C;
-	color:#00234C;
+	color: #00234C;
 	width:100%;
 	text-align: center;
 }
 
 .remodal{
-	background: #F8F8F8;
+	background: white;
+}
+
+.remodal img{
+	height:80px;
+	margin-top:0px;
 }
 
 #modalDesc{
 	text-align: left;
-	color:#00234C;
+	color: #00234C;
 }
 
 #ok-btn{
-	background-color: #00234C;
+	background-color: #bf0000;
+	border:1px solid #bf0000;
 	color:white;
 	font-weight: bold;
 }
 
+#ok-btn:hover{
+	background-color: white;
+	color:#bf0000;
+}
+
 #header-container{
+	display:none;
+}
+
+.slicknav_menu{
 	display:none;
 }
 

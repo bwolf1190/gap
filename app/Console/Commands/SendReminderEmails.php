@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use \App\Http\Controllers\CommandController;
+
 use Illuminate\Console\Command;
 
 class SendReminderEmails extends Command

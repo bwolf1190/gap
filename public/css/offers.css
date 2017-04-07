@@ -1,49 +1,49 @@
-#modalTitle{
-	border-bottom:1px solid #00234C;
-	color:#00234C;
-	width:100%;
-	text-align: center;
-}
-
-.remodal{
-	background: white;
-}
-
-.remodal img{
-	height:80px;
-	margin-top:35px;
-}
-
-#modalDesc{
-	text-align: left;
-	color:#00234C;
-}
-
-#yes-btn{
-	background-color: green;
-	color:white;
-	font-weight: bold;
-}
-
-#no-btn{
-	background-color: #bf0000;
-	color:white;
-	font-weight: bold;
-}
-
-#header-container{
-	display:none;
-}
-
-.slicknav_menu{
-	display:none;
-}
-
-#social-left{
-	display:none;
-}
-
-#footer-container{
-	display:none;
-}
-
+#modalTitle{
+	border-bottom:1px solid #00234C;
+	color:#00234C;
+	width:100%;
+	text-align: center;
+}
+
+.remodal{
+	background: white;
+}
+
+.remodal img{
+	height:80px;
+	margin-top:35px;
+}
+
+#modalDesc{
+	text-align: left;
+	color:#00234C;
+}
+
+#yes-btn{
+	background-color: green;
+	color:white;
+	font-weight: bold;
+}
+
+#no-btn{
+	background-color: #bf0000;
+	color:white;
+	font-weight: bold;
+}
+
+#header-container{
+	display:none;
+}
+
+.slicknav_menu{
+	display:none;
+}
+
+#social-left{
+	display:none;
+}
+
+#footer-container{
+	display:none;
+}
+

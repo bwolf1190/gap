@@ -8,9 +8,9 @@ class Customer extends Model
     
 	public $fillable = [
 		'status',
-	    'acc_num',
-	    // Federal_Tax_Id_Num is here for P2C commercial enrollments ONLY
-	    'Fed_Tax_Id_Num',
+	    	'acc_num',
+	    	// Federal_Tax_Id_Num is here for P2C commercial enrollments ONLY
+	    	'Fed_Tax_Id_Num',
 		'fname',
 		'lname',
 		'sa1',
@@ -68,7 +68,7 @@ class Customer extends Model
     ];
 
 	public static $rules = [
-	    'acc_num'       => 'required',
+	    	'acc_num'       => 'required',
 		'fname'         => 'required',
 		'lname'         => 'required',
 		'sa1'           => 'required',

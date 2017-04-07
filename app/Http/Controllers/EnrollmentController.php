@@ -65,6 +65,8 @@ class EnrollmentController extends Controller
 
 		$enrollment = \App\Models\Enrollment::create($input);
 
+		//if(!(is_null($plan->code))){
+
 		/* Handle P2C Enrollments */
 		
 		// must be broker enrollment
@@ -134,6 +136,10 @@ class EnrollmentController extends Controller
 			$mstate = $customer->mstate;
 		}	
 
+		if(is_null($plan->code)){
+			$plan->code='Duke';
+		}
+		
 		$p2c_input = ['status'				 => '',
 					  'customer_id'			 => $customer->id,
 					  'Revenue_Class_Desc'   => $plan->type,
@@ -172,6 +178,7 @@ class EnrollmentController extends Controller
 
 		$p2c_enrollment = \App\Models\EnrollmentP2C::create($p2c_input);
 		/* End P2C Enrollment */
+		//}
 
 		return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
 	}
@@ -277,7 +284,6 @@ class EnrollmentController extends Controller
 	public function destroy($id)
 	{
 		$enrollment = \App\Models\Enrollment::find($id);
-		$customer = \App\Models\Customer::find($enrollment->customer_id);
 
 		if(empty($enrollment))
 		{
@@ -285,8 +291,8 @@ class EnrollmentController extends Controller
 			return redirect(route('enrollments.index'));
 		}
 
-		$enrollment->delete();
-		$customer->delete();
+		$enrollment->delete($id);
+
 
 		return redirect('enrollments');
 	}

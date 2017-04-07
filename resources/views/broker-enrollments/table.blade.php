@@ -1,13 +1,13 @@
 <table class="table">
     <thead>
-            <th><a href="/broker/sort-enrollments/enroll_date">Enroll Date</a></th>
-			<th><a href="/broker/sort-enrollments/confirm_date">Confirm Date</a></th>
-            <th><a href="/broker/sort-enrollments/fname">First Name</a></th>
-            <th><a href="/broker/sort-enrollments/lname">Last Name</a></th>
-            <th><a href="/broker/sort-enrollments/promo">Promo</a></th>
-            <th><a href="/broker/sort-enrollments/plan_id">Plan Id</a></th>
-            <th><a href="/broker/sort-enrollments/agent_id">Agent Id</a></th>
-			<th><a href="/broker/sort-enrollments/status">Status</a></th>
+            <th><a href="/sort-enrollments/enroll_date">Enroll Date</a></th>
+			<th><a href="/sort-enrollments/confirm_date">Confirm Date</a></th>
+            <th><a href="/sort-enrollments/customer_id">First Name</a></th>
+            <th><a href="">Last Name</a></th>
+            <th><a href="/sort-enrollments/customer_id">Promo</a></th>
+            <th><a href="/sort-enrollments/plan_id">Plan Id</a></th>
+            <th><a href="/sort-enrollments/agent_id">Agent Id</a></th>
+			<th><a href="/sort-enrollments/status">Status</a></th>
     <th width="50px">Action</th>
     </thead>
     <tbody>

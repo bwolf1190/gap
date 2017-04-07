@@ -69,7 +69,7 @@
 		</div>
 		<div class="form-group">
 			{!! Form::label('sstate', 'Service State') !!}
-			{!! Form::select('sstate', ['Select State' =>'Select State', 'MD' => 'Maryland', 'PA' => 'Pennsylvania'], 0,['class' => 'form-control']) !!}
+			{!! Form::text('sstate', $state, ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('szip', 'Service Zip') !!}
@@ -104,7 +104,7 @@
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mstate', 'Mailing State') !!}
-			{!! Form::select('mstate', ['Select State' =>'Select State', 'MD' => 'Maryland', 'PA' => 'Pennsylvania'], 0, ['class' => 'form-control']) !!}
+			{!! Form::text('mstate', '', ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group ">
 			{!! Form::label('mzip', 'Mailing Zip') !!}
@@ -133,7 +133,7 @@
 			{!! Form::text('phone', '', ['class' => 'form-control']) !!}
 		</div>
 
-		@if($promo !== null)
+		@if($promo !== null && $promo != 'GAP')
 			<div class="form-group ">
 				{!! Form::label('agent_code', 'Agent Code') !!}
 				{!! Form::text('agent_code', $promo, ['class' => 'form-control','readonly' => true]) !!}
@@ -141,6 +141,15 @@
 			<div class="form-group ">
 				{!! Form::label('sub_agent_code', 'Sub Agent Code') !!}
 				{!! Form::text('sub_agent_code', '', ['class' => 'form-control']) !!}
+			</div>
+		@endif
+
+		@if($promo == 'GAP')
+			<div class="form-group ">
+				{!! Form::hidden('agent_code', $promo) !!}
+			</div>
+			<div class="form-group ">
+				{!! Form::hidden('sub_agent_code', '') !!}
 			</div>
 		@endif
 
@@ -232,10 +241,12 @@
                       @if($plan->meter != "")
                         <div class="price_table_row"><strong>{!! $plan->meter . " Meter" !!}</strong></div>
                       @endif
+                      @if($plan->reward != "")
                       <div class="price_table_row">
                         <a href="{{ $plan->reward_link }}" title="Click for more information" target="_blank">{!! $plan->reward !!}</a>
                         <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
                       </div>
+                      @endif
                       <div class="price_table_row etf last_row">
                           <strong>{!! $plan->etf !!}</strong>
                           <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
@@ -246,6 +257,7 @@
                   </div>
               </div>
           </div>
+	</div></div>
 	</div>
 	<!--  <script type="text/javascript">$(".chosen-plan").hide();</script>  -->
 	@section('powered-by-gap')

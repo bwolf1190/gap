@@ -31,7 +31,7 @@
 	{!! Html::style('css/master.css') !!}
 	{!! Html::style('dist/remodal.css') !!}
 	{!! Html::style('dist/remodal-default-theme.css') !!}
-	{!! Html::style('css/offers.css') !!}
+	{!! Html::style('css/offers.css?v=1') !!}
 	{!! Html::script('dist/remodal.js') !!}
 	{!! Html::script('js/email-confirmation.js?v=1') !!}
 @endsection

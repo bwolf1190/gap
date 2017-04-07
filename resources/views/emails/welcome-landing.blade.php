@@ -38,9 +38,9 @@
 			    	{!! Form::hidden('customer_id', $customer->id) !!}
 				    <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm">OK</button>
 				{!! Form::close() !!}
-
-				<div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
-
+			
+			<div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
+			
 			</div>
 		</div>
 
@@ -52,7 +52,7 @@
 	{!! Html::style('css/master.css') !!}
 	{!! Html::style('dist/remodal.css') !!}
 	{!! Html::style('dist/remodal-default-theme.css') !!}
-	{!! Html::style('css/modal.css') !!}
+	{!! Html::style('css/modal.css?v=1') !!}
 	{!! Html::script('dist/remodal.js') !!}
 	{!! Html::script('js/email-confirmation.js?v=1') !!}
 @endsection

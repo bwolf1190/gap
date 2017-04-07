@@ -14,7 +14,7 @@
 			    </p>
 			  </div>
 			  <br>
-			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='{!! url("/") !!}';">OK</button> 
+			  <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm" onclick="window.location.href='{!! url("/") !!}';">OK</button>
 			  <div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
 			</div>
 		</div>

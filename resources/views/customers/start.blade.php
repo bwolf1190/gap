@@ -3,7 +3,7 @@
 @section('page-title', 'Sign Up - Great American Power')
 
 @section('page-style')
-    {!! Html::style('css/enroll.css') !!}
+    {!! Html::style('css/enroll.css?v=1') !!}
     {!! Html::style('css/broker.css') !!}
 @endsection
 

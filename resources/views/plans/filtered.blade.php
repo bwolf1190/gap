@@ -28,13 +28,15 @@
                       <div class="price_table_row name" style="height"><strong>{!! $plan->length . " Month " . $plan->name !!}</strong></div>
                       @if($plan->meter != "")
                         <div class="price_table_row"><strong>{!! $plan->meter . " Meter" !!}</strong></div>
-                      @endif  
-                      @if($plan->reward != "")
-                        <div class="price_table_row reward">
-                          <a href="{{ $plan->reward_link }}" title="Click for more information" target="_blank">{!! $plan->reward !!}</a>
-                          <a href="#" id="acc-num-tooltip" data-container="body" data-html="true" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
-                        </div>
                       @endif
+                      
+                      @if($plan->reward != "")
+                      	<div class="price_table_row reward">
+                        	<a href="{{ $plan->reward_link }}" title="Click for more information" target="_blank">{!! $plan->reward !!}</a>
+                        	<a href="#" id="acc-num-tooltip" data-container="body" data-html="true" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                      	</div>
+                      @endif
+                      
                       <div class="price_table_row etf last_row">
                           <strong>{!! $plan->etf !!}</strong>
                           <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>

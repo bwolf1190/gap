@@ -15,8 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
-        Commands\SendP2CEnrollments::class,
-        Commands\SendReminderEmails::class
+        Commands\SendP2CEnrollments::class
     ];
 
     /**

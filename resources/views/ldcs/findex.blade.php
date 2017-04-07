@@ -30,7 +30,6 @@
                 @endif
 
         </div>
-        @include('emails.select-meter-modal')
     </div>
 
 @endsection
@@ -46,9 +45,5 @@
 @endsection
 
 @section('bottom-scripts')
-    {!! Html::style('dist/remodal.css') !!}
-    {!! Html::style('dist/remodal-default-theme.css') !!}
-    {!! Html::script('dist/remodal.js') !!}
     {!! Html::script('js/enroll.js') !!}
-    {!! Html::script('js/commercial.js') !!}
 @endsection

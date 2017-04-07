@@ -1,15 +1,5 @@
 <?php
 
-Route::get('/offers', function(){
-    return view('offers.offers');
-});
-
-Route::get('/stripe', function(){
-    return view('stripe');
-});
-
-Route::post('/payments', 'PaymentController@store');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +12,7 @@ Route::post('/payments', 'PaymentController@store');
 */
 
 Auth::routes();
+
 
 Route::get('/opsolve/ldcs', array('as' => 'opsolve', 'uses' => 'LdcController@getLdc'));
 
@@ -41,10 +32,7 @@ Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@searc
 
 Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 
-
-
 Route::get('/{type}/select-plan/{s}/{l}/meter/{meter?}', array('as' => 'searchMeteredPlans', 'uses'=>'PlanController@searchMeteredPlans'));
-
 
 Route::get('/{type}/customers/start/{id}/{promo?}', array('as' => 'start', 'uses'=>'CustomerController@start'));
 
@@ -54,6 +42,10 @@ Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'Email
 
 Route::post('/emails/welcome/sent', array('as' => 'fireWelcomeEmail', 'uses' => 'EmailController@fireWelcomeEmail'));
 //Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'EmailController@sendWelcome'));
+
+Route::get('/offers', function(){
+    return view('offers.offers');
+});
 
 Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 'confirmation', 'uses'=>'EmailController@confirmEmail'));
 
@@ -117,6 +109,7 @@ Route::get('broker/admin/enrollments/export/{broker}', 'BrokerController@exportE
 Route::get('broker/admin/plans/export/{broker}', 'BrokerController@exportPlans');
 
 Route::get('broker/admin/subagents/export/{broker}', 'BrokerController@exportSubagents');
+
 
 
 
@@ -184,7 +177,6 @@ Route::get('faqs/{id}/delete', [
     'uses' => 'FaqController@destroy',
 ]);
 /* <--------------------------------------------------------------------->  */
-
 
 /* <---------------------- Historical Rates Route ----------------------->  */
 

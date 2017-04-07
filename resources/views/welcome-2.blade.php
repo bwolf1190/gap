@@ -27,22 +27,22 @@
                     <!-- Carousel Images -->
                     <div class="carousel-inner">
                         <div class="item active">
-                            {!! Html::image('images/house-lights_1060-510.jpg', 'slide1', ['class' => 'fade-in-md']) !!}
-                            <div class="carousel-caption fade-in-slow">
+                            {!! Html::image('images/house-lights_1060-510.jpg', 'slide1') !!}
+                            <div class="carousel-caption">
                                 <h1>Great American Power</h1>
                                 <h3 style="color:lightgray;">We supply the same energy you currently receive, often at lower prices, with no interruption in service. </h3>
                             </div>
                         </div>
                         <div class="item">
-                            {!! Html::image('images/bakery-short-short.jpg', 'slide2', ['class' => 'fade-in-md']) !!}
-                            <div class="carousel-caption fade-in-slow">
+                            {!! Html::image('images/bakery-short-short.jpg', 'slide2') !!}
+                            <div class="carousel-caption">
                                 <h1>Great American Power</h1>
                                 <h3 style="color:lightgray;">We are here for your home, or your business. It’s your choice to make, and the time is now to start managing and securing your energy needs.</h3>
                             </div>
                         </div>
                         <div class="item">
-                            {!! Html::image('images/house-home-green_1060-510.jpg', 'slide1', ['class' => 'fade-in-md']) !!}
-                            <div class="carousel-caption fade-in-slow">
+                            {!! Html::image('images/house-home-green_1060-510.jpg', 'slide1') !!}
+                            <div class="carousel-caption">
                                 <h1>Great American Power</h1>
                                 <h3 style="color:lightgray;">We believe in the power of healthy competitive markets that benefit consumers by providing great choices.</h3>
                             </div>
@@ -51,11 +51,11 @@
                 </div>
                 <!-- End Carousel Slideshow -->
             </div>
-            <div class="row margin-vert-30 animate fadeInUp">
+            <div class="row margin-vert-30">
                 <!-- Main Text -->  
-                <div id="sign-up-container-sm" class="col-sm-5 col-xs-6 animate fadeInUp">
+                <div id="sign-up-container-sm" class="col-sm-5 col-xs-6">
                         <h2 id="sign-up-header" style="">Find Your Rate</h2>
-                        {!! Form::open(['action' => 'LdcController@search', 'id' => 'zip-form-sm']) !!}
+                        {!! Form::open(['action' => 'LdcController@search']) !!}
                         {!! csrf_field() !!}
                         <div id="" class="">
                             <div id="zip" class="form-group">
@@ -70,7 +70,7 @@
                         </div>
                         {!! Form::close() !!}
                 </div>
-                <div id="contact-sidebar" class="panel panel-default animate pull-right fadeInRight">
+                <div id="contact-sidebar" class="panel panel-default pull-right">
                     <div class="panel-heading">
                         <h2 class="panel-title">Contact Info</h2>
                     </div>
@@ -97,9 +97,9 @@
                     <p><article>Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</article></p>
                 </div>
                 <!-- End Main Text -->
-                <div id="sign-up-container" class="col-md-4 col-sm-5 animate fadeInUp">
+                <div id="sign-up-container" class="col-md-4 col-sm-5">
                     <h2 id="sign-up-header" style="">Find Your Rate</h2>
-                    {!! Form::open(['action' => 'LdcController@search', 'id' => 'zip-form']) !!}
+                    {!! Form::open(['action' => 'LdcController@search']) !!}
                     {!! csrf_field() !!}
                     <div id="sign-up-form" class="">
                         <div id="zip" class="form-group">
@@ -123,7 +123,7 @@
             <div class="row">
                 <!-- Portfolio -->
                 <!-- Portfolio Item -->
-                <div class="portfolio-item col-sm-4 animate fadeInUp">
+                <div class="portfolio-item col-sm-4">
                     <div class="image-hover">
                             <figure>
                                 {!! Html::image('images/enroll-square.png', 'enroll-now', array('class' => 'img-square img-responsive img-center img-thumbnail enroll')) !!}
@@ -140,7 +140,7 @@
                 </div>
                 <!-- //Portfolio Item// -->
                 <!-- Portfolio Item -->
-                <div class="portfolio-item col-sm-4 animate fadeInUp">
+                <div class="portfolio-item col-sm-4">
                     <div class="image-hover">
                             <figure>
                                 {!! Html::image('images/faq-square.png', 'learn-more', array('class' => 'img-square img-responsive img-center img-thumbnail learn')) !!}
@@ -157,7 +157,7 @@
                 </div>
                 <!-- //Portfolio Item// -->
                 <!-- Portfolio Item -->
-                <div class="portfolio-item col-sm-4 animate fadeInUp">
+                <div class="portfolio-item col-sm-4">
                     <div class="image-hover">
                             <figure>
                                 {!! Html::image('images/contact-square.png', 'contact-us', array('class' => 'img-square img-responsive img-center img-thumbnail contact')) !!}

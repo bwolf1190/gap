@@ -14,10 +14,9 @@ class PlanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['searchPlans', 'searchMeteredPlans', 'internalPlans', 'truncate', 'updatePlans']]);
+        $this->middleware('admin', ['except' => ['searchPlans', 'searchMeteredPlans','internalPlans', 'truncate', 'updatePlans']]);
     }
 
-    
     public function searchMeteredPlans($type, $service, $ldc, $meter = null){
     	$type = 'web';
     	$promo=null;
@@ -37,8 +36,8 @@ class PlanController extends Controller
 
 		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
 
-    }
-
+    	}
+    	
 	/**
 	 * Return plans for type, service, ldc, and the optional promo.
 	 * If no plans exist, then redirect to modal with message.
@@ -146,7 +145,7 @@ class PlanController extends Controller
 			'etf_description' => 'required'
 		]);
 		
-		// null values are needed to tell if plan is step,promo,p2c, or opsolve
+		// null values are needed to tell if plan is promo,p2c, or opsolve
 		if($input['rate2'] === ''){
 			$input['rate2'] = null;
 		}
@@ -306,16 +305,12 @@ class PlanController extends Controller
 	    	if($plan['ldc'] === 'DUKE_OH'){
 	    		$plan['ldc'] = 'Duke';
 	    	}
-	    	if($plan['etf'] == '0.00'){
-	    		$plan['etf'] = 'No Early Cancellation Fee';
-	    		$plan['etf_description'] = 'No Early Cancellation Fee';
-	    	}
-	    	else if($plan['etf_description'] === 'FIXED' && $plan['etf'] != '0.00'){
+	    	if($plan['etf_description'] === 'FIXED'){
 	        	$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
-	        	$plan['etf'] = 'Cancellation Fee Applies';
+	        	$plan['etf'] = 'Early Cancellation Fee';
 	        }
-	        else if($plan['etf_description'] === 'REDUC' && $plan['etf'] != 0){
-	        	$plan['etf_description'] = '$10 per month remaining on the contract, not to exceed $' . $plan['etf'] . '.';
+	        else if($plan['etf_description'] === 'TERM' || $plan['etf_description'] === 'REDUC' && $plan['etf'] !== ''){
+	        	$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
 	        	$plan['etf'] = 'Cancellation Fee Applies';
 	        }
 	        else{
@@ -329,17 +324,7 @@ class PlanController extends Controller
 	    		$plan['type'] = 'Commercial';
 	    	}
 
-	    	echo $plan['priority'] . "<br>";
-	    	echo $plan['name'] . "<br>";
-	    	echo $plan['ldc'] . "<br>";
-	    	echo $plan['type'] . "<br>";
-	    	echo $plan['length'] . "<br>";
-	    	echo $plan['rate'] . "<br>";
-	    	echo $plan['etf'] . "<br>";
-	    	echo $plan['etf_description'] . "<br>";
-	    	echo $plan['price_code'];
-	    	echo "<br><br><br>";
-	    	//$p = \App\Models\Plan::create($plan);
+	    	$p = \App\Models\Plan::create($plan);
 	    }
 	}
 
@@ -350,8 +335,7 @@ class PlanController extends Controller
 	 * Redirect to home page
 	 */
 	public function updatePlans(){
-		// only deletes the Opsolve plans
-		//\App\Models\Plan::whereNull('code')->delete();
+		\App\Models\Plan::whereNull('code')->delete();
 
 		//$this->updateLdcPlans('BGE');
 
@@ -365,7 +349,7 @@ class PlanController extends Controller
 
 		$this->updateLdcPlans('DUKE_OH');
 	    
-	    //return redirect('/');
+	    return redirect('/');
 	    //return view('soap-test')->with('plans', $plans)->with('request', $request);
 		}
 }

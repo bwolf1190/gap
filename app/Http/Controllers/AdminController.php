@@ -21,7 +21,7 @@ class AdminController extends Controller
 
 	}
 
-
+	
 	/**
 	 * Sends the users with role of admin to dashboard
 	 * Sends users without admin role to login page
@@ -114,6 +114,7 @@ class AdminController extends Controller
 			Mail::queue('emails.welcome', ['customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment], function ($m) use ($customer, $plan, $enrollment) {
 	                $m->from('gaponline@greatamericanpower.com', 'Great American Power');
 	                $m->to($customer->email);
+	                $m->bcc('greatampower@gmail.com', 'GAP');
 	                $m->subject("Email Confirmation");
 	        });
 

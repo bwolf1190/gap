@@ -19,23 +19,13 @@ $("input").focus(function(){
     reset_style($(this));
 });
 
-$('#sstate').change(function(){
-	$('#sstate').removeClass('invalid');
-});
-
-$('#mstate').change(function(){
-	$('#mstate').removeClass('invalid');
-});
-
 $('#same_address').click(function(){
     if($(this).is(":checked")){
     	$(this).val('checked');
         $("input[name=ma1]").val($("input[name=sa1]").val());
-        //$("input[name=ma2]").val($("input[name=sa2]").val());
+        $("input[name=ma2]").val($("input[name=sa2]").val());
         $("input[name=mcity]").val($("input[name=scity]").val());
-        //setSelectedValue($("#mstate"),$("#sstate").val());
-        $('#mstate').val($("#sstate").val());
-        //$("input[name=mstate]").val($("input[name=sstate]").val());
+        $("input[name=mstate]").val($("input[name=sstate]").val());
         $("input[name=mzip]").val($("input[name=szip]").val());
         $("input[name=ma1]").removeClass("invalid");
         $("input[name=mcity]").removeClass("invalid");
@@ -47,7 +37,7 @@ $('#same_address').click(function(){
         $("input[name=ma1]").val("");
         $("input[name=ma2]").val("");
         $("input[name=mcity]").val("");
-        $("#mstate").val("Select State");
+        $("input[name=mstate]").val("");
         $("input[name=mzip]").val(""); 	
     }
 });
@@ -85,6 +75,7 @@ function empty_check(name, message){
 
 		return "valid";
 	}
+
 }
 
 function validate_form_1(){
@@ -106,8 +97,7 @@ function validate_form_1(){
 function validate_form_2(){
 	var sa1 = empty_check("sa1", "Please enter your service address");
 	var scity = empty_check("scity", "Please enter your service city");
-	//var sstate = empty_check("sstate", "Please enter service state");
-	var sstate = validate_state('sstate');
+	var sstate = empty_check("sstate", "Please enter service state");
 	var szip = validate_zip("szip");
 
 	var sa2 = $("input[name=sa2]").val(toTitleCase($("input[name=sa2]").val()));
@@ -124,8 +114,7 @@ function validate_form_2(){
 function validate_form_3(){
 	var ma1 = empty_check("ma1", "Please enter your mailing address");
 	var mcity = empty_check("mcity", "Please enter your mailing city");
-	//var mstate = empty_check("mstate", "Please enter your mailing state");
-	var mstate = validate_state('mstate');
+	var mstate = empty_check("mstate", "Please enter your mailing state");
 	//var mzip = empty_check("mzip", "Please enter your mailing zip");
 	var mzip = validate_zip("mzip");
 
@@ -161,6 +150,8 @@ function validate_acc_num(){
 	var length = $("input[name=format_criteria_1]");
 	var prefix = $("input[name=format_criteria_2]");
 	var acc_num = $("input[name=acc_num]");
+	acc_num.val(acc_num.val().replace(/\D/g,''));
+	
 	if(prefix === ""){
 		var message = "Your account number or id must start with " + prefix.val() + " and be " + length.val() + " characters";
 	}
@@ -220,20 +211,6 @@ function validate_zip(field){
     }
 
     return valid;
-}
-
-function validate_state(field){
-	field = '#' + field;
-	field = $(field);
-	if(field.val() == 'Select State'){
-		set_error_style(field);
-		valid= 'invalid';
-	}
-	else{
-		valid = 'valid';
-	}
-
-	return valid;
 }
 
 /**				FORM 4 						 **/

@@ -56,8 +56,6 @@ $("#submit").click(function(){
 		$(this).hide();
 		$("#previous-container").hide();
 		$("#loading-div").show();
-
-		
 	}
 	else{
 		$(this).val("Finish");

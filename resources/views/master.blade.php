@@ -2,11 +2,11 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
     <!-- Title -->
     <title>@yield('page-title')</title>
     <!-- Meta -->
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
     <meta name="description" content="Great American Power is an energy company serving Pennsylvania and Maryland. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.">
     <meta name="author" content="Brett Wolverton">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -20,7 +20,7 @@
     {!! Html::style('css/nexus.css') !!}
     {!! Html::style('css/custom.css') !!}
     {!! Html::style('css/welcome-2.css') !!}
-    {!! Html::style('css/master.css') !!}
+    {!! Html::style('css/master.css?v=2') !!}
     {!! Html::script('js/jquery.min.js') !!}
     {!! Html::script('js/bootstrap.min.js') !!}
     @yield('page-style')
@@ -45,8 +45,8 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
-<body>
-    <div id="header-container" class="animate fadeInDown">
+<body class="fade-in">
+    <div id="header-container" class="">
         <div id="pre_header" class="visible-lg"></div>
         <div id="header" class="container">
             <div class="row">
@@ -77,7 +77,7 @@
     @yield('powered-by-gap')
     <!-- === END CONTENT === -->
     <!-- === BEGIN FOOTER === -->
-    <footer id="footer-container" class="footer-distributed animate fadeInUp">
+    <footer id="footer-container" class="footer-distributed">
         <div class="footer-left">
             <!--<h3>Company<span>logo</span></h3>-->
             {!! Html::image('images/great-american-power-fcp.jpg', 'footer-brand-img', array('class' => 'footer-brand-img')) !!}
@@ -92,7 +92,7 @@
                 ·
                 <a href="{{ env('CONTACT_URL') }}">Contact</a>
             </p>
-            <p class="footer-company-name">Great American Power &copy; 2016</p>
+            <p class="footer-company-name">Great American Power &copy; 2017</p>
         </div>
         <div class="footer-center">
             <div>
