@@ -298,9 +298,6 @@ span.glyphicon.glyphicon-arrow-left{
 	white-space: nowrap;
 }
 
-.price_table_body{
-}
-
 .price_table_row {
     padding:15px;
 	background: lightgray;
@@ -320,6 +317,11 @@ span.glyphicon.glyphicon-arrow-left{
 
 .price_table_row.last_row{
 	border-bottom: 3px solid gray;
+	padding:20px 6px 15px 6px;
+}
+
+.price_table_row.reward{
+	padding:15px 6px 15px 6px;
 }
 
 .price_table_row.reward a{
