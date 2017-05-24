@@ -2,7 +2,7 @@
 
 use App\Mail\BrokerEnrollmentConfirmation;
 use Illuminate\Support\Facades\Input;
-use App\Mail\EnrollmentConfirmation;
+use App\Mail\EnrollmentConfirmation;  
 use Illuminate\Http\Request;
 use SoapClient;
 use Session;
@@ -39,14 +39,14 @@ class EmailController extends Controller
         $customer = \App\Models\Customer::where('id',$customer_id)->first();
         $plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();
-        Mail::to($customer->email)->bcc('greatampower@gmail.com', 'GAP')->queue(new EnrollmentConfirmation($customer, $plan, $enrollment));
+        Mail::to($customer->email)->bcc('greatampower@gmail.com', 'GAP')->mail(new EnrollmentConfirmation($customer, $plan, $enrollment));
 
         // for sending confirmation email to brokers
         $broker = $enrollment->agent_code;
 
-        /*if(!empty($broker) && $enrollment->type != 'internal'){
+        if(!empty($broker) && $enrollment->type != 'internal'){
             $this->sendBrokerConfirmation($customer, $plan, $enrollment);
-        }*/
+        }
 
         return redirect('/offers');
     }
@@ -57,7 +57,7 @@ class EmailController extends Controller
     public function sendBrokerConfirmation($customer, $plan, $enrollment){
             $broker = \App\Models\Broker::where('name', $plan->promo)->first();
             //Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
-            Mail::to('bwolverton@greatamericanpower.com')->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
+            Mail::to('bwolverton@greatamericanpower.com')->mail(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
     }
 
 
