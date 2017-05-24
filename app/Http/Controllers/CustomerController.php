@@ -69,7 +69,7 @@ class CustomerController extends Controller
 	 */
 	public function index()
 	{
-		$customers = \App\Models\Customer::paginate(10);
+		$customers = \App\Models\Customer::orderBy('id', 'desc')->paginate(15);
 
 		return view('customers.index')
 			->with('customers', $customers);
@@ -97,6 +97,10 @@ class CustomerController extends Controller
 	{
 		$input = $request->all();
 		$type = Input::get('type');
+		
+		if($input['honey'] !== ''){
+			return redirect('/');
+		}
 	
 		if(isset($input['file'])){
 			$file = $request->file();
@@ -136,10 +140,10 @@ class CustomerController extends Controller
 		$sub_agent_code = Input::get('sub_agent_code');
 
 		return redirect()->route('addEnrollment', array('type' => $type,
-														'id' => $customer->id, 
-														'agent' => $agent, 
-														'agent_code' => $agent_code, 
-														'sub_agent_code' => $sub_agent_code));
+								'id' => $customer->id, 
+								'agent' => $agent, 
+								'agent_code' => $agent_code, 
+								'sub_agent_code' => $sub_agent_code));
 	}
 
 	/**

@@ -166,26 +166,6 @@
 				<label style='font-size:.85em;'><input id="terms_conditions" name="terms_conditions" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf") !!}">Accept Terms & Conditions</a></label>
 			</div>
 		</div>
-		<style>
-		#upload-container{
-			display:none;
-		}
-			.fileUpload {
-			position: relative;
-			overflow: hidden;
-			}
-			.fileUpload input.upload {
-			position: absolute;
-			top: 0;
-			right: 0;
-			margin: 0;
-			padding: 0;
-			font-size: 20px;
-			cursor: pointer;
-			opacity: 0;
-			filter: alpha(opacity=0);
-			}
-		</style>
 		@if($promo !== null)
 		<div id="upload-container" class="form-group">
 			<div class="fileUpload btn btn-primary">
@@ -200,6 +180,7 @@
 		<div class='form-group'>
 			{!! Form::hidden('plan_id', $plan->id) !!}
 			{!! Form::hidden('type', $type) !!}
+			{!! Form::hidden('honey', '') !!}
 		</div>
 		<div  class="form-group">
 			<div id="previous-container">
@@ -231,7 +212,7 @@
 					<div class="price_table_row"><strong>{!! $plan->meter . " Meter" !!}</strong></div>
 					@endif
 					@if($plan->reward != "")
-					<div class="price_table_row">
+					<div class="price_table_row reward">
 						<a href="{{ $plan->reward_link }}" title="Click for more information" target="_blank">{!! $plan->reward !!}</a>
 						<a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
 					</div>
