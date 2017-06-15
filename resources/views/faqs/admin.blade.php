@@ -1,18 +1,17 @@
-@extends('admin.admin-master')
+@extends('admin.admin-new2')
 
 @section('navbar-brand')
     <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
 @endsection
 
 @section('content')
-{!! Html::style('css/admin.css') !!}
     <div class="container">
 
         @include('flash::message')
 
         <div class="row">
             <h1 class="pull-left">Faqs</h1>
-            <a class="btn btn-primary pull-right admin-top-btn" style="margin-top: 25px" href="{!! route('faqs.create') !!}">Add New</a>
+            <a class="btn btn-primary pull-right add-btn" href="{!! route('faqs.create') !!}">Add New</a>
         </div>
 
         <div class="row">

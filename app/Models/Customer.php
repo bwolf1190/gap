@@ -30,7 +30,6 @@ class Customer extends Model
 		'terms_conditions',
 		'optin',
 		'promo',
-		'enrollment_id',
 		'plan_id',
 		'cc'
 	];
@@ -62,7 +61,6 @@ class Customer extends Model
 		'terms_conditions' => 'string',
 		'optin'            => 'string',
 		'promo'            => 'string',
-		'enrollment_id'    => 'integer',
 		'plan_id'          => 'integer',
 		'cc'               => 'string',
     ];
@@ -84,7 +82,10 @@ class Customer extends Model
 		'phone'         => 'required'
 	];
 
-	
+	public function enrollment_p2c(){
+		return $this->hasOne('App\Models\EnrollmentP2C');
+	}
+
 	public function enrollment(){
 		return $this->hasOne('App\Models\Enrollment');
 	}

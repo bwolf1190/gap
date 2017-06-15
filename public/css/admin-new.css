@@ -1,0 +1,123 @@
+
+.container.body{
+	font-family:  'Droid Serif', serif;
+}
+
+.top-nav{
+	height:120px;
+}
+
+.top-left-nav{
+	height:120px;
+	background-color: white;
+}
+
+.top-right-nav{
+	height:120px;
+	padding-top:25px;
+	background-color: #00234C;
+}
+
+#logout a{
+	color:white;
+	font-size: 1.1em;
+}
+
+#logout span{
+	color:#bf0000;
+	font-weight: bold;
+}
+
+h1{
+	color:#bf0000;
+	margin-top:60px;
+	margin-bottom: 50px;
+}
+
+#content-container{
+	position:relative;
+	left:-20px;
+}
+
+#fields-container{
+	margin-top:100px;
+}
+
+thead{
+	background-color: lightgray;
+	color:#00234C;
+	text-align: center;
+}
+
+th{
+	width:75px;
+}
+
+.glyphicon.glyphicon-edit{
+	font-size: 1.8em;
+	font-weight: bold;
+	color:green;
+}
+
+.glyphicon.glyphicon-remove{
+	font-size: 1.8em;
+	font-weight: bold;
+	color:#bf0000;
+}
+
+.col-xs-2 .nav-container{
+	background-color: lightgrey;
+	margin-top:100px;
+}
+
+.btn-group{
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+.btn-group.btn-group-justified.btn-group button{
+	font-size: 1.2em;
+	background-color: #bf0000;
+	color:white; 
+}
+
+.btn-group.btn-group-justified.btn-group button:hover{
+	background-color: white;
+	color:#bf0000;
+}
+
+.btn.btn-primary{
+	background-color: #00234C;
+	color:white;
+}
+
+.btn-primary:hover{
+	background-color: white;
+	color:#00234C;
+
+}
+
+.btn-primary.add-btn{
+	border:2px solid white;
+	margin-top:40px;
+	margin-right:40px;
+	background-color: green;
+	color:white;
+}
+
+.add-btn:hover{
+	border:2px solid green;
+	background-color: white;
+	color:green;
+}
+
+.alert{
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
+
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color:#bf0000;
+	border-color:#bf0000;
+}

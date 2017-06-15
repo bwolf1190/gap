@@ -4,6 +4,12 @@
 	{!! Form::text('status', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Account Number -->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('acc_num', 'Account #:') !!}
+    {!! Form::text('acc_num', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Fed_Tax_Id_Num Field -->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('Fed_Tax_Id_Num', 'Federal Tax Number:') !!}

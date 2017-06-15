@@ -32,7 +32,7 @@ class FaqController extends Controller
 	 */
 	public function index()
 	{
-		$faqs = \App\Models\Faq::paginate(30);
+		$faqs = \App\Models\Faq::paginate(15);
 		return view('faqs.admin')->with('faqs', $faqs);
 	}
 

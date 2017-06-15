@@ -1,7 +1,7 @@
-@extends('admin.admin-master')
+@extends('admin.admin-new2')
 
 @section('content')
-
+<!--
 <div id="dashboard-container" class="">
     <div class="row">
         <a href="/plans"><div id="plans-btn" class="col-xs-12 col-md-3 col-md-offset-3 box grey">
@@ -48,5 +48,5 @@
     </div>
 
 </div>
-
+-->
 @endsection

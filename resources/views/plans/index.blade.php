@@ -1,4 +1,4 @@
-@extends('admin.admin-master')
+@extends('admin.admin-new2')
 
 @section('navbar-brand')
     <a class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
@@ -6,13 +6,11 @@
 
 @section('content')
 
-{!! Html::style('css/admin.css') !!}
-    <div id="plans-container" class="container">
+    <div id="" class="container">
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Plans</h1>
-            <a class="btn btn-primary pull-right admin-top-btn" style="margin-top: 25px;" href="{!! route('plans.create') !!}">Add Plan</a>
-            
+            <a class="btn btn-primary pull-right add-btn" href="{!! route('plans.create') !!}">Add Plan</a> 
         </div>
         <div class="row">
             @if(empty($plans))

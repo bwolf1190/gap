@@ -329,6 +329,10 @@ span.glyphicon.glyphicon-arrow-left{
 	font-weight: bold;
 }
 
+.price_table_row.reward a:hover{
+	text-decoration: underline;
+}
+
 .cost{
 	font-size:1.3em;
 	color:#bf0000;

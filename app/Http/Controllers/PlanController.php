@@ -133,7 +133,7 @@ class PlanController extends Controller
 	public function store(Request $request)
 	{
 		$input = $request->all();
-		
+
 		$this->validate($request, [
 			'priority'        => 'required',
 			'name'            => 'required',
@@ -155,7 +155,7 @@ class PlanController extends Controller
 		if($input['code'] === ''){
 			$input['code'] = null;
 		}
-		if($input['price_code'] === ''){
+		if($input['price_code'] === '' || $input['price_code'] == '0'){
 			$input['price_code'] = null;
 		}
 
@@ -217,7 +217,25 @@ class PlanController extends Controller
 			return redirect(route('plans.index'));
 		}
 
-		$plan->update($request->all());
+		$pr = $request->all();
+		if($pr['rate2'] == ''){
+			$pr['rate2'] = null;
+		}
+		if($pr['price_code'] == '' || $pr['price_code'] == '0'){
+			$pr['price_code'] = null;
+		}
+		if($pr['meter'] == ''){
+			$pr['meter'] = null;
+		}
+		if($pr['promo'] == ''){
+			$pr['promo'] = null;
+		}
+		if($pr['reward'] == ''){
+			$pr['reward'] = null;
+			$pr['reward_link'] = null;
+			$pr['reward_description'] = null;
+		}
+		$plan->update($pr);
 
 		Flash::success('Plan updated successfully.');
 
