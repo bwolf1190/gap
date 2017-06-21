@@ -10,7 +10,7 @@
         @include('flash::message')
 
         <div class="row">
-            <h1 class="pull-left">Faqs</h1>
+            <h1 class="pull-left">FAQs</h1>
             <a class="btn btn-primary pull-right add-btn" href="{!! route('faqs.create') !!}">Add New</a>
         </div>
 
