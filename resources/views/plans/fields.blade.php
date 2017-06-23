@@ -79,7 +79,7 @@
 <!-- Promo Field -->
 <div class="form-group col-xs-3">
     {!! Form::label('promo', 'Promo:') !!}
-	{!! Form::select('promo', ['' => null, 'ENERGYBOB' => 'ENERGYBOB', 'FRONTLINE' => 'FRONTLINE', 'IRONPIGS' => 'IRONPIGS', 'NPE' => 'NPE', 'WMS' => 'WMS']) !!}
+	{!! Form::select('promo', ['' => null, 'ENERGYBOB' => 'ENERGYBOB', 'FRONTLINE' => 'FRONTLINE', 'GAP' => 'GAP', 'IRONPIGS' => 'IRONPIGS', 'NPE' => 'NPE', 'WMS' => 'WMS']) !!}
 </div>
 
 <!-- Code Field -->
