@@ -116,6 +116,11 @@ th{
 	margin-top: 20px;
 }
 
+select{
+	height:35px;
+	width:100%;
+	border-radius: 5px;
+}	
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
 	background-color:#bf0000;

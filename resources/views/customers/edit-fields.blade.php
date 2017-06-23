@@ -1,9 +1,3 @@
-<!-- Status Field -->
-<div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('status', 'Status:') !!}
-	{!! Form::text('status', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Account Number -->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('acc_num', 'Account #:') !!}
@@ -12,7 +6,7 @@
 
 <!-- Fed_Tax_Id_Num Field -->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('Fed_Tax_Id_Num', 'Federal Tax Number:') !!}
+    {!! Form::label('Fed_Tax_Id_Num', 'Federal Tax #:') !!}
 	{!! Form::text('Fed_Tax_Id_Num', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -100,10 +94,10 @@
     {!! Form::text('phone', null, ['class' => 'form-control']) !!}
 </div>
 
-<!--  Plan_id Field -->
+<!-- Status Field -->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('plan_id', 'Plan Id:') !!}
-    {!! Form::text('plan_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('status', 'Status:') !!}
+    {!! Form::select('status', ['PENDING' => 'PENDING', 'CONFIRMED' => 'CONFIRMED']) !!}
 </div>
 
 <!-- Submit Field -->

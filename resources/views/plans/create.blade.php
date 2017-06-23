@@ -1,21 +1,17 @@
-@extends('admin.admin-master')
-
-@section('navbar-brand')
-    <a class="navbar-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg') !!}</a>
-@endsection
+@extends('admin.admin-new2')
 
 @section('content')
 
-{!! Html::style('css/admin.css') !!}
-
-<div id="admin-container" class="container">
-
+<div class="container">
+	<div id="fields-container">
     @include('common.errors')
 
     {!! Form::open(['route' => 'plans.store']) !!}
     {!! csrf_field() !!}
+
         @include('plans.fields')
 
     {!! Form::close() !!}
+    </div>
 </div>
 @endsection

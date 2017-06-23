@@ -170,7 +170,6 @@ class CustomerController extends Controller
 
 		if(empty($customer))
 		{
-
 			return redirect('customers');
 		}
 
@@ -183,6 +182,8 @@ class CustomerController extends Controller
 	public function update($id, Request $request)
 	{
 		$customer = \App\Models\Customer::find($id);
+		$enrollment = $customer->enrollment;
+		$enrollment_p2c = $customer->enrollment_p2c;
 
 		if(empty($customer))
 		{
@@ -192,6 +193,10 @@ class CustomerController extends Controller
 		}
 
 		$customer->update($request->all());
+
+		// update enrollment and enrollment_p2c to adjust for potential editing status of customer through admin portal
+		$enrollment->update(['status' => $request['status']]);
+		$enrollment_p2c->update(['status' => $request['status']]);
 
 		return redirect('customers');;
 	}
