@@ -257,7 +257,7 @@ class PlanController extends Controller
 			return redirect(route('plans.index'));
 		}
 
-		$plan->delete($id);
+		$plan->delete();
 
 		Flash::success('Plan deleted successfully.');
 
