@@ -7,7 +7,7 @@ class Faq extends Model
 	public $table = 'faqs';
     
 	public $fillable = [
-	    'question',
+		'question',
 		'answer',
 		'key1',
 		'key2',
@@ -20,7 +20,7 @@ class Faq extends Model
      * @var array
      */
     protected $casts = [
-        'question' => 'string',
+		'question' => 'string',
 		'answer'   => 'string',
 		'key1'     => 'string',
 		'key2'     => 'string',
@@ -28,8 +28,10 @@ class Faq extends Model
     ];
 
 	public static $rules = [
-	    'question' => 'required',
-		'answer'   => 'required',
-		'key1'     => 'required'
+		'question' => 'required',
+		'answer'   => 'required'
+		'key1'     => 'required',
+		'key2'     => 'required',
+		'key3'     => 'required'
 	];
 }

@@ -16,7 +16,7 @@ class CustomerController extends Controller
 		$this->middleware('admin', ['except' => ['start', 'internalStart', 'store']]);
 	}
 
-	
+
 	/**
 	 * Send customer to first part of enrollment form
 	 */
