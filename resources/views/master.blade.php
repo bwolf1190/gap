@@ -2,7 +2,7 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Title -->
     <title>@yield('page-title')</title>
     <!-- Meta -->
@@ -77,7 +77,7 @@
     @yield('powered-by-gap')
     <!-- === END CONTENT === -->
     <!-- === BEGIN FOOTER === -->
-    <footer id="footer-container" class="footer-distributed">
+    <footer id="footer-container" class="footer-distributed animate fadeInUp">
         <div class="footer-left">
             <!--<h3>Company<span>logo</span></h3>-->
             {!! Html::image('images/great-american-power-fcp.jpg', 'footer-brand-img', array('class' => 'footer-brand-img')) !!}
