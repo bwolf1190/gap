@@ -67,6 +67,8 @@ class EmailController extends Controller
      * Check that email has not already been confirmed
      */
     public function confirmEmail($customer, $confirmation_code){
+        // keep customers from completing enrollments
+        return view('emails.no-new-customers');
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer)->first();
         $plan = $enrollment->plan;
         $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
