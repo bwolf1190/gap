@@ -45,7 +45,7 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
-<body class="fade-in">
+<body class="fade-in-slow">
     <div id="header-container" class="">
         <div id="pre_header" class="visible-lg"></div>
         <div id="header" class="container">
@@ -58,13 +58,22 @@
                 <!-- Top Menu -->
                 <div class="col-md-12 margin-top-10">
                     <div id="hornav" class="pull-right visible-lg">
+                        @if(!(isset($type)))
                         <ul class="nav navbar-nav">
                             <li><a href="{{ env('HOME_URL') }}">HOME</a></li>
                             <li><a href="{{ env('ENROLL_URL') }}">ENROLL</a></li>
-                            <!--<li><a href="/about-us">ABOUT</a></li>-->
                             <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
                             <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
                         </ul>
+                        @elseif($type == 'web')
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ env('HOME_URL') }}">HOME</a></li>
+                            <li><a href="{{ env('ENROLL_URL') }}">ENROLL</a></li>
+                            <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
+                            <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
+                        </ul>
+                        @else
+                        @endif
                     </div>
                 </div>
                 <!-- End Top Menu -->
@@ -82,6 +91,7 @@
             <!--<h3>Company<span>logo</span></h3>-->
             {!! Html::image('images/great-american-power-fcp.jpg', 'footer-brand-img', array('class' => 'footer-brand-img')) !!}
             <p class="footer-links">
+                @if(!(isset($type)))
                 <a href="{{ env('HOME_URL') }}">Home</a>
                 ·
                 <a href="{{ env('ENROLL_URL') }}">Enroll</a>
@@ -91,6 +101,19 @@
                 <a href="{{ env('FAQ_URL') }}">Faq</a>
                 ·
                 <a href="{{ env('CONTACT_URL') }}">Contact</a>
+                @elseif($type =='web')
+                <a href="{{ env('HOME_URL') }}">Home</a>
+                ·
+                <a href="{{ env('ENROLL_URL') }}">Enroll</a>
+                <!--·
+                <a href="/about-us">About</a>-->
+                ·
+                <a href="{{ env('FAQ_URL') }}">Faq</a>
+                ·
+                <a href="{{ env('CONTACT_URL') }}">Contact</a>
+                @else
+                @endif
+
             </p>
             <p class="footer-company-name">Great American Power &copy; 2017</p>
         </div>

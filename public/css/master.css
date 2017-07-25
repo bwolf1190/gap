@@ -181,9 +181,9 @@ nav{
 	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
 	-moz-animation-fill-mode:forwards;
 	animation-fill-mode:forwards;
-	-webkit-animation-duration:2s;
-	-moz-animation-duration:2s;
-	animation-duration:2s;
+	-webkit-animation-duration:0.5s;
+	-moz-animation-duration:0.5s;
+	animation-duration:0.5s;
 }
 
 /* ---------------------- / FOOTER / ---------------------- */

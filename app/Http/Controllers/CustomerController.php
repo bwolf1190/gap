@@ -42,7 +42,7 @@ class CustomerController extends Controller
 			}
 		}
 
-		return view('customers.start')->with('ldc', $ldc)
+		return view('customers.start')->with('ldc', $ldc) 
 									  ->with('plan', $plan)
 									  ->with('promo', $promo)
 									  ->with('zip', $zip)
