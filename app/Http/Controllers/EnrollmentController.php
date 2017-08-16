@@ -34,7 +34,7 @@ class EnrollmentController extends Controller
 	 */
 	public function startBroker($promo, $type='broker'){
 		$promo = strtoupper($promo);
-		return view('enroll-broker')->with('promo', $promo)->with('type', $type);
+		return view('enroll-broker')->with('promo', $promo)->with('type', $type); 
 	}
 
 
@@ -44,7 +44,6 @@ class EnrollmentController extends Controller
 	public function addEnrollment($type, $id, $agent = '', $agent_code = '', $sub_agent_code = ''){
 		$customer = \App\Models\Customer::where('id',$id)->first();
 		$plan = \App\Models\Plan::where('id', $customer->plan_id)->first();
-
 		//dd($agent . ' ' . $agent_code . ' ' . $sub_agent_code);
 
 		// random string concat with random number
@@ -179,8 +178,11 @@ class EnrollmentController extends Controller
 		$p2c_enrollment = \App\Models\EnrollmentP2C::create($p2c_input);
 		/* End P2C Enrollment */
 		//}
-
-		return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
+		if(is_null($plan->entry_fee)){
+			return redirect()->route('welcome', array('customer' => $customer, 'plan' => $plan, 'enrollment' => $enrollment));
+		}
+		
+		return view('stripe.stripe')->with('customer', $customer->id)->with('plan', $plan->id)->with('amount', $plan->entry_fee);
 	}
 
 

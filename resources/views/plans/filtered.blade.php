@@ -36,11 +36,17 @@
                         	<a href="#" id="acc-num-tooltip" data-container="body" data-html="true" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
                       	</div>
                       @endif
-                      
+                    @if(is_null($plan->entry_fee))
                       <div class="price_table_row etf last_row">
                           <strong>{!! $plan->etf !!}</strong>
                           <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
-                      </div>                              
+                      </div>
+                      @else
+                      <div class="price_table_row etf last_row">
+                          <strong>{!! '$' . substr_replace($plan->entry_fee, '.', -2, 0) . ' Sign Up Fee' !!}</strong>
+                          <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->entry_fee_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                      </div>
+                      @endif                                            
                   </div>
                   <div class="sign-up-container">
                     <a href="{!! route('start', ['id' => $plan->id,'promo' => $promo, 'type' => $type]) !!}">Sign Up</a>

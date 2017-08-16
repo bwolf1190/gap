@@ -43,6 +43,8 @@ class Plan extends Model
 		'reward_description' => 'string',
 		'etf'                => 'string',
 		'etf_description'    => 'string',
+		'entry_fee'    => 'string',
+		'entry_fee_description'    => 'string',
 		'meter'              => 'string',
 		'promo'              => 'string',
 		'code'               => 'string',

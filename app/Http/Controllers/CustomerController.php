@@ -138,7 +138,7 @@ class CustomerController extends Controller
 		}
 		
 		$sub_agent_code = Input::get('sub_agent_code');
-
+	
 		return redirect()->route('addEnrollment', array('type' => $type,
 								'id' => $customer->id, 
 								'agent' => $agent, 

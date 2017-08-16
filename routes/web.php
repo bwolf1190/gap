@@ -11,8 +11,45 @@
 |
 */
 
+Route::get('/e', function(){
+    return view('errors.stripe-error');
+});
+
+Route::get('/t', function(){
+    $customer = \App\Models\Customer::find(3288);
+    $plan = \App\Models\Plan::find(31);
+    $c = $plan->entry_fee;
+    $amount = substr_replace($c, '.', -2, 0);
+    return view('stripe.summary')->with('customer', $customer)->with('plan', $plan)->with('amount', $amount);
+});
+
+Route::get('/m', function(){
+    return view('no-service');
+});
+
 Auth::routes();
 
+Route::get('/gapres', function(){
+    $ldcs = \App\Models\Ldc::orderBy('ldc', 'asc')->get();
+    $type = 'save';
+    $service = 'Residential';
+    $promo = 'GAP';
+    return view('ldcs.findex')->with('type', $type)->with('service', $service)-> with('ldcs', $ldcs)->with('promo', $promo);
+});
+
+Route::get('/gapcom', function(){
+    $ldcs = \App\Models\Ldc::orderBy('ldc', 'asc')->get();
+    $type = 'save';
+    $service = 'Commercial';
+    $promo = 'GAP';
+    return view('ldcs.findex')->with('type', $type)->with('service', $service)-> with('ldcs', $ldcs)->with('promo', $promo);
+});
+
+Route::get('/sign-up-fee', function(){
+    return view('stripe.stripe');
+});
+
+Route::post('/payment', 'PaymentController@store');
 
 Route::get('/opsolve/ldcs', array('as' => 'opsolve', 'uses' => 'LdcController@getLdc'));
 
@@ -62,10 +99,7 @@ Route::get('/delete-jobs', function(){
     DB::delete('delete from jobs');
 });
 
-
 Route::get('/dashboard', 'AdminController@index');
-
-
 
 Route::get('/admin', 'HomeController@index');
 
@@ -85,17 +119,20 @@ Route::get('/phpinfo', function(){
 
 //Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-
 /* <--------------------------------------------------------------------->  */
 
 
 /* <----------------------- About Us Routes ----------------------------->  */
+
 Route::get('/about-us', function(){
     return view('about-us');
 });
+
 /* <--------------------------------------------------------------------->  */
 
+
 /* <----------------------- Broker Routes ------------------------------->  */
+
 Route::resource('brokers', 'BrokerController');
 
 Route::get('broker/admin', 'BrokerController@enrollments');
@@ -110,28 +147,26 @@ Route::get('broker/admin/plans/export/{broker}', 'BrokerController@exportPlans')
 
 Route::get('broker/admin/subagents/export/{broker}', 'BrokerController@exportSubagents');
 
-
-
-
 // standard broker route
 Route::get('/broker/{promo}', 'EnrollmentController@startBroker');
 
 // special route for greatamericanpower/ironpigs
 Route::get('/ironpigs', function(){
-    return view('enroll-broker')->with('promo', 'IRONPIGS')->with('type', 'broker');
+    return view('enroll-ironpigs')->with('promo', 'IRONPIGS')->with('type', 'broker');
 });
 
 Route::post('broker', array('as' => 'broker', 'uses'=>'LdcController@brokerLdcs'));
-
 
 Route::get('brokers/{id}/delete', [
     'as' => 'brokers.delete',
     'uses' => 'BrokerController@destroy',
 ]);
+
 /* <--------------------------------------------------------------------->  */
 
 
 /* <----------------------- Contact Routes ------------------------------>  */
+
 Route::resource('contacts', 'ContactController');
 
 Route::get('/contact-us-customer-service', 'ContactController@create');
@@ -140,10 +175,12 @@ Route::get('contacts/{id}/delete', [
     'as' => 'contacts.delete',
     'uses' => 'ContactController@destroy',
 ]);
+
 /* <--------------------------------------------------------------------->  */
 
 
 /* <----------------------- Customer Routes	----------------------------->  */
+
 Route::resource('customers', 'CustomerController');
 
 Route::get('sort-customers/{column}', 'CustomerController@sortCustomers');
@@ -152,10 +189,12 @@ Route::get('customers/{id}/delete', [
     'as' => 'customers.delete',
     'uses' => 'CustomerController@destroy',
 ]);
+
 /* <--------------------------------------------------------------------->  */
 
 
 /* <----------------------- Enrollment Routes --------------------------->  */
+
 Route::resource('enrollments', 'EnrollmentController');
 
 Route::get('sort-enrollments/{column}', 'EnrollmentController@sortEnrollments');
@@ -164,10 +203,12 @@ Route::get('enrollments/{id}/delete', [
     'as' => 'enrollments.delete',
     'uses' => 'EnrollmentController@destroy',
 ]);
+
 /* <--------------------------------------------------------------------->  */
 
 
 /* <----------------------- Faq Routes ---------------------------------->  */
+
 Route::resource('faqs', 'FaqController');
 
 Route::get('/faq-frequently-asked-questions-energy-electricity', 'FaqController@view');
@@ -176,7 +217,9 @@ Route::get('faqs/{id}/delete', [
     'as' => 'faqs.delete',
     'uses' => 'FaqController@destroy',
 ]);
+
 /* <--------------------------------------------------------------------->  */
+
 
 /* <---------------------- Historical Rates Route ----------------------->  */
 
@@ -189,22 +232,9 @@ Route::get('/historical-rates', function(){
 
 /* <--------------------------------------------------------------------->  */
 
-/* <------------------- Internal Enrollment Routes ---------------------->  */
-
-/*
-Route::resource('internalEnrollments', 'InternalEnrollmentController');
-
-Route::get('/internal/sort-enrollments/{column}', 'InternalEnrollmentController@sortEnrollments');
-
-Route::get('enrollments/{id}/delete', [
-    'as' => 'enrollments.delete',
-    'uses' => 'EnrollmentController@destroy',
-]);
-*/
-
-/* <--------------------------------------------------------------------->  */
 
 /* <----------------------- Plan Routes ---------------------------------> */
+
 Route::resource('ldcs', 'LdcController');
 
 //Route::get('sort-plans/{column}', 'PlanController@sortPlans');
@@ -214,10 +244,11 @@ Route::get('ldcs/{id}/delete', [
     'uses' => 'LdcController@destroy',
 ]);
 
-
 /* <--------------------------------------------------------------------->  */
 
+
 /* <----------------------- Plan Routes ---------------------------------> */
+
 Route::resource('plans', 'PlanController');
 
 Route::get('sort-plans/{column}', 'PlanController@sortPlans');
@@ -226,7 +257,6 @@ Route::get('plans/{id}/delete', [
     'as' => 'plans.delete',
     'uses' => 'PlanController@destroy',
 ]);
-
 
 /* <--------------------------------------------------------------------->  */
 
