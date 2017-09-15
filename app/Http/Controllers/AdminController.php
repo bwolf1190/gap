@@ -16,6 +16,7 @@ use DB;
 class AdminController extends Controller
 {
 	
+	
 	public function __construct(){
         		$this->middleware('admin', ['except' => ['showAll', 'showBrokerEnrollments', 'resendEmails']]);
 	}

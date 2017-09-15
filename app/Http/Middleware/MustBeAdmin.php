@@ -6,6 +6,7 @@ use Closure;
 
 class MustBeAdmin
 {
+    
     /**
      * Handle an incoming request.
      *

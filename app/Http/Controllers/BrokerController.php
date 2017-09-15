@@ -9,6 +9,7 @@ use Flash;
 
 class BrokerController extends Controller
 {
+	
 
 	    public function __construct()
 	    {
