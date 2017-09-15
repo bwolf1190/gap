@@ -89,12 +89,6 @@ Route::get('/emails/confirmation/{customer}/{confirmation_code}', array('as' => 
 
 /* <----------------------- Admin Routes -------------------------------->  */
 
-Route::get('/a', 'WelcomeController@charts');
-
-Route::get('/analytics', function(){
-    return view('admin.analytics');
-});
-
 Route::get('/delete-jobs', function(){
     DB::delete('delete from jobs');
 });
@@ -117,16 +111,7 @@ Route::get('/phpinfo', function(){
     return view('phpinfo');
 });
 
-//Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-/* <--------------------------------------------------------------------->  */
-
-
-/* <----------------------- About Us Routes ----------------------------->  */
-
-Route::get('/about-us', function(){
-    return view('about-us');
-});
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 /* <--------------------------------------------------------------------->  */
 

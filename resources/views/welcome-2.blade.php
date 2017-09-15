@@ -1,3 +1,4 @@
+
 @extends('master')
 
 @section('page-title', 'Great American Power - Home')
@@ -50,6 +51,7 @@
                     </div>
                 </div>
                 <!-- End Carousel Slideshow -->
+                <hr>
             </div>
             <div class="row margin-vert-30">
                 <!-- Main Text -->  
@@ -120,6 +122,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <!-- Portfolio -->
                 <!-- Portfolio Item -->
@@ -175,6 +178,7 @@
                 <!-- //Portfolio Item// -->
                 <!-- End Portfolio -->
             </div>
+            <hr>
             <div class="row">
                 <div class="margin-top-30"></div>
                 <h1 id="bottom-gap" class="text-center margin-top-30">Great American Power</h1>

@@ -17,8 +17,7 @@ class AdminController extends Controller
 {
 	
 	public function __construct(){
-        $this->middleware('admin', ['except' => ['showAll', 'showBrokerEnrollments', 'resendEmails']]);
-
+        		$this->middleware('admin', ['except' => ['showAll', 'showBrokerEnrollments', 'resendEmails']]);
 	}
 
 	
@@ -28,9 +27,12 @@ class AdminController extends Controller
 	 */
 	public function index(){
 		if(\Auth::user()->role === 'admin'){
-			return view('admin.dashboard');
+			return redirect('plans');
 		}
-		else{
+		else if(\Auth::user()->role === 'broker'){
+			return view('gaap.index');
+		}
+		else{ 
 			return redirect('/login');
 		}
 	}

@@ -20,6 +20,9 @@ class MustBeAdmin
         if($user->role === 'admin'){
             return $next($request);
         }
+        elseif($user->role === 'broker'){
+            return $next($request);
+        }
         else{
             abort(404, 'Forbidden');
         }

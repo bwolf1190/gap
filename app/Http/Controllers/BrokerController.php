@@ -10,10 +10,10 @@ use Flash;
 class BrokerController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	    public function __construct()
+	    {
+	        $this->middleware('broker');
+	    }
 
 
 	/**
@@ -21,8 +21,9 @@ class BrokerController extends Controller
 	 */
 	public function index()
 	{
-		$brokers = \App\Models\Broker::paginate(15);
-		return view('brokers.index')->with('brokers', $brokers);
+		//$brokers = \App\Models\Broker::paginate(15);
+		//return view('brokers.index')->with('brokers', $brokers);
+		return view('broker-portal.index');
 	}
 
 	
