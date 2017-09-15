@@ -1,6 +1,5 @@
 @include('gaap.header')
 
-
 <!-- Main -->
 <div class="container-fluid">
     <div class="row">

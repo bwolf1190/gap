@@ -1,12 +1,10 @@
-<?php
-
-namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
 
 class MustBeAdmin
 {
-    
+
     /**
      * Handle an incoming request.
      *
