@@ -11,6 +11,12 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/phpinfo', function(){
+    return view('phpinfo');
+});
+
 Route::get('/e', function(){
     return view('errors.stripe-error');
 });
@@ -26,8 +32,6 @@ Route::get('/t', function(){
 Route::get('/m', function(){
     return view('no-service');
 });
-
-Auth::routes();
 
 Route::get('/gapres', function(){
     $ldcs = \App\Models\Ldc::orderBy('ldc', 'asc')->get();
@@ -106,10 +110,6 @@ Route::get('/broker-enrollments/s/{sort?}', 'AdminController@showAll');
 Route::get('/broker-enrollments/{broker}/{sort?}', 'AdminController@showBrokerEnrollments');
 
 Route::get('/internalEnrollments', 'AdminController@internalEnrollments');
-
-Route::get('/phpinfo', function(){
-    return view('phpinfo');
-});
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
