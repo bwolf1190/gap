@@ -116,6 +116,10 @@ th{
 	margin-top: 20px;
 }
 
+.alert.alert-danger{
+	margin-bottom: 10px;
+}
+
 select{
 	height:35px;
 	width:100%;

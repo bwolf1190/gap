@@ -24,7 +24,7 @@ $(document).ready(function() {
 	scroll_to_div('#enroll_container');
 	$("#loading-div").hide();
 	$(document).ready(function(){
-    		$('[data-toggle="popover"]').popover(); 
+    	$('[data-toggle="popover"]').popover(); 
 	});
 
 	$('#enrollment-form').on('keyup keypress', function(e) {

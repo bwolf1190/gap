@@ -7,7 +7,7 @@
 
 			@if(is_null($plan->rate2)) 
 				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
-			@elseif($plan->name = "Introductory Variable")
+			@elseif($plan->name == "Introductory Variable")
 				{!! $plan->ldc . " " . $plan->length . " Month " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
 			@else
 				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . " and " . $plan->rate2 . "." !!}

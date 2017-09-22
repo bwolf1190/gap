@@ -4,7 +4,7 @@
 
 @section('navbar-brand')
     {!! Html::style('css/broker.css') !!}
-    {!! Html::style('css/enroll.css?v=3') !!} 
+    {!! Html::style('css/enroll.css?v=4') !!} 
     {!! Html::script('js/enroll.js') !!}   
    
     @if($promo === null)

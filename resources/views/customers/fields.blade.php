@@ -258,7 +258,7 @@
                           <strong>{!! '$' . substr_replace($plan->entry_fee, '.', -2, 0) . ' Sign Up Fee' !!}</strong>
                           <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->entry_fee_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
                       </div>
-                      @endif                                 
+                      @endif                              
                   </div>
                   <div class="sign-up-container">
                     <a href="{!! URL::previous() !!}">Change</a>

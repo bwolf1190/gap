@@ -91,7 +91,6 @@
             <!--<h3>Company<span>logo</span></h3>-->
             {!! Html::image('images/great-american-power-fcp.jpg', 'footer-brand-img', array('class' => 'footer-brand-img')) !!}
             <p class="footer-links">
-                @if(!(isset($type)))
                 <a href="{{ env('HOME_URL') }}">Home</a>
                 ·
                 <a href="{{ env('ENROLL_URL') }}">Enroll</a>
@@ -101,19 +100,6 @@
                 <a href="{{ env('FAQ_URL') }}">Faq</a>
                 ·
                 <a href="{{ env('CONTACT_URL') }}">Contact</a>
-                @elseif($type =='web')
-                <a href="{{ env('HOME_URL') }}">Home</a>
-                ·
-                <a href="{{ env('ENROLL_URL') }}">Enroll</a>
-                <!--·
-                <a href="/about-us">About</a>-->
-                ·
-                <a href="{{ env('FAQ_URL') }}">Faq</a>
-                ·
-                <a href="{{ env('CONTACT_URL') }}">Contact</a>
-                @else
-                @endif
-
             </p>
             <p class="footer-company-name">Great American Power &copy; 2017</p>
         </div>
@@ -149,6 +135,21 @@
         </div>
     </footer>
     <!-- End Footer Menu -->
+
+<!-- Start of StatCounter Code for Default Guide -->  
+    <script type="text/javascript"> 
+        var sc_project=11344440; var sc_invisible=1; var sc_security="35fa6508"; var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript>
+        <div class="statcounter"><a title="web stats"
+        href="http://statcounter.com/" target="_blank"><img class="statcounter"
+        src="//c.statcounter.com/11344440/0/35fa6508/1/" alt="web stats"></a></div>
+    </noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+
 </body>
 @yield('bottom-style')
 @yield('bottom-scripts')
