@@ -109,8 +109,6 @@ Route::get('/broker-enrollments/s/{sort?}', 'AdminController@showAll');
 
 Route::get('/broker-enrollments/{broker}/{sort?}', 'AdminController@showBrokerEnrollments');
 
-Route::get('/internalEnrollments', 'AdminController@internalEnrollments');
-
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 /* <--------------------------------------------------------------------->  */

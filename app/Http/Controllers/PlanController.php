@@ -66,32 +66,6 @@ class PlanController extends Controller
 		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
 	}
 
-	
-	/**
-	 * For internal enrollments completed by agents
-	 * Return plans for type, service, ldc, and the optional promo.
-	 * If no plans exist, then redirect to modal with message.
-	 */
-	public function internalPlans($service, $ldc){
-		// return plans that match service and ldc
-		// ordered by rate to display the larger step plans and LMF plans together
-
-		$ps = \App\Models\Plan::orderBy('rate', 'desc')->orderBy('priority', 'desc')->where('ldc', $ldc)->where('type', $service)->get();
-		
-		$zip = Input::get('zip');
-
-		foreach($ps as $p){
-			$id = $p->id;
-			$plans[] = \App\Models\Plan::find($id);
-		}
-
-		if(empty($plans)){
-			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
-		}
-
-		return view('internal-enrollments.plans-findex')->with('plans', $plans);
-	}
-
 
 	/**
 	 * Display a listing of the Plan.
@@ -270,7 +244,7 @@ class PlanController extends Controller
 	 * Parse SOAP response and format for web
 	 * Insert plans into database
 	 */
-	public function updateLdcPlans($ldc){		
+	public function updateLdcPlans($ldc, $service){	
 		$url           = env('SOAP_URL');
 		$user          = env('SOAP_USER');
 		$pw            = env('SOAP_PW');
@@ -279,15 +253,14 @@ class PlanController extends Controller
 		$entno         = env('SOAP_ENTNO');
 		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
 
-	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>R</rev_type><campaign_code>WEB</campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
-
+	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>" . $service . "</rev_type><campaign_code>WEB</campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
 	    $xml_obj = simplexml_load_string($xml_string);
 
 	    $client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
 	    
 	    $response = $client->__getLastResponse(); 
 	    $request = $client->__getLastRequest();
-
+	
 	    // explode string into array of plans
 	    $xml = explode('&lt;GU_sp_DR_Price_Quote&gt;', $response);
 	    // delete first element that is not a plan
@@ -307,8 +280,8 @@ class PlanController extends Controller
 
 
 	        $plans[] = array(
-	        				'priority'		              => '0',
-	        				'name'			              => 'Fixed',
+	        		'priority'		              => '0',
+	        		'name'			              => 'Fixed',
 	                        'ldc'                         => $supno, 
 	                        'type'                        => $rev_type, 
 	                        'length'                      => $offer_term,
@@ -344,6 +317,7 @@ class PlanController extends Controller
 
 	    	$p = \App\Models\Plan::create($plan);
 	    }
+
 	}
 
 
@@ -353,7 +327,8 @@ class PlanController extends Controller
 	 * Redirect to home page
 	 */
 	public function updatePlans(){
-		\App\Models\Plan::whereNull('code')->delete();
+		//\App\Models\Plan::whereNull('code')->delete();
+		\App\Models\Plan::truncate();
 
 		//$this->updateLdcPlans('BGE');
 
@@ -365,9 +340,9 @@ class PlanController extends Controller
 		$this->updateLdcPlans('PEPCO');
 		$this->updateLdcPlans('PPL');*/
 
-		$this->updateLdcPlans('DUKE_OH');
-	    
-	    return redirect('/');
+		$this->updateLdcPlans('DUKE_OH', 'R');
+		$this->updateLdcPlans('DUKE_OH', 'C');
+		return redirect('/');
 	    //return view('soap-test')->with('plans', $plans)->with('request', $request);
-		}
+	}
 }
