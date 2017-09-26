@@ -114,6 +114,21 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 /* <--------------------------------------------------------------------->  */
 
 
+/* <--------------------- GAAP Routes ---------------------------->  */
+
+Route::get('/gaap', array('as' => 'gaapHome', 'uses' => 'GaapController@index'));
+
+Route::get('/gaap/enrollments', 'GaapController@showEnrollments');
+
+Route::get('/gaap/plans', 'GaapController@showPlans');
+
+Route::get('/gaap/messages', 'GaapController@showMessages');
+
+Route::post('/gaap/message', 'GaapController@submitMessage');
+
+/* <--------------------------------------------------------------------->  */
+
+
 /* <----------------------- Broker Routes ------------------------------->  */
 
 Route::resource('brokers', 'BrokerController');

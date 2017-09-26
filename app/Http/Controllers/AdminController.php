@@ -30,7 +30,7 @@ class AdminController extends Controller
 			return redirect('plans');
 		}
 		else if(\Auth::user()->role === 'broker'){
-			return view('gaap.index');
+			return redirect('gaap');
 		}
 		else{ 
 			return redirect('/login');
