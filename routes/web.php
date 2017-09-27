@@ -118,7 +118,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/gaap', array('as' => 'gaapHome', 'uses' => 'GaapController@index'));
 
-Route::get('/gaap/enrollments', 'GaapController@showEnrollments');
+Route::get('/gaap/customers', 'GaapController@showCustomers');
 
 Route::get('/gaap/plans', 'GaapController@showPlans');
 

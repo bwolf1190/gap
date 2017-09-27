@@ -7,7 +7,6 @@
         <meta charset="utf-8">
         <title>Great American Power</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>-->
         {!! Html::style('css/bootstrap.css') !!}
         {!! Html::style('css/gaap/master.css') !!}
         <!--[if lt IE 9]>
@@ -19,6 +18,7 @@
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
+
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -29,13 +29,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> {!! Auth::user()->name !!} <span class="caret"></span></a>
-                    <ul id="g-account-menu" class="dropdown-menu" role="menu">
-                        <li><a href="#">My Profile</a></li>
-                        <li><a href="/gaap/enrollments">Enrollments</a></li>
-                        <li><a href="/gaap/plans">Plans</a></li>
-                        <li><a href="/gap/messages">Service</a></li>
-                    </ul>
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> {!! Auth::user()->name !!}</a>
                 </li>
                 <li><a href="/logout"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
             </ul>

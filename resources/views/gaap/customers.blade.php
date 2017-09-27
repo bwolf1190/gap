@@ -16,13 +16,13 @@
 	</thead>
 	<tbody>
 
-		@foreach($enrollments as $enrollment)
+		@foreach($customers as $customer)
 
 			<tr>
-				<td> {!! $enrollment->status !!} </td>
-				<td> {!! $enrollment->acc_num !!} </td>
-				<td> {!! $enrollment->fname . ' ' . $enrollment->lname !!} </td>
-				<td> {!! $enrollment->email !!} </td>
+				<td> {!! $customer->status !!} </td>
+				<td> {!! $customer->acc_num !!} </td>
+				<td> {!! $customer->fname . ' ' . $customer->lname !!} </td>
+				<td> {!! $customer->email !!} </td>
 			</tr>
 
 		@endforeach

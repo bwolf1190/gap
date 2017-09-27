@@ -14,7 +14,7 @@
                     </ul>
                 </li>
             </ul>
-            <a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i>  Dashboard</strong></a>
+            <a href="#"><h3><strong><i class="glyphicon glyphicon-dashboard" style="font-size:1.1em;"></i>    Dashboard</strong></h3></a>
             <hr>
 
             <div class="row">
@@ -29,9 +29,9 @@
                             <i class="glyphicon glyphicon-user"></i>
                             <br> Profile
                         </a>
-                        <a href="/gaap/enrollments" class="btn btn-primary col-sm-3">
+                        <a href="/gaap/customers" class="btn btn-primary col-sm-3">
                             <i class="glyphicon glyphicon-usd"></i>
-                            <br> Enrollments
+                            <br> Customers
                         </a>
                         <a href="/gaap/plans" class="btn btn-primary col-sm-3">
                             <i class="glyphicon glyphicon-flash"></i>
@@ -109,9 +109,6 @@
                                 @foreach($messages as $message)
                                     <a href="#" class="list-group-item">{{ $message->message }}</a>
                                 @endforeach
-                                <!--<a href="#" class="list-group-item">Most recent service request..</a>
-                                <a href="#" class="list-group-item">Second most recent request..</a>
-                                <a href="#" class="list-group-item">Third most recent request..</a>-->
                             </div>
                         </div>
                     </div>
@@ -198,17 +195,17 @@
                     </div>
                     <!--/panel-->
                     <hr>
-                    <!--<div class="panel panel-default">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <h4>Engagement</h4></div>
+                                <h4>Information</h4></div>
                         </div>
                         <div class="panel-body">
                             <div class="col-xs-4 text-center"><img src="http://placehold.it/80/BBBBBB/FFF" class="img-circle img-responsive"></div>
                             <div class="col-xs-4 text-center"><img src="http://placehold.it/80/EFEFEF/555" class="img-circle img-responsive"></div>
                             <div class="col-xs-4 text-center"><img src="http://placehold.it/80/EEEEEE/222" class="img-circle img-responsive"></div>
                         </div>
-                    </div>-->
+                    </div>
                     <!--/panel-->
 
                 </div>

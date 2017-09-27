@@ -30,11 +30,11 @@ class GaapController extends Controller
     		return view('gaap.index')->with('messages', $messages)->with('confirmed', $confirmed)->with('unconfirmed', $unconfirmed)->with('total', $total);
     	}
 
-	public function showEnrollments(){
+	public function showCustomers(){
 		$agent = \Auth::user()->name;
-		$enrollments = \App\Models\Customer::orderBy('id', 'desc')->where('promo', $agent)->get();
+		$customers = \App\Models\Customer::orderBy('id', 'desc')->where('promo', $agent)->get();
 
-		return view('gaap.enrollments')->with('enrollments', $enrollments);
+		return view('gaap.customers')->with('customers', $customers);
 	}
 
 	public function showPlans(){
