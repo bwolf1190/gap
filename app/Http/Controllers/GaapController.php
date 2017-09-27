@@ -23,7 +23,11 @@ class GaapController extends Controller
 	public function index(){
 		$agent = \Auth::user()->name;
 		$messages = \App\Models\GaapMessage::orderBy('id', 'desc')->where('agent', $agent)->get();
-    		return view('gaap.index')->with('messages', $messages);
+		$total = count(\App\Models\Customer::where('promo', $agent)->get());
+		$confirmed = (count(\App\Models\Customer::where('promo', $agent)->where('status', 'CONFIRMED')->get()) / $total) * 100;
+		$unconfirmed = (count(\App\Models\Customer::where('promo', $agent)->where('status', 'PENDING')->get()) / $total) * 100;
+    		
+    		return view('gaap.index')->with('messages', $messages)->with('confirmed', $confirmed)->with('unconfirmed', $unconfirmed)->with('total', $total);
     	}
 
 	public function showEnrollments(){

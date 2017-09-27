@@ -52,20 +52,20 @@
 
                             <small>Confirmed Enrollments</small>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                    <span>70%</span>
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: {{ $confirmed }}%">
+                                    <span>{{ $confirmed }}%</span>
                                 </div>
                             </div>
                             <small>Unconfirmed Enrollments</small>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                    <span>50%</span>
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $unconfirmed }}%">
+                                    <span>{{ $unconfirmed }}%</span>
                                 </div>
                             </div>
-                            <small>Other...</small>
+                            <small>Total</small>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                    <span>30%</span>
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: {{ $total }}%">
+                                    <span>{{ $total }}</span>
                                 </div>
                             </div>
                         </div>
