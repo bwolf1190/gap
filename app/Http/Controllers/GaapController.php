@@ -2,6 +2,7 @@
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Input;
+use App\Mail\GaapServiceRequest;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use \Carbon\Carbon;
@@ -57,10 +58,10 @@ class GaapController extends Controller
 		$message = $request->input('message');
 		$created_at = date("Y-m-d H:i:s");
 		$input = ['agent' => $agent, 'email' => $email, 'message' => $message, 'created_at' => $created_at];
-		\App\Models\GaapMessage::create($input);
+		$gaapMessage = \App\Models\GaapMessage::create($input);
+		Mail::to('greatampower@gmail.com')->queue(new GaapServiceRequest($gaapMessage));
 
 		return redirect()->route('gaapHome');
 	}
-
 
 }
