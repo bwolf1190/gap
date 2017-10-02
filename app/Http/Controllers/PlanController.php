@@ -62,6 +62,10 @@ class PlanController extends Controller
 		if(empty($plans)){
 			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
 		}
+		// only 1 plan with this criteria, so go straight to sign up form
+		else if(count($plans) == 1){
+			return redirect()->route('start', ['id' => $plans[0]->id, 'promo' => $promo, 'type' => $type]);
+		}
 
 		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
 	}

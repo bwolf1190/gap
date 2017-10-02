@@ -69,7 +69,8 @@ Route::get('/enroll-sign-up-energy-electricity/{type?}', 'EnrollmentController@s
 
 Route::get('/i/{type}', array('as' => 'internal-start', 'uses' => 'EnrollmentController@start'));
 
-Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
+//Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
+Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getLdc'));
 
 Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 

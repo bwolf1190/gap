@@ -113,19 +113,25 @@ class LdcController extends Controller
 
 		// if zip code is entered on welcome page the residential or commercial button was used
 		if(Input::get('Residential')){
-			$service = "Residential";
+			$service = "R";
 		}
 		else if(Input::get("Commercial")){
-			$service = "Commercial";
+			$service = "C";
 		}
 		// else the zip is entered from enroll page and service is found with radio button
 		else{
 			$service = Input::get('service');
+			if($service == 'Commercial'){
+				$service = 'C';
+			}
+			else{
+				$service = 'R';
+			}
 		} 
 
-	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>RS_sp_DR_Offers_by_Zip</proc_type><entno>4270</entno><zip>" . $zip . "</zip><rev_type>R</rev_type><utility_type>E</utility_type></ReadiSystem>]]></string>";
+	    	$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>RS_sp_DR_Offers_by_Zip</proc_type><entno>4270</entno><zip>" . $zip . "</zip><rev_type>" . $service . "</rev_type><utility_type>E</utility_type></ReadiSystem>]]></string>";
 
-	    $xml_obj = simplexml_load_string($xml_string);
+	    	$xml_obj = simplexml_load_string($xml_string);
 
 		$client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
 
@@ -138,6 +144,7 @@ class LdcController extends Controller
 			$s     = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
 			$ldc   = get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
 
+			// if OpSolve naming conventions are different, change to match ours here
 			if($ldc === 'DUKE_OH'){
 				$ldcs[] = \App\Models\Ldc::where('ldc', 'Duke')->first();
 			}
@@ -147,8 +154,15 @@ class LdcController extends Controller
 
 		}
 		
-
-		if(empty($ldcs)){
+		// change Opsolve R/C naming convention to Residential/Commercial
+		if($service == 'C'){
+			$service = 'Commercial';
+		}
+		else{
+			$service = 'Residential';
+		}
+		
+		if(is_null($ldcs[0])){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
 		}
 
