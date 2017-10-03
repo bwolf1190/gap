@@ -282,6 +282,10 @@ class PlanController extends Controller
 	        $offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
 	        $price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
 
+	        if($early_term_amt == '0.00'){
+	        	$early_term_type = 'No Early Cancellation Fee';
+	        	$early_term_amt = 'No Early Cancellation Fee';
+	        }
 
 	        $plans[] = array(
 	        		'priority'		              => '0',
@@ -310,7 +314,6 @@ class PlanController extends Controller
 	        }
 	        else{
 	        	$plan['etf_description'] = 'No fee for terminating the contract early.';	
-	        	$plan['etf'] = 'No Early Cancellation Fee';        	
 	        }
 	    	if($plan['type'] === 'R'){
 	    		$plan['type'] = 'Residential';
