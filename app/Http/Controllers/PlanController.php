@@ -257,74 +257,67 @@ class PlanController extends Controller
 		$entno         = env('SOAP_ENTNO');
 		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
 
-	    $xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>" . $service . "</rev_type><campaign_code>WEB</campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
-	    $xml_obj = simplexml_load_string($xml_string);
+		$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>" . $service . "</rev_type><campaign_code>WEB</campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
+		$xml_obj = simplexml_load_string($xml_string);
 
-	    $client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
+		$client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
 	    
-	    $response = $client->__getLastResponse(); 
-	    $request = $client->__getLastRequest();
+		$response = $client->__getLastResponse(); 
+		$request = $client->__getLastRequest();
 	
-	    // explode string into array of plans
-	    $xml = explode('&lt;GU_sp_DR_Price_Quote&gt;', $response);
-	    // delete first element that is not a plan
-	    //unset($xml[0]);
+		// explode string into array of plans
+		$xml = explode('&lt;GU_sp_DR_Price_Quote&gt;', $response);
+		// delete first element that is not a plan
+		//unset($xml[0]);
 
-	    // get values from xml tags and add to array
-	    for($i = 1; $i < count($xml); $i++){
-	        $entno = get_string_between($xml[$i], '&lt;entno&gt;', '&lt;/entno&gt;');
-	        $supno= get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
-	        $price_code = get_string_between($xml[$i], '&lt;price_code&gt;', '&lt;/price_code&gt;');
-	        $rev_type = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
-	        $offer_price = get_string_between($xml[$i], '&lt;offer_price&gt;', '&lt;/offer_price&gt;');
-	        $early_term_type = get_string_between($xml[$i], '&lt;early_term_type&gt;', '&lt;/early_term_type&gt;');
-	        $early_term_amt = get_string_between($xml[$i], '&lt;early_term_amt&gt;', '&lt;/early_term_amt&gt;');
-	        $offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
-	        $price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
+		// get values from xml tags and add to array
+		for($i = 1; $i < count($xml); $i++){
+			$entno = get_string_between($xml[$i], '&lt;entno&gt;', '&lt;/entno&gt;');
+			$supno= get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
+			$price_code = get_string_between($xml[$i], '&lt;price_code&gt;', '&lt;/price_code&gt;');
+			$rev_type = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
+			$offer_price = get_string_between($xml[$i], '&lt;offer_price&gt;', '&lt;/offer_price&gt;');
+			$early_term_type = get_string_between($xml[$i], '&lt;early_term_type&gt;', '&lt;/early_term_type&gt;');
+			$early_term_amt = get_string_between($xml[$i], '&lt;early_term_amt&gt;', '&lt;/early_term_amt&gt;');
+			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
+			$price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
 
-	        if($early_term_amt == '0.00'){
-	        	$early_term_type = 'No Early Cancellation Fee';
-	        	$early_term_amt = 'No Early Cancellation Fee';
-	        }
+			if($early_term_amt == '0.00'){
+				$early_term_type = 'No Early Cancellation Fee';
+				$early_term_amt = 'No Early Cancellation Fee';
+			}
 
-	        $plans[] = array(
-	        		'priority'		              => '0',
-	        		'name'			              => 'Fixed',
-	                        'ldc'                         => $supno, 
-	                        'type'                        => $rev_type, 
-	                        'length'                      => $offer_term,
-	                        'rate'                        => '$' . substr($offer_price, 0, 6) . '/kWh',
-	                        'etf'						  => $early_term_amt,
-	                        'etf_description'             => $early_term_type,
-	                        'price_code'                  => $price_code
-	                    );
-	    }
+			$plans[] = array('priority' => '0', 'name' => 'Fixed', 'ldc' => $supno, 'type' => $rev_type, 'length' => $offer_term, 'rate' => '$' . substr($offer_price, 0, 6) . '/kWh', 'reward' => '', 'reward_link'	 => '', 'reward_description' => '', 'etf' => $early_term_amt, 'etf_description' => $early_term_type, 'price_code' => $price_code);
+		}
 
-	    foreach($plans as $plan){
-	    	if($plan['ldc'] === 'DUKE_OH'){
-	    		$plan['ldc'] = 'Duke';
-	    	}
-	    	if($plan['etf_description'] === 'FIXED'){
-	        	$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
-	        	$plan['etf'] = 'Early Cancellation Fee';
-	        }
-	        else if($plan['etf_description'] === 'TERM' || $plan['etf_description'] === 'REDUC' && $plan['etf'] !== ''){
-	        	$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
-	        	$plan['etf'] = 'Cancellation Fee Applies';
-	        }
-	        else{
-	        	$plan['etf_description'] = 'No fee for terminating the contract early.';	
-	        }
-	    	if($plan['type'] === 'R'){
-	    		$plan['type'] = 'Residential';
-	    	}
-	    	else{
-	    		$plan['type'] = 'Commercial';
-	    	}
+		foreach($plans as $plan){
+			if($plan['ldc'] === 'DUKE_OH'){
+				$plan['ldc'] = 'Duke';
+			}
+			if($plan['etf_description'] === 'FIXED'){
+				$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
+				$plan['etf'] = 'Cancellation Fee Applies';
+			}
+			else if($plan['etf_description'] === 'TERM' || $plan['etf_description'] === 'REDUC' && $plan['etf'] !== ''){
+				$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
+				$plan['etf'] = 'Cancellation Fee Applies';
+			}
+			else{
+				$plan['etf_description'] = 'No fee for terminating the contract early.';	
+			}
 
-	    	$p = \App\Models\Plan::create($plan);
-	    }
+			if($plan['type'] === 'R'){
+				$plan['type'] = 'Residential';
+				$plan['reward'] = '$200 Security System Rebate';
+				$plan['reward_link'] = 'http://www.safestreets.com/GAP1/';
+				$plan['reward_description'] = 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)';
+			}
+			else{
+				$plan['type'] = 'Commercial';
+			}
 
+			$p = \App\Models\Plan::create($plan);
+		}
 	}
 
 
