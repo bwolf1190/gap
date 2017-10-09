@@ -14,6 +14,11 @@ class MustBeAdmin
      */
     public function handle($request, Closure $next)
     {
+        // if nobody is logged in, return redirect to the homepage
+        if(is_null($request->user())){
+            return redirect('/');
+        }
+
         $user = $request->user();
 
         if($user->role === 'admin'){

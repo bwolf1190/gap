@@ -10,7 +10,7 @@
         @include('flash::message')
         <div class="row">
             <h1 class="pull-left">Plans</h1>
-            <a class="btn btn-primary pull-right add-btn" href="{!! route('plans.create') !!}">Add Plan</a> 
+            <a class="btn btn-primary pull-right add-btn" href="/update-plans">Update</a> 
         </div>
         <div class="row">
             @if(empty($plans))

@@ -14,7 +14,7 @@ class PlanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['searchPlans', 'searchMeteredPlans','internalPlans', 'truncate', 'updatePlans']]);
+        $this->middleware('admin', ['except' => ['searchPlans', 'searchMeteredPlans','internalPlans', 'truncate']]);
     }
 
     public function searchMeteredPlans($type, $service, $ldc, $meter = null){
@@ -342,7 +342,7 @@ class PlanController extends Controller
 
 		$this->updateLdcPlans('DUKE_OH', 'R');
 		$this->updateLdcPlans('DUKE_OH', 'C');
-		return redirect('/');
-	    //return view('soap-test')->with('plans', $plans)->with('request', $request);
+
+		return redirect('/plans');
 	}
 }
