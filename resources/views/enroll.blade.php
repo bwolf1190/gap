@@ -14,7 +14,7 @@
 
 <div id='enroll_container' class="container">
 
-    {!! Form::open(['action' => 'LdcController@search']) !!}
+    {!! Form::open(['action' => 'LdcController@getLdc']) !!}
 
 	{!! csrf_field() !!}
 
