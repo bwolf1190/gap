@@ -30,8 +30,5 @@ class Faq extends Model
 	public static $rules = [
 		'question' => 'required',
 		'answer'   => 'required'
-		'key1'     => 'required',
-		'key2'     => 'required',
-		'key3'     => 'required'
 	];
 }
