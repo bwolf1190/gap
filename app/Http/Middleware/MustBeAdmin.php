@@ -16,7 +16,7 @@ class MustBeAdmin
     {
         // if nobody is logged in, return redirect to the homepage
         if(is_null($request->user())){
-            return redirect('/');
+            return redirect('/login');
         }
 
         $user = $request->user();
