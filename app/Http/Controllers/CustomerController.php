@@ -127,9 +127,15 @@ class CustomerController extends Controller
 		else{
 			$customer = \App\Models\Customer::create($input);
 			$customer->update(['status' => 'PENDING']);
+			$customer->update(['plan_description' => $customer->getPlanDescription()]);
 		}
 
 		$plan = \App\Models\Plan::where('id', $input['plan_id'])->first();
+		
+		if(is_null($plan->rate2)){
+
+		}
+
 		$agent = Input::get('agent_id');
 		$agent_code = Input::get('agent_code');
 		

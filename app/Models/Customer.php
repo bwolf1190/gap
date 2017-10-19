@@ -31,6 +31,7 @@ class Customer extends Model
 		'optin',
 		'promo',
 		'plan_id',
+		'plan_description',
 		'cc'
 	];
 
@@ -62,6 +63,7 @@ class Customer extends Model
 		'optin'            => 'string',
 		'promo'            => 'string',
 		'plan_id'          => 'integer',
+		'plan_description' 	=> 'string',
 		'cc'               => 'string',
     ];
 
@@ -82,6 +84,7 @@ class Customer extends Model
 		'phone'         => 'required'
 	];
 
+	/* Relationship Functions */
 	public function enrollment_p2c(){
 		return $this->hasOne('App\Models\EnrollmentP2C');
 	}
@@ -92,5 +95,20 @@ class Customer extends Model
 
 	public function plan(){
 		return $this->hasOne('App\Models\Plan');
+	}
+
+	/* Custom Scopes */
+	public function getPlanDescription(){
+		$plan = Plan::find($this->plan_id);
+
+		if($plan->etf == 'Cancellation Fee Applies'){
+			$etf = 'ETF';
+		}
+		else{
+			$etf = 'NOETF';
+		}
+
+		$this->plan_description = strtoupper($plan->ldc) . '_' . substr($plan->name, 0, 1) . '_' . substr($plan->type, 0, 1) . '_' . $plan->length . 'M_' . substr($plan->rate, 3,4) . $etf;
+		return $this->plan_description;
 	}
 }
