@@ -131,11 +131,6 @@ class CustomerController extends Controller
 		}
 
 		$plan = \App\Models\Plan::where('id', $input['plan_id'])->first();
-		
-		if(is_null($plan->rate2)){
-
-		}
-
 		$agent = Input::get('agent_id');
 		$agent_code = Input::get('agent_code');
 		
