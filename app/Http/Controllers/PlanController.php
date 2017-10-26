@@ -291,9 +291,12 @@ class PlanController extends Controller
 		}
 
 		foreach($plans as $plan){
-			if($plan['ldc'] === 'DUKE_OH'){
-				$plan['ldc'] = 'Duke';
-			}
+			if($plan['ldc'] === 'DELMD'){ $plan['ldc'] = 'Delmarva'; }
+
+			if($plan['ldc'] === 'DUKE_OH'){ $plan['ldc'] = 'Duke'; }
+			
+			if($plan['ldc'] === 'DQE'){ $plan['ldc'] = 'Duquesne'; }
+
 			if($plan['etf_description'] === 'FIXED'){
 				$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
 				$plan['etf'] = 'Cancellation Fee Applies';
@@ -305,7 +308,6 @@ class PlanController extends Controller
 			else{
 				$plan['etf_description'] = 'No fee for terminating the contract early.';	
 			}
-
 			if($plan['type'] === 'R'){
 				$plan['type'] = 'Residential';
 				$plan['reward'] = '$200 Security System Rebate';
