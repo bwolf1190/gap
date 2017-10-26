@@ -257,7 +257,7 @@ class PlanController extends Controller
 		$entno         = env('SOAP_ENTNO');
 		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
 
-		$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>" . $service . "</rev_type><campaign_code>WEB</campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
+		$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>" . $service . "</rev_type><campaign_code></campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
 		$xml_obj = simplexml_load_string($xml_string);
 
 		$client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
