@@ -327,21 +327,31 @@ class PlanController extends Controller
 	 * Redirect to home page
 	 */
 	public function updatePlans(){
-		//\App\Models\Plan::whereNull('code')->delete();
 		\App\Models\Plan::truncate();
 
-		//$this->updateLdcPlans('BGE');
+		//$this->updateLdcPlans('BGE', 'R');
+		//$this->updateLdcPlans('BGE', 'C');
 
-		//$this->updateLdcPlans('Delmarva');
-		//$this->updateLdcPlans('Duquesne');
-
-		/*$this->updateLdcPlans('METED');
-		$this->updateLdcPlans('PECO');
-		$this->updateLdcPlans('PEPCO');
-		$this->updateLdcPlans('PPL');*/
-
+		//$this->updateLdcPlans('DELMD', 'R');
+		//$this->updateLdcPlans('DELMD', 'C');
+		
 		$this->updateLdcPlans('DUKE_OH', 'R');
 		$this->updateLdcPlans('DUKE_OH', 'C');
+		
+		//$this->updateLdcPlans('DQE', 'R');
+		//$this->updateLdcPlans('DQE', 'C');
+
+		//$this->updateLdcPlans('METED', 'R');
+		//$this->updateLdcPlans('METED', 'C');
+		
+		//$this->updateLdcPlans('PECO', 'R');
+		//$this->updateLdcPlans('PECO', 'C');
+		
+		//$this->updateLdcPlans('PEPCO', 'R');
+		//$this->updateLdcPlans('PEPCO', 'C');
+
+		//$this->updateLdcPlans('PPL', 'R');
+		//$this->updateLdcPlans('PPL', 'C');
 
 		return redirect('/plans');
 	}
