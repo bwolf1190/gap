@@ -326,7 +326,7 @@ class PlanController extends Controller
 				$input['ldc'] = 'PEPCO';
 			}
 			if($key == 'length' && $input[$key] == '1'){
-				$input['name'] = 'Variable';		
+				$input['name'] = 'Introductory Variable';		
 			}
 			if($input[$key] == 'R'){ $input[$key] = 'Residential'; }
 			if($input[$key] == 'C'){ $input[$key] = 'Commercial'; }
