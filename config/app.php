@@ -220,7 +220,7 @@ return [
         'Input'       => Illuminate\Support\Facades\Input::class,
         'Debugbar'    => Barryvdh\Debugbar\Facade::class,
         'Excel'       => Maatwebsite\Excel\Facades\Excel::class,
-        'Sentry'      => Sentry\SentryLaravel\SentryFacade::class,
+        //'Sentry'      => Sentry\SentryLaravel\SentryFacade::class,
     ],
 
 ];
