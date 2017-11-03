@@ -267,17 +267,14 @@ class PlanController extends Controller
 
 		// no plans for this ldc/service combo. create plans array with empty values
 		if($request = '<?xml version="1.0" encoding="UTF-8"?>\n<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.opsolve.com/RS/webservices/"><SOAP-ENV:Body><ns1:ExecuteSP><ns1:user>gp_WebSales</ns1:user><ns1:password>G@Pa$$99!!</ns1:password><ns1:spName>RS_sp_EAI_Output</ns1:spName><ns1:paramList><ns1:string>@input_xml;&lt;ReadiSystem&gt;&lt;proc_type&gt;GU_sp_DR_Price_Quote&lt;/proc_type&gt;&lt;entno&gt;4270&lt;/entno&gt;&lt;supno&gt;DQE&lt;/supno&gt;&lt;rev_type&gt;C&lt;/rev_type&gt;&lt;campaign_code&gt;WEB&lt;/campaign_code&gt;&lt;request_date&gt;2017-10-31&lt;/request_date&gt;&lt;/ReadiSystem&gt;</ns1:string></ns1:paramList><ns1:outputParamList><ns1:string>output_xml;8000</ns1:string></ns1:outputParamList><ns1:langCode>en-us</ns1:langCode><ns1:entity>4270</ns1:entity></ns1:ExecuteSP></SOAP-ENV:Body></SOAP-ENV:Envelope>\n'){
-			$plans = array('priority' => '', 'name' => '', 'ldc' => '', 'type' => '', 'length' => '', 'rate' => '', 'reward' => '', 'reward_link'  => '', 'reward_description' => '', 'etf' => '', 'etf_description' => '', 'price_code' => '');
+			$ps[] = array('priority' => '', 'name' => '', 'ldc' => '', 'type' => '', 'length' => '', 'rate' => '', 'reward' => '', 'reward_link'  => '', 'reward_description' => '', 'etf' => '', 'etf_description' => '', 'price_code' => '0');
 		}
 	
 		// explode string into array of plans
 		$xml = explode('&lt;GU_sp_DR_Price_Quote&gt;', $response);
-		// delete first element that is not a plan
-		//unset($xml[0]);
-		//dd(count($xml));
-		//$plans = array();
+
 		// get values from xml tags and add to array
-		for($i = 0; $i < count($xml); $i++){
+		for($i = 1; $i < count($xml); $i++){
 			$entno = get_string_between($xml[$i], "&lt;entno&gt;", "&lt;/entno&gt;");
 			$supno= get_string_between($xml[$i], "&lt;supno&gt;", "&lt;/supno&gt;");
 			$price_code = get_string_between($xml[$i], "&lt;price_code&gt;", "&lt;/price_code&gt;");
@@ -295,7 +292,7 @@ class PlanController extends Controller
 			}
 
 			else if($early_term_type == 'REDUC' || $early_term_type == 'TERM'){
-				$etf_description = '$' . $early_term_amt . ' per month remaining on contract.';
+				$etf_description = '$10 per month remaining on contract, not to exceed $' . $early_term_amt . '.';
 				$early_term_type = 'Cancellation Fee Applies'; 
 			}
 
@@ -305,35 +302,29 @@ class PlanController extends Controller
 			}
 
 			//$plans = array('priority' => '0', 'name' => 'Fixed', 'ldc' => $supno, 'type' => $rev_type, 'length' => $offer_term, 'rate' => '$' . substr($offer_price, 0, 6) . '/kWh', 'reward' => '', 'reward_link'	 => '', 'reward_description' => '', 'etf' => $early_term_amt, 'etf_description' => $etf_description, 'price_code' => $price_code);
-			$plans = array('priority' => '0', 'name' => 'Fixed', 'ldc' => $supno, 'type' => $rev_type, 'length' => $offer_term, 'rate' => '$' . substr($offer_price, 0, 6) . '/kWh', 'reward' => '', 'reward_link'  => '', 'reward_description' => '', 'etf' => $early_term_type, 'etf_description' => $etf_description, 'price_code' => (int)$price_code);
+			$ps[] = array('priority' => '0', 'name' => 'Fixed', 'ldc' => $supno, 'type' => $rev_type, 'length' => $offer_term, 'rate' => '$' . substr($offer_price, 0, 6) . '/kWh', 'reward' => '', 'reward_link'  => '', 'reward_description' => '', 'etf' => $early_term_type, 'etf_description' => $etf_description, 'price_code' => $price_code);
 			//$plans['priority' ,'name', 'ldc', 'type', 'length', 'rate', 'reward', 'reward_link', 'reward_description', 'etf', 'etf_description', 'price_code'] = ['0', 'Fixed', $supno, $rev_type, $offer_term, '$' . substr($offer_price, 0, 6) . '/kWh', '', '', '', $early_term_amt, $etf_description, (int)$price_code];
 		}
 		
-		//dd($plans);
+		foreach($ps as $p){
+			if($p['price_code'] !== '0'){
+				$p = \App\Models\Plan::create($p);
+				if($p->ldc == 'DUKE_OH'){ $p->ldc = 'Duke'; }
+				if($p->ldc == 'DELMD'){ $p->ldc = 'Delmarva'; }
+				if($p->ldc == 'DQE'){ $p->ldc = 'Duquesne'; }
+				if($p->ldc == 'PEPCO_MD'){ $p->ldc = 'PEPCO'; }
+				if($p->length == '1'){ $p->name = 'Introductory Variable'; }
+				if($p->type == 'R'){ $p->type = 'Residential'; }
+				if($p->type == 'C'){ $p->type = 'Commercial'; }
 
-		foreach($plans as $key => $val){
-			$input[$key] = $val;
-			if($key == 'ldc' && $input[$key] == 'DUKE_OH'){
-				$input['ldc'] = 'Duke';
-			}
-			if($key == 'ldc' && $input[$key] == 'DELMD'){
-				$input['ldc'] = 'Delmarva';
-			}
-			if($key == 'ldc' && $input[$key] == 'DQE'){
-				$input['ldc'] = 'Duquesne';
-			}
-			if($key == 'ldc' && $input[$key] == 'PEPCO_MD'){
-				$input['ldc'] = 'PEPCO';
-			}
-			if($key == 'length' && $input[$key] == '1'){
-				$input['name'] = 'Introductory Variable';		
-			}
-			if($input[$key] == 'R'){ $input[$key] = 'Residential'; }
-			if($input[$key] == 'C'){ $input[$key] = 'Commercial'; }
+				// set default reward for Residential plans
+				if($p->type !== 'C'){
+					$p->reward = 'Safe Streets Rebate';
+					$p->reward_link = 'http://www.safestreets.com/GAP1/';
+					$p->reward_description = 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)';
+				}
 
-			// only add plans that have all information
-			if($key == 'price_code' && $val !== 0){
-				$p = \App\Models\Plan::create($input);
+				$p->save();
 			}
 		}
 	}
