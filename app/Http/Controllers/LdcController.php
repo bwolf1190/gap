@@ -137,23 +137,28 @@ class LdcController extends Controller
 
 		$response = $client->__getLastResponse(); 
 
-		$xml = explode('&lt;RS_sp_DR_Offers_by_Zip&gt;', $response);
-
-		for($i = 0; $i < count($xml); $i++){
+		$xml = explode('&lt;RS_sp_DR_Offers_By_Zip&gt;', $response);
+		
+		for($i = 1; $i < count($xml); $i++){
 			$entno = get_string_between($xml[$i], '&lt;entno&gt;', '&lt;/entno&gt;');
 			$s     = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
 			$ldc   = get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
 
-			// if OpSolve naming conventions are different, change to match ours here
-			if($ldc === 'DUKE_OH'){
-				$ldcs[] = \App\Models\Ldc::where('ldc', 'Duke')->first();
+			if($ldc == 'DELMD'){
+				$ldc = 'Delmarva';
 			}
-			else{
-				$ldcs[] = \App\Models\Ldc::where('ldc', $ldc)->first();
+			if($ldc == 'DUKE_OH'){
+				$ldc = 'Duke';
 			}
-
+			if($ldc == 'PEPCO_MD'){
+				$ldc = 'PEPCO';
+			}
+			
+			$ls[] = [$ldc];
 		}
-		
+
+		//dd($ls);
+
 		// change Opsolve R/C naming convention to Residential/Commercial
 		if($service == 'C'){
 			$service = 'Commercial';
@@ -161,9 +166,17 @@ class LdcController extends Controller
 		else{
 			$service = 'Residential';
 		}
-		
-		if(is_null($ldcs[0])){
+
+		if(empty($ls)){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}
+	
+		/*if(is_null($ldcs[0])){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}*/
+
+		foreach($ls as $l){
+			$ldcs[] = \App\Models\Ldc::where('ldc', $l)->first(); 
 		}
 
 		// if there is only 1 LDC for the zip code, then send them straight to the plans
@@ -175,56 +188,6 @@ class LdcController extends Controller
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 
-
-	/**
-	 * Search for LDC based on zip code.
-	 * If only 1 LDC is available for the zip code, return plans for that LDC.
-	 * Else return multiple LDCs for the user to choose from.
-	 */
-	/*public function search($s = null){
-		if(Input::get('type') === null){
-			$type = 'web';
-		}
-		else{
-			$type = Input::get('type');
-		}
-
-		$zip = Input::get('zip');
-		$promo = Input::get('promo');
-		Session::put('zip', $zip);
-
-		// if zip code is entered on welcome page the residential or commercial button was used
-		if(Input::get('Residential')){
-			$service = "Residential";
-		}
-		else if(Input::get("Commercial")){
-			$service = "Commercial";
-		}
-		// else the zip is entered from enroll page and service is found with radio button
-		else{
-			$service = Input::get('service');
-		}
-
-		$zips = \App\Models\Zip::where('zip', $zip)->groupBy('ldc_id')->get();
-
-		foreach($zips as $z){
-			$ldc_id = $z->ldc_id;
-			$ldcs[] = \App\Models\Ldc::find((int)$ldc_id);
-		}
-		
-		if(empty($ldcs)){
-			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
-		}
-
-		// if there is only 1 LDC for the zip code, then send them straight to the plans
-		$count = count($ldcs);
-		if($count === 1){
-			return redirect()->route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
-		}
-
-		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
-	}
-*/
 
 	public function brokerLdcs(){
 		$zip     = Input::get('zip');
