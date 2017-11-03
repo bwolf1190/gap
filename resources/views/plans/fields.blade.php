@@ -43,25 +43,25 @@
 <!-- Reward Field -->
 <div class="form-group col-xs-3">
     {!! Form::label('reward', 'Reward:') !!}
-    {!! Form::text('reward', null, ['class' => 'form-control']) !!}
+    {!! Form::select('reward', ['Safe Streets Rebate' => 'Safe Streets Rebate', 'Shopping/Dining Rewards' => 'Shopping/Dining Rewards'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Reward Link Field -->
 <div class="form-group col-xs-3">
     {!! Form::label('reward_link', 'Reward Link:') !!}
-    {!! Form::text('reward_link', null, ['class' => 'form-control']) !!}
+    {!! Form::select('reward_link', ['http://www.safestreets.com/GAP1/' => 'http://www.safestreets.com/GAP1/', 'https://www.greatamericanpowerrewards.com/' => 'https://www.greatamericanpowerrewards.com/'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Reward Description Field -->
 <div class="form-group col-xs-3 col-xs-offset-1">
     {!! Form::label('reward_description', 'Reward Description:') !!}
-    {!! Form::text('reward_description', null, ['class' => 'form-control']) !!}
+    {!! Form::select('reward_description',  ['Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)' => 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)', '$25 Per Month Shopping/Dining Rewards' => '$25 Per Month Shopping/Dining Rewards'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Etf Field -->
 <div class="form-group col-xs-3">
     {!! Form::label('etf', 'ETF:') !!}
-	{!! Form::select('etf', ['No Early Cancellation Fee' => 'No Early Cancellation Fee', 'Cancellation Fee Applies' => 'Cancellation Fee Applies']) !!}
+    {!! Form::select('etf', ['No Early Cancellation Fee' => 'No Early Cancellation Fee', 'Cancellation Fee Applies' => 'Cancellation Fee Applies']) !!}
 </div>
 
 <!-- Etf Description Field -->
@@ -82,14 +82,8 @@
 	{!! Form::select('promo', ['' => null, 'ENERGYBOB' => 'ENERGYBOB', 'FRONTLINE' => 'FRONTLINE', 'GAP' => 'GAP', 'IRONPIGS' => 'IRONPIGS', 'NPE' => 'NPE', 'WMS' => 'WMS']) !!}
 </div>
 
-<!-- Code Field -->
-<div class="form-group col-xs-3">
-    {!! Form::label('code', 'Code:') !!}
-	{!! Form::text('code', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Price Code Field -->
-<div class="form-group col-xs-3 col-xs-offset-1">
+<div class="form-group col-xs-3">
     {!! Form::label('price_code', 'Price Code:') !!}
     {!! Form::text('price_code', null, ['class' => 'form-control']) !!}
 </div>

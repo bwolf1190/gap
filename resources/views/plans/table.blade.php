@@ -10,6 +10,7 @@
                 <th>Rate</th>
                 <th>Rate 2</th>
                 <th>ETF</th>
+                <th>Reward</th>
                 <th>Promo</th>
                 <th>Price Code</th>
             </tr>
@@ -30,6 +31,7 @@
                 <td>{!! $plan->rate !!}</td>
                 <td>{!! $plan->rate2 !!}</td>
                 <td>{!! $plan->etf_description !!}</td>
+                <td>{!! $plan->reward !!}</td>
                 <td>{!! $plan->promo !!}</td>
                 <td>{!! $plan->price_code !!}</td>
             </tr>
