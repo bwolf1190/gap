@@ -25,9 +25,9 @@ class EmailController extends Controller
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer->id)->first();
 
         // if the enrollment is null, then it must be an InternalEnrollment
-        if(is_null($enrollment)){
+        /*if(is_null($enrollment)){
             $enrollment = \App\Models\InternalEnrollment::where('customer_id', $customer->id)->first();
-        }
+        }*/
 
         return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
     }
@@ -67,7 +67,7 @@ class EmailController extends Controller
      */
     public function confirmEmail($customer, $confirmation_code){
         // keep customers from completing enrollments
-        return view('emails.no-new-customers');
+        //return view('emails.no-new-customers');
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer)->first();
         $plan = $enrollment->plan;
         $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
