@@ -45,7 +45,7 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
-<body class="fade-in-slow">
+<body>
     <div id="header-container" class="">
         <div id="pre_header" class="visible-lg"></div>
         <div id="header" class="container">
