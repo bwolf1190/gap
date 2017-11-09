@@ -56,7 +56,8 @@ class EmailController extends Controller
      */
     public function sendBrokerConfirmation($customer, $plan, $enrollment){
             $broker = \App\Models\Broker::where('name', $plan->promo)->first();
-            Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment));
+            $subject = 'Broker Enrollment Received- ' . $customer->fname . ' ' . $customer->lname;
+            Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmation($customer, $plan, $enrollment, $subject));
     }
 
 
