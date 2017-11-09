@@ -212,7 +212,7 @@ class LdcController extends Controller
 		if($count === 1){
 			return redirect()->route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldcs[0]->ldc, 'promo' => $promo));
 		}
-
+		
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
 
