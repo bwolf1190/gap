@@ -1,16 +1,28 @@
 <div class="container">
 	<div>
-		{!! $plan->promo !!},
+		<p>
+			We have received an online enrollment for {!! $customer->fname . " " . $customer->lname . "." !!}
+		</p>
 
 		<p>
-			We have received an online enrollment for {!! $customer->fname . " " . $customer->lname . " for the " !!}  
+			{!! "Account #: " . $customer->acc_num !!}
+		</p>
 
-			@if(is_null($plan->rate2)) 
-				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
-			@elseif($plan->name = "Introductory Variable")
-				{!! $plan->ldc . " " . $plan->length . " Month " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
+		<p>
+			@if($customer->sa2 == "")
+				{!! "Address: " . $customer->sa1 . " " .  $customer->scity . ", " . $customer->sstate . " " . $customer->szip !!}
 			@else
-				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . " and " . $plan->rate2 . "." !!}
+				{!! "Address: " . $customer->sa1 . " " . $customer->sa2 . " " . $customer->scity . ", " . $customer->sstate . " " . $customer->szip !!}
+			@endif
+		</p>
+
+		<p>
+			@if(is_null($plan->rate2)) 
+				{!! "Plan: " . $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan at a price of " . $plan->rate . "." !!}
+			@elseif($plan->name = "Introductory Variable")
+				{!! "Plan: " .  $plan->ldc . " " . $plan->length . " Month " . $plan->type . " plan at a price of " . $plan->rate . "." !!}
+			@else
+				{!! "Plan: " .  $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan at a price of " . $plan->rate . " and " . $plan->rate2 . "." !!}
 			@endif
 		</p>
 
