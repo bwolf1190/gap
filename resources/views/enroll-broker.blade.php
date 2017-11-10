@@ -12,7 +12,7 @@
 @if($promo === null)
 <a id="nav-brand" href="/"> {!! Html::image('images/gap-fcp.png') !!}</a>
 @else
-<a id="nav-brand" href="/"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
+<a id="nav-brand" onclick="location.reload();"> {!! Html::image('images/broker/' . $promo . '.jpg') !!}</a>
 @endif
 @endsection
 @section('content')
