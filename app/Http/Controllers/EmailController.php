@@ -144,7 +144,7 @@ class EmailController extends Controller
         $xml_string  = "<string><![CDATA[@input_xml;<ReadiSystem>
                             <proc_type>GU_sp_XN_Enroll_Add</proc_type>
                             <entno>" . $entno . "</entno>
-                            <supno>DUKE_OH</supno>
+                            <supno>" . $p->code . "</supno>
                             <eu_acct_no>" . $c->acc_num . "</eu_acct_no>
                             <gu_acct_no></gu_acct_no>
                             <price_code>" . $p->price_code ."</price_code>
