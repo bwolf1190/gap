@@ -16,18 +16,20 @@ class BrokerEnrollmentConfirmed extends Mailable
 
     public $customer;
     public $plan;
-    public $enrollment;    
+    public $enrollment;
+    public $subject;  
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Customer $customer, Plan $plan, Enrollment $enrollment)
+    public function __construct(Customer $customer, Plan $plan, Enrollment $enrollment, $subject)
     {
         $this->customer   = $customer;
         $this->plan       = $plan;
         $this->enrollment = $enrollment;
+        $this->subject = $subject;
     }
 
     /**
@@ -38,6 +40,6 @@ class BrokerEnrollmentConfirmed extends Mailable
     public function build()
     {
         return $this->view('emails.broker-confirmed')
-                    ->subject('Broker Enrollment Confirmed');
+                    ->subject($this->subject);
     }
 }

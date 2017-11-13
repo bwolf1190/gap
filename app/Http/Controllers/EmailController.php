@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Mail\BrokerEnrollmentConfirmation;
+use App\Mail\BrokerEnrollmentConfirmed;
 use Illuminate\Support\Facades\Input;
 use App\Mail\EnrollmentConfirmation;  
 use Illuminate\Http\Request;
@@ -74,6 +75,13 @@ class EmailController extends Controller
         $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
         $customer = \App\Models\Customer::where('id', $customer)->first();
 
+        // send a notification to the broker when one of their customers confirms their email address
+        if($enrollment->type == 'broker'){
+            $broker = \App\Models\Broker::where('name', $plan->promo)->first();
+            $subject = 'Broker Enrollment Confirmed- ' . $customer->fname . ' ' . $customer->lname;
+            Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmed($customer, $plan, $enrollment, $subject));
+        }
+
         // if the enrollment is null, then it must be an InternalEnrollment
         if(is_null($enrollment)){
             $enrollment = \App\Models\InternalEnrollment::where('customer_id', $customer->id)->first();
@@ -106,6 +114,8 @@ class EmailController extends Controller
      * Create XML to be sent by SOAP call
      */
     public function addCustomer($c, $p, $e){
+        return view('welcome-2');
+
         $url = env('SOAP_URL');
         $user = env('SOAP_USER');
         $pw = env('SOAP_PW');
@@ -157,7 +167,7 @@ class EmailController extends Controller
                             <street_addr>" . $c->sa1 . "</street_addr>
                             <street_addr2>" . $c->sa2 . "</street_addr2>
                             <city>" . $c->scity . "</city>
-                            <state_abbr>OH</state_abbr>
+                            <state_abbr>" . $c->sstate . "</state_abbr>
                             <postal>" . $c->szip . "</postal>
                             <agent_id>" . $agent_id . "</agent_id>
                             <referral_id></referral_id>
