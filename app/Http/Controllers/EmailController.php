@@ -75,13 +75,6 @@ class EmailController extends Controller
         $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
         $customer = \App\Models\Customer::where('id', $customer)->first();
 
-        // send a notification to the broker when one of their customers confirms their email address
-        if($enrollment->type == 'broker'){
-            $broker = \App\Models\Broker::where('name', $plan->promo)->first();
-            $subject = 'Broker Enrollment Confirmed- ' . $customer->fname . ' ' . $customer->lname;
-            Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmed($customer, $plan, $enrollment, $subject));
-        }
-
         // if the enrollment is null, then it must be an InternalEnrollment
         if(is_null($enrollment)){
             $enrollment = \App\Models\InternalEnrollment::where('customer_id', $customer->id)->first();
@@ -95,6 +88,13 @@ class EmailController extends Controller
                 $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
                 $enrollment_p2c->update(['status' => 'CONFIRMED']);
                 $customer->update(['status' => 'CONFIRMED']);
+
+                // send a notification to the broker when one of their customers confirms their email address
+                if($enrollment->type == 'broker'){
+                    $broker = \App\Models\Broker::where('name', $plan->promo)->first();
+                    $subject = 'Broker Enrollment Confirmed- ' . $customer->fname . ' ' . $customer->lname;
+                    Mail::to($broker->email)->queue(new BrokerEnrollmentConfirmed($customer, $plan, $enrollment, $subject));
+                }
 
                 if(!(is_null($plan->price_code))){
                     $this->addCustomer($customer, $plan, $enrollment);
@@ -199,6 +199,8 @@ class EmailController extends Controller
     }
 
     public function submitToUtility($id){
+        return view('welcome-2');
+
         $url = env('SOAP_URL');
         $user = env('SOAP_USER');
         $pw = env('SOAP_PW');
