@@ -123,15 +123,6 @@ class EmailController extends Controller
         $lang = env('SOAP_LANG');
         $entno = env('SOAP_ENTNO');
         $client = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
-        
-        // add agent_id if internal enrollment
-        // otherwise agent_id is blank
-        if($e->agent_id){
-            $agent_id = $e->agent_id;
-        }
-        else{
-            $agent_id = '';
-        }
 
         // OPSOLVE FIX: system needs Residential to be "R" and Commercial to be "C"
         $type = $p->type;
