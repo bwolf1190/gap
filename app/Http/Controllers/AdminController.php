@@ -55,13 +55,13 @@ class AdminController extends Controller
 			}
 		}
 
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $collection = collect($brokerEnrollments);
-        if(!is_null($sort)){
-        	$collection = $collection->sortByDesc($sort);
-        }
-        //Create our paginator and pass it to the view
-        $paginatedSearchResults = new LengthAwarePaginator($collection, count($collection), 10000000000000000000000);
+		$currentPage = LengthAwarePaginator::resolveCurrentPage();
+		$collection = collect($brokerEnrollments);
+		if(!is_null($sort)){
+			$collection = $collection->sortByDesc($sort);
+		}
+		//Create our paginator and pass it to the view
+		$paginatedSearchResults = new LengthAwarePaginator($collection, count($collection), 10000000000000000000000);
 
 		return view('broker-enrollments.index')
 				->with('enrollments', $paginatedSearchResults)->with('brokers', $brokers);
