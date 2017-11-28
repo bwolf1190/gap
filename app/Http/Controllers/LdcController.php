@@ -153,6 +153,9 @@ class LdcController extends Controller
 			if($ldc == 'PEPCO_MD'){
 				$ldc = 'PEPCO';
 			}
+			if($ldc == 'DQE'){
+				$ldc = 'Duquesne';
+			}
 			
 			$ls[] = [$ldc];
 		}
