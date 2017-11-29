@@ -5,12 +5,12 @@
 		<p>
 			We have received your online enrollment for the 
 
-			@if(is_null($plan->rate2)) 
-				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
-			@elseif($plan->name == "Introductory Variable")
-				{!! $plan->ldc . " " . $plan->length . " Month " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
-			@else
+			@if($plan->name == "Introductory Variable")
+				{!! $plan->ldc . " " . $plan->length . " Month " . $plan->name . " " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
+			@elseif(!(is_null($plan->rate2)))
 				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . " and " . $plan->rate2 . "." !!}
+			@else
+				{!! $plan->ldc . " " . $plan->length . " Month Fixed " . $plan->type . " plan for the price of " . $plan->rate . "." !!}
 			@endif
 		</p>
 
