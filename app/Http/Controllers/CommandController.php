@@ -48,7 +48,8 @@ class CommandController extends Controller
                   });
             })->store('xls', storage_path($folder));
 
-            Mail::to('bwolverton@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
+            Mail::to('cmacinnes@greatamericanpower.com')->bcc('bwolverton@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
+            Mail::to('glucas@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
 
             /*foreach($customers as $c){
                   echo $c->fname . "\r\n";
