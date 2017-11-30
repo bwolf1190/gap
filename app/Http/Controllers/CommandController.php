@@ -2,12 +2,61 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendEnrollmentData;  
 use \Carbon\Carbon;
+use Mail;
 use File;
+
 
 class CommandController extends Controller
 {    
       
+      public static function sendEnrollmentData(){
+            //$customers = \App\Models\Customer::where('status', 'PENDING')->get();
+            $yesterday = Carbon::yesterday();
+            $today = Carbon::today();
+            $confirmed = \App\Models\Customer::select('id', 'status', 'acc_num', 'fname', 'lname', 'sa1', 'sa2', 'scity', 'sstate', 'szip', 'ma1', 'ma2', 'mcity', 'mstate', 'mzip', 'email', 'phone', 'promo', 'plan_description', 'created_at', 'updated_at')->where('status', 'CONFIRMED')->where('updated_at', '<=', $today)->where('updated_at', '>=',$yesterday)->get();
+            $pending = \App\Models\Customer::select('id', 'status', 'acc_num', 'fname', 'lname', 'sa1', 'sa2', 'scity', 'sstate', 'szip', 'ma1', 'ma2', 'mcity', 'mstate', 'mzip', 'email', 'phone', 'promo', 'plan_description', 'created_at')->where('status', 'PENDING')->get();
+
+            $date = date('Y-m-d');
+            $folder = "/enrollment_data/" . $date;
+            $path = storage_path($folder);
+
+            /*if(!File::exists($path)){
+                  File::makeDirectory($path, 0755, true);
+                  if(!File::exists($path)){
+                        File::makeDirectory($path, 0755, true);
+                  }
+            }*/
+
+            /*$confirmed_file = 'confirmed' . '_' . Carbon::now()->toDateString() . '_' . Carbon::now()->hour . '-' . Carbon::now()->minute;
+            $pending_file = 'pending' . '_' . Carbon::now()->toDateString() . '_' . Carbon::now()->hour . '-' . Carbon::now()->minute;*/
+            $confirmed_file = 'confirmed_' . $date;
+            $pending_file = 'pending_' . $date;
+
+            \Excel::create($confirmed_file, function($excel) use($confirmed){
+                  $excel->sheet('Sheet 1', function($sheet) use($confirmed){
+                        //$sheet->setColumnFormat(array('Z' => '@'));
+                        $sheet->fromArray($confirmed);
+                  });
+            })->store('xls', storage_path($folder));
+
+            \Excel::create($pending_file, function($excel) use($pending){
+                  $excel->sheet('Sheet 1', function($sheet) use($pending){
+                        //$sheet->setColumnFormat(array('Z' => '@'));
+                        $sheet->fromArray($pending);
+                  });
+            })->store('xls', storage_path($folder));
+
+            Mail::to('bwolverton@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
+
+            /*foreach($customers as $c){
+                  echo $c->fname . "\r\n";
+            }
+            dd($customers);
+            dd(count($customers));*/
+      }
+
       public static function sendP2CEnrollments(){
             $enrollments = \App\Models\EnrollmentP2C::where('Plan_Desc', '!=', 'Duke')->get()->toArray();
             $confirmed_enrollments = [];
