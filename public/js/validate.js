@@ -71,6 +71,9 @@ function empty_check(name, message){
 		// state abbreviations should be uppercase not title case
 		if(name !== "sstate" && name !== "mstate"){
 			input.val(toTitleCase(input.val()));
+			if(name == 'fname' || name=='lname'){
+				input.val(input.val().replace(/'/g, ""));
+			}
 		}
 
 		return "valid";
