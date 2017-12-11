@@ -38,6 +38,7 @@ class EnrollmentP2C extends Model
 		'Agent_Code',
 		'Commission_Plan',
 		'Commission_Start_Date',
+		'Commission_Unit_Num',
 		'Commission_End_Date',
 		'MLine1_Addr',
 		'MLine2_Addr',

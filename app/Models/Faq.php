@@ -20,7 +20,7 @@ class Faq extends Model
      * @var array
      */
     protected $casts = [
-		'question' => 'string',
+ 		'question' => 'string',
 		'answer'   => 'string',
 		'key1'     => 'string',
 		'key2'     => 'string',
@@ -28,7 +28,7 @@ class Faq extends Model
     ];
 
 	public static $rules = [
-		'question' => 'required',
+	 	'question' => 'required',
 		'answer'   => 'required'
 	];
 }

@@ -13,6 +13,7 @@ class Broker extends Model
 		'agent_code',
 		'sub_agent_code',
 		'commission_type',
+		'Commission_Unit_Num',
 		'email'
 	];
 
@@ -28,6 +29,7 @@ class Broker extends Model
 		'agent_code'      => 'string',
 		'sub_agent_code'  => 'string',
 		'commission_type' => 'string',
+		'Commission_Unit_Num' => 'string',
 		'email'           => 'string'
     ];
 

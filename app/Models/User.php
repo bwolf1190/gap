@@ -1,30 +1,29 @@
-<?php namespace App\Models;
+<?php
 
-use Illuminate\Database\Eloquent\Model as Model;
+namespace App;
 
-class User extends Model
-{  
-	public $table = 'users';
-    
-	public $fillable = [
-	    'username',
-		'password',
-		'type'
-	];
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+
+    use \Illuminate\Notifications\Notifiable;
 
     /**
-     * The attributes that should be casted to native types.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $casts = [
-        'username'     => 'string',
-		'password'     => 'string',
-		'type'		   => 'string'
+    protected $fillable = [
+        'name', 'email', 'password', 'role',
     ];
 
-	public static $rules = [
-	    'username' => 'required',
-		'password' => 'required'
-	];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 }

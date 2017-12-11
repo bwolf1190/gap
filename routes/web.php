@@ -127,6 +127,8 @@ Route::get('/gaap/messages', 'GaapController@showMessages');
 
 Route::post('/gaap/message', 'GaapController@submitMessage');
 
+Route::get('/gaap/customers/export', 'ExcelController@exportCustomers');
+
 /* <--------------------------------------------------------------------->  */
 
 

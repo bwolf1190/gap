@@ -19,7 +19,13 @@
                       <div class="price_table_row etf last_row">
                           <strong>{!! $plan->etf !!}</strong>
                           <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
-                      </div>                              
+                      </div> 
+                      <div>
+                          @if($plan->daily_fee == 'Rate Surety Pledge')
+                          <strong>{!! $plan->daily_fee !!}</strong>
+                          <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->daily_fee_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                          @endif
+                          </div>                             
                   </div>
                   <div class="sign-up-container">
                     <a href="{!! route('internal-start', [ 'id' => $plan->id]) !!}">Sign Up</a>

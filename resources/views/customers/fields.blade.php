@@ -169,7 +169,7 @@
 
 		<div id="terms-container" class="form-group">
 			<div class="checkbox">
-				<label style='font-size:.85em;'><input id="terms_conditions" name="terms_conditions" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf") !!}">Accept Terms & Conditions</a></label>
+				<label style='font-size:.85em;'><input id="terms_conditions" name="terms_conditions" type="checkbox" value="checked"><a id="terms-link" target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $plan->ldc . ".pdf?v=1") !!}">Accept Terms & Conditions</a></label>
 			</div>
 		</div>
 
@@ -248,17 +248,17 @@
                         <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
                       </div>
                       @endif
-                    @if(is_null($plan->entry_fee))
-                      <div class="price_table_row etf last_row">
-                          <strong>{!! $plan->etf !!}</strong>
-                          <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
-                      </div>
-                      @else
-                      <div class="price_table_row etf last_row">
-                          <strong>{!! '$' . substr_replace($plan->entry_fee, '.', -2, 0) . ' Sign Up Fee' !!}</strong>
-                          <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->entry_fee_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
-                      </div>
-                      @endif                              
+                     <div class="price_table_row etf last_row">
+                          	<div>
+                          		<strong>{!! $plan->etf !!}</strong>
+                          		<a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->etf_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                      	</div>
+                      @if(!(is_null($plan->daily_fee)))
+                          <div>
+                          		<strong>{!! $plan->daily_fee !!}</strong>
+                          		<a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $plan->daily_fee_description }}" data-placement="bottom"><span class="glyphicon glyphicon-question-sign"></span></a>
+                      	</div>
+                      @endif                          
                   </div>
                   <div class="sign-up-container">
                     <a href="{!! URL::previous() !!}">Change</a>
