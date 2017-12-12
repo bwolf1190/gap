@@ -85,6 +85,8 @@ Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'Email
 Route::post('/emails/welcome/sent', array('as' => 'fireWelcomeEmail', 'uses' => 'EmailController@fireWelcomeEmail'));
 //Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'EmailController@sendWelcome'));
 
+Route::get('/confirm-customer/{agent}/{customer}/{enrollment}', array('as' => 'confirm-customer', 'uses' => 'EmailController@confirmCustomer'));
+
 Route::get('/offers', function(){
     return view('offers.offers');
 });

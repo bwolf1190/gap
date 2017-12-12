@@ -97,7 +97,7 @@ class EmailController extends Controller
                 }
 
                 if(!(is_null($plan->price_code))){
-                    $this->addCustomer($customer, $plan, $enrollment);
+                    $this->addCustomer(null, $customer, $plan, $enrollment);
                     $this->submitToUtility($customer->id);
                 }
             
@@ -109,11 +109,18 @@ class EmailController extends Controller
         }
     }
 
+    public function confirmCustomer($agent, $customer, $enrollment){
+        $a = \App\User::find($agent)->agent_id;
+        $c = \App\Models\Customer::find($customer);
+        $e = \App\Models\Enrollment::find($enrollment);
+        $p = $e->plan;
+        $this->addCustomer($a, $c, $p, $e);
+    }
 
     /**
      * Create XML to be sent by SOAP call
      */
-    public function addCustomer($c, $p, $e){
+    public function addCustomer($agent, $c, $p, $e){
         $url = env('SOAP_URL');
         //$url = env('SOAP_URL_TEST');
         $user = env('SOAP_USER');
@@ -123,7 +130,13 @@ class EmailController extends Controller
         $entno = env('SOAP_ENTNO');
         $client = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
         
-        $agent_id = '';
+        /*if(\Auth::check()){
+            $agent_id = \Auth::user()->agent_id;
+        }
+        else{
+            $agent_id = $agent;
+        }*/
+        $agent_id = $agent;
 
         // OPSOLVE FIX: system needs Residential to be "R" and Commercial to be "C"
         $type = $p->type;
