@@ -41,7 +41,7 @@ class CustomerController extends Controller
 				$state = 'PA';
 			}
 		}
-
+		
 		return view('customers.start')->with('ldc', $ldc) 
 									  ->with('plan', $plan)
 									  ->with('promo', $promo)
