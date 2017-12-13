@@ -53,7 +53,19 @@ $('#terms_conditions').click(function(){
 	}
 });
 
-
+function validate_sstate(){
+	var message="Please enter a 2 character state abbreviaton";
+	var input = $("#sstate");
+	if(input.val().length != 2){
+		set_error_style(input);
+		input.val(message);
+		return "invalid";
+	}
+	else{
+		input.val(input.val().toUpperCase());
+		return "valid";
+	}
+}
 
 function empty_check(name, message){
 	var valid;
@@ -78,11 +90,9 @@ function empty_check(name, message){
 
 		return "valid";
 	}
-
 }
 
 function validate_form_1(){
-	//var valid;
 	var acc_num = validate_acc_num();
 	var fname = empty_check("fname", "Please enter your first name");
 	var lname = empty_check("lname", "Please enter your last name");
@@ -100,7 +110,8 @@ function validate_form_1(){
 function validate_form_2(){
 	var sa1 = empty_check("sa1", "Please enter your service address");
 	var scity = empty_check("scity", "Please enter your service city");
-	var sstate = empty_check("sstate", "Please enter service state");
+	//var sstate = empty_check("sstate", "Please enter service state");
+	var sstate = validate_sstate();
 	var szip = validate_zip("szip");
 
 	var sa2 = $("input[name=sa2]").val(toTitleCase($("input[name=sa2]").val()));
