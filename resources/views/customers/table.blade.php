@@ -2,7 +2,9 @@
 <table class="table table-hover">
     <thead>
     	<tr>
+                        @if(Auth::user()->name == 'Yenny')
     		<th width="50px">Action</th>
+                        @endif
     		<th>Status</th>
     		<th>Account #</th>
     		<th> Name</th>
@@ -14,10 +16,12 @@
     <tbody>
     @foreach($customers as $customer)
         <tr>
-             <td>
-                <a href="{!! route('customers.edit', [$customer->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
-                <a href="{!! route('confirm-customer', [Auth::user(), $customer, $customer->enrollment]) !!}"><i class="glyphicon glyphicon-ok-circle"></i></a>
-            </td>
+            @if(Auth::user()->name == 'Yenny')
+                <td>
+                    <a href="{!! route('customers.edit', [$customer->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('confirm-customer', [Auth::user(), $customer, $customer->enrollment]) !!}"><i class="glyphicon glyphicon-ok-circle"></i></a>
+                </td>
+            @endif
             <td>{!! $customer->status !!}</td>
             <td>{!! $customer->acc_num !!}</td>
 	<td>{!! $customer->fname . ' ' . $customer->lname !!}</td>
