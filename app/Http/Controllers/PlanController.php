@@ -302,48 +302,122 @@ class PlanController extends Controller
 			$supno= get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
 			$price_code = get_string_between($xml[$i], '&lt;price_code&gt;', '&lt;/price_code&gt;');
 			$rev_type = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
+			$price_desc = get_string_between($xml[$i], '&lt;price_desc&gt;', '&lt;/price_desc&gt;');
 			$offer_price = get_string_between($xml[$i], '&lt;offer_price&gt;', '&lt;/offer_price&gt;');
 			$early_term_type = get_string_between($xml[$i], '&lt;early_term_type&gt;', '&lt;/early_term_type&gt;');
 			$early_term_amt = get_string_between($xml[$i], '&lt;early_term_amt&gt;', '&lt;/early_term_amt&gt;');
 			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
 			$price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
 
+			// name of plan (Fixed or Introductory Variable)
+			if(strpos($price_desc, 'V') || $offer_term == '1'){
+				$name = 'Introductory Variable';
+			}
+			else{ $name = 'Fixed'; }
+
+			// set opsolve supno as plan code
+			$code = $supno;
+
+			// set plan ldc based on opsolve supno
+			if($supno == 'BGE'){ $ldc = 'BGE'; }
+			if($supno == 'DELMD'){ $ldc = 'Delmarva'; }
+			if($supno == 'DUKE_OH'){ $ldc = 'Duke'; }
+			if($supno == 'DQE'){ $ldc = 'Duquesne'; }
+			if($supno == 'METED'){ $ldc = 'MetEd'; }
+			if($supno == 'PECO'){ $ldc = 'PECO'; }
+			if($supno == 'PEPCO_MD'){ $ldc = 'PEPCO'; }
+			if($supno == 'PPL'){ $ldc = 'PPL'; }
+
+			//set plan type based on opsolve rev_type
+			if($rev_type == 'R'){ $type = 'Residential'; }
+			else{ $type = 'Commercial'; }
+
+			//set length equal to opsolve offer_term
+			$length = $offer_term;
+
+			//format rate from opsolve offer_price
+			$rate = '$' . substr($offer_price, 0, 6) . '/kWh';
+
+			//set reward info from opsolve price_desc
+			if(strpos($price_desc, 'SRW100')){
+				$reward = 'Shopping/Dining Rewards';
+				$reward_link = 'https://www.greatamericanpowerrewards.com/';
+				$reward_description = '$100 Per Month Shopping/Dining Rewards';
+			}
+
+			else if(strpos($price_desc, 'SRW500/100')){
+				$reward = 'Shopping/Dining Rewards';
+				$reward_link = 'https://www.greatamericanpowerrewards.com/';
+				$reward_description = '$500 Shopping/Dining Rewards for the first month, and $100 for each month remaining on contract.';
+			}
+
+			else{
+				$reward = 'Safe Streets Rebate';
+				$reward_link = 'http://www.safestreets.com/GAP1/';
+				$reward_description = 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)';
+			}
+
+			//set etf info from opsolve early_term_type and early_term_amt
 			if($early_term_amt == '0.00'){
-				$early_term_type = 'No Early Cancellation Fee';
-				$early_term_amt = 'No Early Cancellation Fee';
+				$etf = 'No Early Exit Fee Applies';
+				$etf_description = 'No Early Exit Fee Applies';
 			}
-
-			$plans[] = array('priority' => '0', 'name' => 'Fixed', 'ldc' => $supno, 'type' => $rev_type, 'length' => $offer_term, 'rate' => '$' . substr($offer_price, 0, 6) . '/kWh', 'reward' => '', 'reward_link'	 => '', 'reward_description' => '', 'etf' => $early_term_amt, 'etf_description' => $early_term_type, 'price_code' => $price_code);
-		}
-
-		foreach($plans as $plan){
-			if($plan['ldc'] === 'DUKE_OH'){
-				$plan['ldc'] = 'Duke';
-			}
-			if($plan['etf_description'] === 'FIXED'){
-				$plan['etf_description'] = 'Flat fee of ' . '$' . $plan['etf'] . ' for early cancellation.';
-				$plan['etf'] = 'Cancellation Fee Applies';
-			}
-			else if($plan['etf_description'] === 'TERM' || $plan['etf_description'] === 'REDUC' && $plan['etf'] !== ''){
-				$plan['etf_description'] = '$' . $plan['etf'] . ' per month remaining on the contract.';
-				$plan['etf'] = 'Cancellation Fee Applies';
+			else if($early_term_type === 'FIXED'){
+				$etf = 'Early Exit Fee Applies';
+				$etf_description = 'Flat fee of ' . '$' . $early_term_amt . ' for early cancellation.';
 			}
 			else{
-				$plan['etf_description'] = 'No fee for terminating the contract early.';	
+				$etf = 'Early Exit Fee Applies';
+				$etf_description = '$' . $early_term_amt . ' per month remaining on the contract.';
 			}
-
-			if($plan['type'] === 'R'){
-				$plan['type'] = 'Residential';
-				$plan['reward'] = '$200 Security System Rebate';
-				$plan['reward_link'] = 'http://www.safestreets.com/GAP1/';
-				$plan['reward_description'] = 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)';
+			
+			//set daily fee info using opsolve price_desc
+			if(strpos($price_desc, 'F.50')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$0.50 per day';
+			}
+			else if(strpos($price_desc, 'F.25')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$0.25 per day';
 			}
 			else{
-				$plan['type'] = 'Commercial';
+				$daily_fee = null;
+				$daily_fee_description = null;
 			}
+			
+			//set promo using opsolve price_desc
+			if(strpos($price_desc, 'WMS003')){
+				$promo = 'WMS';
+			}
+			else if(strpos($price_desc, 'MYENERGY_004')){
+				$promo = 'MYENERGY';
+			}
+			else if(strpos($price_desc, 'EMAIL')){
+				$promo = 'GAP';
+			}
+			else{ $promo = null; }
+			
+			//create plan
+			$plan = ['priority' => '0', 
+				'name'                  => $name, 
+				'ldc'                   => $ldc, 
+				'type'                  => $type, 
+				'length'                => $offer_term, 
+				'rate'                  => $rate, 
+				'reward'                => $reward, 
+				'reward_link'           => $reward_link, 
+				'reward_description'    => $reward_description, 
+				'etf'                   => $etf, 
+				'etf_description'       => $etf_description, 
+				'daily_fee'             => $daily_fee,
+				'daily_fee_description' => $daily_fee_description,
+				'promo'                 => $promo,
+				'code'                  => $code,
+				'price_code'            => $price_code];
 
-			$p = \App\Models\Plan::create($plan);
+			\App\Models\Plan::create($plan);
 		}
+
 	}
 
 
@@ -355,29 +429,29 @@ class PlanController extends Controller
 	public function updatePlans(){
 		\App\Models\Plan::truncate();
 
-		//$this->updateLdcPlans('BGE', 'R');
-		//$this->updateLdcPlans('BGE', 'C');
+		$this->updateLdcPlans('BGE', 'R');
+		$this->updateLdcPlans('BGE', 'C');
 
-		//$this->updateLdcPlans('DELMD', 'R');
-		//$this->updateLdcPlans('DELMD', 'C');
+		$this->updateLdcPlans('DELMD', 'R');
+		$this->updateLdcPlans('DELMD', 'C');
 		
 		$this->updateLdcPlans('DUKE_OH', 'R');
 		$this->updateLdcPlans('DUKE_OH', 'C');
 		
-		//$this->updateLdcPlans('DQE', 'R');
-		//$this->updateLdcPlans('DQE', 'C');
+		$this->updateLdcPlans('DQE', 'R');
+		$this->updateLdcPlans('DQE', 'C');
 
-		//$this->updateLdcPlans('METED', 'R');
-		//$this->updateLdcPlans('METED', 'C');
+		$this->updateLdcPlans('METED', 'R');
+		$this->updateLdcPlans('METED', 'C');
 		
-		//$this->updateLdcPlans('PECO', 'R');
-		//$this->updateLdcPlans('PECO', 'C');
+		$this->updateLdcPlans('PECO', 'R');
+		$this->updateLdcPlans('PECO', 'C');
 		
-		//$this->updateLdcPlans('PEPCO', 'R');
-		//$this->updateLdcPlans('PEPCO', 'C');
+		$this->updateLdcPlans('PEPCO_MD', 'R');
+		$this->updateLdcPlans('PEPCO_MD', 'C');
 
-		//$this->updateLdcPlans('PPL', 'R');
-		//$this->updateLdcPlans('PPL', 'C');
+		$this->updateLdcPlans('PPL', 'R');
+		$this->updateLdcPlans('PPL', 'C');
 
 		return redirect('/plans');
 	}
