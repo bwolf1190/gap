@@ -4,12 +4,12 @@
 
 @section('content')
 
-		<div class="fade-in-slow remodal-bg">
+		<div class="remodal-bg">
 		  <a href="#modal"></a><br>
 			<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
 			  <div>
 			    <div id="modalTitle"><h2>Email Confirmation</h2></div>
-			    <p class="fade-in" id="modalDesc" style="text-align:left;">
+			    <p id="modalDesc" style="text-align:left;">
 			    	<br>
 						<span id="name">{!! $customer->fname !!},</span><br>
 
@@ -39,6 +39,7 @@
 				    <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm">OK</button>
 				{!! Form::close() !!}
 			
+			<div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
 			
 			</div>
 		</div>
