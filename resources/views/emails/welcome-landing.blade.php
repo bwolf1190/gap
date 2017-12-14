@@ -4,19 +4,19 @@
 
 @section('content')
 
-		<div class="remodal-bg">
+		<div class="fade-in-slow remodal-bg">
 		  <a href="#modal"></a><br>
 			<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
 			  <div>
 			    <div id="modalTitle"><h2>Email Confirmation</h2></div>
-			    <p id="modalDesc" style="text-align:left;">
+			    <p class="fade-in" id="modalDesc" style="text-align:left;">
 			    	<br>
 						<span id="name">{!! $customer->fname !!},</span><br>
 
 						<br>
 							We have received your online enrollment for the
 
-							@if($plan->name == "Variable" || $plan->name == "Introductory")
+							@if($plan->name == "Variable" || $plan->name == "Introductory Variable")
 								{!! $plan->ldc . " " . $plan->length . " Month " . $plan->name . " plan for the price of " . $plan->rate .  "." !!}
 							
 							@elseif(is_null($plan->rate2)) 
@@ -39,7 +39,6 @@
 				    <button id="ok-btn" data-remodal-action="confirm" class="remodal-confirm">OK</button>
 				{!! Form::close() !!}
 			
-			<div class="row">{!! Html::image('images/gap-swoosh.jpg') !!}</div>
 			
 			</div>
 		</div>
