@@ -25,9 +25,16 @@ class GaapController extends Controller
 		$agent = \Auth::user()->name;
 		$messages = \App\Models\GaapMessage::orderBy('id', 'desc')->where('agent', $agent)->get();
 		$total = count(\App\Models\Customer::where('promo', $agent)->get());
-		$confirmed = (count(\App\Models\Customer::where('promo', $agent)->where('status', 'CONFIRMED')->get()) / $total) * 100;
-		$unconfirmed = (count(\App\Models\Customer::where('promo', $agent)->where('status', 'PENDING')->get()) / $total) * 100;
-    		
+		
+		//if($total != 0){
+			$confirmed = (count(\App\Models\Customer::where('promo', $agent)->where('status', 'CONFIRMED')->get()) / $total) * 100;
+			$unconfirmed = (count(\App\Models\Customer::where('promo', $agent)->where('status', 'PENDING')->get()) / $total) * 100;
+		//}
+		/*else{
+			$confirmed = 0;
+			$unconfirmed = 0;
+		}*/
+
     		return view('gaap.index')->with('messages', $messages)->with('confirmed', $confirmed)->with('unconfirmed', $unconfirmed)->with('total', $total);
     	}
 
