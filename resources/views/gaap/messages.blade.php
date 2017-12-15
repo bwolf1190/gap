@@ -3,6 +3,10 @@
 
 <div class="container-fluid">
 
+<div class="row">
+	<a href="/gaap/customers/export" style="color:green; font-weight:bold; margin-left:120px;">Export</a>
+</div>
+
 <div class="col-xs-10 col-xs-offset-1">
 
 <table class="table table-striped table-hover">

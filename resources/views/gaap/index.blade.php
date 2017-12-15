@@ -124,7 +124,7 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 Welcome to your dashboard!
                             </div>
-                            <p>This is a dashboard-style layout that uses Bootstrap. You can use this template as a starting point to create something more unique.</p>
+                            <p>Where we can display important notices or general updates.</p>
                         </div>
                     </div>
                     <div class="table-responsive">
