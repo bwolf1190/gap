@@ -65,7 +65,7 @@
                             <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
                             <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
                         </ul>
-                        @elseif($type == 'web' && $plan->promo != 'GAP')
+                        @elseif($type == 'web')
                         <ul class="nav navbar-nav">
                             <li><a href="{{ env('HOME_URL') }}">HOME</a></li>
                             <li><a href="{{ env('ENROLL_URL') }}">ENROLL</a></li>
