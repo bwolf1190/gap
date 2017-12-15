@@ -51,7 +51,7 @@ class PlanController extends Controller
 		else{
 			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('promo', $promo)->get();
 		}
-		
+
 		$zip = Input::get('zip');
 
 		foreach($ps as $p){
