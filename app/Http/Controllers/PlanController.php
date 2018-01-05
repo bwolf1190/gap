@@ -376,7 +376,11 @@ class PlanController extends Controller
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.50 per day';
 			}
-			else if(strpos($price_desc, 'F.25')){
+			else if(strpos($price_desc, 'F0.5')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$0.50 per day';			
+			}
+			else if(strpos($price_desc, 'Fee.25')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.25 per day';
 			}
@@ -385,11 +389,18 @@ class PlanController extends Controller
 				$daily_fee_description = null;
 			}
 			
+			if(strpos($price_desc, 'G1')){
+				$meter = 'GS1';
+			}
+			else{$meter = null;}
+
 			//set promo using opsolve price_desc
 			if(strpos($price_desc, 'WMS003')){
 				$promo = 'WMS';
 			}
-			else if(strpos($price_desc, 'MYENERGY_004')){
+			//else if(strpos($price_desc, 'MYENERGY_004')){
+			else if(strpos($price_desc, 'MYE_003')){
+			
 				$promo = 'MYENERGY';
 			}
 			else if(strpos($price_desc, 'EMAIL')){
@@ -411,6 +422,7 @@ class PlanController extends Controller
 				'etf_description'       => $etf_description, 
 				'daily_fee'             => $daily_fee,
 				'daily_fee_description' => $daily_fee_description,
+				'meter'		=> $meter,
 				'promo'                 => $promo,
 				'code'                  => $code,
 				'price_code'            => $price_code];
