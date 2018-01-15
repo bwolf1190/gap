@@ -42,6 +42,9 @@ class CommandController extends Controller
 
             Mail::to('cmacinnes@greatamericanpower.com')->bcc('bwolverton@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
             Mail::to('glucas@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
+            Mail::to('ysanchez@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
+            Mail::to('tbrowning@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
+            Mail::to('maddison@greatamericanpower.com')->queue(new SendEnrollmentData($folder, $confirmed_file, $pending_file));
 
             /*foreach($customers as $c){
                   echo $c->fname . "\r\n";

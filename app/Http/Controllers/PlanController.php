@@ -344,8 +344,13 @@ class PlanController extends Controller
 				$reward_link = 'https://www.greatamericanpowerrewards.com/';
 				$reward_description = '$100 Per Month Shopping/Dining Rewards';
 			}
+			else if(strpos($price_desc, 'SRW25')){
+				$reward = 'Shopping/Dining Rewards';
+				$reward_link = 'https://www.greatamericanpowerrewards.com/';
+				$reward_description = '$25 Per Month Shopping/Dining Rewards';
+			}
 
-			else if(strpos($price_desc, 'SRW500/100')){
+			else if(strpos($price_desc, 'SRW500/100') || strpos($price_desc, '500/100')){
 				$reward = 'Shopping/Dining Rewards';
 				$reward_link = 'https://www.greatamericanpowerrewards.com/';
 				$reward_description = '$500 Shopping/Dining Rewards for the first month, and $100 for each month remaining on contract.';
@@ -370,25 +375,25 @@ class PlanController extends Controller
 				$etf = 'Early Exit Fee Applies';
 				$etf_description = '$' . $early_term_amt . ' per month remaining on the contract.';
 			}
-			
 			//set daily fee info using opsolve price_desc
-			if(strpos($price_desc, 'F.50')){
+			if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.50 per day';
-			}
-			else if(strpos($price_desc, 'F0.5')){
-				$daily_fee = 'Daily Fee Applies';
-				$daily_fee_description = '$0.50 per day';			
 			}
 			else if(strpos($price_desc, 'Fee.25')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.25 per day';
+			}
+			else if(strpos($price_desc, 'F1 ')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$1.00 per day';
 			}
 			else{
 				$daily_fee = null;
 				$daily_fee_description = null;
 			}
 			
+			// set meter using opsolve price_desc
 			if(strpos($price_desc, 'G1')){
 				$meter = 'GS1';
 			}
