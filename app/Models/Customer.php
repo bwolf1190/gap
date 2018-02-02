@@ -108,7 +108,7 @@ class Customer extends Model
 			$etf = 'NOETF';
 		}
 
-		$this->plan_description = strtoupper($plan->ldc) . '_' . substr($plan->name, 0, 1) . '_' . substr($plan->type, 0, 1) . '_' . $plan->length . 'M_' . substr($plan->rate, 3,4) . $etf;
+		$this->plan_description = $plan->ldc . substr($plan->name, 0, 1) . substr($plan->type, 0, 1)  . $plan->length . 'M' . substr($plan->rate, 3,4) . $etf . '_' . $plan->price_code;
 		return $this->plan_description;
 	}
 }
