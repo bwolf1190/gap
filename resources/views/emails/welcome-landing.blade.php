@@ -44,9 +44,6 @@
 			</div>
 		</div>
 
-@endsection
-
-@section('bottom-scripts')
 	{!! Html::style('css/welcome.css') !!}
 	{!! Html::style('css/enroll.css') !!}
 	{!! Html::style('css/master.css') !!}
@@ -55,5 +52,5 @@
 	{!! Html::style('css/modal.css?v=1') !!}
 	{!! Html::script('dist/remodal.js') !!}
 	{!! Html::script('js/email-confirmation.js?v=1') !!}
-@endsection
 
+@endsection
