@@ -130,12 +130,6 @@ class EmailController extends Controller
         $entno = env('SOAP_ENTNO');
         $client = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
         
-        /*if(\Auth::check()){
-            $agent_id = \Auth::user()->agent_id;
-        }
-        else{
-            $agent_id = $agent;
-        }*/
         $agent_id = $agent;
 
         // OPSOLVE FIX: system needs Residential to be "R" and Commercial to be "C"
@@ -233,6 +227,10 @@ class EmailController extends Controller
         $fault = strpos($submit_response_str, 'faultcode');
         if($fault == true){
             $status = 'failed';
+            $message = strpos($submit_response_str, 'Customer already has active account');
+            if($message == true){
+                return view('already-customer'); 
+            }
         }
         else{
             $status = "success";
