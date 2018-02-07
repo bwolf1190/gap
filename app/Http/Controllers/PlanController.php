@@ -308,6 +308,7 @@ class PlanController extends Controller
 			$early_term_amt = get_string_between($xml[$i], '&lt;early_term_amt&gt;', '&lt;/early_term_amt&gt;');
 			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
 			$price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
+			$campaign_code = get_string_between($xml[$i], '&lt;campaign_code&gt;', '&lt;/campaign_code&gt;');
 
 			// name of plan (Fixed or Introductory Variable)
 			if(strpos($price_desc, 'V') || $offer_term == '1'){
@@ -356,7 +357,7 @@ class PlanController extends Controller
 				$reward_description = '$500 Shopping/Dining Rewards for the first month, and $100 for each month remaining on contract.';
 			}
 
-			else{
+			else {
 				$reward = 'Safe Streets Rebate';
 				$reward_link = 'http://www.safestreets.com/GAP1/';
 				$reward_description = 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)';
@@ -373,14 +374,14 @@ class PlanController extends Controller
 			}
 			else{
 				$etf = 'Early Exit Fee Applies';
-				$etf_description = '$' . $early_term_amt . ' per month remaining on the contract.';
+				$etf_description = '$10' . ' per month remaining on the contract; Not to exceed $' . $early_term_amt;
 			}
 			//set daily fee info using opsolve price_desc
-			if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5')){
+			if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.50 per day';
 			}
-			else if(strpos($price_desc, 'Fee.25')){
+			else if(strpos($price_desc, 'Fee .25') || strpos($price_desc, 'F25')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.25 per day';
 			}
@@ -400,18 +401,23 @@ class PlanController extends Controller
 			else{$meter = null;}
 
 			//set promo using opsolve price_desc
+			if((strpos($price_desc, 'B') || strpos($price_desc, 'BROKER')) && (!strpos($price_desc, 'WEB'))){
+					$promo = 'BROKER';
+			}
 			if(strpos($price_desc, 'WMS003')){
 				$promo = 'WMS';
 			}
 			//else if(strpos($price_desc, 'MYENERGY_004')){
-			else if(strpos($price_desc, 'MYE_003')){
+			if(strpos($price_desc, 'MY') || strpos($)){
 			
 				$promo = 'MYENERGY';
 			}
-			else if(strpos($price_desc, 'EMAIL')){
+			if(strpos($price_desc, 'Email') || strpos($price_desc, 'ES5_100F50')){
 				$promo = 'GAP';
 			}
-			else{ $promo = null; }
+			else { $promo = null; }
+
+			//if(strpos($campaign_code, 'WEB')) { $promo = null; }
 			
 			//create plan
 			$plan = ['priority' => '0', 
@@ -429,6 +435,7 @@ class PlanController extends Controller
 				'daily_fee_description' => $daily_fee_description,
 				'meter'		=> $meter,
 				'promo'                 => $promo,
+				'campaign_code' => $campaign_code,
 				'code'                  => $code,
 				'price_code'            => $price_code];
 
