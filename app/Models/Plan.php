@@ -23,6 +23,7 @@ class Plan extends Model
 		'daily_fee_description',
 		'meter',
 		'promo',
+		'campaign_code',
 		'code',
 		'price_code'
 	];
@@ -49,6 +50,7 @@ class Plan extends Model
 		'daily_fee_description'    => 'string',
 		'meter'              => 'string',
 		'promo'              => 'string',
+		'campaign_code' => 'string',
 		'code'               => 'string',
 		'price_code'         => 'integer'
     ];

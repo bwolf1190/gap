@@ -49,14 +49,20 @@ thead{
 	text-align: center;
 }
 
-th{
-	width:75px;
+td{
+	max-width: 95px;
+}
+
+.glyphicon.glyphicon-share-alt{
+	font-size: 1.8em;
+	font-weight: bold;
+	color:green;
 }
 
 .glyphicon.glyphicon-edit{
 	font-size: 1.8em;
 	font-weight: bold;
-	color:green;
+	color:#00234C;
 }
 
 .glyphicon.glyphicon-remove{
@@ -68,7 +74,7 @@ th{
 .glyphicon.glyphicon-ok-circle{
 	font-size: 1.8em;
 	font-weight: bold;
-	color:#00234C;
+	color:green;
 }
 
 .col-xs-2 .nav-container{

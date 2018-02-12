@@ -129,4 +129,16 @@ class AdminController extends Controller
 		return redirect()->route('enrollments.index');
 
 	}
+
+	/**
+	 * Manually  push customer with PENDING status to opsolve
+	 */
+	public function confirmCustomer($user, $customer, $enrollment){
+		$u = \App\User::find($user);
+		$c = \App\Models\Customer::find($customer);
+		$e = \App\Models\Enrollment::find($enrollment);
+		$p = \App\Models\Plan::where('price_code', substr($c->plan_description, -5, 5))->first();
+		dd($p);
+	}
+
 }

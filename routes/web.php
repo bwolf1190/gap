@@ -13,6 +13,23 @@
 
 Auth::routes();
 
+Route::get('/t/{ldc}/{service}', array('as' => 't', 'uses' => 'PlanController@getSoapPlans'));
+
+Route::get('/m/{customer}/{plan}', array('as' => 'manual', 'uses' => 'EmailController@manualUpload'));
+
+Route::get('/soap', function(){
+    $s = '<soap:Fault><faultcode>soap:Server</faultcode><faultstring>Server was unable to process request. ---> READi Data Exchange Error - Customer already has active account.</faultstring><detail /></soap:Fault>';
+    $fault = strpos($s, 'Customer already has active account');
+    if($fault == true){return view('emails.already-customer');}
+
+});
+
+Route::get('/conf', function(){
+    $customer = \App\Models\Customer::first();
+    $plan = \App\Models\Plan::first();
+    return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
+});
+
 Route::get('/phpinfo', function(){
     return view('phpinfo');
 });
@@ -111,6 +128,8 @@ Route::post('/resendEmails', array('as' => 'resendEmails', 'uses' => 'AdminContr
 Route::get('/broker-enrollments/s/{sort?}', 'AdminController@showAll');
 
 Route::get('/broker-enrollments/{broker}/{sort?}', 'AdminController@showBrokerEnrollments');
+
+Route::get('/{user}/{customer}/{enrollment}', array('as' => 'confirmCustomer', 'uses' => 'AdminController@confirmCustomer'));
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

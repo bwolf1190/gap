@@ -109,6 +109,14 @@ class EmailController extends Controller
         }
     }
 
+    public function manualUpload($customer, $plan){
+        $c = \App\Models\Customer::find($customer);
+        $e = $c->enrollment;
+        $p = \App\Models\Plan::find($plan);
+        $this->addCustomer(null, $c, $p, $e);
+        $this->submitToUtility($customer);
+    }
+
     public function confirmCustomer($agent, $customer, $enrollment){
         $a = \App\User::find($agent)->agent_id;
         $c = \App\Models\Customer::find($customer);

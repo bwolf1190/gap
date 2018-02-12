@@ -309,16 +309,13 @@ class PlanController extends Controller
 			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
 			$price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
 			$campaign_code = get_string_between($xml[$i], '&lt;campaign_code&gt;', '&lt;/campaign_code&gt;');
-
 			// name of plan (Fixed or Introductory Variable)
 			if(strpos($price_desc, 'V') || $offer_term == '1'){
 				$name = 'Introductory Variable';
 			}
 			else{ $name = 'Fixed'; }
-
 			// set opsolve supno as plan code
 			$code = $supno;
-
 			// set plan ldc based on opsolve supno
 			if($supno == 'BGE'){ $ldc = 'BGE'; }
 			if($supno == 'DELMD'){ $ldc = 'Delmarva'; }
@@ -328,41 +325,40 @@ class PlanController extends Controller
 			if($supno == 'PECO'){ $ldc = 'PECO'; }
 			if($supno == 'PEPCO_MD'){ $ldc = 'PEPCO'; }
 			if($supno == 'PPL'){ $ldc = 'PPL'; }
-
 			//set plan type based on opsolve rev_type
 			if($rev_type == 'R'){ $type = 'Residential'; }
 			else{ $type = 'Commercial'; }
-
 			//set length equal to opsolve offer_term
 			$length = $offer_term;
-
 			//format rate from opsolve offer_price
 			$rate = '$' . substr($offer_price, 0, 6) . '/kWh';
 
 			//set reward info from opsolve price_desc
-			if(strpos($price_desc, 'SRW100')){
-				$reward = 'Shopping/Dining Rewards';
-				$reward_link = 'https://www.greatamericanpowerrewards.com/';
-				$reward_description = '$100 Per Month Shopping/Dining Rewards';
-			}
-			else if(strpos($price_desc, 'SRW25')){
+			if(strpos($price_desc, 'SRW25')){
 				$reward = 'Shopping/Dining Rewards';
 				$reward_link = 'https://www.greatamericanpowerrewards.com/';
 				$reward_description = '$25 Per Month Shopping/Dining Rewards';
 			}
-
+			else if(strpos($price_desc, 'SRW100')){
+				$reward = 'Shopping/Dining Rewards';
+				$reward_link = 'https://www.greatamericanpowerrewards.com/';
+				$reward_description = '$100 Per Month Shopping/Dining Rewards';
+			}
 			else if(strpos($price_desc, 'SRW500/100') || strpos($price_desc, '500/100')){
 				$reward = 'Shopping/Dining Rewards';
 				$reward_link = 'https://www.greatamericanpowerrewards.com/';
 				$reward_description = '$500 Shopping/Dining Rewards for the first month, and $100 for each month remaining on contract.';
 			}
-
+			else if($rev_type == 'C'){
+				$reward = null;
+				$reward_link = null;
+				$reward_description =null;
+			}
 			else {
 				$reward = 'Safe Streets Rebate';
 				$reward_link = 'http://www.safestreets.com/GAP1/';
 				$reward_description = 'Receive a $100 rebate from Great American Power AND a $100 rebate for signing up with our Home Security partners, Safe Streets (an authorized dealer of ADT security systems)';
 			}
-
 			//set etf info from opsolve early_term_type and early_term_amt
 			if($early_term_amt == '0.00'){
 				$etf = 'No Early Exit Fee Applies';
@@ -377,17 +373,21 @@ class PlanController extends Controller
 				$etf_description = '$10' . ' per month remaining on the contract; Not to exceed $' . $early_term_amt;
 			}
 			//set daily fee info using opsolve price_desc
-			if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50')){
-				$daily_fee = 'Daily Fee Applies';
-				$daily_fee_description = '$0.50 per day';
-			}
-			else if(strpos($price_desc, 'Fee .25') || strpos($price_desc, 'F25')){
+			if(strpos($price_desc, 'Fee .25') || strpos($price_desc, 'F25')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.25 per day';
+			}
+			else if(strpos($price_desc, 'F.50') || stripos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50') || strpos($price_desc, 'F.5')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$0.50 per day';
 			}
 			else if(strpos($price_desc, 'F1 ')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$1.00 per day';
+			}
+			else if(strpos($price_desc, 'F1.5 ')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$1.50 per day';
 			}
 			else{
 				$daily_fee = null;
@@ -398,26 +398,23 @@ class PlanController extends Controller
 			if(strpos($price_desc, 'G1')){
 				$meter = 'GS1';
 			}
+			else if(strpos($price_desc, 'G3')){
+				$meter = 'GS3';
+			}
 			else{$meter = null;}
 
-			//set promo using opsolve price_desc
-			if((strpos($price_desc, 'B') || strpos($price_desc, 'BROKER')) && (!strpos($price_desc, 'WEB'))){
-					$promo = 'BROKER';
-			}
-			if(strpos($price_desc, 'WMS003')){
+			if(strpos($campaign_code, 'WM') !== false){
 				$promo = 'WMS';
 			}
-			//else if(strpos($price_desc, 'MYENERGY_004')){
-			if(strpos($price_desc, 'MY') || strpos($)){
-			
-				$promo = 'MYENERGY';
+			else if(stripos($campaign_code, 'MY') !== false || strpos($campaign_code, 'ME') !== false){
+				$promo = 'MYENERGYOPTION';
 			}
-			if(strpos($price_desc, 'Email') || strpos($price_desc, 'ES5_100F50')){
+			else if(stripos($campaign_code, 'Email') !== false|| strpos($campaign_code, 'ES') !== false){
 				$promo = 'GAP';
 			}
-			else { $promo = null; }
-
-			//if(strpos($campaign_code, 'WEB')) { $promo = null; }
+			else{
+				$promo = null;
+			}
 			
 			//create plan
 			$plan = ['priority' => '0', 
@@ -444,6 +441,66 @@ class PlanController extends Controller
 
 	}
 
+	public function getSoapPlans($ldc,$service){
+		$url           = env('SOAP_URL');
+		$user          = env('SOAP_USER');
+		$pw            = env('SOAP_PW');
+		$output_params = array("output_xml;8000");
+		$lang          = env('SOAP_LANG');
+		$entno         = env('SOAP_ENTNO');
+		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
+
+		$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_DR_Price_Quote</proc_type><entno>4270</entno><supno>" . $ldc . "</supno><rev_type>" . $service . "</rev_type><campaign_code></campaign_code><request_date>" . date('Y-m-d') . "</request_date></ReadiSystem>]]></string>";
+		$xml_obj = simplexml_load_string($xml_string);
+
+		$client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
+	    
+		$response = $client->__getLastResponse(); 
+		$request = $client->__getLastRequest();
+	
+		// explode string into array of plans
+		$xml = explode('&lt;GU_sp_DR_Price_Quote&gt;', $response);
+		// delete first element that is not a plan
+		//unset($xml[0]);
+
+		// get values from xml tags and add to array
+		for($i = 1; $i < count($xml); $i++){
+			$supno= get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
+			$price_code = get_string_between($xml[$i], '&lt;price_code&gt;', '&lt;/price_code&gt;');
+			$rev_type = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
+			$price_desc = get_string_between($xml[$i], '&lt;price_desc&gt;', '&lt;/price_desc&gt;');
+			$offer_price = get_string_between($xml[$i], '&lt;offer_price&gt;', '&lt;/offer_price&gt;');
+			$early_term_type = get_string_between($xml[$i], '&lt;early_term_type&gt;', '&lt;/early_term_type&gt;');
+			$early_term_amt = get_string_between($xml[$i], '&lt;early_term_amt&gt;', '&lt;/early_term_amt&gt;');
+			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
+			$campaign_code = get_string_between($xml[$i], '&lt;campaign_code&gt;', '&lt;/campaign_code&gt;');
+			
+			echo $supno . '<br>';
+			echo $price_code . '<br>';
+			echo $rev_type . '<br>';
+			echo $price_desc . '<br>';
+			echo $offer_price . '<br>';
+			echo $early_term_type . '<br>';
+			echo $early_term_amt . '<br>';
+			echo $offer_term . '<br>';
+			echo $campaign_code . '<br><br><br>';
+		}
+	}
+
+	public function setPromo(){
+		$plans = \App\Models\Plan::all();
+		foreach($plans as $plan){
+			if(strpos($plan->campaign_code, 'WM') !== false){
+				$plan->update(['promo' => 'WMS']);
+			}
+			if(stripos($plan->campaign_code, 'MY') !== false || strpos($plan->campaign_code, 'ME') !== false){
+				$plan->update(['promo' => 'MYENERGYOPTION']);
+			}
+			if(stripos($plan->campaign_code, 'Email') !== false|| strpos($plan->campaign_code, 'ES') !== false){
+				$plan->update(['promo' => 'GAP']);
+			}
+		}
+	}
 
 	/**
 	 * Delete all Opsolve plans from database
@@ -476,6 +533,8 @@ class PlanController extends Controller
 
 		$this->updateLdcPlans('PPL', 'R');
 		$this->updateLdcPlans('PPL', 'C');
+
+		//$this->setPromo();
 
 		return redirect('/plans');
 	}

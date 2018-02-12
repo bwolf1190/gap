@@ -23,7 +23,14 @@ class CustomerController extends Controller
 	public function start($type, $id, $promo = null)
 	{
 		$plan    = \App\Models\Plan::where('id',(int)$id)->first();
-		$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
+		//$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
+		if($plan != null){
+			$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
+		}
+		else{
+			return 'no plans';
+		}
+
 		$zip     = Session::get('zip');
 		$sub_zip = substr($zip, 0,3);
 		
