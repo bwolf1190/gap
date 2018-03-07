@@ -38,6 +38,6 @@ class EnrollmentConfirmation extends Mailable
     public function build()
     {
         return $this->view('emails.welcome')
-                    ->subject('Enrollment Confirmation');
+                    ->subject('Additional Action Needed to Confirm Enrollment');
     }
 }
