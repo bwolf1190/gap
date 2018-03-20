@@ -24,15 +24,22 @@ h2, h3{
 
 #hornav{
 	position: relative;
+	border: 3px solid #bf0000;
+	background-color: #00234C;
+	border-radius: 5px;
 	/*top:-15px;*/
 }
 
 #hornav > ul > li > a{
-	color:#00234C;
-	font-weight: 600;
+	color:white;
+	background-color: #00234C;
+	font-weight: bolder;
 	border-left:1px solid #00234C;
 	border-radius:0px;
 	height:35px;
+	text-align: center;
+	vertical-align: center;
+	width:110px;
 }
 
 #hornav > ul > li{
@@ -41,9 +48,12 @@ h2, h3{
 }
 
 #hornav > ul > li > a:hover{
-	background-color: white;
-	color: #bf0000;
-	border-left:2px solid #bf0000;
+	/*background-color: white;*/
+	position:relative;
+	left:-5px;
+	font-size: 1.2em;
+	/*border-left: 1px solid white;
+	border-right: 1px solid white;*/
 }
 
 .slicknav_nav li{
