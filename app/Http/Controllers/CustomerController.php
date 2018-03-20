@@ -28,7 +28,7 @@ class CustomerController extends Controller
 			$ldc     = \App\Models\Ldc::where('ldc',$plan->ldc)->first();
 		}
 		else{
-			return 'no plans';
+			return view('plan-expired');
 		}
 
 		$zip     = Session::get('zip');
