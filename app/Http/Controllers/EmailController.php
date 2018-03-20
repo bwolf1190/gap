@@ -71,9 +71,15 @@ class EmailController extends Controller
         // keep customers from completing enrollments
         //return view('emails.no-new-customers');
         $enrollment = \App\Models\Enrollment::where('customer_id', $customer)->first();
-        $plan = $enrollment->plan;
+        //$plan = $enrollment->plan;
         $enrollment_p2c = \App\Models\EnrollmentP2C::where('customer_id', $customer)->first();
         $customer = \App\Models\Customer::where('id', $customer)->first();
+        $price_code = substr($customer->plan_description, -5);
+        $plan = \App\Models\Plan::where('price_code', $price_code)->first();
+
+        if(is_null($plan)){
+            return view('plan-expired');
+        }
 
         // if the enrollment is null, then it must be an InternalEnrollment
         if(is_null($enrollment)){
@@ -118,7 +124,8 @@ class EmailController extends Controller
     }
 
     public function confirmCustomer($agent, $customer, $enrollment){
-        $a = \App\User::find($agent)->agent_id;
+        //$a = \App\User::find($agent)->agent_id;
+        $a = '';
         $c = \App\Models\Customer::find($customer);
         $e = \App\Models\Enrollment::find($enrollment);
         $p = $e->plan;
@@ -129,7 +136,7 @@ class EmailController extends Controller
      * Create XML to be sent by SOAP call
      */
     public function addCustomer($agent, $c, $p, $e){
-        $url = env('SOAP_URL');
+       $url = env('SOAP_URL');
         //$url = env('SOAP_URL_TEST');
         $user = env('SOAP_USER');
         $pw = env('SOAP_PW');
@@ -156,15 +163,23 @@ class EmailController extends Controller
         if($p->ldc == 'Duke'){
             $c->acc_num = substr($c->acc_num, 0, -1);
         }
-	
+
+        if($p->commodity == 'Electric'){
+            $acct_no = "<eu_acct_no>" . $c->acc_num . "</eu_acct_no>"
+                            . "<gu_acct_no></gu_acct_no>";
+        }
+        else{
+            $acct_no = "<eu_acct_no></eu_acct_no>"
+                            . "<gu_acct_no>" . $c->acc_num . "</gu_acct_no>";
+        }
+
         //$xml_string  = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>GU_sp_XN_Enroll_Add</proc_type><entno>4270</entno><supno>" . $p->ldc . "</supno><eu_acct_no>" . $c->acc_num . "</eu_acct_no><gu_acct_no></gu_acct_no><price_code>" . $p->price_code ."</price_code><rev_type>" . $type . "</rev_type><last_name>" . $c->lname . "</last_name><first_name>" . $c->fname . "</first_name><main_phone>" . $c->phone . "</main_phone><cell_phone>" . $c->phone . "</cell_phone><email>" . $c->email . "</email><street_addr>" . $c->sa1 . "</street_addr><street_addr2>" . $c->sa2 . "</street_addr2><city>" . $c->scity . "</city><state_abbr>" . $c->sstate . "</state_abbr><postal>" . $c->szip . "</postal><agent_id>" . $agent_id . "</agent_id><referral_id></referral_id><response_ind>Y</response_ind><campaign_code>WEB</campaign_code><eai_trnno>" . $c->id . "</eai_trnno></ReadiSystem>]]></string>";
         $xml_string  = "<string><![CDATA[@input_xml;<ReadiSystem>
                             <proc_type>GU_sp_XN_Enroll_Add</proc_type>
                             <entno>" . $entno . "</entno>
-                            <supno>" . $p->code  . "</supno>
-                            <eu_acct_no>" . $c->acc_num . "</eu_acct_no>
-                            <gu_acct_no></gu_acct_no>
-                            <price_code>" . $p->price_code ."</price_code>
+                            <supno>" . $p->code  . "</supno>"
+                            . $acct_no .
+                            "<price_code>" . $p->price_code ."</price_code>
                             <rev_type>" . $type . "</rev_type>
                             <last_name>" . $c->lname . "</last_name>
                             <first_name>" . $c->fname . "</first_name>

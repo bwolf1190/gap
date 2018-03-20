@@ -15,8 +15,13 @@
 		</div>
 		
 		<div class="form-group">
+		@if($plan->commodity == 'electric')
 			{!! Form::label('acc_num', $ldc->customer_identifier) !!} <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $ldc->format_criteria_1 }} digit number {{ $ldc->hint }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
 			{!! Form::text('acc_num', '', ['class' => 'form-control']) !!}
+		@else
+			{!! Form::label('acc_num', $ldc->customer_identifier) !!} <a href="#" id="acc-num-tooltip" data-toggle="popover" data-content="{{ $ldc->format_criteria_1 }} digit number {{ $ldc->hint }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
+			{!! Form::text('acc_num', '', ['class' => 'form-control']) !!}
+		@endif
 		</div>
 
 		<!-- P2C enrollments must have Federal_Tax_Num for Commercial Enrollments --> 
@@ -222,8 +227,9 @@
 		</div>
 	</div>
 	<div id="chosen-plan" class="col-md-3 chosen-plan float-shadow fade-in">
-              <div class="price_table_container">
+              <div class="price_table_container" style="margin-top:0px;">
                   <div class="price_table_heading">{!! $plan->ldc !!}</div>
+                  <div class="price_table_heading commodity">{!! $plan->commodity !!}</div>
                   <div class="price_table_body">
                       
                       @if($plan->rate2 == "")

@@ -17,7 +17,7 @@
                   <div class="price_table_row last_row"><a target="_blank" href="{!! URL::asset("pdf/disclosure-statements/Great-American-Power-Disclosure-Statement-" . $ldc->ldc . ".pdf") !!}">Disclosure Statement</a></div>                
               </div>
               <div class="sign-up-container">
-                <a href="{!! route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldc->ldc, 'promo' => $promo)) !!}">See Plans</a>
+                <a href="{!! route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldc->ldc, 'commodity' => 'Electric', 'promo' => $promo)) !!}">See Plans</a>
               </div>
           </div>
       </div>
@@ -25,6 +25,6 @@
 
 </div>
 
-{!! Html::style('css/enroll.css') !!}
+{!! Html::style('css/enroll.css?v=1') !!}
 
 

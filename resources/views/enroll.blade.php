@@ -3,7 +3,7 @@
 @section('page-title', 'Enroll - Great American Power')
 
 @section('page-style')
-	{!! Html::style('css/enroll.css') !!}
+	{!! Html::style('css/enroll.css?v=1') !!}
 @endsection
 
 @section('navbar-brand')
@@ -14,7 +14,7 @@
 
 <div id='enroll_container' class="container">
 
-    {!! Form::open(['action' => 'LdcController@getLdc']) !!}
+    {!! Form::open(['action' => 'LdcController@getElectricLdcs']) !!}
 
 	{!! csrf_field() !!}
 

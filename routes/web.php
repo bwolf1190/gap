@@ -13,6 +13,25 @@
 
 Auth::routes();
 
+Route::get('welcome-test', function(){
+    $customer = \App\Models\Customer::find(6619);
+    $plan = \App\Models\Plan::find(72);
+    return view('emails.welcome-landing')->with('customer', $customer)->with('plan', $plan);
+});
+
+Route::get('conf-test', function(){
+    $customer = \App\Models\Customer::find(6468);
+    $plan = \App\Models\Plan::find(72);
+    $enrollment = \App\Models\Enrollment::where('customer_id', '6468')->first();
+    return view('emails.welcome')->with('customer', $customer)->with('plan', $plan)->with('enrollment', $enrollment);
+});
+
+Route::get('/fuck', function(){
+    $s = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><soap:Fault><faultcode>soap:Server</faultcode><faultstring>Server was unable to process request. ---> READi Data Exchange Error - Price Code is not valid for the State.</faultstring><detail /></soap:Fault></soap:Body></soap:Envelope>';
+    $fault = strpos($s, 'Price Code is not valid');
+    if($fault == true){return view('plan-expired');}
+});
+
 Route::get('/t/{ldc}/{service}', array('as' => 't', 'uses' => 'PlanController@getSoapPlans'));
 
 Route::get('/m/{customer}/{plan}', array('as' => 'manual', 'uses' => 'EmailController@manualUpload'));
@@ -87,9 +106,14 @@ Route::get('/enroll-sign-up-energy-electricity/{type?}', 'EnrollmentController@s
 Route::get('/i/{type}', array('as' => 'internal-start', 'uses' => 'EnrollmentController@start'));
 
 //Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
-Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getLdc'));
+//Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getLdc'));
+Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getElectricLdcs'));
+/*Route::get('/electric-ldcs/{?service}', array('as' => 'electric-search', 'uses'=>'LdcController@getElectricLdcs'));
+Route::get('/gas-ldcs/{?service}', array('as' => 'gas-search', 'uses'=>'LdcController@getGasLdcs'));*/
 
+//Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
+Route::get('/{type}/select-plan/{s}/{l}/{commodity?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 
 Route::get('/{type}/select-plan/{s}/{l}/meter/{meter?}', array('as' => 'searchMeteredPlans', 'uses'=>'PlanController@searchMeteredPlans'));
 
@@ -102,7 +126,7 @@ Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'Email
 Route::post('/emails/welcome/sent', array('as' => 'fireWelcomeEmail', 'uses' => 'EmailController@fireWelcomeEmail'));
 //Route::get('/emails/welcome/{customer}', array('as' => 'welcome', 'uses'=>'EmailController@sendWelcome'));
 
-Route::get('/confirm-customer/{agent}/{customer}/{enrollment}', array('as' => 'confirm-customer', 'uses' => 'EmailController@confirmCustomer'));
+Route::get('/confirm-customer/{customer}/{enrollment}', array('as' => 'confirm-customer', 'uses' => 'EmailController@confirmCustomer'));
 
 Route::get('/offers', function(){
     return view('offers.offers');

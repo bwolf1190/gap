@@ -20,9 +20,10 @@ class PlanController extends Controller
     public function searchMeteredPlans($type, $service, $ldc, $meter = null){
     	$type = 'web';
     	$promo=null;
+    	$commodity = 'Electric';
 
     	if($meter != null){
-    		$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('meter', $meter)->whereNull('promo')->get();
+    		$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('meter', $meter)->where('commodity', $commodity)->whereNull('promo')->get();
     	}
 
 		foreach($ps as $p){
@@ -34,7 +35,7 @@ class PlanController extends Controller
 			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
 		}
 
-		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
+		return view('plans.findex')->with('plans', $plans)->with('commodity', $commodity)->with('promo', $promo)->with('type', $type);
 
     	}
     	
@@ -42,14 +43,23 @@ class PlanController extends Controller
 	 * Return plans for type, service, ldc, and the optional promo.
 	 * If no plans exist, then redirect to modal with message.
 	 */
-	public function searchPlans($type, $service, $ldc, $promo = null){
+	public function searchPlans($type, $service, $ldc, $commodity = null, $promo = null){
+		if($commodity == null){
+			$commodity = 'Electric';
+		}
+
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
 		if($promo === null){
-			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->whereNull('promo')->get();
+			//$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->whereNull('promo')->get();
+			//$eps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', 'electric')->whereNull('promo')->get();
+			//$gps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', 'gas')->whereNull('promo')->get();
+			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', $commodity)->whereNull('promo')->get();
 		}
 		else{
-			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('promo', $promo)->get();
+			//$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('promo', $promo)->get();
+			//$eps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', 'electric')->where('promo', $promo)->get();
+			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', $commodity)->where('promo', $promo)->get();
 		}
 
 		$zip = Input::get('zip');
@@ -67,7 +77,7 @@ class PlanController extends Controller
 			return redirect()->route('start', ['id' => $plans[0]->id, 'promo' => $promo, 'type' => $type]);
 		}
 
-		return view('plans.findex')->with('plans', $plans)->with('promo', $promo)->with('type', $type);
+		return view('plans.findex')->with('plans', $plans)->with('commodity', $commodity)->with('promo', $promo)->with('type', $type);
 	}
 
 	

@@ -4,7 +4,7 @@
 
 @section('navbar-brand')
     {!! Html::style('css/broker.css') !!}
-    {!! Html::style('css/enroll.css?v=4') !!} 
+    {!! Html::style('css/enroll.css?v=5') !!} 
     {!! Html::script('js/enroll.js') !!}   
    
     @if($promo === null)
@@ -19,13 +19,13 @@
 @section('content')
     <div id="enroll_container" class="filtered-table-container container">
         <div class="row">
-            <div  class=''>
+            <div>
 
-                @if(empty($plans))
-                    <div class="well text-center">No Ldcs found.</div>
-                @else
-                    @include('plans.filtered')
-                @endif
+                    @if($commodity == 'Electric')
+                        @include('plans.electric')
+                    @else
+                        @include('plans.gas')
+                    @endif
 
             </div>
         </div>
