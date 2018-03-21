@@ -112,10 +112,10 @@ Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getEl
 Route::get('/gas-ldcs/{?service}', array('as' => 'gas-search', 'uses'=>'LdcController@getGasLdcs'));*/
 
 //Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
-Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
-Route::get('/{type}/select-plan/{s}/{l}/{commodity?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
+//Route::get('/{type}/select-plan/{s}/{l}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
+Route::get('/{type}/select-plan/{s}/{l}/{commodity}/{promo?}', array('as' => 'searchPlans', 'uses'=>'PlanController@searchPlans'));
 
-Route::get('/{type}/select-plan/{s}/{l}/meter/{meter?}', array('as' => 'searchMeteredPlans', 'uses'=>'PlanController@searchMeteredPlans'));
+Route::get('/{type}/select-plan/{s}/{l}/{commodity}/meter/{meter?}', array('as' => 'searchMeteredPlans', 'uses'=>'PlanController@searchMeteredPlans'));
 
 Route::get('/{type}/customers/start/{id}/{promo?}', array('as' => 'start', 'uses'=>'CustomerController@start'));
 

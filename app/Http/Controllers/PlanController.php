@@ -12,42 +12,33 @@ use DB;
 class PlanController extends Controller
 {
 
+
     public function __construct()
     {
         $this->middleware('admin', ['except' => ['searchPlans', 'searchMeteredPlans','internalPlans', 'truncate']]);
     }
-
     public function searchMeteredPlans($type, $service, $ldc, $meter = null){
     	$type = 'web';
     	$promo=null;
     	$commodity = 'Electric';
-
     	if($meter != null){
     		$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('meter', $meter)->where('commodity', $commodity)->whereNull('promo')->get();
     	}
-
 		foreach($ps as $p){
 			$id = $p->id;
 			$plans[] = \App\Models\Plan::find($id);
 		}
-
 		if(empty($plans)){
 			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
 		}
-
 		return view('plans.findex')->with('plans', $plans)->with('commodity', $commodity)->with('promo', $promo)->with('type', $type);
-
     	}
     	
 	/**
 	 * Return plans for type, service, ldc, and the optional promo.
 	 * If no plans exist, then redirect to modal with message.
 	 */
-	public function searchPlans($type, $service, $ldc, $commodity = null, $promo = null){
-		if($commodity == null){
-			$commodity = 'Electric';
-		}
-
+	public function searchPlans($type, $service, $ldc, $commodity, $promo = null){
 		// return plans that match service and ldc
 		// ordered by rate to display the larger step plans and LMF plans together
 		if($promo === null){
@@ -61,14 +52,11 @@ class PlanController extends Controller
 			//$eps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', 'electric')->where('promo', $promo)->get();
 			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', $commodity)->where('promo', $promo)->get();
 		}
-
 		$zip = Input::get('zip');
-
 		foreach($ps as $p){
 			$id = $p->id;
 			$plans[] = \App\Models\Plan::find($id);
 		}
-
 		if(empty($plans)){
 			return view('no-plans')->with('service', $service)->with('ldc', $ldc);
 		}
@@ -76,7 +64,6 @@ class PlanController extends Controller
 		else if(count($plans) == 1){
 			return redirect()->route('start', ['id' => $plans[0]->id, 'promo' => $promo, 'type' => $type]);
 		}
-
 		return view('plans.findex')->with('plans', $plans)->with('commodity', $commodity)->with('promo', $promo)->with('type', $type);
 	}
 
