@@ -306,6 +306,10 @@ class PlanController extends Controller
 			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
 			$price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
 			$campaign_code = get_string_between($xml[$i], '&lt;campaign_code&gt;', '&lt;/campaign_code&gt;');
+
+			// set commodity to either gas or electric
+			$commodity = strpos($supno, 'GAS') ? 'Gas' : 'Electric';
+
 			// name of plan (Fixed or Introductory Variable)
 			if(strpos($price_desc, 'V') || $offer_term == '1'){
 				$name = 'Introductory Variable';
@@ -414,7 +418,8 @@ class PlanController extends Controller
 			}
 			
 			//create plan
-			$plan = ['priority' => '0', 
+			$plan = ['priority' => '0',
+				'commodity'	=> $commodity, 
 				'name'                  => $name, 
 				'ldc'                   => $ldc, 
 				'type'                  => $type, 
@@ -515,7 +520,10 @@ class PlanController extends Controller
 		
 		$this->updateLdcPlans('DUKE_OH', 'R');
 		$this->updateLdcPlans('DUKE_OH', 'C');
-		
+
+		$this->updateLdcPlans('DUKE_GAS', 'R');
+		$this->updateLdcPlans('DUKE_GAS', 'C');
+
 		$this->updateLdcPlans('DQE', 'R');
 		$this->updateLdcPlans('DQE', 'C');
 
