@@ -149,6 +149,9 @@
     </noscript>
 <!-- End of StatCounter Code for Default Guide -->
 
+<!-- Retargeting Pixel - Tapsomnia - DO NOT MODIFY -->
+<img src="http://post.tapsomnia.com/usr?seg=5&sspid=1" />
+<!-- End of Retargeting Pixel -->
 
 </body>
 @yield('bottom-style')
