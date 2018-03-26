@@ -308,7 +308,13 @@ class PlanController extends Controller
 			$campaign_code = get_string_between($xml[$i], '&lt;campaign_code&gt;', '&lt;/campaign_code&gt;');
 
 			// set commodity to either gas or electric
-			$commodity = strpos($supno, 'GAS') ? 'Gas' : 'Electric';
+			//$commodity = strpos($supno, 'GAS') ? 'Gas' : 'Electric';
+			if(strpos($supno, 'GAS')){
+				$commodity =  'Gas';
+			}
+			else{
+				$commodity = 'Electric';
+			}
 
 			// name of plan (Fixed or Introductory Variable)
 			if(strpos($price_desc, 'V') || $offer_term == '1'){
@@ -320,7 +326,7 @@ class PlanController extends Controller
 			// set plan ldc based on opsolve supno
 			if($supno == 'BGE'){ $ldc = 'BGE'; }
 			if($supno == 'DELMD'){ $ldc = 'Delmarva'; }
-			if($supno == 'DUKE_OH'){ $ldc = 'Duke'; }
+			if($supno == 'DUKE_OH' || $supno == 'DUKE_GAS'){ $ldc = 'Duke'; }
 			if($supno == 'DQE'){ $ldc = 'Duquesne'; }
 			if($supno == 'METED'){ $ldc = 'MetEd'; }
 			if($supno == 'PECO'){ $ldc = 'PECO'; }
@@ -335,7 +341,7 @@ class PlanController extends Controller
 			$rate = '$' . substr($offer_price, 0, 6) . '/kWh';
 
 			//set reward info from opsolve price_desc
-			if(strpos($price_desc, 'SRW25')){
+			if(strpos($price_desc, 'SRW25') || strpos($price_desc, 'WS_25')){
 				$reward = 'Shopping/Dining Rewards';
 				$reward_link = 'https://www.greatamericanpowerrewards.com/';
 				$reward_description = '$25 Per Month Shopping/Dining Rewards';
@@ -378,11 +384,11 @@ class PlanController extends Controller
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.25 per day';
 			}
-			else if(strpos($price_desc, 'F.50') || stripos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50') || strpos($price_desc, 'F.5')){
+			else if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50') || strpos($price_desc, 'F.5')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.50 per day';
 			}
-			else if(strpos($price_desc, 'F1 ')){
+			else if(strpos($price_desc, 'F1')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$1.00 per day';
 			}
@@ -404,7 +410,7 @@ class PlanController extends Controller
 			}
 			else{$meter = null;}
 
-			if(strpos($campaign_code, 'WM') !== false){
+			if(strpos($campaign_code, 'WM') !== false || strpos($campaign_code, 'WMS')){
 				$promo = 'WMS';
 			}
 			else if(stripos($campaign_code, 'MY') !== false || strpos($campaign_code, 'ME') !== false){
