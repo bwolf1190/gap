@@ -192,7 +192,7 @@ class LdcController extends Controller
 	/**
 	 * Get the utility companies by zip code with SOAP call
 	 */
-	public function getElectricLdcs($s = null){
+	public function getElectricLdcs(Request $request){
 		$url           = env('SOAP_URL');
 		$user          = env('SOAP_USER');
 		$pw            = env('SOAP_PW');
@@ -201,34 +201,17 @@ class LdcController extends Controller
 		$entno         = env('SOAP_ENTNO');
 		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
 
+		$service = $request->input('service');
+		$zip = $request->input('zip');
+		$promo = Input::get('promo');
+		$service = $service == 'Residential' ? 'R': 'C';
+
 		if(Input::get('type') === null){
 			$type = 'web';
 		}
 		else{
 			$type = Input::get('type');
 		}
-
-		$zip   = Input::get('zip');
-		$promo = Input::get('promo');
-		Session::put('zip', $zip);
-
-		// if zip code is entered on welcome page the residential or commercial button was used
-		if(Input::get('Residential')){
-			$service = "R";
-		}
-		else if(Input::get("Commercial")){
-			$service = "C";
-		}
-		// else the zip is entered from enroll page and service is found with radio button
-		else{
-			$service = Input::get('service');
-			if($service == 'Commercial'){
-				$service = 'C';
-			}
-			else{
-				$service = 'R';
-			}
-		} 
 
 	    	$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>RS_sp_DR_Offers_by_Zip</proc_type><entno>4270</entno><zip>" . $zip . "</zip><rev_type>" . $service . "</rev_type><utility_type>E</utility_type></ReadiSystem>]]></string>";
 
@@ -260,19 +243,13 @@ class LdcController extends Controller
 	
 			$ls[] = [$ldc];
 		}
-
-		// change Opsolve R/C naming convention to Residential/Commercial
-		if($service == 'C'){
-			$service = 'Commercial';
-		}
-		else{
-			$service = 'Residential';
-		}
+		// change Opsolve R/C naming convention back to Residential/Commercial
+		$service = $service == 'R' ? 'Residential' : 'Commercial';
 
 		if(empty($ls)){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
 		}
-	
+		
 		/*if(is_null($ldcs[0])){
 			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
 		}*/

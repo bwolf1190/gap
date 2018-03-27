@@ -65,8 +65,8 @@
                             </div>
                             <div class="row">
                                 <div id="sign-up-btns" class="form-group" style="margin-left:20px;">
-                                    <input id="next" type="submit" name="Residential" value="Residential">
-                                    <input id="next" type="submit" name="Commercial" value="Commercial">
+                                    <input id="next" type="submit" name="service" value="Residential">
+                                    <input id="next" type="submit" name="service" value="Commercial">
                                 </div>
                             </div>
                         </div>
@@ -114,8 +114,8 @@
                         </script>
                         <div class="row">
                             <div class="form-group" style="margin-left:20px;">
-                                <input id="next" type="submit" name="Residential" value="Residential">
-                                <input id="next" type="submit" name="Commercial" value="Commercial">
+                                <input id="next" type="submit" name="service" value="Residential">
+                                <input id="next" type="submit" name="service" value="Commercial">
                             </div>
                         </div>
                     </div>

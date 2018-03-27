@@ -1,4 +1,11 @@
+<div class="container">
+    <div class="row">
+        <ul id="commodity-tabs" class="nav nav-tabs">
+        <li class="active tab"><a id="electric-link" href="">Utilities</a></li>
+        </ul>  
 
+        <div class="tab-content">
+            <div id="Electric" class="fade in active">
 @if(count($ldcs) === 3) 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-2"> 
 @elseif(count($ldcs) === 2)
@@ -24,6 +31,10 @@
   @endforeach
 
 </div>
+            </div>
+        </div>
+    </div>
+
 
 {!! Html::style('css/enroll.css?v=1') !!}
 
