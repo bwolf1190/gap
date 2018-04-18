@@ -95,7 +95,7 @@
                 </div>
                 <div id="wwd" class="col-md-8 col-sm-7 col-xs-12">
                     <h2>What We Do</h2>
-                    <p><article>Great American Power is an Electric Supply company focusing on the US states with energy deregulation. We currently provide electric service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.  We understand that electricity service is not an option, it is an essential service and is something our clients must therefore pay close attention to manage and control costs, now and in the foreseeable future.</article></p>
+                    <p><article>Great American Power is an Energy Supply company focusing on the US states with energy deregulation. We currently provide service in PPL, PECO, Duke, Duquesne, BGE, Delmarva and PEPCO utility territories.  We understand that energy supply services are not optional, they are an essential service and are something our customers must therefore pay close attention to in order to manage and control costs, now and in the foreseeable future.</article></p>
                     <p><article>Our staff is Empowered, Educated, and Experienced. When you speak with one, you will remember the experience and it is our goal that you will also know more than you did before the conversation. We also hope that you will stay in touch with us and let us know what else we can do to earn your business!</article></p>
                 </div>
                 <!-- End Main Text -->
