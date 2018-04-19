@@ -94,6 +94,8 @@ class EmailController extends Controller
                 $enrollment->update(['confirm_date' => date("Y-m-d H:i:s"), 'status' => 'CONFIRMED']);
                 $enrollment_p2c->update(['status' => 'CONFIRMED']);
                 $customer->update(['status' => 'CONFIRMED']);
+                $ip = getIP();
+                $customer->update(['end_ip' => $ip]);
 
                 // send a notification to the broker when one of their customers confirms their email address
                 if($enrollment->type == 'broker'){

@@ -135,6 +135,8 @@ class CustomerController extends Controller
 			$customer = \App\Models\Customer::create($input);
 			$customer->update(['status' => 'PENDING']);
 			$customer->update(['plan_description' => $customer->getPlanDescription()]);
+			$ip = getIP();
+			$customer->update(['start_ip' => $ip]);
 		}
 
 		$plan = \App\Models\Plan::where('id', $input['plan_id'])->first();

@@ -32,7 +32,9 @@ class Customer extends Model
 		'promo',
 		'plan_id',
 		'plan_description',
-		'cc'
+		'cc',
+		'start_ip',
+		'end_ip'
 	];
 
     /**
@@ -65,6 +67,8 @@ class Customer extends Model
 		'plan_id'          => 'integer',
 		'plan_description' 	=> 'string',
 		'cc'               => 'string',
+		'start_ip'	=> 'string',
+		'end_ip'	=> 'string'
     ];
 
 	public static $rules = [

@@ -26,3 +26,16 @@ function get_string_between($string, $start, $end){
 
     return substr($string, $ini, $len);
 }
+
+/**
+ * Returns valid IP address or catches invalid IP address
+ */
+function getIP(){
+    $ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
+
+    if (!$ip){
+        $ip = 'INVALID';
+    } 
+
+    return $ip;
+}
