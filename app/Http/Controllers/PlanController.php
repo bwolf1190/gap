@@ -45,7 +45,7 @@ class PlanController extends Controller
 			//$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->whereNull('promo')->get();
 			//$eps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', 'electric')->whereNull('promo')->get();
 			//$gps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', 'gas')->whereNull('promo')->get();
-			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', $commodity)->whereNull('promo')->get();
+			$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('commodity', $commodity)->where('promo', null)->get();
 		}
 		else{
 			//$ps = \App\Models\Plan::orderBy('priority', 'asc')->where('ldc', $ldc)->where('type', $service)->where('promo', $promo)->get();
@@ -306,11 +306,19 @@ class PlanController extends Controller
 			$offer_term = get_string_between($xml[$i], '&lt;offer_term&gt;', '&lt;/offer_term&gt;');
 			$price_id = get_string_between($xml[$i], '&lt;price_id&gt;', '&lt;/price_id&gt;');
 			$campaign_code = get_string_between($xml[$i], '&lt;campaign_code&gt;', '&lt;/campaign_code&gt;');
+			$offer_green_percent = get_string_between($xml[$i], '&lt;offer_green_percent&gt;', '&lt;/offer_green_percent&gt;');
+ 
+			if($offer_green_percent == '100.00'){
+				$green = 'GREEN';
+			}
+			else{
+				$green = null;
+			}
 
-			// set commodity to either gas or electric
+			// set commodity to either gas or electric 
 			//$commodity = strpos($supno, 'GAS') ? 'Gas' : 'Electric';
 			if(strpos($supno, 'GAS')){
-				$commodity =  'Gas';
+				$commodity =  'Gas';  
 			}
 			else{
 				$commodity = 'Electric';
@@ -325,6 +333,7 @@ class PlanController extends Controller
 			$code = $supno;
 			// set plan ldc based on opsolve supno
 			if($supno == 'BGE'){ $ldc = 'BGE'; }
+			if($supno == 'COMED'){ $ldc = 'ComEd'; }
 			if($supno == 'DELMD'){ $ldc = 'Delmarva'; }
 			if($supno == 'DUKE_OH' || $supno == 'DUKE_GAS'){ $ldc = 'Duke'; }
 			if($supno == 'DQE'){ $ldc = 'Duquesne'; }
@@ -350,6 +359,11 @@ class PlanController extends Controller
 				$reward = 'Shopping/Dining Rewards';
 				$reward_link = 'https://www.greatamericanpowerrewards.com/';
 				$reward_description = '$100 Per Month Shopping/Dining Rewards';
+			}
+			else if(strpos($price_desc, 'SRW50')){
+				$reward = 'Shopping/Dining Rewards';
+				$reward_link = 'https://www.greatamericanpowerrewards.com/';
+				$reward_description = '$50 Per Month Shopping/Dining Rewards';
 			}
 			else if(strpos($price_desc, 'SRW500/100') || strpos($price_desc, '500/100')){
 				$reward = 'Shopping/Dining Rewards';
@@ -384,15 +398,19 @@ class PlanController extends Controller
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.25 per day';
 			}
-			else if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50') || strpos($price_desc, 'F.5')){
+			else if(strpos($price_desc, 'F.50') || strpos($price_desc, 'Fee.50') || strpos($price_desc, 'F0.5') || strpos($price_desc, 'F50') || strpos($price_desc, 'F.5') || strpos($campaign_code, 'F50')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$0.50 per day';
 			}
-			else if(strpos($price_desc, 'F1')){
+			else if(strpos($price_desc, 'F1') && (!strpos($price_desc, '1.5')) && (!strpos($price_desc, 'ETF100')) && (!strpos($price_desc, 'RETF100')) ){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$1.00 per day';
 			}
-			else if(strpos($price_desc, 'F1.5 ')){
+			else if(strpos($price_desc, 'RETF100F1')){
+				$daily_fee = 'Daily Fee Applies';
+				$daily_fee_description = '$1.00 per day';
+			}
+			else if(strpos($price_desc, '1.5')){
 				$daily_fee = 'Daily Fee Applies';
 				$daily_fee_description = '$1.50 per day';
 			}
@@ -419,13 +437,17 @@ class PlanController extends Controller
 			else if(stripos($campaign_code, 'Email') !== false|| strpos($campaign_code, 'ES') !== false){
 				$promo = 'GAP';
 			}
+			else if(strpos($campaign_code, 'Z_') !== false){
+				$promo = 'EVENTS';
+			}
 			else{
 				$promo = null;
 			}
 			
 			//create plan
 			$plan = ['priority' => '0',
-				'commodity'	=> $commodity, 
+				'commodity'	=> $commodity,
+				'green'	=> $green, 
 				'name'                  => $name, 
 				'ldc'                   => $ldc, 
 				'type'                  => $type, 
@@ -518,8 +540,11 @@ class PlanController extends Controller
 	public function updatePlans(){
 		\App\Models\Plan::truncate();
 
-		$this->updateLdcPlans('BGE', 'R');
-		$this->updateLdcPlans('BGE', 'C');
+		$this->updateLdcPlans('BGE', 'R', '');
+		$this->updateLdcPlans('BGE', 'C', '');
+		
+		$this->updateLdcPlans('COMED', 'R', '');
+		$this->updateLdcPlans('COMED', 'C', '');
 
 		$this->updateLdcPlans('DELMD', 'R');
 		$this->updateLdcPlans('DELMD', 'C');
