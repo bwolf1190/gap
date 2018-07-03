@@ -13,6 +13,16 @@
 
 Auth::routes();
 
+Route::get('/csrf', function(){
+    session_start();
+    if (empty($_SESSION['token'])) {
+        $_SESSION['token'] = bin2hex(random_bytes(32));
+    }
+    $token = $_SESSION['token'];
+
+    dd($token);
+});
+
 Route::get('welcome-test', function(){
     $customer = \App\Models\Customer::find(6619);
     $plan = \App\Models\Plan::find(72);
@@ -107,7 +117,7 @@ Route::get('/i/{type}', array('as' => 'internal-start', 'uses' => 'EnrollmentCon
 
 //Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@search'));
 //Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getLdc'));
-Route::post('/search/{s?}', array('as' => 'search', 'uses'=>'LdcController@getElectricLdcs'));
+Route::post('/search', array('as' => 'search', 'uses'=>'LdcController@getElectricLdcs'));
 /*Route::get('/electric-ldcs/{?service}', array('as' => 'electric-search', 'uses'=>'LdcController@getElectricLdcs'));
 Route::get('/gas-ldcs/{?service}', array('as' => 'gas-search', 'uses'=>'LdcController@getGasLdcs'));*/
 
@@ -179,6 +189,10 @@ Route::get('/gaap/customers/export', 'ExcelController@exportCustomers');
 
 /* <----------------------- Broker Routes ------------------------------->  */
 
+//Route::get('events', array('as' => 'event-signup', 'uses' => 'ContactController@eventSignup'));
+
+Route::post('/add-info-request', array('as' => 'addInfoRequest', 'uses' => 'ContactController@addInfoRequest'));
+
 Route::resource('brokers', 'BrokerController');
 
 Route::get('broker/admin', 'BrokerController@enrollments');
@@ -199,6 +213,12 @@ Route::get('/broker/{promo}', 'EnrollmentController@startBroker');
 // special route for greatamericanpower/ironpigs
 Route::get('/ironpigs', function(){
     return view('enroll-ironpigs')->with('promo', 'IRONPIGS')->with('type', 'broker');
+});
+
+//Route::get('/event/{zip}', 'LdcController@getEventLdcs');
+
+Route::get('/events', function(){
+    return view('enroll-broker')->with('promo', 'EVENT')->with('type', 'broker');
 });
 
 Route::post('broker', array('as' => 'broker', 'uses'=>'LdcController@brokerLdcs'));

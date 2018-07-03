@@ -1,7 +1,9 @@
 
 @extends('master')
 
-@section('page-title', 'Great American Power - Home')
+@section('page-title', 'Energy Supply Company – Energy Deregulation Suppliers | Great American Power')
+
+@section('meta', '<meta name="description" content="Energy deregulation across the United States has created a world of possibilities for consumers to take more control with regards to their energy suppliers.  Great American Power is an energy supply company that can help you acquire that control by giving you the tools to manage your energy costs going forward, reducing your risks.">')
 
 @section('page-style')
     {!! Html::style('css/contact-sidebar.css') !!}
@@ -9,7 +11,7 @@
     {!! Html::style('css/social-sidebar.css') !!}
 @endsection
 @section('navbar-brand')
-    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/gap-fcp-swoosh.jpg', 'great-american-power-freedom-choice-power') !!}</a>
+    <a id="nav-brand" class="nav-brand" href="/"> {!! Html::image('images/GAPlogoWeb.png', 'great-american-power-freedom-choice-power') !!}</a>
 @endsection
 @section('content')
     <div class="row">

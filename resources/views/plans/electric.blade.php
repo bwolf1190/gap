@@ -17,8 +17,21 @@
                         <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">  
                     @endif      
                         <div class="price_table_container">
-                            <div class="price_table_heading">{!! $plan->ldc !!}</div>
-                            <div class="price_table_heading commodity">{!! $plan->commodity !!}</div>
+
+                            @if($plan->green == 'GREEN')
+                                <div class="price_table_heading green">{!! $plan->ldc !!}</div>
+                            @else
+                                <div class="price_table_heading">{!! $plan->ldc !!}</div>
+                            @endif
+
+                            @if($plan->green == 'GREEN')
+                                <div id="green" class="price_table_heading commodity">100% Green {!! $plan->commodity !!}
+                                    <a href="#" id="green-energy-tooltip" data-container="body" data-html="true" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-leaf"></span></a>
+                                </div>
+                            @else
+                                <div class="price_table_heading commodity">{!! $plan->commodity !!}</div>
+                            @endif
+
                             <div class="price_table_body">
 
                             @if($plan->rate2 == "")
@@ -34,7 +47,7 @@
                             </p></strong></div>
 
                             <div class="price_table_row name" style="height"><strong>{!! $plan->length . " Month " . $plan->name !!}</strong></div>
-                            
+
                             @if($plan->meter != "")
                                 <div class="price_table_row"><strong>{!! $plan->meter . " Meter" !!}</strong></div>
                             @endif

@@ -14,7 +14,7 @@ class ContactController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['create', 'store']]);
+        $this->middleware('admin', ['except' => ['create', 'eventSignup', 'addInfoRequest', 'store']]);
     }
 
 
@@ -26,6 +26,15 @@ class ContactController extends Controller
 		$contacts = \App\Models\Contact::orderBy('id', 'desc')->paginate(15);
 		return view('contacts.index')->with('contacts', $contacts);
 	}
+
+
+	/*public function eventSignup(){
+		return view('contacts.event-modal');
+	}
+
+	public function addInfoRequest(Request $request){
+		dd($request->all());
+	}*/
 
 	/**
 	 * Show the form for creating a new contact.

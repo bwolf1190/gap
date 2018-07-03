@@ -1,0 +1,16 @@
+.price_table_container .green{
+	border:3px solid green;
+}
+
+#green{
+	color:green !important;
+	font-weight: bold;
+	border-left: none;
+	border-right: none;
+	border-top: 1px solid green;
+	border-bottom: 3px solid green;
+}
+
+#green-energy-tooltip span{
+	color:green;
+}

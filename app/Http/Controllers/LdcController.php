@@ -13,7 +13,7 @@ class LdcController extends Controller
 
 	function __construct()
 	{
-		$this->middleware('admin', ['except' => ['search', 'internalSearch', 'brokerLdcs', 'getLdc','getElectricLdcs', 'searchByState']]);
+		$this->middleware('admin', ['except' => ['search', 'internalSearch', 'brokerLdcs', 'getLdc','getElectricLdcs', 'getEventLdcs', 'searchByState']]);
 	}
 
 
@@ -55,7 +55,7 @@ class LdcController extends Controller
 		$state_code   = $state->state_code;
 		$maryland     = ['BGE', 'Delmarva', 'PEPCO'];
 		$ohio         = ['Duke'];
-		$pennsylvania = ['Duquesne', 'MetEd', 'PECO', 'PPL'];
+		$pennsylvania = ['Duquesne', 'MetEd', 'PECO', 'Penelec', 'PPL'];
 
 		if($state_code === 'MD'){
 			foreach($maryland as $ldc){
@@ -266,6 +266,76 @@ class LdcController extends Controller
 
 		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
 	}
+
+
+
+	public function getEventLdcs($zip){
+		$url           = env('SOAP_URL');
+		$user          = env('SOAP_USER');
+		$pw            = env('SOAP_PW');
+		$output_params = array("output_xml;8000");
+		$lang          = env('SOAP_LANG');
+		$entno         = env('SOAP_ENTNO');
+		$client        = new SoapClient($url, array("trace" => 1, "exceptions" => 0, "cache_wsdl" => 0));
+
+		$service = 'R';
+		$promo = 'EVENT';
+		$type = 'broker';
+
+	    	$xml_string = "<string><![CDATA[@input_xml;<ReadiSystem><proc_type>RS_sp_DR_Offers_by_Zip</proc_type><entno>4270</entno><zip>" . $zip . "</zip><rev_type>" . $service . "</rev_type><utility_type>E</utility_type></ReadiSystem>]]></string>";
+
+	    	$xml_obj = simplexml_load_string($xml_string);
+
+		$client->ExecuteSP(array("user" => $user, "password" => $pw, "spName" => "RS_sp_EAI_Output", "paramList" => array($xml_obj), "outputParamList" => $output_params,"langCode" => $lang, "entity" => $entno)); 
+
+		$response = $client->__getLastResponse(); 
+
+		$xml = explode('&lt;RS_sp_DR_Offers_By_Zip&gt;', $response);
+		
+		for($i = 1; $i < count($xml); $i++){
+			$entno = get_string_between($xml[$i], '&lt;entno&gt;', '&lt;/entno&gt;');
+			$s     = get_string_between($xml[$i], '&lt;rev_type&gt;', '&lt;/rev_type&gt;');
+			$ldc   = get_string_between($xml[$i], '&lt;supno&gt;', '&lt;/supno&gt;');
+
+			if($ldc == 'DELMD'){
+				$ldc = 'Delmarva';
+			}
+			if($ldc == 'DUKE_OH'){
+				$ldc = 'Duke';
+			}
+			if($ldc == 'PEPCO_MD'){
+				$ldc = 'PEPCO';
+			}
+			if($ldc == 'DQE'){
+				$ldc = 'Duquesne';
+			}
+	
+			$ls[] = [$ldc];
+		}
+		// change Opsolve R/C naming convention back to Residential/Commercial
+		$service = $service == 'R' ? 'Residential' : 'Commercial';
+
+		if(empty($ls)){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}
+		
+		/*if(is_null($ldcs[0])){
+			return view('no-service')->with('z', $zip)->with('s', $service)->with('p', $promo);
+		}*/
+
+		foreach($ls as $l){
+			$ldcs[] = \App\Models\Ldc::where('ldc', $l)->first(); 
+		}
+
+		// if there is only 1 LDC for the zip code, then send them straight to the plans
+		$count = count($ldcs);
+		if($count === 1){
+			return redirect()->route('searchPlans', array('type' => $type, 's' => $service, 'l' => $ldcs[0]->ldc, 'commodity' => 'Electric', 'promo' => $promo));
+		}
+
+		return view('ldcs.findex')->with('type', $type)->with('service', $service)->with('ldcs', $ldcs)->with('promo', $promo);
+	}
+
 
 
 	public function brokerLdcs(){

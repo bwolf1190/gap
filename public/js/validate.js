@@ -21,7 +21,7 @@ $("input").focus(function(){
 
 $('#same_address').click(function(){
     if($(this).is(":checked")){
-    	$(this).val('checked');
+	$(this).val('checked');
         $("input[name=ma1]").val($("input[name=sa1]").val());
         $("input[name=ma2]").val($("input[name=sa2]").val());
         $("input[name=mcity]").val($("input[name=scity]").val());

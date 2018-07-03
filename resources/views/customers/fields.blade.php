@@ -228,9 +228,22 @@
 	</div>
 	<div id="chosen-plan" class="col-md-3 chosen-plan float-shadow fade-in">
               <div class="price_table_container" style="margin-top:0px;">
-                  <div class="price_table_heading">{!! $plan->ldc !!}</div>
-                  <div class="price_table_heading commodity">{!! $plan->commodity !!}</div>
-                  <div class="price_table_body">
+
+                        @if($plan->green == 'GREEN')
+                            <div class="price_table_heading green">{!! $plan->ldc !!}</div>
+                        @else
+                            <div class="price_table_heading">{!! $plan->ldc !!}</div>
+                        @endif
+
+                        @if($plan->green == 'GREEN')
+                            <div id="green" class="price_table_heading commodity">100% Green {!! $plan->commodity !!}
+                                <a href="#" id="green-energy-tooltip" data-container="body" data-html="true" data-content="{{ $plan->reward_description }}" data-placement="bottom"><span class="glyphicon glyphicon-leaf"></span></a>
+                            </div>
+                        @else
+                            <div class="price_table_heading commodity">{!! $plan->commodity !!}</div>
+                        @endif
+
+                       <div class="price_table_body">
                       
                       @if($plan->rate2 == "")
                         <div class="price_table_row cost"><strong><p style="padding-top:25px;">{!! $plan->rate !!} 

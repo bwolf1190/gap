@@ -9,6 +9,7 @@ class Plan extends Model
 	public $fillable = [
 		'priority',
 		'commodity',
+		'green',
 	    	'name',
 		'ldc',
 		'type',
@@ -37,6 +38,7 @@ class Plan extends Model
     protected $casts = [
 		'priority'           => 'string',
 		'commodity'           => 'string',
+		'green'	=> 'string',
 		'name'               => 'string',
 		'ldc'                => 'string',
 		'type'               => 'string',

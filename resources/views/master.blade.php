@@ -2,7 +2,8 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    @yield('meta')
     <!-- Title -->
     <title>@yield('page-title')</title>
     <!-- Meta -->
@@ -62,6 +63,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="{{ env('HOME_URL') }}">HOME</a></li>
                             <li><a href="{{ env('ENROLL_URL') }}">ENROLL</a></li>
+                            <li><a href="http://blog.greatamericanpower.com">BLOG</a></li>
                             <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
                             <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
                         </ul>
@@ -69,10 +71,16 @@
                         <ul class="nav navbar-nav">
                             <li><a href="{{ env('HOME_URL') }}">HOME</a></li>
                             <li><a href="{{ env('ENROLL_URL') }}">ENROLL</a></li>
+                            <li><a href="http://blog.greatamericanpower.com">BLOG</a></li>
                             <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
                             <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
                         </ul>
                         @else
+                            <ul class="nav navbar-nav">
+                                <li><a href="http://blog.greatamericanpower.com">BLOG</a></li>
+                                <li><a href="{{ env('FAQ_URL') }}">FAQ</a></li>
+                                <li><a href="{{ env('CONTACT_URL') }}">CONTACT</a></li>
+                            </ul>
                         @endif
                     </div>
                 </div>
@@ -94,6 +102,8 @@
                 <a href="{{ env('HOME_URL') }}">Home</a>
                 ·
                 <a href="{{ env('ENROLL_URL') }}">Enroll</a>
+                .
+                <a href="http://blog.greatamericanpower.com">Blog</a>
                 <!--·
                 <a href="/about-us">About</a>-->
                 ·
@@ -101,17 +111,23 @@
                 ·
                 <a href="{{ env('CONTACT_URL') }}">Contact</a>
             </p>
-            <p class="footer-company-name">Great American Power &copy; 2017</p>
+            <p class="footer-company-name">Great American Power &copy; 2018</p>
         </div>
         <div class="footer-center">
             <div>
                 <i class="fa fa-map-marker"></i>
-                <p><span>PO Box 1627</span> Kennesaw, GA 30156</p>
-            </div>
+                <p>
+                    <span>2633 Mckinney Ave</span>
+                    <span> STE 130 #517</span>
+                    <span>Dallas, TX 75204</span>
+                </p>
+            </div><br>
             <div>
                 <i class="fa fa-phone"></i>
-                <p>1-877-215-4140</p>
-            </div>
+                <p>1.877.215.4140<br>
+                    IL - 1.855.872.2887
+                </p>
+            </div><br>
             <div>
                 <i class="fa fa-envelope"></i>
                 <p><a href="mailto:GAPOnline@GreatAmericanPower.com">Email Us</a></p>
@@ -120,7 +136,7 @@
         <div class="footer-right">
             <p class="footer-company-about">
                 <span>About the company</span>
-                Great American Power is approved and licensed by the Pennsylvania Public Utilities Commission and the Maryland Public Service Commission. We currently provide electric service in PPL, PECO, Duquesne, BGE, Delmarva and PEPCO utility territories.
+                Great American Power is approved and licensed by the Illinois Commerce Commission, Maryland Public Service Commission, Public Utilities Commission of Ohio, and Pennsylvania Public Utilities Commission.  We currently provide electric service in ComEd, BGE, Delmarva, PEPCO, Duke, Duquesne, MetEd, PECO, and PPL.
             </p>
             <div class="footer-icons">
                 <a href="https://www.facebook.com/GreatAmericanPower/" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -129,7 +145,7 @@
                 <a href="https://www.pinterest.com/grtamerpwr/ " target="_blank"><i class="fa fa-pinterest"></i></a>
             </div>
         </div>
-        <div id="disclaimer" class="row">MD license number IR-2440 | OH license number 16-1073E (1) | PA license number A-2205475<br>
+        <div id="disclaimer" class="row">IL license number 18-0170 | MD license number IR-2440 | OH license number 16-1073E (1) | PA license number A-2205475<br>
         The rates posted on this Great American Power site are based on present rates.<br>
         <a href="{{ env('HISTORICAL_RATES_URL') }}">Historical Rates</a>
         </div>
@@ -144,13 +160,13 @@
     </script>
     <noscript>
         <div class="statcounter"><a title="web stats"
-        href="http://statcounter.com/" target="_blank"><img class="statcounter"
+        href="https://statcounter.com/" target="_blank"><img class="statcounter"
         src="//c.statcounter.com/11344440/0/35fa6508/1/" alt="web stats"></a></div>
     </noscript>
 <!-- End of StatCounter Code for Default Guide -->
 
 <!-- Retargeting Pixel - Tapsomnia - DO NOT MODIFY -->
-<img src="http://post.tapsomnia.com/usr?seg=5&sspid=1" />
+<img src="https://post.tapsomnia.com/usr?seg=5&sspid=1" />
 <!-- End of Retargeting Pixel -->
 
 </body>

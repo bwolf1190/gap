@@ -5,6 +5,7 @@
 @section('page-style')
     {!! Html::style('css/enroll.css?v=1') !!}
     {!! Html::style('css/broker.css') !!}
+    {!! Html::style('css/green-plan.css') !!}
 @endsection
 
 @section('navbar-brand')
